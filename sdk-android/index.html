@@ -1,0 +1,1010 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Interswitch Payment SDK for Android</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #f8f8f2;
+  background-color: #272822;
+}
+.highlight .err {
+  color: #151515;
+  background-color: #ac4142;
+}
+.highlight .c, .highlight .cd, .highlight .cm, .highlight .c1, .highlight .cs {
+  color: #505050;
+}
+.highlight .cp {
+  color: #f4bf75;
+}
+.highlight .nt {
+  color: #f4bf75;
+}
+.highlight .o, .highlight .ow {
+  color: #d0d0d0;
+}
+.highlight .p, .highlight .pi {
+  color: #d0d0d0;
+}
+.highlight .gi {
+  color: #90a959;
+}
+.highlight .gd {
+  color: #ac4142;
+}
+.highlight .gh {
+  color: #6a9fb5;
+  background-color: #151515;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #aa759f;
+}
+.highlight .kc {
+  color: #d28445;
+}
+.highlight .kt {
+  color: #d28445;
+}
+.highlight .kd {
+  color: #d28445;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #90a959;
+}
+.highlight .sr {
+  color: #75b5aa;
+}
+.highlight .si {
+  color: #8f5536;
+}
+.highlight .se {
+  color: #8f5536;
+}
+.highlight .nn {
+  color: #f4bf75;
+}
+.highlight .nc {
+  color: #f4bf75;
+}
+.highlight .no {
+  color: #f4bf75;
+}
+.highlight .na {
+  color: #6a9fb5;
+}
+.highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mb, .highlight .mx {
+  color: #90a959;
+}
+.highlight .ss {
+  color: #90a959;
+}
+    </style>
+    <link href="../stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="../stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
+      <script src="../javascripts/all.js" type="text/javascript"></script>
+  </head>
+
+  <body class="sdk-android sdk-android_index" data-languages="[&quot;java&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="../images/navbar.png" />
+      </span>
+    </a>
+    <div class="tocify-wrapper">
+      <img src="../images/logo.png" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="java">Java</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <div id="toc">
+      </div>
+        <ul class="toc-footer">
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id="">Interswitch Payment SDK For Android</h1>
+
+<blockquote>
+<p>Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.</p>
+</blockquote>
+
+<p>Interswitch uses a ‘switching&#39; infrastructure to connect the different banks in Nigeria and provides technology for ATM cards.[2] The company has over 11,000 ATMs on its network.[3]</p>
+
+<p>Interswitch is the owner of Verve, Nigeria’s most used payment card, accounting for 18 million of the 25 million cards in circulation in the country.[2] Verve has also been launched in Kenya.[8]</p>
+
+<p>Interswitch also owns Quickteller, an online payments platform; Retailpay, a mobile business management platform; and Smartgov, an identity management and e-payment infrastructure for state governments</p>
+
+<h1 id="TableOfContents">Table of Content</h1>
+
+<table><thead>
+<tr>
+<th>Section</th>
+<th>Contents</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#PaymentSDKJava">Payment SDK for Java</a></td>
+<td><a href="#AddingPaymentLibrary">Adding the Payment Library</a> <br/><a href="#UsingPaymentLibrary">Using the Payment Library</a> <br/><a href="#MakingPurchase">Make Purchase</a> <br/><a href="#AuthorizingPurchase">Authorize Purchase</a> <br/><a href="#ValidatingCard">Validate Card</a> <br/><a href="#AuthorizingCardValidation">Authorize Card Validation</a></td>
+</tr>
+<tr>
+<td><a href="#PaymentSDK">Payment SDK for Android Setup</a></td>
+<td><a href="#DownloadSDK">Download the latest SDK</a> <br/><a href="#CreateProject">Creating a Project and Adding Library Using Android Studio</a> <br /><a href="#SandBoxMode">Using The SDK in Sandbox Mode</a></td>
+</tr>
+<tr>
+<td><a href="#SDKWithOutUI">Using the Android SDK without UI (In PCI-DSS Scope: Yes)</a></td>
+<td><a href="#PayWithCardToken">Pay with Card/Token</a> <br/> <a href="#PayWithWalletNoUI">Pay with Wallet</a> <br /><a href="#ValidateCardNoUI">Validate Card and Get Token</a> <br /><a href="#AuthorizeOTP">Authorize PayWithCard using OTP</a> <br /><a href="#ValidateCardOTP">Authorize Card Validation using OTP</a> <br /><a href="#AuthorizeWOTP">Authorize PayWithWallet using OTP</a> <br /><a href="#PaymentStatus">Checking Payment Status</a></td>
+</tr>
+<tr>
+<td><a href="#SDKWithUI">Using the Android SDK with UI (In PCI-DSS Scope: No)</a></td>
+<td><a href="#Pay">Pay with Card/Wallet</a> <br/> <a href="#PayWithCard">Pay with Card</a> <br /><a href="#PayWithWallet">Pay with Wallet</a> <br /><a href="#ValidateCard">Validate Card</a>  <br /><a href="#PayWithToken">Pay With Token</a></td>
+</tr>
+</tbody></table>
+
+<h1 id="-default"> <a name='AddingPaymentLibrary'> Adding the Payment Library to your project </a> </h1>
+ 
+<h2 id='using-maven'>Using Maven</h2><pre class="highlight xml">    <span class="nt">&lt;dependency&gt;</span>
+      <span class="nt">&lt;groupId&gt;</span>com.interswitchng<span class="nt">&lt;/groupId&gt;</span>
+      <span class="nt">&lt;artifactId&gt;</span>isw-payment<span class="nt">&lt;/artifactId&gt;</span>
+      <span class="nt">&lt;version&gt;</span>0.0.9<span class="nt">&lt;/version&gt;</span>
+      <span class="nt">&lt;type&gt;</span>pom<span class="nt">&lt;/type&gt;</span>
+    <span class="nt">&lt;/dependency&gt;</span>
+</pre>
+
+<p>To use the payment library add this dependency to your pom.xml file</p>
+<h2 id='using-gradle'>Using gradle</h2><pre class="highlight groovy">    <span class="n">compile</span> <span class="s1">'com.interswitchng:isw-payment:0.0.9'</span>
+</pre>
+
+<p>Add this snippet to your build.gradle file</p>
+
+<h1 id="-default"> <a name='UsingPaymentLibrary'> Using the Payment Library </a> </h1>
+<h2 id='to-set-up-the-payment-request-use-the-snippet-below'>To set up the Payment request, use the snippet below</h2><pre class="highlight java">        <span class="n">Passport</span><span class="o">.</span><span class="na">overrideApiBase</span><span class="o">(</span><span class="n">Passport</span><span class="o">.</span><span class="na">SANDBOX_API_BASE</span><span class="o">);</span> <span class="c1">// Passport Api on Sandbox Environment</span>
+        <span class="n">Payment</span><span class="o">.</span><span class="na">overrideApiBase</span><span class="o">(</span><span class="n">Payment</span><span class="o">.</span><span class="na">SANDBOX_API_BASE</span><span class="o">);</span>   <span class="c1">// Payment Api on Sandbox Environment</span>
+        <span class="n">String</span> <span class="n">clientId</span> <span class="o">=</span> <span class="s">"&lt;CLIENT_ID&gt;"</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">clientSecret</span> <span class="o">=</span> <span class="s">"&lt;CLIENT_SECRET&gt;"</span><span class="o">;</span>
+        <span class="n">RequestOptions</span><span class="o">.</span><span class="na">RequestOptionsBuilder</span> <span class="n">builder</span> <span class="o">=</span> <span class="n">RequestOptions</span><span class="o">.</span><span class="na">builder</span><span class="o">().</span><span class="na">setClientId</span><span class="o">(</span><span class="n">clientId</span><span class="o">).</span><span class="na">setClientSecret</span><span class="o">(</span><span class="n">clientSecret</span><span class="o">);</span>
+        <span class="n">options</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="na">build</span><span class="o">();</span>
+        <span class="n">accessToken</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Passport</span><span class="o">(</span><span class="n">options</span><span class="o">).</span><span class="na">getAccessToken</span><span class="o">().</span><span class="na">getToken</span><span class="o">();</span>
+        <span class="n">builder</span><span class="o">.</span><span class="na">setAccessToken</span><span class="o">(</span><span class="n">accessToken</span><span class="o">);</span>
+        <span class="n">options</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="na">build</span><span class="o">();</span>
+</pre>
+
+<p>The first two lines is use to override the Live API BASE for both passport and payment</p>
+
+<h1 id="-default"> <a name='MakingPurchase'> Make Purchase</a> </h1>
+<h2 id='to-make-payment-setup-your-payment-request-like-this'>To make payment setup your payment request like this</h2><pre class="highlight java">        <span class="n">PurchaseRequest</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PurchaseRequest</span><span class="o">();</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setCustomerId</span><span class="o">(</span><span class="s">"1407002510"</span><span class="o">);</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setAmount</span><span class="o">(</span><span class="s">"100"</span><span class="o">);</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setPan</span><span class="o">(</span><span class="s">"5060990580000217499"</span><span class="o">);</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setPinData</span><span class="o">(</span><span class="s">"1111"</span><span class="o">);</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setCvv2</span><span class="o">(</span><span class="s">"111"</span><span class="o">);</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setExpiryDate</span><span class="o">(</span><span class="s">"2004"</span><span class="o">);</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setRequestorId</span><span class="o">(</span><span class="s">"12345678901"</span><span class="o">);</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setCurrency</span><span class="o">(</span><span class="s">"NGN"</span><span class="o">);</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setTransactionRef</span><span class="o">(</span><span class="n">RandomString</span><span class="o">.</span><span class="na">numeric</span><span class="o">(</span><span class="mi">12</span><span class="o">));</span>
+        <span class="n">PurchaseResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PurchaseClient</span><span class="o">(</span><span class="n">options</span><span class="o">).</span><span class="na">purchase</span><span class="o">(</span><span class="n">request</span><span class="o">);</span>
+        <span class="cm">/* The response object contains the following fields transactionIdentifier,
+         amount, transactionRef, message if No OTP is required.
+
+         The response object contains the following fields paymentId, responseCode,
+         amount, transactionRef, message if OTP is required and the responseCode = T0
+
+         The response object contains the following fields paymentId, responseCode,
+         amount, transactionRef,transactionId, eciFlag, MD, ACSUrl, TermUrl, 
+         Pareq if OTP is required and the responseCode = S0
+        */</span>
+</pre>
+<h2 id='supporting-split-payments'>Supporting Split Payments</h2><pre class="highlight java">    <span class="n">SplitSettlement</span><span class="o">[]</span> <span class="n">splitSettlements</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SplitSettlement</span><span class="o">[</span><span class="mi">2</span><span class="o">];</span>
+    <span class="n">SplitSettlement</span> <span class="n">splitSettlement1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SplitSettlement</span><span class="o">();</span>
+    <span class="n">splitSettlement1</span><span class="o">.</span><span class="na">setAccountIdentifier</span><span class="o">(</span><span class="s">"fbn acct"</span><span class="o">);</span>
+    <span class="n">splitSettlement1</span><span class="o">.</span><span class="na">setAccountNo</span><span class="o">(</span><span class="s">"0000000001"</span><span class="o">);</span>
+    <span class="n">splitSettlement1</span><span class="o">.</span><span class="na">setAmount</span><span class="o">(</span><span class="s">"300"</span><span class="o">);</span>
+    <span class="n">SplitSettlement</span> <span class="n">splitSettlement2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SplitSettlement</span><span class="o">();</span>
+    <span class="n">splitSettlement2</span><span class="o">.</span><span class="na">setAccountIdentifier</span><span class="o">(</span><span class="s">"uba acct"</span><span class="o">);</span>
+    <span class="n">splitSettlement2</span><span class="o">.</span><span class="na">setAccountNo</span><span class="o">(</span><span class="s">"0000000002"</span><span class="o">);</span>
+    <span class="n">splitSettlement2</span><span class="o">.</span><span class="na">setAmount</span><span class="o">(</span><span class="s">"400"</span><span class="o">);</span>
+    <span class="n">splitSettlements</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">splitSettlement1</span><span class="o">;</span>
+    <span class="n">splitSettlements</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">splitSettlement2</span><span class="o">;</span>
+    <span class="n">RequestOptions</span> <span class="n">options</span> <span class="o">=</span> <span class="n">RequestOptions</span><span class="o">.</span><span class="na">builder</span><span class="o">().</span><span class="na">setClientId</span><span class="o">(</span><span class="s">"&lt;CLIENT_ID&gt;"</span><span class="o">).</span><span class="na">setClientSecret</span><span class="o">(</span><span class="s">"&lt;CLIENT_SECRET&gt;"</span><span class="o">).</span><span class="na">setSplitSettlementInformation</span><span class="o">(</span><span class="n">splitSettlements</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
+
+</pre>
+
+<p>With split payments, you can specify how the charge should be divided accross your different accounts.</p>
+
+<h1 id="-default"> <a name='AuthorizingPurchase'> Authorizing Purchases </a> </h1>
+
+<p>To Authorize Purchase, the purchase response code from the transaction is used to determine the if the transaction requires OTP or by 
+if the response code is T0, then it requires <strong><em>Safe Token OTP</em></strong> else if the <em><strong>response code is S0</strong></em> it requires <strong><em>Cardinal VbyV</em></strong></p>
+<h2 id='handling-t0-response-code'>Handling T0 Response Code</h2><pre class="highlight java">        <span class="k">if</span><span class="o">(</span><span class="s">"T0"</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">())){</span>
+            <span class="n">AuthorizePurchaseRequest</span> <span class="n">authorizePurchaseRequest</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AuthorizePurchaseRequest</span><span class="o">();</span>
+            <span class="n">authorizePurchaseRequest</span><span class="o">.</span><span class="na">setAuthData</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getAuthData</span><span class="o">());</span>
+            <span class="n">authorizePurchaseRequest</span><span class="o">.</span><span class="na">setPaymentId</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getPaymentId</span><span class="o">());</span>
+            <span class="n">authorizePurchaseRequest</span><span class="o">.</span><span class="na">setOtp</span><span class="o">(</span><span class="s">"123456"</span><span class="o">);</span>
+            <span class="n">AuthorizePurchaseResponse</span> <span class="n">otpResponse</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PurchaseClient</span><span class="o">(</span><span class="n">options</span><span class="o">).</span><span class="na">authorizePurchase</span><span class="o">(</span><span class="n">authorizePurchaseRequest</span><span class="o">);</span>
+            <span class="c1">// The otpResponse above contains transactionIdentifier, token, tokenExpiryDate,panLast4Digits,transactionRef and message</span>
+        <span class="o">}</span>
+</pre>
+
+<p>To handle <strong><em>T0 response code</em></strong>, use the snippet.</p>
+<h2 id='handling-s0-response-code'>Handling S0 Response Code</h2>
+<p>To handle <strong><em>S0 response code</em></strong> use the snippet below
+redirect your app to VbyV page for authorization of payment, use auto post form 
+e.g <strong><em>NOTE: ACSUrl, TermUrl, MD and PaReq should be replaced with their corresponding values as returned from the purchase response.</em></strong></p>
+<pre class="highlight html">    <span class="nt">&lt;body</span> <span class="na">onload =</span><span class="s">'form1.submit()'</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- NOTE: ACSUrl, TermUrl, MD and PaReq should be replaced with their corresponding values as returned from the purchase response.
+        e.g ACSUrl = "https://testcustomer34.cardinalcommerce.com/V3DSStart?osb=visa-3&amp;VAA=B"
+            TermUrl = "https://qa.interswitchng.com/collections/api/v1/pay/cardinalCallBack"
+            MD = "66603"
+            PaReq = "eNpVUttu4jAQffdXoH5AbOeCtGhqKQVp2+2GpmlL9zU4s2AgTuo4Bf6+doBe3uacuficGcPz2iDOnlD2BgVk2HXlCkequr7Knv
+     LN/c0ivD+ufvHssciwZVcC8rTANwHvaDrVaMEDFoRAL5C4EUauS20FlPLt5m4u4jiOogjoGRKo0dzNBA+jOBkDPSECuqxRpBXaXm+UGqVbpSs
+     EOtAEZNNra44iGbuWCyDQm51YW9tOKN3jsi2PgdLWSdkrK9d6Fcimpo6tlEFpaYV1A9T3EKBfOvPeR52zf1CVeF7MH8utnS42f/7iq0yyF168
+     bPlOztJroL6CQFVaFCHjY5aE0YjzScInPAY68ATK2gsU89/zUchYwJgzf6IItP6x9IRc0ue+U85pbwxqebF6QQTw0DYafRvQz9gZ+ZI/vfVLl
+     9btM5/pij10u+Vh+v/233IfcrnPZVE0/g5DxTBQuS06FfEwUQ0rpX4KPV+Znj+Ei358lA9Mdboe"
+    --&gt;</span>
+
+    <span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">"form1"</span> <span class="na">action=</span><span class="s">ACSUrl</span> <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"TermUrl"</span> <span class="na">value=</span><span class="s">TermUrl</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"MD"</span> <span class="na">value=</span><span class="s">MD</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"PaReq"</span> <span class="na">value=</span><span class="s">PaReq</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/form&gt;</span>
+</pre>
+
+<p>This form opens the Visa cardinal authorization page, where the user can enter their Visa Card iPin/Password and Submit, On Submit done, make the final request to complete the transaction.</p>
+<h2 id='finalize-transaction-after-authorization'>Finalize transaction after authorization</h2><pre class="highlight java">        <span class="n">AuthorizePurchaseRequest</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AuthorizePurchaseRequest</span><span class="o">();</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setAuthData</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getAuthData</span><span class="o">());</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setPaymentId</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getPaymentId</span><span class="o">());</span> 
+        <span class="n">request</span><span class="o">.</span><span class="na">setTransactionId</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getTransactionId</span><span class="o">());</span> 
+        <span class="n">request</span><span class="o">.</span><span class="na">setEciFlag</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getEciFlag</span><span class="o">());</span> 
+        <span class="n">AuthorizePurchaseResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PurchaseClient</span><span class="o">(</span><span class="n">options</span><span class="o">).</span><span class="na">authorizePurchase</span><span class="o">(</span><span class="n">request</span><span class="o">);</span>
+        <span class="c1">// The response above contains transactionIdentifier, token, tokenExpiryDate,panLast4Digits,transactionRef and message.</span>
+</pre>
+
+<p>Once the transaction has been concluded, use the following snippet to complete the transaction</p>
+
+<h1 id="-default"> <a name='ValidatingCard'> Validate Card </a> </h1>
+<pre class="highlight java">        <span class="n">ValidateCardRequest</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ValidateCardRequest</span><span class="o">();</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setPan</span><span class="o">(</span><span class="s">"5060990580000217499"</span><span class="o">);</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setPinData</span><span class="o">(</span><span class="s">"1111"</span><span class="o">);</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setExpiryDate</span><span class="o">(</span><span class="s">"2004"</span><span class="o">);</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setCvv2</span><span class="o">(</span><span class="s">"111"</span><span class="o">);</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setTransactionRef</span><span class="o">(</span><span class="n">RandomString</span><span class="o">.</span><span class="na">numeric</span><span class="o">(</span><span class="mi">12</span><span class="o">));</span>
+        <span class="n">ValidateCardResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PurchaseClient</span><span class="o">(</span><span class="n">options</span><span class="o">).</span><span class="na">validateCard</span><span class="o">(</span><span class="n">request</span><span class="o">);</span>
+        <span class="cm">/* The response above contains responseCode, transactionRef, message.
+           The response object contains the following fields paymentId, responseCode,
+           amount, transactionRef,transactionId, eciFlag, MD, ACSUrl, TermUrl, 
+           Pareq if OTP is required and the responseCode = S0
+        */</span>
+</pre>
+
+<p>To validate a card and get token use the code snippet</p>
+
+<h1 id="-default"> <a name='AuthorizingCardValidation'> Authorize Card Validation </a> </h1>
+<h2 id='authorize-verve-card-and-master-card'>Authorize Verve Card and Master Card</h2><pre class="highlight java">        <span class="n">AuthorizeCardRequest</span> <span class="n">validateCardWithOtpRequest</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AuthorizeCardRequest</span><span class="o">();</span>
+        <span class="n">validateCardWithOtpRequest</span><span class="o">.</span><span class="na">setAuthData</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getAuthData</span><span class="o">());</span>
+        <span class="n">validateCardWithOtpRequest</span><span class="o">.</span><span class="na">setTransactionRef</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getTransactionRef</span><span class="o">());</span>
+        <span class="n">validateCardWithOtpRequest</span><span class="o">.</span><span class="na">setOtp</span><span class="o">(</span><span class="s">"123456"</span><span class="o">);</span>
+        <span class="n">AuthorizeCardResponse</span> <span class="n">authorizeCardResponse</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PurchaseClient</span><span class="o">(</span><span class="n">options</span><span class="o">).</span><span class="na">authorizeCard</span><span class="o">(</span><span class="n">validateCardWithOtpRequest</span><span class="o">);</span>
+        <span class="c1">//authorizeCardResponse above contains token,tokenExpiryDate,transactionRef,panLast4Digits,balance,cardType.</span>
+</pre>
+
+<p>To Authorize Card Validation when <strong><em>response code is T0</em></strong> use the code snippet </p>
+<h2 id='authorize-visa-card'>Authorize VISA Card</h2>
+<p>To Authorize Card Validation when <strong><em>response code is S0</em></strong> use the code snippet below
+redirect your app to VbyV page for authorization of payment card, use auto post form e.g
+<strong><em>NOTE: ACSUrl, TermUrl, MD and PaReq should be replaced with their corresponding values as returned from the validate card response.</em></strong></p>
+<pre class="highlight html">    <span class="nt">&lt;body</span> <span class="na">onload =</span><span class="s">'form1.submit()'</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- NOTE: ACSUrl, TermUrl, MD and PaReq should be replaced with their corresponding values as returned from the purchase response.
+        e.g ACSUrl = "https://testcustomer34.cardinalcommerce.com/V3DSStart?osb=visa-3&amp;VAA=B"
+            TermUrl = "https://qa.interswitchng.com/collections/api/v1/pay/cardinalCallBack"
+            MD = "66603"
+            PaReq = "eNpVUttu4jAQffdXoH5AbOeCtGhqKQVp2+2GpmlL9zU4s2AgTuo4Bf6+doBe3uacuficGcPz2iDOnlD2BgVk2HXlCkequr7Knv
+     LN/c0ivD+ufvHssciwZVcC8rTANwHvaDrVaMEDFoRAL5C4EUauS20FlPLt5m4u4jiOogjoGRKo0dzNBA+jOBkDPSECuqxRpBXaXm+UGqVbpSs
+     EOtAEZNNra44iGbuWCyDQm51YW9tOKN3jsi2PgdLWSdkrK9d6Fcimpo6tlEFpaYV1A9T3EKBfOvPeR52zf1CVeF7MH8utnS42f/7iq0yyF168
+     bPlOztJroL6CQFVaFCHjY5aE0YjzScInPAY68ATK2gsU89/zUchYwJgzf6IItP6x9IRc0ue+U85pbwxqebF6QQTw0DYafRvQz9gZ+ZI/vfVLl
+     9btM5/pij10u+Vh+v/233IfcrnPZVE0/g5DxTBQuS06FfEwUQ0rpX4KPV+Znj+Ei358lA9Mdboe"
+    --&gt;</span>
+    <span class="nt">&lt;form</span> <span class="na">id=</span><span class="s">"form1"</span> <span class="na">action=</span><span class="s">ACSUrl</span> <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"TermUrl"</span> <span class="na">value=</span><span class="s">TermUrl</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"MD"</span> <span class="na">value=</span><span class="s">MD</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"PaReq"</span> <span class="na">value=</span><span class="s">PaReq</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/form&gt;</span>
+</pre>
+
+<p>This form opens the Visa cardinal authorization page, where the user can enter their Visa Card iPin/Password and Submit, On Submit done, make the final request to complete the card validation.</p>
+<h2 id='finalize-transaction-after-card-validation'>Finalize Transaction After Card Validation</h2><pre class="highlight java">    <span class="n">AuthorizeCardRequest</span> <span class="n">validateCardWithCardinalRequest</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AuthorizeCardRequest</span><span class="o">();</span>
+    <span class="n">validateCardWithCardinalRequest</span><span class="o">.</span><span class="na">setAuthData</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getAuthData</span><span class="o">());</span>
+    <span class="n">validateCardWithCardinalRequest</span><span class="o">.</span><span class="na">setTransactionId</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getTransactionId</span><span class="o">());</span>
+    <span class="n">validateCardWithCardinalRequest</span><span class="o">.</span><span class="na">setEciFlag</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getEciFlag</span><span class="o">());</span>
+    <span class="n">validateCardWithCardinalRequest</span><span class="o">.</span><span class="na">setTransactionRef</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getTransactionRef</span><span class="o">());</span>
+    <span class="n">AuthorizeCardResponse</span> <span class="n">authorizeCardResponse</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PurchaseClient</span><span class="o">(</span><span class="n">options</span><span class="o">).</span><span class="na">authorizeCard</span><span class="o">(</span><span class="n">validateCardWithCardinalRequest</span><span class="o">);</span>
+    <span class="c1">// The authorizeCardResponse above contains transactionIdentifier,token,tokenExpiryDate,transactionRef,panLast4Digits,balance,cardType.</span>
+    <span class="c1">// NB: Balance is not returned for VISA card</span>
+
+</pre>
+
+<p>Once the transaction has been concluded, use the following snippet to complete the transaction</p>
+
+<h1 id="-default"> <a name='PaymentSDK'> Payment SDK for Android Setup </a> </h1>
+
+<p>Interswitch payment SDK allows you to accept payments from customers within your mobile application.
+<strong>Please Note: *The current supported currency is naira (NGN), support for other currencies would be added later</strong>*
+The first step to ​using the ​Android SDK is to register as a merchant. This is described <a href="merchantxuat.interswitchng.com">here</a></p>
+<h2 id='a-namedownloadsdka-download-the-latest-sdk'><a name='DownloadSDK'></a> Download the latest SDK</h2><pre class="highlight html">https://github.com/techquest/isw-payment-sdk-android/releases
+</pre>
+
+<p>Download the latest SDK from the link </p>
+
+<p>It consists of ​a library:</p>
+
+<ol>
+<li><em>deviceprint-release-2.2.0.aar</em></li>
+</ol>
+
+<p><strong>Use Android Studio’s dependency management tool (Gradle) to add the library to your project.</strong></p>
+<h2 id='a-namecreateprojectcreating-a-project-and-adding-library-using-android-studioa'><a name='CreateProject'>Creating a Project and Adding Library Using Android Studio</a></h2><pre class="highlight groovy">    <span class="n">repositories</span> <span class="o">{</span>
+        <span class="n">maven</span> <span class="o">{</span>
+            <span class="n">url</span>  <span class="s1">'http://dl.bintray.com/techquest/maven-repo'</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="n">dependencies</span><span class="o">{</span>
+        <span class="n">compile</span> <span class="s1">'com.interswitchng:payment-android:1.0.7'</span>
+        <span class="n">compile</span> <span class="s1">'com.android.support:appcompat-v7:25.1.0'</span>
+        <span class="n">compile</span> <span class="s1">'com.android.support:design:25.1.0'</span>
+    <span class="o">}</span>
+</pre>
+
+<ol>
+<li>Download <strong>Android Studio 1.2.2</strong> or later</li>
+<li>Create a New Project</li>
+<li>Put <strong>deviceprint-release-2.2.0.aar</strong> in the libs folder of the app.</li>
+<li>To add the <strong>deviceprint-release-2.2.0.aar</strong> library to your project, navigate to <strong>File -&gt; New -&gt; New Module -&gt; Import .JAR/.AAR Package</strong> option in Android Studio.</li>
+<li>Select the <strong>deviceprint-release-2.2.0.aar</strong> in libs folder</li>
+<li>To add the jar files, edit the build.gradle file of your app and add</li>
+<li>Finally, rebuild the project</li>
+</ol>
+<h2 id='a-namesandboxmodeusing-the-sdk-in-sandbox-modea'><a name='SandBoxMode'>Using The SDK in Sandbox Mode</a></h2>
+<p>During development of your app, you should use the SDK in sandbox mode to enable testing. Different Client Id and Client Secret are provided for Production and Sandbox mode. The procedure to use the SDK on sandbox mode is just as easy:</p>
+
+<blockquote>
+<p>In your code, override the api base as follows</p>
+</blockquote>
+<pre class="highlight java">    <span class="n">Passport</span><span class="o">.</span><span class="na">overrideApiBase</span><span class="o">(</span><span class="n">Passport</span><span class="o">.</span><span class="na">SANDBOX_API_BASE</span><span class="o">);</span>
+    <span class="n">Payment</span><span class="o">.</span><span class="na">overrideApiBase</span><span class="o">(</span><span class="n">Payment</span><span class="o">.</span><span class="na">SANDBOX_API_BASE</span><span class="o">);</span>
+</pre>
+
+<ul>
+<li><p>Use Sandbox Client Id and Client Secret got from the Sandbox Tab of the Developer Console after signup(usually you have to wait for 5 minutes after signup for you to see the Sandbox details) everywhere you are required to supply Client Id and Client Secret in the remainder of this documentation</p></li>
+<li><p>Follow the remaining steps in the documentation.</p></li>
+<li><p>NOTE: When going into Production mode, use the Client Id and the Client Secret got from the Production Tab of Developer Console instead.</p></li>
+</ul>
+
+<h1 id="-default"> <a name='SDKWithOutUI'> Using the Android SDK without UI (In PCI-DSS Scope: Yes)</a> </h1>
+<h2 id='a-namepaywithcardtokenapay-with-cardtoken'><a name='PayWithCardToken'></a>Pay with Card/Token</h2>
+<ul>
+<li>To allow for Payment with Card or Token</li>
+<li>Create a UI to collect amount and card details</li>
+<li>Create a Pay button</li>
+<li>In the onClick listener of the Pay button, use this code.</li>
+</ul>
+
+<blockquote>
+<p>Note: Supply your Client Id and Client Secret you got after registering as a Merchant</p>
+</blockquote>
+<pre class="highlight java">    <span class="n">RequestOptions</span> <span class="n">options</span> <span class="o">=</span> <span class="n">RequestOptions</span><span class="o">.</span><span class="na">builder</span><span class="o">()</span>
+    <span class="o">.</span><span class="na">setClientId</span><span class="o">(</span><span class="s">"&lt;CLIENT_ID&gt;"</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">setClientSecret</span><span class="o">(</span><span class="s">"&lt;CLIENT_SECRET&gt;"</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+    <span class="n">PurchaseRequest</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PurchaseRequest</span><span class="o">();</span> <span class="c1">// Setup request parameters</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">setCustomerId</span><span class="o">(</span><span class="s">"1234567890"</span><span class="o">);</span> <span class="c1">// Optional email, mobile no, BVN etc to uniquely identify the customer.</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">setAmount</span><span class="o">(</span><span class="s">"100"</span><span class="o">);</span> <span class="c1">// Amount in Naira</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">setCurrency</span><span class="o">(</span><span class="s">"NGN"</span><span class="o">);</span> <span class="c1">// ISO Currency code</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">setPan</span><span class="o">(</span><span class="s">"5060100000000000012"</span><span class="o">);</span> <span class="c1">//Card No or Token</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">setPinData</span><span class="o">(</span><span class="s">"1111"</span><span class="o">);</span> <span class="c1">// Optional Card PIN for card payment</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">setExpiryDate</span><span class="o">(</span><span class="s">"2004"</span><span class="o">);</span> <span class="c1">// Card or Token expiry date in YYMM format</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">setRequestorId</span><span class="o">(</span><span class="s">"11179920172"</span><span class="o">);</span> <span class="c1">// Requestor Identifier</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">setCvv2</span><span class="o">(</span><span class="s">"111"</span><span class="o">);</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">setTransactionRef</span><span class="o">(</span><span class="n">RandomString</span><span class="o">.</span><span class="na">numeric</span><span class="o">(</span><span class="mi">12</span><span class="o">));</span> <span class="c1">// Generate a unique transaction reference.</span>
+    <span class="n">Context</span> <span class="n">context</span> <span class="o">=</span> <span class="k">this</span><span class="o">;</span> <span class="c1">// Reference to your Android Activity</span>
+
+    <span class="k">new</span> <span class="n">PaymentSDK</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">options</span><span class="o">).</span><span class="na">purchase</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="k">new</span> <span class="n">IswCallback</span><span class="o">&lt;</span><span class="n">PurchaseResponse</span><span class="o">&gt;()</span> <span class="o">{</span>
+            <span class="c1">//Send payment</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="n">onError</span><span class="o">(</span><span class="n">Exception</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// Handle error and notify the user.</span>
+                <span class="c1">// Payment not successful.</span>
+            <span class="o">}</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="n">onSuccess</span><span class="o">(</span><span class="n">PurchaseResponse</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// Check if OTP is required.</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">StringUtils</span><span class="o">.</span><span class="na">hasText</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">()))</span> <span class="o">{</span>
+                   <span class="k">if</span> <span class="o">(</span><span class="n">PaymentSDK</span><span class="o">.</span><span class="na">SAFE_TOKEN_RESPONSE_CODE</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">()))</span> <span class="o">{</span>
+                        <span class="c1">// OTP required, ask user for OTP and authorize transaction</span>
+                        <span class="c1">// See how to authorize transaction with OTP below.</span>
+                   <span class="o">}</span>
+                   <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">PaymentSDK</span><span class="o">.</span><span class="na">CARDINAL_RESPONSE_CODE</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">()))</span> <span class="o">{</span>
+                        <span class="c1">// redirect user to cardinal authorization page</span>
+                        <span class="c1">// See how to authorize transaction with Cardinal below.</span>
+                   <span class="o">}</span>
+                <span class="o">}</span>
+                <span class="k">else</span> <span class="o">{</span>
+                     <span class="c1">// OTP not required.</span>
+                     <span class="c1">// Handle and notify user of successful transaction.</span>
+                     <span class="c1">// A token for the card details is returned in the response.</span>
+                <span class="o">}</span>
+                <span class="c1">// The response object contains fields transactionIdentifier, message,</span>
+                <span class="c1">// amount, token, tokenExpiryDate, panLast4Digits, otpTransactionIdentifier,</span>
+                <span class="c1">// transactionRef and cardType. Save the token, tokenExpiryDate, cardType and</span>
+                <span class="c1">// panLast4Digits in order to pay with the token in the future.</span>
+            <span class="o">}</span>
+    <span class="o">});</span>
+</pre>
+<h2 id='a-namepaywithwalletnouiapay-with-wallet'><a name='PayWithWalletNoUI'></a>Pay with Wallet</h2>
+<ul>
+<li>To allow for Payment with Wallet only</li>
+<li>Create a UI to collect amount, CVV, expiry date and PIN and to display user&rsquo;s Payment Method(s). Use the code below to load the Payment Method(s) array in a Spinner</li>
+</ul>
+
+<p>Note: Supply your Client Id and Client Secret you got after registering as a Merchant</p>
+<pre class="highlight java">    <span class="n">RequestOptions</span> <span class="n">options</span> <span class="o">=</span> <span class="n">RequestOptions</span><span class="o">.</span><span class="na">builder</span><span class="o">()</span>
+    <span class="o">.</span><span class="na">setClientId</span><span class="o">(</span><span class="s">"&lt;CLIENT_ID&gt;"</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">setClientSecret</span><span class="o">(</span><span class="s">"&lt;CLIENT_SECRET&gt;"</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+    <span class="c1">//Load Wallet</span>
+    <span class="kd">final</span> <span class="n">WalletRequest</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WalletRequest</span><span class="o">();</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">setTransactionRef</span><span class="o">(</span><span class="n">RandomString</span><span class="o">.</span><span class="na">numeric</span><span class="o">(</span><span class="mi">12</span><span class="o">));</span> <span class="c1">// Generate a unique transaction reference</span>
+    <span class="n">Context</span> <span class="n">context</span> <span class="o">=</span> <span class="k">this</span><span class="o">;</span> <span class="c1">// Reference to your Android Activity</span>
+    <span class="k">new</span> <span class="n">WalletSDK</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">options</span><span class="o">).</span><span class="na">getPaymentMethods</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="k">new</span> <span class="n">IswCallback</span><span class="o">&lt;</span><span class="n">WalletResponse</span><span class="o">&gt;()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="n">onError</span><span class="o">(</span><span class="n">Exception</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// Handle error</span>
+                <span class="c1">// Unable to get payment methods</span>
+            <span class="o">}</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="n">onSuccess</span><span class="o">(</span><span class="n">WalletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">PaymentMethod</span><span class="o">[]</span> <span class="n">paymentMethods</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getPaymentMethods</span><span class="o">();</span>
+                <span class="c1">//Display payment methods in a Spinner</span>
+            <span class="o">}</span>
+    <span class="o">});</span>
+</pre>
+
+<ul>
+<li>Create a Pay button</li>
+<li>In the onClick listener of the Pay button, use this code.</li>
+</ul>
+<pre class="highlight java">    <span class="kd">final</span> <span class="n">PurchaseRequest</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PurchaseRequest</span><span class="o">();</span>
+    <span class="c1">//Setup request parameters using the selected Payment Method</span>
+    <span class="c1">//Optional email, mobile no, BVN etc to uniquely identify the customer.</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">setCustomerId</span><span class="o">(</span><span class="s">"1234567890"</span><span class="o">);</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">setAmount</span><span class="o">(</span><span class="s">"100"</span><span class="o">);</span> <span class="c1">//Amount in Naira</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">setCurrency</span><span class="o">(</span><span class="s">"NGN"</span><span class="o">);</span> <span class="c1">// ISO Currency code</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">paymethodSpinner</span><span class="o">.</span><span class="na">getSelectedItem</span><span class="o">()</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Notify user no Payment Method selected.</span>
+        <span class="k">return</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">setPan</span><span class="o">(((</span><span class="n">PaymentMethod</span><span class="o">)</span> <span class="n">paymethodSpinner</span><span class="o">.</span><span class="na">getSelectedItem</span><span class="o">()).</span><span class="na">getToken</span><span class="o">());</span> <span class="c1">//Card Token</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">setPinData</span><span class="o">(</span><span class="n">pin</span><span class="o">.</span><span class="na">getText</span><span class="o">().</span><span class="na">toString</span><span class="o">());</span> <span class="c1">//Card PIN</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">setTransactionRef</span><span class="o">(</span><span class="n">RandomString</span><span class="o">.</span><span class="na">numeric</span><span class="o">(</span><span class="mi">12</span><span class="o">));</span> <span class="c1">// Generate a unique transaction reference.</span>
+    <span class="c1">//Send payment</span>
+    <span class="k">new</span> <span class="n">WalletSDK</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">options</span><span class="o">).</span><span class="na">purchase</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="k">new</span> <span class="n">IswCallback</span><span class="o">&lt;</span><span class="n">PurchaseResponse</span><span class="o">&gt;()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="n">onError</span><span class="o">(</span><span class="n">Exception</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// Handle and notify user of error</span>
+            <span class="o">}</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="n">onSuccess</span><span class="o">(</span><span class="n">PurchaseResponse</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">StringUtils</span><span class="o">.</span><span class="na">hasText</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getOtpTransactionIdentifier</span><span class="o">()))</span> <span class="o">{</span>
+                    <span class="c1">//OTP required</span>
+                    <span class="c1">//Ask user for OTP and authorize transaction using the otp Transaction Identifier</span>
+                <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                    <span class="c1">//OTP not required</span>
+                   <span class="c1">//Handle and notify user of successful transaction</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+    <span class="o">);</span>
+</pre>
+<h2 id='a-namevalidatecardnouia-validate-card-and-get-token'><a name='ValidateCardNoUI'></a> Validate Card and Get Token</h2>
+<ul>
+<li>To check if a card is valid and get a token</li>
+<li>Create a UI to collect card details</li>
+<li>Create a Validate/Add Card button</li>
+<li>In the onClick listener of the Validate/Add Card button, use this code.</li>
+</ul>
+
+<p>Note: Supply your Client Id and Client Secret you got after registering as a Merchant
+<strong>Please Note: *Balance is not returned for VISA Card</strong>*</p>
+<pre class="highlight java">    <span class="n">RequestOptions</span> <span class="n">options</span> <span class="o">=</span> <span class="n">RequestOptions</span><span class="o">.</span><span class="na">builder</span><span class="o">()</span>
+    <span class="o">.</span><span class="na">setClientId</span><span class="o">(</span><span class="s">"&lt;CLIENT_ID&gt;"</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">setClientSecret</span><span class="o">(</span><span class="s">"&lt;CLIENT_SECRET&gt;"</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+    <span class="n">ValidateCardRequest</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ValidateCardRequest</span><span class="o">();</span> <span class="c1">// Setup request parameters</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">setCustomerId</span><span class="o">(</span><span class="s">"1234567890"</span><span class="o">);</span> <span class="c1">// Optional email, mobile no, BVN etc to uniquely identify the customer.</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">setPan</span><span class="o">(</span><span class="s">"5060100000000000012"</span><span class="o">);</span> <span class="c1">//Card No or Token</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">setPinData</span><span class="o">(</span><span class="s">"1111"</span><span class="o">);</span> <span class="c1">// Optional Card PIN for card payment</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">setExpiryDate</span><span class="o">(</span><span class="s">"2004"</span><span class="o">);</span> <span class="c1">// Card or Token expiry date in YYMM format</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">setCvv2</span><span class="o">(</span><span class="s">"111"</span><span class="o">);</span> <span class="c1">// Card Verification Value</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">setTransactionRef</span><span class="o">(</span><span class="n">RandomString</span><span class="o">.</span><span class="na">numeric</span><span class="o">(</span><span class="mi">12</span><span class="o">));</span> <span class="c1">// Generate a unique transaction reference.</span>
+    <span class="n">Context</span> <span class="n">context</span> <span class="o">=</span> <span class="k">this</span><span class="o">;</span> <span class="c1">// Reference to your Android Activity.</span>
+    <span class="k">new</span> <span class="n">PaymentSDK</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">options</span><span class="o">).</span><span class="na">validateCard</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="k">new</span> <span class="n">IswCallback</span><span class="o">&lt;</span><span class="n">ValidateCardResponse</span><span class="o">&gt;()</span> <span class="o">{</span>
+            <span class="c1">//Send payment</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="n">onError</span><span class="o">(</span><span class="n">Exception</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// Handle error and notify the user.</span>
+                <span class="c1">// Payment not successful.</span>
+            <span class="o">}</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="n">onSuccess</span><span class="o">(</span><span class="n">ValidateCardResponse</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// Check if OTP is required.</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">StringUtils</span><span class="o">.</span><span class="na">hasText</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">()))</span> <span class="o">{</span>
+                   <span class="k">if</span> <span class="o">(</span><span class="n">PaymentSDK</span><span class="o">.</span><span class="na">SAFE_TOKEN_RESPONSE_CODE</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">()))</span> <span class="o">{</span>
+                        <span class="c1">// OTP required, ask user for OTP and authorize transaction</span>
+                        <span class="c1">// See how to authorize transaction with OTP below.</span>
+                   <span class="o">}</span>
+                   <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">PaymentSDK</span><span class="o">.</span><span class="na">CARDINAL_RESPONSE_CODE</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">()))</span> <span class="o">{</span>
+                        <span class="c1">// redirect user to cardinal authorization page</span>
+                        <span class="c1">// See how to authorize transaction with Cardinal below.</span>
+                   <span class="o">}</span>
+                <span class="o">}</span>
+                <span class="k">else</span> <span class="o">{</span>
+                     <span class="c1">// OTP not required.</span>
+                     <span class="c1">// Handle and notify user of successful transaction.</span>
+                     <span class="c1">// A token for the card details is returned in the response.</span>
+                <span class="o">}</span>
+                <span class="c1">// The response object contains fields transactionIdentifier,</span>
+                <span class="c1">// message,token, tokenExpiryDate, panLast4Digits, otpTransactionIdentifier</span>
+                <span class="c1">// transactionRef and cardType.</span>
+                <span class="c1">// Save the token, tokenExpiryDate, cardType and panLast4Digits</span>
+                <span class="c1">// in order to pay with the token in the future.</span>
+            <span class="o">}</span>
+    <span class="o">});</span>
+</pre>
+<h2 id='supporting-split-payments'>Supporting Split Payments</h2>
+<p>With split payments, you can specify how the charge should be divided accross your different accounts.</p>
+<pre class="highlight java">    <span class="n">SplitSettlement</span><span class="o">[]</span> <span class="n">splitSettlements</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SplitSettlement</span><span class="o">[</span><span class="mi">2</span><span class="o">];</span>
+    <span class="n">SplitSettlement</span> <span class="n">splitSettlement1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SplitSettlement</span><span class="o">();</span>
+    <span class="n">splitSettlement1</span><span class="o">.</span><span class="na">setAccountIdentifier</span><span class="o">(</span><span class="s">"fbn acct"</span><span class="o">);</span>
+    <span class="n">splitSettlement1</span><span class="o">.</span><span class="na">setAccountNo</span><span class="o">(</span><span class="s">"0000000001"</span><span class="o">);</span>
+    <span class="n">splitSettlement1</span><span class="o">.</span><span class="na">setAmount</span><span class="o">(</span><span class="s">"300"</span><span class="o">);</span>
+    <span class="n">SplitSettlement</span> <span class="n">splitSettlement2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SplitSettlement</span><span class="o">();</span>
+    <span class="n">splitSettlement2</span><span class="o">.</span><span class="na">setAccountIdentifier</span><span class="o">(</span><span class="s">"uba acct"</span><span class="o">);</span>
+    <span class="n">splitSettlement2</span><span class="o">.</span><span class="na">setAccountNo</span><span class="o">(</span><span class="s">"0000000002"</span><span class="o">);</span>
+    <span class="n">splitSettlement2</span><span class="o">.</span><span class="na">setAmount</span><span class="o">(</span><span class="s">"400"</span><span class="o">);</span>
+    <span class="n">splitSettlements</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">splitSettlement1</span><span class="o">;</span>
+    <span class="n">splitSettlements</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">splitSettlement2</span><span class="o">;</span>
+    <span class="n">RequestOptions</span> <span class="n">options</span> <span class="o">=</span> <span class="n">RequestOptions</span><span class="o">.</span><span class="na">builder</span><span class="o">().</span><span class="na">setClientId</span><span class="o">(</span><span class="s">"&lt;CLIENT_ID&gt;"</span><span class="o">).</span><span class="na">setClientSecret</span><span class="o">(</span><span class="s">"&lt;CLIENT_SECRET&gt;"</span><span class="o">).</span><span class="na">setSplitSettlementInformation</span><span class="o">(</span><span class="n">splitSettlements</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
+
+</pre>
+<h2 id='a-nameauthorizeotpaauthorize-paywithcard-using-otp'><a name='AuthorizeOTP'></a>Authorize PayWithCard using OTP</h2><pre class="highlight java"><span class="k">if</span> <span class="o">(</span><span class="n">StringUtils</span><span class="o">.</span><span class="na">hasText</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">()))</span> <span class="o">{</span> <span class="c1">//</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">PaymentSDK</span><span class="o">.</span><span class="na">SAFE_TOKEN_RESPONSE_CODE</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">()))</span> <span class="o">{</span>
+        <span class="n">AuthorizePurchaseRequest</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AuthorizePurchaseRequest</span><span class="o">();</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setPaymentId</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getPaymentId</span><span class="o">());</span> <span class="c1">// Set the payment identifier for the request</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setAuthData</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getAuthData</span><span class="o">());</span> <span class="c1">// Set the request Auth Data</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setOtp</span><span class="o">(</span><span class="s">"123456"</span><span class="o">);</span> <span class="c1">// Accept OTP from user</span>
+         <span class="k">new</span> <span class="n">PaymentSDK</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">options</span><span class="o">)</span>
+         <span class="o">.</span><span class="na">authorizePurchase</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="k">new</span> <span class="n">IswCallback</span><span class="o">&lt;</span><span class="n">AuthorizePurchaseResponse</span><span class="o">&gt;()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="n">onError</span><span class="o">(</span><span class="n">Exception</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// Handle and notify user of error</span>
+            <span class="o">}</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="n">onSuccess</span><span class="o">(</span><span class="n">AuthorizePurchaseResponse</span> <span class="n">otpResponse</span><span class="o">)</span> <span class="o">{</span>
+                 <span class="c1">//Handle and notify user of successful transaction</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">PaymentSDK</span><span class="o">.</span><span class="na">CARDINAL_RESPONSE_CODE</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">()))</span> <span class="o">{</span>
+        <span class="c1">// Create WebView to process the Authorize purchase request</span>
+        <span class="n">webView</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AuthorizeWebView</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="n">onPageDone</span><span class="o">()</span> <span class="o">{</span>
+                <span class="n">AuthorizePurchaseRequest</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AuthorizePurchaseRequest</span><span class="o">();</span>
+                <span class="n">request</span><span class="o">.</span><span class="na">setAuthData</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getAuthData</span><span class="o">());</span> <span class="c1">// Set the request Auth Data.</span>
+                <span class="n">request</span><span class="o">.</span><span class="na">setPaymentId</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getPaymentId</span><span class="o">());</span> <span class="c1">// Set the payment identifier for the request.</span>
+                <span class="n">request</span><span class="o">.</span><span class="na">setTransactionId</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getTransactionId</span><span class="o">());</span> <span class="c1">// Set payment identifier for the request.</span>
+                <span class="n">request</span><span class="o">.</span><span class="na">setEciFlag</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getEciFlag</span><span class="o">());</span>   <span class="c1">// Set the Electronic Commerce Indicator (ECI).</span>
+                <span class="k">new</span> <span class="n">PaymentSDK</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">options</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">authorizePurchase</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="k">new</span> <span class="n">IswCallback</span><span class="o">&lt;</span><span class="n">AuthorizePurchaseResponse</span><span class="o">&gt;()</span> <span class="o">{</span>
+                    <span class="nd">@Override</span>
+                    <span class="kd">public</span> <span class="kt">void</span> <span class="n">onError</span><span class="o">(</span><span class="n">Exception</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="c1">// Handle and notify user of error</span>
+                    <span class="o">}</span>
+                    <span class="nd">@Override</span>
+                    <span class="kd">public</span> <span class="kt">void</span> <span class="n">onSuccess</span><span class="o">(</span><span class="n">AuthorizePurchaseResponse</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="c1">//Handle and notify user of successful transaction</span>
+                    <span class="o">}</span>
+                <span class="o">});</span>
+            <span class="o">}</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="n">onPageError</span><span class="o">(</span><span class="n">Exception</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// Handle and notify user of error</span>
+            <span class="o">}</span>
+        <span class="o">};</span>
+        <span class="c1">// Other webview customizations goes here e.g.</span>
+        <span class="n">webView</span><span class="o">.</span><span class="na">requestFocus</span><span class="o">(</span><span class="n">View</span><span class="o">.</span><span class="na">FOCUS_DOWN</span><span class="o">);</span>
+        <span class="n">webView</span><span class="o">.</span><span class="na">getSettings</span><span class="o">().</span><span class="na">setJavaScriptEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+        <span class="n">webView</span><span class="o">.</span><span class="na">setVerticalScrollBarEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</pre>
+<h2 id='a-namevalidatecardotpaauthorize-card-validation-using-otp'><a name='ValidateCardOTP'></a>Authorize Card Validation using OTP</h2><pre class="highlight java"><span class="k">if</span> <span class="o">(</span><span class="n">StringUtils</span><span class="o">.</span><span class="na">hasText</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">()))</span> <span class="o">{</span> <span class="c1">//</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">PaymentSDK</span><span class="o">.</span><span class="na">SAFE_TOKEN_RESPONSE_CODE</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">()))</span> <span class="o">{</span>
+        <span class="n">AuthorizeCardRequest</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AuthorizeCardRequest</span><span class="o">();</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setTransactionRef</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getTransactionRef</span><span class="o">());</span> <span class="c1">// Set the transaction reference for the request</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setAuthData</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getAuthData</span><span class="o">());</span> <span class="c1">// Set the request Auth Data</span>
+        <span class="n">request</span><span class="o">.</span><span class="na">setOtp</span><span class="o">(</span><span class="s">"123456"</span><span class="o">);</span> <span class="c1">// Accept OTP from user</span>
+         <span class="k">new</span> <span class="n">PaymentSDK</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">options</span><span class="o">)</span>
+         <span class="o">.</span><span class="na">authorizeCard</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="k">new</span> <span class="n">IswCallback</span><span class="o">&lt;</span><span class="n">AuthorizeCardResponse</span><span class="o">&gt;()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="n">onError</span><span class="o">(</span><span class="n">Exception</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// Handle and notify user of error</span>
+            <span class="o">}</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="n">onSuccess</span><span class="o">(</span><span class="n">AuthorizeCardResponse</span> <span class="n">authorizeCardResponse</span><span class="o">)</span> <span class="o">{</span>
+                 <span class="c1">//Handle and notify user of successful transaction</span>
+            <span class="o">}</span>
+        <span class="o">});</span>
+    <span class="o">}</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">PaymentSDK</span><span class="o">.</span><span class="na">CARDINAL_RESPONSE_CODE</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getResponseCode</span><span class="o">()))</span> <span class="o">{</span>
+        <span class="c1">// Create WebView to process the Authorize purchase request</span>
+        <span class="n">webView</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AuthorizeWebView</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="n">onPageDone</span><span class="o">()</span> <span class="o">{</span>
+                <span class="n">AuthorizeCardRequest</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AuthorizeCardRequest</span><span class="o">();</span>
+                <span class="n">request</span><span class="o">.</span><span class="na">setAuthData</span><span class="o">(</span><span class="n">request</span><span class="o">.</span><span class="na">getAuthData</span><span class="o">());</span> <span class="c1">// Set the request Auth Data.</span>
+                <span class="n">request</span><span class="o">.</span><span class="na">setPaymentId</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getPaymentId</span><span class="o">());</span> <span class="c1">// Set the payment identifier for the request.</span>
+                <span class="n">request</span><span class="o">.</span><span class="na">setTransactionId</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getTransactionId</span><span class="o">());</span> <span class="c1">// Set payment identifier for the request.</span>
+                <span class="n">request</span><span class="o">.</span><span class="na">setEciFlag</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getEciFlag</span><span class="o">());</span>   <span class="c1">// Set the Electronic Commerce Indicator (ECI).</span>
+                <span class="k">new</span> <span class="n">PaymentSDK</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">options</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">authorizeCard</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="k">new</span> <span class="n">IswCallback</span><span class="o">&lt;</span><span class="n">AuthorizeCardResponse</span><span class="o">&gt;()</span> <span class="o">{</span>
+                    <span class="nd">@Override</span>
+                    <span class="kd">public</span> <span class="kt">void</span> <span class="n">onError</span><span class="o">(</span><span class="n">Exception</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="c1">// Handle and notify user of error</span>
+                    <span class="o">}</span>
+                    <span class="nd">@Override</span>
+                    <span class="kd">public</span> <span class="kt">void</span> <span class="n">onSuccess</span><span class="o">(</span><span class="n">AuthorizeCardResponse</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="c1">//Handle and notify user of successful transaction</span>
+                    <span class="o">}</span>
+                <span class="o">});</span>
+            <span class="o">}</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="n">onPageError</span><span class="o">(</span><span class="n">Exception</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// Handle and notify user of error</span>
+            <span class="o">}</span>
+        <span class="o">};</span>
+        <span class="c1">// Other webview customizations goes here e.g.</span>
+        <span class="n">webView</span><span class="o">.</span><span class="na">requestFocus</span><span class="o">(</span><span class="n">View</span><span class="o">.</span><span class="na">FOCUS_DOWN</span><span class="o">);</span>
+        <span class="n">webView</span><span class="o">.</span><span class="na">getSettings</span><span class="o">().</span><span class="na">setJavaScriptEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+        <span class="n">webView</span><span class="o">.</span><span class="na">setVerticalScrollBarEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</pre>
+<h2 id='a-nameauthorizewotpaauthorize-paywithwallet-using-otp'><a name='AuthorizeWOTP'></a>Authorize PayWithWallet using OTP</h2><pre class="highlight java">    <span class="k">if</span> <span class="o">(</span><span class="n">StringUtils</span><span class="o">.</span><span class="na">hasText</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getOtpTransactionIdentifier</span><span class="o">()))</span> <span class="o">{</span> <span class="c1">//</span>
+            <span class="n">AuthorizeOtpRequest</span> <span class="n">otpRequest</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AuthorizeOtpRequest</span><span class="o">();</span>
+            <span class="c1">// Setup request parameters using the selected Payment Method</span>
+            <span class="n">otpRequest</span><span class="o">.</span><span class="na">setOtp</span><span class="o">(</span><span class="s">"123456"</span><span class="o">);</span> <span class="c1">// Accept OTP from user</span>
+            <span class="c1">// Set the OTP identifier for the request</span>
+            <span class="n">otpRequest</span><span class="o">.</span><span class="na">setOtpTransactionIdentifier</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getOtpTransactionIdentifier</span><span class="o">());</span>
+             <span class="c1">// Set the unique transaction reference.</span>
+            <span class="n">otpRequest</span><span class="o">.</span><span class="na">setTransactionRef</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getTransactionRef</span><span class="o">());</span>
+            <span class="c1">//Authorize OTP Request</span>
+            <span class="n">AuthorizeOtpResponse</span> <span class="n">otpResponse</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PurchaseClient</span><span class="o">(</span><span class="n">options</span><span class="o">).</span><span class="na">authorizeOtp</span><span class="o">(</span><span class="n">otpRequest</span><span class="o">);</span>
+            <span class="c1">//Handle and notify user of successful transaction</span>
+    <span class="o">}</span>
+</pre>
+<h3 id='a-namepaymentstatusachecking-payment-status'><a name='PaymentStatus'></a>Checking Payment Status</h3>
+<p>To check the status of a payment made, use the code below</p>
+<pre class="highlight java">    <span class="c1">//Pass the transactionRef and the amount as the parameters to getPaymentStatus()</span>
+    <span class="n">PaymentStatusRequest</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PaymentStatusRequest</span><span class="o">();</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">setTransactionRef</span><span class="o">(</span><span class="s">"117499114589"</span><span class="o">);</span>
+    <span class="n">request</span><span class="o">.</span><span class="na">setAmount</span><span class="o">(</span><span class="s">"100"</span><span class="o">);</span>
+    <span class="k">new</span> <span class="n">PaymentSDK</span><span class="o">(</span><span class="n">context</span><span class="o">,</span> <span class="n">options</span><span class="o">).</span><span class="na">getPaymentStatus</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="k">new</span> <span class="n">IswCallback</span><span class="o">&lt;</span><span class="n">PaymentStatusResponse</span><span class="o">&gt;()</span> <span class="o">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="n">onError</span><span class="o">(</span><span class="n">Exception</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// Handle and notify user of error</span>
+            <span class="o">}</span>
+
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="n">onSuccess</span><span class="o">(</span><span class="n">PaymentStatusResponse</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// Update Payment Status</span>
+            <span class="o">}</span>
+    <span class="o">});</span>
+</pre>
+
+<h1 id="-default"> <a name='SDKWithUI'> Using the Android SDK with UI (In PCI-DSS Scope: No ) </a> </h1>
+<h2 id='a-namepayapay-with-cardwallet'><a name='Pay'></a>Pay with Card/Wallet</h2>
+<ul>
+<li>To allow for Payment with Card or Wallet</li>
+<li>Create a Pay button</li>
+<li>In the onClick listener of the Pay button, use this code.</li>
+</ul>
+
+<p><strong>Please Note:  *If you are providing your own transaction reference number, ensure you use the other Pay constructor that accept transaction reference number</strong>*</p>
+
+<blockquote>
+<p>Note: Supply your Client Id and Client Secret you got after registering as a Merchant</p>
+</blockquote>
+<pre class="highlight java">    <span class="c1">//Create a concrete implementation of IswCallback</span>
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">PaymentCallback</span> <span class="kd">extends</span> <span class="n">IswCallback</span><span class="o">&lt;</span><span class="n">PurchaseResponse</span><span class="o">&gt;</span> <span class="o">{</span>
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="n">onError</span><span class="o">(</span><span class="n">Exception</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// Handle error.</span>
+            <span class="c1">// Payment not successful.</span>
+        <span class="o">}</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="n">onSuccess</span><span class="o">(</span><span class="n">PurchaseResponse</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+        <span class="cm">/* Handle success.
+           Payment successful. The response object contains fields transactionIdentifier,
+           message, amount, token, tokenExpiryDate, panLast4Digits, transactionRef and cardType.
+           Save the token, tokenExpiryDate, cardType and panLast4Digits
+           in order to pay with the token in the future.
+        */</span>
+       <span class="o">}</span>
+    <span class="o">}</span>
+</pre>
+<pre class="highlight java">    <span class="n">PaymentCallback</span> <span class="n">paymentCallback</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PaymentCallback</span><span class="o">();</span>
+    <span class="n">RequestOptions</span> <span class="n">options</span> <span class="o">=</span> <span class="n">RequestOptions</span><span class="o">.</span><span class="na">builder</span><span class="o">()</span>
+    <span class="o">.</span><span class="na">setClientId</span><span class="o">(</span><span class="s">"IKIA335B188FDC3527EDB1E9300D35F6C51826DFC8A5"</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">setClientSecret</span><span class="o">(</span><span class="s">"4HOFYiMJitFQeHYUCH/pvTF6jpiIaZqzVKB/pheK4Cs="</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+    <span class="n">Pay</span> <span class="n">pay</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Pay</span><span class="o">(</span><span class="n">activity</span><span class="o">,</span> <span class="n">customerId</span><span class="o">,</span> <span class="n">paymentDescription</span><span class="o">,</span> <span class="n">amount</span><span class="o">,</span> <span class="n">currency</span><span class="o">,</span> <span class="n">options</span><span class="o">,</span> <span class="n">paymentCallback</span><span class="o">);</span>
+    <span class="n">pay</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+</pre>
+<h2 id='a-namepaywithcardapay-with-card'><a name='PayWithCard'></a>Pay with Card</h2>
+<ul>
+<li>To allow for Payment with Card only</li>
+<li>Create a Pay button</li>
+<li>In the onClick listener of the Pay button, use this code.</li>
+</ul>
+
+<p><strong>Please Note:  *If you are providing your own transaction reference number, ensure you use the other PayWithCard constructor that accept transaction reference number</strong>*</p>
+
+<blockquote>
+<p>Note: Supply your Client Id and Client Secret you got after registering as a Merchant</p>
+</blockquote>
+<pre class="highlight java">    <span class="c1">//Create a concrete implementation of IswCallback</span>
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">PaymentCallback</span> <span class="kd">extends</span> <span class="n">IswCallback</span><span class="o">&lt;</span><span class="n">PurchaseResponse</span><span class="o">&gt;</span> <span class="o">{</span>
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="n">onError</span><span class="o">(</span><span class="n">Exception</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// Handle error.</span>
+            <span class="c1">// Payment not successful.</span>
+        <span class="o">}</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="n">onSuccess</span><span class="o">(</span><span class="n">PurchaseResponse</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+        <span class="cm">/* Handle success.
+           Payment successful. The response object contains fields transactionIdentifier,
+           message, amount, token, tokenExpiryDate, panLast4Digits, transactionRef and cardType.
+           Save the token, tokenExpiryDate, cardType and panLast4Digits
+           in order to pay with the token in the future.
+        */</span>
+       <span class="o">}</span>
+    <span class="o">}</span>
+</pre>
+<pre class="highlight java">    <span class="n">PaymentCallback</span> <span class="n">paymentCallback</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PaymentCallback</span><span class="o">();</span>
+    <span class="n">RequestOptions</span> <span class="n">options</span> <span class="o">=</span> <span class="n">RequestOptions</span><span class="o">.</span><span class="na">builder</span><span class="o">()</span>
+    <span class="o">.</span><span class="na">setClientId</span><span class="o">(</span><span class="s">"&lt;CLIENT_ID&gt;"</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">setClientSecret</span><span class="o">(</span><span class="s">"&lt;CLIENT_SECRET&gt;"</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+    <span class="n">PayWithCard</span> <span class="n">payWithCard</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PayWithCard</span><span class="o">(</span><span class="n">activity</span><span class="o">,</span> <span class="n">customerId</span><span class="o">,</span> <span class="n">paymentDescription</span><span class="o">,</span> <span class="n">amount</span><span class="o">,</span>
+    <span class="n">currency</span><span class="o">,</span> <span class="n">options</span><span class="o">,</span> <span class="n">paymentCallback</span><span class="o">);</span>
+    <span class="n">payWithCard</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+</pre>
+<h2 id='a-namepaywithwalletapay-with-wallet'><a name='PayWithWallet'></a>Pay With Wallet</h2>
+<ul>
+<li>To allow for Payment with Wallet only</li>
+<li>Create a Pay button</li>
+<li>In the onClick listener of the Pay button, use this code.</li>
+</ul>
+
+<p>Note: Supply your Client Id and Client Secret you got after registering as a Merchant
+<strong>Please Note:  *If you are providing your own transaction reference number, ensure you use the other PayWithWallet constructor that accept transaction reference number</strong>*</p>
+<pre class="highlight java">    <span class="c1">//Create a concrete implementation of IswCallback</span>
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">PaymentCallback</span> <span class="kd">extends</span> <span class="n">IswCallback</span><span class="o">&lt;</span><span class="n">PurchaseResponse</span><span class="o">&gt;</span> <span class="o">{</span>
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="n">onError</span><span class="o">(</span><span class="n">Exception</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// Handle error.</span>
+            <span class="c1">// Payment not successful.</span>
+        <span class="o">}</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="n">onSuccess</span><span class="o">(</span><span class="n">PurchaseResponse</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+        <span class="cm">/* Handle success.
+           Payment successful. The response object contains fields transactionIdentifier,
+           message, amount, token, tokenExpiryDate, panLast4Digits, transactionRef and cardType.
+           Save the token, tokenExpiryDate, cardType and panLast4Digits
+           in order to pay with the token in the future.
+        */</span>
+       <span class="o">}</span>
+    <span class="o">}</span>
+</pre>
+<pre class="highlight java">    <span class="n">PaymentCallback</span> <span class="n">paymentCallback</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PaymentCallback</span><span class="o">();</span>
+    <span class="n">RequestOptions</span> <span class="n">options</span> <span class="o">=</span> <span class="n">RequestOptions</span><span class="o">.</span><span class="na">builder</span><span class="o">()</span>
+    <span class="o">.</span><span class="na">setClientId</span><span class="o">(</span><span class="s">"&lt;CLIENT_ID&gt;"</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">setClientSecret</span><span class="o">(</span><span class="s">"&lt;CLIENT_SECRET&gt;"</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+    <span class="n">PayWithWallet</span> <span class="n">payWithWallet</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PayWithWallet</span><span class="o">(</span><span class="n">activity</span><span class="o">,</span> <span class="n">customerId</span><span class="o">,</span> <span class="n">paymentDescription</span><span class="o">,</span> <span class="n">amount</span><span class="o">,</span>
+    <span class="n">currency</span><span class="o">,</span> <span class="n">options</span><span class="o">,</span> <span class="n">paymentCallback</span><span class="o">);</span>
+    <span class="n">payWithWallet</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+</pre>
+<h2 id='supporting-split-payments'>Supporting Split Payments</h2>
+<p>With split payments, you can specify how the charge should be divided accross your different accounts.</p>
+<pre class="highlight java">    <span class="n">SplitSettlement</span><span class="o">[]</span> <span class="n">splitSettlements</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SplitSettlement</span><span class="o">[</span><span class="mi">2</span><span class="o">];</span>
+    <span class="n">SplitSettlement</span> <span class="n">splitSettlement1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SplitSettlement</span><span class="o">();</span>
+    <span class="n">splitSettlement1</span><span class="o">.</span><span class="na">setAccountIdentifier</span><span class="o">(</span><span class="s">"fbn acct"</span><span class="o">);</span>
+    <span class="n">splitSettlement1</span><span class="o">.</span><span class="na">setAccountNo</span><span class="o">(</span><span class="s">"0000000001"</span><span class="o">);</span>
+    <span class="n">splitSettlement1</span><span class="o">.</span><span class="na">setAmount</span><span class="o">(</span><span class="s">"300"</span><span class="o">);</span>
+    <span class="n">SplitSettlement</span> <span class="n">splitSettlement2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SplitSettlement</span><span class="o">();</span>
+    <span class="n">splitSettlement2</span><span class="o">.</span><span class="na">setAccountIdentifier</span><span class="o">(</span><span class="s">"uba acct"</span><span class="o">);</span>
+    <span class="n">splitSettlement2</span><span class="o">.</span><span class="na">setAccountNo</span><span class="o">(</span><span class="s">"0000000002"</span><span class="o">);</span>
+    <span class="n">splitSettlement2</span><span class="o">.</span><span class="na">setAmount</span><span class="o">(</span><span class="s">"400"</span><span class="o">);</span>
+    <span class="n">splitSettlements</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">splitSettlement1</span><span class="o">;</span>
+    <span class="n">splitSettlements</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">splitSettlement2</span><span class="o">;</span>
+    <span class="n">RequestOptions</span> <span class="n">options</span> <span class="o">=</span> <span class="n">RequestOptions</span><span class="o">.</span><span class="na">builder</span><span class="o">().</span><span class="na">setClientId</span><span class="o">(</span><span class="s">"&lt;CLIENT_ID&gt;"</span><span class="o">).</span><span class="na">setClientSecret</span><span class="o">(</span><span class="s">"&lt;CLIENT_SECRET&gt;"</span><span class="o">).</span><span class="na">setSplitSettlementInformation</span><span class="o">(</span><span class="n">splitSettlements</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
+
+</pre>
+<h2 id='a-namevalidatecardavalidate-card'><a name='ValidateCard'></a>Validate Card</h2>
+<ul>
+<li>Validate card is used to check if a card is a valid card, it returns the card balance and token</li>
+<li>To call validate card, use this code.</li>
+</ul>
+
+<p>Note: * Supply your Client Id and Client Secret you got after registering as a Merchant
+<strong>Please Note:  *If you are providing your own transaction reference number, ensure you use the other ValidateCard constructor that accept transaction reference number</strong>*
+<strong>Please Note: *Balance is not returned for VISA Card</strong>*</p>
+<pre class="highlight java">    <span class="c1">//Create a concrete implementation of IswCallback</span>
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">ValidateCardCallback</span> <span class="kd">extends</span> <span class="n">IswCallback</span><span class="o">&lt;</span><span class="n">ValidateCardResponse</span><span class="o">&gt;</span> <span class="o">{</span>
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="n">onError</span><span class="o">(</span><span class="n">Exception</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// Handle error.</span>
+            <span class="c1">// Card validation not successful</span>
+        <span class="o">}</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="n">onSuccess</span><span class="o">(</span><span class="n">ValidateCardResponse</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+        <span class="cm">/* Handle success.
+        Card validation successful. The response object contains fields token, tokenExpiryDate
+        panLast4Digits, transactionRef, balance and cardType. Save the token, tokenExpiryDate, cardType
+        and panLast4Digits in order to pay with the token in the future.
+        */</span>
+       <span class="o">}</span>
+    <span class="o">}</span>
+</pre>
+<pre class="highlight java">    <span class="n">ValidateCardCallback</span> <span class="n">validateCardCallback</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ValidateCardCallback</span><span class="o">();</span>
+    <span class="n">RequestOptions</span> <span class="n">options</span> <span class="o">=</span> <span class="n">RequestOptions</span><span class="o">.</span><span class="na">builder</span><span class="o">()</span>
+    <span class="o">.</span><span class="na">setClientId</span><span class="o">(</span><span class="s">"IKIAD6DC1B942D95035FBCC5A4449C893D36536B5D54"</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">setClientSecret</span><span class="o">(</span><span class="s">"X1u1M6UNyASzslufiyxZnLb3u78TYODVnbRi7OxLNew="</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+    <span class="n">ValidateCard</span> <span class="n">validateCard</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ValidateCard</span><span class="o">(</span><span class="n">activity</span><span class="o">,</span> <span class="n">customerId</span><span class="o">,</span> <span class="n">options</span><span class="o">,</span> <span class="n">validateCardCallback</span><span class="o">);</span>
+    <span class="n">validateCard</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+</pre>
+<h2 id='a-namepaywithtokena-pay-with-token'><a name='PayWithToken'></a> Pay with Token</h2>
+<ul>
+<li>To allow for Payment with Token only</li>
+<li>Create a Pay button</li>
+<li>In the onClick listener of the Pay button, use this code.</li>
+</ul>
+
+<p>Note: Supply your Client Id and Client Secret you got after registering as a Merchant
+<strong>Please Note:  *If you are providing your own transaction reference number, ensure you use the other PayWithToken constructor that accept transaction reference number</strong>*</p>
+<pre class="highlight java">    <span class="c1">//Create a concrete implementation of IswCallback</span>
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">PaymentCallback</span> <span class="kd">extends</span> <span class="n">IswCallback</span><span class="o">&lt;</span><span class="n">PurchaseResponse</span><span class="o">&gt;</span> <span class="o">{</span>
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="n">onError</span><span class="o">(</span><span class="n">Exception</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// Handle error.</span>
+            <span class="c1">// Payment not successful.</span>
+        <span class="o">}</span>
+
+        <span class="nd">@Override</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="n">onSuccess</span><span class="o">(</span><span class="n">PurchaseResponse</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+        <span class="cm">/* Handle success.
+           Payment successful. The response object contains fields transactionIdentifier,
+           message, amount, token, tokenExpiryDate, panLast4Digits, transactionRef and cardType.
+           Save the token, tokenExpiryDate, cardType and panLast4Digits
+           in order to pay with the token in the future.
+        */</span>
+       <span class="o">}</span>
+    <span class="o">}</span>
+</pre>
+<pre class="highlight java">    <span class="n">PaymentCallback</span> <span class="n">paymentCallback</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PaymentCallback</span><span class="o">();</span>
+    <span class="n">RequestOptions</span> <span class="n">options</span> <span class="o">=</span> <span class="n">RequestOptions</span><span class="o">.</span><span class="na">builder</span><span class="o">()</span>
+    <span class="o">.</span><span class="na">setClientId</span><span class="o">(</span><span class="s">"IKIAD6DC1B942D95035FBCC5A4449C893D36536B5D54"</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">setClientSecret</span><span class="o">(</span><span class="s">"X1u1M6UNyASzslufiyxZnLb3u78TYODVnbRi7OxLNew="</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+    <span class="n">PayWithToken</span> <span class="n">payWithToken</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PayWithToken</span><span class="o">(</span><span class="n">activity</span><span class="o">,</span> <span class="n">customerId</span><span class="o">,</span> <span class="n">amount</span><span class="o">,</span> <span class="n">token</span><span class="o">,</span> <span class="n">expiryDate</span><span class="o">,</span> <span class="n">currency</span><span class="o">,</span>
+    <span class="n">cardType</span> <span class="n">panLast4Digits</span><span class="o">,</span> <span class="n">paymentDescription</span><span class="o">,</span> <span class="n">options</span><span class="o">,</span> <span class="n">paymentCallback</span><span class="o">);</span>
+    <span class="n">payWithToken</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+</pre>
+
+<h1 id="-default"> <a name='BlackBerry'> Using Android SDK to Create Blackberry Application </a> </h1>
+
+<p>To create a Blackberry app using the <strong>runtime for Android</strong></p>
+
+<ol>
+<li>Create an android app as above using SDK provided for android</li>
+<li>Convert the app according to the instructions stated on Blackberry&rsquo;s website <a href="http://developer.blackberry.com/android/">here</a> and <a href="http://developer.blackberry.com/android/documentation/bb_android_studio_plugin_tool.html">here</a></li>
+</ol>
+
+          <h1 id='errors'>Errors</h1>
+<p><aside class="notice">This error section is stored in a separate file in <code class="prettyprint">includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the <code class="prettyprint">includes</code> folder and add them to the top of your <code class="prettyprint">index.md</code>&rsquo;s frontmatter. Files are included in the order listed.</aside></p>
+
+<p>The Kittn API uses the following error codes:</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request &ndash; Your request sucks</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized &ndash; Your API key is wrong</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden &ndash; The kitten requested is hidden for administrators only</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found &ndash; The specified kitten could not be found</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed &ndash; You tried to access a kitten with an invalid method</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable &ndash; You requested a format that isn&rsquo;t json</td>
+</tr>
+<tr>
+<td>410</td>
+<td>Gone &ndash; The kitten requested has been removed from our servers</td>
+</tr>
+<tr>
+<td>418</td>
+<td>I&rsquo;m a teapot</td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests &ndash; You&rsquo;re requesting too many kittens! Slow down!</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error &ndash; We had a problem with our server. Try again later.</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable &ndash; We&rsquo;re temporarially offline for maintanance. Please try again later.</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="java">Java</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
