@@ -2,8 +2,8 @@ const transformer = require('api-spec-transformer');
 
 // Convert postman to swagger to slate docs
 const postmanToSwagger = new transformer.Converter(transformer.Formats.POSTMAN, transformer.Formats.SWAGGER);
-const url = 'https://raw.githubusercontent.com/heremaps/postman-collections/master/places.postman_collection'
-// const url = 'https://www.getpostman.com/collections/839afeacd97c967885f1'
+// const url = 'https://raw.githubusercontent.com/heremaps/postman-collections/master/places.postman_collection'
+const url = 'https://www.getpostman.com/collections/8f9716a93d14fc04498e'
 
 
 const renderSlateMarkdown = (apiObj) => {
@@ -11,7 +11,8 @@ const renderSlateMarkdown = (apiObj) => {
     let options = {}; // defaults shown
     options.codeSamples = true;
     options.httpsnippet = false;
-    options.language_tabs = [{ 'go': 'Go' }, { 'http': 'HTTP' }, { 'javascript': 'JavaScript' }, { 'javascript--nodejs': 'Node.JS' }, { 'python': 'Python' }, { 'ruby': 'Ruby' }];    //options.language_clients = [];
+    options.language_tabs = [{ 'go': 'Go' }, { 'java': 'Java' }, { 'javascript': 'JavaScript' }, { 'python': 'Python' }, { 'ruby': 'Ruby' }];   
+     //options.language_clients = [];
     //options.loadedFrom = sourceUrl; // only needed if input document is relative
     //options.user_templates = './user_templates';
     options.templateCallback = function (templateName, stage, data) { return data };
@@ -56,7 +57,7 @@ postmanToSwagger.loadFile(url, function (err) {
                     }
                     console.log("The file was saved!");
                 })
-                fs.writeFile("../slate-docker/index.html.md", resp, function (err) {
+                fs.writeFile("../slate-docker/temp/index.html.md", resp, function (err) {
                     if (err) {
                         return console.log(err);
                     }

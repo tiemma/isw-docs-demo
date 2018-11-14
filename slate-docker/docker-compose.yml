@@ -1,5 +1,7 @@
 docs:
   build: .
+  # command: "bundle exec middleman build --clean --verbose"
+  working_dir: /app/source
   ports:
     - "4567:4567"
   volumes:

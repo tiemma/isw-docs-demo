@@ -3,7 +3,7 @@ title: Interswitch Payment SDK for Android
 language_tabs:
   - java: Java
 toc_footers: []
-includes: []
+includes: [errors]
 search: true
 highlight_theme: darkula
 headingLevel: 2

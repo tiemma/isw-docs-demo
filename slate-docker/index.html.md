@@ -2,9 +2,8 @@
 title: Places API
 language_tabs:
   - go: Go
-  - http: HTTP
+  - java: Java
   - javascript: JavaScript
-  - javascript--nodejs: Node.JS
   - python: Python
   - ruby: Ruby
 toc_footers: []
@@ -73,12 +72,20 @@ func main() {
 
 ```
 
-```http
-GET /places/v1/discover/here HTTP/1.1
-
-Content-Type: multipart/form-data
-Accept: */*
-Accept:  application/json
+```java
+URL obj = new URL("/places/v1/discover/here");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -99,34 +106,6 @@ $.ajax({
     console.log(JSON.stringify(data));
   }
 })
-
-```
-
-```javascript--nodejs
-const fetch = require('node-fetch');
-const inputBody = '{
-  "at": "37.7942,-122.4070",
-  "app_id": "<<YOUR_APP_ID>>",
-  "app_code": "<<YOUR_APP_CODE>>"
-}';
-const headers = {
-  'Content-Type':'multipart/form-data',
-  'Accept':'*/*',
-  'Accept':' application/json'
-
-};
-
-fetch('/places/v1/discover/here',
-{
-  method: 'GET',
-  body: inputBody,
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
 
 ```
 
@@ -260,15 +239,20 @@ func main() {
 
 ```
 
-```http
-GET /places/v1/discover/explore HTTP/1.1
-
-Content-Type: multipart/form-data
-Accept: */*
-Accept:  application/json
-Accept-Language:  fr-FR
-Geolocation:  geo
-X-Map-Viewport:  -122.408,37.793,-122.4070,37.7942
+```java
+URL obj = new URL("/places/v1/discover/explore");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -292,37 +276,6 @@ $.ajax({
     console.log(JSON.stringify(data));
   }
 })
-
-```
-
-```javascript--nodejs
-const fetch = require('node-fetch');
-const inputBody = '{
-  "at": "48.858,2.2945",
-  "app_id": "<<YOUR_APP_ID>>",
-  "app_code": "<<YOUR_APP_CODE>>"
-}';
-const headers = {
-  'Content-Type':'multipart/form-data',
-  'Accept':'*/*',
-  'Accept':' application/json',
-  'Accept-Language':' fr-FR',
-  'Geolocation':' geo',
-  'X-Map-Viewport':' -122.408,37.793,-122.4070,37.7942'
-
-};
-
-fetch('/places/v1/discover/explore',
-{
-  method: 'GET',
-  body: inputBody,
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
 
 ```
 
@@ -468,12 +421,20 @@ func main() {
 
 ```
 
-```http
-GET /places/v1/categories/places HTTP/1.1
-
-Content-Type: multipart/form-data
-Accept: */*
-Accept:  application/json
+```java
+URL obj = new URL("/places/v1/categories/places");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -494,34 +455,6 @@ $.ajax({
     console.log(JSON.stringify(data));
   }
 })
-
-```
-
-```javascript--nodejs
-const fetch = require('node-fetch');
-const inputBody = '{
-  "at": "41.8369,-87.684",
-  "app_id": "<<YOUR_APP_ID>>",
-  "app_code": "<<YOUR_APP_CODE>>"
-}';
-const headers = {
-  'Content-Type':'multipart/form-data',
-  'Accept':'*/*',
-  'Accept':' application/json'
-
-};
-
-fetch('/places/v1/categories/places',
-{
-  method: 'GET',
-  body: inputBody,
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
 
 ```
 
@@ -652,12 +585,20 @@ func main() {
 
 ```
 
-```http
-GET /places/v1/suggest HTTP/1.1
-
-Content-Type: multipart/form-data
-Accept: */*
-Accept:  application/json
+```java
+URL obj = new URL("/places/v1/suggest");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -678,35 +619,6 @@ $.ajax({
     console.log(JSON.stringify(data));
   }
 })
-
-```
-
-```javascript--nodejs
-const fetch = require('node-fetch');
-const inputBody = '{
-  "at": "52.5159,13.3777",
-  "q": "berlin",
-  "app_id": "<<YOUR_APP_ID>>",
-  "app_code": "<<YOUR_APP_CODE>>"
-}';
-const headers = {
-  'Content-Type':'multipart/form-data',
-  'Accept':'*/*',
-  'Accept':' application/json'
-
-};
-
-fetch('/places/v1/suggest',
-{
-  method: 'GET',
-  body: inputBody,
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
 
 ```
 
@@ -843,12 +755,20 @@ func main() {
 
 ```
 
-```http
-GET /places/v1/discover/search HTTP/1.1
-
-Content-Type: multipart/form-data
-Accept: */*
-Accept:  application/json
+```java
+URL obj = new URL("/places/v1/discover/search");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
 
 ```
 
@@ -869,35 +789,6 @@ $.ajax({
     console.log(JSON.stringify(data));
   }
 })
-
-```
-
-```javascript--nodejs
-const fetch = require('node-fetch');
-const inputBody = '{
-  "at": "37.7942,-122.4070",
-  "q": "restaurant",
-  "app_id": "<<YOUR_APP_ID>>",
-  "app_code": "<<YOUR_APP_CODE>>"
-}';
-const headers = {
-  'Content-Type':'multipart/form-data',
-  'Accept':'*/*',
-  'Accept':' application/json'
-
-};
-
-fetch('/places/v1/discover/search',
-{
-  method: 'GET',
-  body: inputBody,
-  headers: headers
-})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
 
 ```
 
