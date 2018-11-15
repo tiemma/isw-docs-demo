@@ -1,5 +1,5 @@
 
-docker-compose exec docs sh -c "cd .. ; bundle exec middleman build; rm -r /app/source/build; mv /app/build/ /app/source"
+docker-compose exec docs sh -c "rm -r /app/source/build; cd .. && bundle exec middleman build; mv /app/build/ /app/source"
 
 git add *
 
