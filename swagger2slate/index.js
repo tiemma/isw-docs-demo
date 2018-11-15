@@ -9,20 +9,22 @@ const url = 'https://www.getpostman.com/collections/8f9716a93d14fc04498e'
 const getSnippets = (swagger) => {
     let SwaggerSnippet = require('swagger-snippet')
 
-    const targets = ['node_unirest', 'c'] // array of targets for code snippets. See list below...
+    const targets = ['csharp_restsharp', 'php_curl', 'swift_nsurlsession', 'objc_nsurlsession'] // array of targets for code snippets. See list below...
 
+    console.log("Generating snippets");
+
+    const results = SwaggerSnippet.getSwaggerSnippets(swagger, targets);
+
+    console.log(JSON.stringify(results));
     try {
-    // either, get snippets for ALL endpoints:
-    var results = SwaggerSnippet.getSwaggerSnippets(swagger, targets) // results is now array of snippets, see "Output" below.
-
-    fs.writeFile("snippets", JSON.stringify(convertedData), function (err) {
-        if (err) {
-            return console.log(err);
-        }
-        console.log("The file was saved!");
-    })
+        fs.writeFile("snippets.json",  JSON.stringify(results), function (err) {
+            if (err) {
+                return console.log(err);
+            }
+            console.log("The file for snippets was saved!");
+        });
     } catch (err) {
-    // do something with potential errors...
+        console.log("--------------An error occurred");
     }
 }
 
@@ -73,6 +75,8 @@ postmanToSwagger.loadFile(url, function (err) {
             // convertedData is a swagger JSON obj
             const fs = require('fs');
 
+
+            getSnippets(convertedData);
             
             renderSlateMarkdown(convertedData).then((resp) => {
                 fs.writeFile("swagger.json", JSON.stringify(convertedData), function (err) {
@@ -88,7 +92,8 @@ postmanToSwagger.loadFile(url, function (err) {
                     console.log("The file was saved!");
                 })
             });
-            console.log(convertedData)
+
+
         })
         .catch(function (err) {
             console.log(err);

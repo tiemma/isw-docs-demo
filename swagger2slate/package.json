@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "api-spec-transformer": "^0.2.6",
+    "swagger-snippet": "^0.5.1",
     "widdershins": "^3.6.5"
   },
   "devDependencies": {},
