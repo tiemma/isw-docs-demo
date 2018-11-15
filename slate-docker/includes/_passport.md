@@ -130,6 +130,7 @@ grant_type: client_credentials
 <h3 id="post_passport-oauth-token-body">Request Body</h3>
 
 |Parameter|In|Type|Required|Description|
+|---|---|---|---|---|
 |grant_type|body|string|true|By default, use client_credentials|
 
 > Example responses
