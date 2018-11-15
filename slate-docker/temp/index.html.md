@@ -6,6 +6,7 @@ language_tabs:
   - javascript: JavaScript
   - python: Python
   - ruby: Ruby
+  - 'C#': 'C#'
 toc_footers: []
 includes: []
 search: true
