@@ -337,7 +337,7 @@
 <td>header</td>
 <td>string</td>
 <td>true</td>
-<td>For generating a bearer token, the content here is the Base64 of the string combination of the client ID and the secret key<br> <code class="prettyprint">Base64(clientId+&quot;:&quot;+secretKey)</code></td>
+<td>The content here is a basic token coupled with the Base64 encoding of the string combination of the client ID and the secret key <br> <code class="prettyprint">Basic Base64(clientId+&quot;:&quot;+secretKey)</code></td>
 </tr>
 </tbody></table>
 
@@ -357,7 +357,7 @@
 <td>body</td>
 <td>string</td>
 <td>true</td>
-<td>By default, use client_credentials</td>
+<td>By default, use client_credentials as its value</td>
 </tr>
 </tbody></table>
 
@@ -371,17 +371,47 @@
 
 <table><thead>
 <tr>
-<th>Status</th>
-<th>Meaning</th>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
 <th>Description</th>
-<th>Schema</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>default</td>
-<td>Default</td>
-<td>Default response</td>
-<td>Inline</td>
+<td>access_token</td>
+<td>response</td>
+<td>string</td>
+<td>This is the bearer token that will be used in your transaction</td>
+</tr>
+<tr>
+<td>token_type</td>
+<td>response</td>
+<td>string</td>
+<td>Default is <strong><em>Bearer</em></strong></td>
+</tr>
+<tr>
+<td>scope</td>
+<td>response</td>
+<td>string</td>
+<td>Default is <strong><em>profile</em></strong></td>
+</tr>
+<tr>
+<td>merchant_code</td>
+<td>response</td>
+<td>string</td>
+<td>This is the short string representing your business identity</td>
+</tr>
+<tr>
+<td>production_payment_code</td>
+<td>response</td>
+<td>string</td>
+<td>Your merchant payment code</td>
+</tr>
+<tr>
+<td>requestor_id</td>
+<td>response</td>
+<td>string</td>
+<td>Your requestor identity code</td>
 </tr>
 </tbody></table>
 

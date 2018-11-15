@@ -125,23 +125,33 @@ grant_type: client_credentials
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
 |Content-Type|header|string|true|application/x-www-form-urlencoded|
-|Authorization|header|string|true|For generating a bearer token, the content here is the Base64 of the string combination of the client ID and the secret key<br> ```Base64(clientId+":"+secretKey)```|
+|Authorization|header|string|true|The content here is a basic token coupled with the Base64 encoding of the string combination of the client ID and the secret key <br> ```Basic Base64(clientId+":"+secretKey)```|
 
 <h3 id="post_passport-oauth-token-body">Request Body</h3>
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|grant_type|body|string|true|By default, use client_credentials|
+|grant_type|body|string|true|By default, use client_credentials as its value|
 
 > Example responses
+
+
 
 > default Response
 
 <h3 id="post_passport-oauth-token-responses">Responses</h3>
 
-|Status|Meaning|Description|Schema|
-|---|---|---|---|
-|default|Default|Default response|Inline|
+|Parameter|In|Type|Description|
+|---|---|---|---|---|
+|access_token|response|string|This is the bearer token that will be used in your transaction|
+|token_type|response|string|Default is ***Bearer***|
+|scope|response|string|Default is ***profile***|
+|merchant_code|response|string|This is the short string representing your business identity|
+|production_payment_code|response|string|Your merchant payment code|
+|requestor_id|response|string|Your requestor identity code|
+
+
+
 
 <h3 id="post_passport-oauth-token-responseschema">Response Schema</h3>
 
