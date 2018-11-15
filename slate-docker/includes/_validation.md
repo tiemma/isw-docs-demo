@@ -1,6 +1,6 @@
 <h1 id="validation"> Transaction Validation </h1>
 
-## POST_api-v3-purchases-validations
+## Basic Purchase Validation [V3]
 
 <a id="opIdPOST_api-v3-purchases-validations"></a>
 
@@ -168,7 +168,7 @@ This operation does not require authentication
 
 
 
-## POST_api-v2-purchases-validations-recurrents
+## Recurrent Purchase Validation [V2]
 
 <a id="opIdPOST_api-v2-purchases-validations-recurrents"></a>
 
@@ -337,11 +337,49 @@ This operation does not require authentication
 </aside>
 
 
-## POST_api-v3-purchases-validations-otps-auths
+## Purchase Validation using OTP Auth [V3]
 
 <a id="opIdPOST_api-v3-purchases-validations-otps-auths"></a>
 
 > Code samples
+
+```php
+<?php  
+  
+$curl = curl_init();  
+  
+curl_setopt_array($curl, array(  
+  CURLOPT_URL => "http://undefinedundefined/api/v3/purchases/validations/otps/auths",  
+  CURLOPT_RETURNTRANSFER => true,  
+  CURLOPT_ENCODING => "",  
+  CURLOPT_MAXREDIRS => 10,  
+  CURLOPT_TIMEOUT => 30,  
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,  
+  CURLOPT_CUSTOMREQUEST => "POST",  
+  CURLOPT_POSTFIELDS => "{\\"transactionRef\\":\\"<ADD STRING VALUE>\\",\\"otp\\":\\"<ADD STRING VALUE>\\"}",  
+  CURLOPT_HTTPHEADER => array(  
+    "accept: text/plain",  
+    "authkeyversion: SOME_STRING_VALUE",  
+    "authorization: SOME_STRING_VALUE",  
+    "content-type: SOME_STRING_VALUE",  
+    "nonce: SOME_STRING_VALUE",  
+    "signature: SOME_STRING_VALUE",  
+    "signaturemethod: SOME_STRING_VALUE",  
+    "timestamp: SOME_STRING_VALUE"  
+  ),  
+));  
+  
+$response = curl_exec($curl);  
+$err = curl_error($curl);  
+  
+curl_close($curl);  
+  
+if ($err) {  
+  echo "cURL Error #:" . $err;  
+} else {  
+  echo $response;  
+}
+```
 
 ```objective_c
 
@@ -597,7 +635,7 @@ This operation does not require authentication
 </aside>
 
 
-## POST_api-v3-purchases-otps-auths
+## Purchase OTP Authentication
 
 <a id="opIdPOST_api-v3-purchases-otps-auths"></a>
 

@@ -1,11 +1,121 @@
 
 <h1 id="collections"> Collections </h1>
 
-## POST_collections-api-v1-pay-cardinalCallBack
+## Collections Cardinal Callback
 
 <a id="opIdPOST_collections-api-v1-pay-cardinalCallBack"></a>
 
 > Code samples
+
+```php
+<?php  
+  
+$curl = curl_init();  
+  
+curl_setopt_array($curl, array(  
+  CURLOPT_URL => "http://undefinedundefined/collections/api/v1/pay/cardinalCallBack",  
+  CURLOPT_RETURNTRANSFER => true,  
+  CURLOPT_ENCODING => "",  
+  CURLOPT_MAXREDIRS => 10,  
+  CURLOPT_TIMEOUT => 30,  
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,  
+  CURLOPT_CUSTOMREQUEST => "POST",  
+  CURLOPT_HTTPHEADER => array(  
+    "accept: application/x-www-form-urlencoded",  
+    "accept-encoding: SOME_STRING_VALUE",  
+    "accept-language: SOME_STRING_VALUE",  
+    "content-length: SOME_STRING_VALUE",  
+    "content-type: SOME_STRING_VALUE",  
+    "user-agent: SOME_STRING_VALUE"  
+  ),  
+));  
+  
+$response = curl_exec($curl);  
+$err = curl_error($curl);  
+  
+curl_close($curl);  
+  
+if ($err) {  
+  echo "cURL Error #:" . $err;  
+} else {  
+  echo $response;  
+}
+```
+
+```objective_c
+#import <Foundation/Foundation.h>  
+  
+NSDictionary *headers = @{ @"accept": @"application/x-www-form-urlencoded",  
+                           @"accept-encoding": @"SOME_STRING_VALUE",  
+                           @"accept-language": @"SOME_STRING_VALUE",  
+                           @"content-length": @"SOME_STRING_VALUE",  
+                           @"content-type": @"SOME_STRING_VALUE",  
+                           @"user-agent": @"SOME_STRING_VALUE" };  
+  
+NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://undefinedundefined/collections/api/v1/pay/cardinalCallBack"]  
+                                                       cachePolicy:NSURLRequestUseProtocolCachePolicy  
+                                                   timeoutInterval:10.0];  
+[request setHTTPMethod:@"POST"];  
+[request setAllHTTPHeaderFields:headers];  
+  
+NSURLSession *session = [NSURLSession sharedSession];  
+NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request  
+                                            completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {  
+                                                if (error) {  
+                                                    NSLog(@"%@", error);  
+                                                } else {  
+                                                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;  
+                                                    NSLog(@"%@", httpResponse);  
+                                                }  
+                                            }];  
+[dataTask resume];
+
+```
+
+
+```c
+import Foundation  
+  
+let headers = [  
+  "accept": "application/x-www-form-urlencoded",  
+  "accept-encoding": "SOME_STRING_VALUE",  
+  "accept-language": "SOME_STRING_VALUE",  
+  "content-length": "SOME_STRING_VALUE",  
+  "content-type": "SOME_STRING_VALUE",  
+  "user-agent": "SOME_STRING_VALUE"  
+]  
+  
+var request = NSMutableURLRequest(URL: NSURL(string: "http://undefinedundefined/collections/api/v1/pay/cardinalCallBack")!,  
+                                        cachePolicy: .UseProtocolCachePolicy,  
+                                    timeoutInterval: 10.0)  
+request.HTTPMethod = "POST"  
+request.allHTTPHeaderFields = headers  
+  
+let session = NSURLSession.sharedSession()  
+let dataTask = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in  
+  if (error != nil) {  
+    println(error)  
+  } else {  
+    let httpResponse = response as? NSHTTPURLResponse  
+    println(httpResponse)  
+  }  
+})  
+  
+dataTask.resume()
+
+```
+
+```csharp
+var client = new RestClient("http://undefinedundefined/collections/api/v1/pay/cardinalCallBack");  
+var request = new RestRequest(Method.POST);  
+request.AddHeader("user-agent", "SOME_STRING_VALUE");  
+request.AddHeader("content-type", "SOME_STRING_VALUE");  
+request.AddHeader("content-length", "SOME_STRING_VALUE");  
+request.AddHeader("accept-language", "SOME_STRING_VALUE");  
+request.AddHeader("accept-encoding", "SOME_STRING_VALUE");  
+request.AddHeader("accept", "application/x-www-form-urlencoded");  
+IRestResponse response = client.Execute(request);
+```
 
 ```go
 package main
@@ -176,6 +286,93 @@ This operation does not require authentication
 <a id="opIdGET_collections-api-v1-gettransaction-json"></a>
 
 > Code samples
+
+```csharp
+var client = new RestClient("http://undefinedundefined/collections/api/v1/gettransaction.json?getacquirerdata=true&transactionreference=%3C%3CtransactionRef%3E%3E&amount=66666&merchantcode=MX187");  
+var request = new RestRequest(Method.GET);  
+request.AddHeader("accept", "text/plain");  
+IRestResponse response = client.Execute(request);
+
+```
+
+```objective_c
+#import <Foundation/Foundation.h>  
+  
+NSDictionary *headers = @{ @"accept": @"text/plain" };  
+  
+NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://undefinedundefined/collections/api/v1/gettransaction.json?getacquirerdata=true&transactionreference=%3C%3CtransactionRef%3E%3E&amount=66666&merchantcode=MX187"]  
+                                                       cachePolicy:NSURLRequestUseProtocolCachePolicy  
+                                                   timeoutInterval:10.0];  
+[request setHTTPMethod:@"GET"];  
+[request setAllHTTPHeaderFields:headers];  
+  
+NSURLSession *session = [NSURLSession sharedSession];  
+NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request  
+                                            completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {  
+                                                if (error) {  
+                                                    NSLog(@"%@", error);  
+                                                } else {  
+                                                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;  
+                                                    NSLog(@"%@", httpResponse);  
+                                                }  
+                                            }];  
+[dataTask resume];
+```
+
+```c
+import Foundation  
+  
+let headers = ["accept": "text/plain"]  
+  
+var request = NSMutableURLRequest(URL: NSURL(string: "http://undefinedundefined/collections/api/v1/gettransaction.json?getacquirerdata=true&transactionreference=%3C%3CtransactionRef%3E%3E&amount=66666&merchantcode=MX187")!,  
+                                        cachePolicy: .UseProtocolCachePolicy,  
+                                    timeoutInterval: 10.0)  
+request.HTTPMethod = "GET"  
+request.allHTTPHeaderFields = headers  
+  
+let session = NSURLSession.sharedSession()  
+let dataTask = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in  
+  if (error != nil) {  
+    println(error)  
+  } else {  
+    let httpResponse = response as? NSHTTPURLResponse  
+    println(httpResponse)  
+  }  
+})  
+  
+dataTask.resume()
+```
+
+```php
+<?php  
+  
+$curl = curl_init();  
+  
+curl_setopt_array($curl, array(  
+  CURLOPT_URL => "http://undefinedundefined/collections/api/v1/gettransaction.json?getacquirerdata=true&transactionreference=%3C%3CtransactionRef%3E%3E&amount=66666&merchantcode=MX187",  
+  CURLOPT_RETURNTRANSFER => true,  
+  CURLOPT_ENCODING => "",  
+  CURLOPT_MAXREDIRS => 10,  
+  CURLOPT_TIMEOUT => 30,  
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,  
+  CURLOPT_CUSTOMREQUEST => "GET",  
+  CURLOPT_HTTPHEADER => array(  
+    "accept: text/plain"  
+  ),  
+));  
+  
+$response = curl_exec($curl);  
+$err = curl_error($curl);  
+  
+curl_close($curl);  
+  
+if ($err) {  
+  echo "cURL Error #:" . $err;  
+} else {  
+  echo $response;  
+}
+
+```
 
 ```go
 package main

@@ -15,7 +15,7 @@ while true; do
 
     git commit -a
 
-    cd .. && git subtree push --prefix slate-docker/build origin gh-pages
+    cd .. && git subtree push --prefix slate-docker/build origin gh-pages && cd slate-docker
 
     COUNTER=$[$COUNTER+1]
 
