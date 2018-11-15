@@ -133,8 +133,21 @@ grant_type: client_credentials
 |---|---|---|---|---|
 |grant_type|body|string|true|By default, use ***client_credentials*** as its value|
 
-> Example responses
+> Response Sample
 
+```
+{
+    "access_token": "eyJhbGciOiJSUzI1NiJ9.eyJhdWQiOlsiY2FyZGxlc3Mtc2VydmljZSIsImluY29nbml0byIsImlzdy1jb2xsZWN0aW9ucyIsImlzdy1jb3JlIiwiaXN3LWxlbmRpbmctc2VydmljZSIsImlzdy1wYXltZW50Z2F0ZXdheSIsInBhc3Nwb3J0IiwicGF5bWVudC1zZXJ2aWNlIiwicHJvamVjdC14LW1lcmNoYW50IiwidmF1bHQiXSwibWVyY2hhbnRfY29kZSI6Ik1YMTg3IiwicHJvZHVjdGlvbl9wYXltZW50X2NvZGUiOiIwMDE2NDYzOTg1NCIsInJlcXVlc3Rvcl9pZCI6IjAwMTE3NjE0OTkyIiwic2NvcGUiOlsicHJvZmlsZSJdLCJqdGkiOiI0ODdhMzM4Yi0zMjkwLTQxODQtYWQ0OC0yOGEyOGYzODM4YjYiLCJwYXlhYmxlX2lkIjoiMjMyNCIsImNsaWVudF9pZCI6IklLSUE5NjE0QjgyMDY0RDYzMkU5QjY0MThERjM1OEE2QTRBRUE4NEQ3MjE4IiwicGF5bWVudF9jb2RlIjoiMDQyNTk0MTMwMjQ2In0.dnybJSGaWkSujqqC0aSSCPwpI2ROLfv2mTiFAnqQiq56A8_3uUS7veRwIZU2zQfHn1sI9UQJ-2Dl-TA7ktWoP9EMVW-6AP1DlDEPQuQtXCuhYFHQNAdw6WlYQYYbaekakvv4hzj0VuGTUiQomS_jPJOq3ajoIXH639Ly8wvx7cjzelprWIyFRCgiXJII6LAXer2Rk_idPCcBRnsFI_uK94KxdnQ7vejMyg34EvXK3AnhmrYAifPTk3lMZEHNTti_T7bS1kjhMTxAlQ01Yxsf19Cah7mU1e8SDcO9RYlbHSZqlGsKyLSOUcCwaOYBCaqGrkblXyli4XSFHiMX94Sm7w",
+    "token_type": "bearer",
+    "scope": "profile",
+    "merchant_code": "MX187",
+    "production_payment_code": "00164639854",
+    "requestor_id": "00117614992",
+    "payable_id": "2324",
+    "payment_code": "042594130246",
+    "jti": "487a338b-3290-4184-ad48-28a28f3838b6"
+}
+```
 
 
 > default Response
