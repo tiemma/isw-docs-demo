@@ -131,7 +131,7 @@ grant_type: client_credentials
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|grant_type|body|string|true|By default, use client_credentials as its value|
+|grant_type|body|string|true|By default, use ***client_credentials*** as its value|
 
 > Example responses
 
