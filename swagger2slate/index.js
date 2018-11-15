@@ -6,12 +6,34 @@ const postmanToSwagger = new transformer.Converter(transformer.Formats.POSTMAN, 
 const url = 'https://www.getpostman.com/collections/8f9716a93d14fc04498e'
 
 
+const getSnippets = (swagger) => {
+    let SwaggerSnippet = require('swagger-snippet')
+
+    const targets = ['node_unirest', 'c'] // array of targets for code snippets. See list below...
+
+    try {
+    // either, get snippets for ALL endpoints:
+    var results = SwaggerSnippet.getSwaggerSnippets(swagger, targets) // results is now array of snippets, see "Output" below.
+
+    fs.writeFile("snippets", JSON.stringify(convertedData), function (err) {
+        if (err) {
+            return console.log(err);
+        }
+        console.log("The file was saved!");
+    })
+    } catch (err) {
+    // do something with potential errors...
+    }
+}
+
+
 const renderSlateMarkdown = (apiObj) => {
     const converter = require('widdershins');
     let options = {}; // defaults shown
     options.codeSamples = true;
     options.httpsnippet = false;
-    options.language_tabs = [{ 'go': 'Go' }, { 'java': 'Java' }, { 'javascript': 'JavaScript' }, { 'python': 'Python' }, { 'ruby': 'Ruby' }, {"C#": "C#"}];   
+    // { 'go': 'Go' }, { 'java': 'Java' }, { 'javascript': 'JavaScript' },
+    // options.language_tabs = [ { 'python': 'Python' }, { 'php': 'PHP' }, {"csharp": "C#"}, {"objc": "Obj. C"}, {"swift": "Swift"}];   
      //options.language_clients = [];
     //options.loadedFrom = sourceUrl; // only needed if input document is relative
     //options.user_templates = './user_templates';
@@ -50,6 +72,8 @@ postmanToSwagger.loadFile(url, function (err) {
         .then(function (convertedData) {
             // convertedData is a swagger JSON obj
             const fs = require('fs');
+
+            
             renderSlateMarkdown(convertedData).then((resp) => {
                 fs.writeFile("swagger.json", JSON.stringify(convertedData), function (err) {
                     if (err) {
