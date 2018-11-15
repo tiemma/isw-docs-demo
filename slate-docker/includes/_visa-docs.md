@@ -7,7 +7,7 @@
 
 > Code samples
 
-```objective-c
+```objective_c
 
 #import <Foundation/Foundation.h>  
   
@@ -34,9 +34,7 @@ NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
 
 ```
 
-
-
-```swift 
+```c 
 import Foundation  
   
 let headers = [  

@@ -7,8 +7,8 @@ language_tabs:
   - python: Python
   - ruby: Ruby
   - csharp: 'C#'
-  - swift: Swift
-  - objective-c: Objective-C
+  - c: Swift  ## Using C cause swift is not a supported option
+  - objective_c: 'Objective-C'
   - php: PHP
 toc_footers: []
 includes: [notes,passport,signatures,purchases,enrollment,visa-docs,validation,errors]
