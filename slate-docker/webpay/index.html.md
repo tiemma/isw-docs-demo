@@ -6,6 +6,10 @@ language_tabs:
   - javascript: JavaScript
   - python: Python
   - ruby: Ruby
+  - csharp: 'C#'
+  - swift: Swift
+  - objective-c: Objective-C
+  - php: PHP
 toc_footers: []
 includes: [notes,passport,signatures,purchases,enrollment,visa-docs,validation,errors]
 search: true

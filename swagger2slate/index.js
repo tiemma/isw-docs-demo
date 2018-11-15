@@ -1,4 +1,6 @@
 const transformer = require('api-spec-transformer');
+const fs = require('fs');
+
 
 // Convert postman to swagger to slate docs
 const postmanToSwagger = new transformer.Converter(transformer.Formats.POSTMAN, transformer.Formats.SWAGGER);
@@ -15,17 +17,12 @@ const getSnippets = (swagger) => {
 
     const results = SwaggerSnippet.getSwaggerSnippets(swagger, targets);
 
-    console.log(JSON.stringify(results));
-    try {
-        fs.writeFile("snippets.json",  JSON.stringify(results), function (err) {
-            if (err) {
-                return console.log(err);
-            }
-            console.log("The file for snippets was saved!");
-        });
-    } catch (err) {
-        console.log("--------------An error occurred");
-    }
+    fs.writeFile("snippets.json", JSON.stringify(results), function (err) {
+        if (err) {
+            return console.log(err);
+        }
+        console.log("The file was saved!");
+    })
 }
 
 
@@ -73,7 +70,6 @@ postmanToSwagger.loadFile(url, function (err) {
     postmanToSwagger.convert('json')
         .then(function (convertedData) {
             // convertedData is a swagger JSON obj
-            const fs = require('fs');
 
 
             getSnippets(convertedData);
