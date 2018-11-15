@@ -1,7 +1,6 @@
 
-<h1 id="passport-token"> Passport Docs </h1>
 
-## Getting a Passport OAUTH Token
+## Getting a Bearer Token
 
 <a id="opIdPOST_passport-oauth-token"></a>
 
@@ -112,7 +111,7 @@ p JSON.parse(result)
 
 `POST /passport/oauth/token`
 
-*/passport/oauth/token*
+Before making any request, you're required to generate a Bearer token using this endpoint. 
 
 > Body parameter
 
@@ -121,14 +120,17 @@ grant_type: client_credentials
 
 ```
 
-<h3 id="post_passport-oauth-token-parameters">Parameters</h3>
+<h3 id="post_passport-oauth-token-headers">Headers</h3>
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|Content-Type|header|string|false|none|
-|Authorization|header|string|false|none|
-|body|body|object|false|none|
-|» grant_type|body|string|false|none|
+|Content-Type|header|string|true|application/x-www-form-urlencoded|
+|Authorization|header|string|true|For generating a bearer token, the content here is the Base64 of the string combination of the client ID and the secret key<br> ```Base64(clientId+":"+secretKey)```|
+
+<h3 id="post_passport-oauth-token-body">Request Body</h3>
+
+|Parameter|In|Type|Required|Description|
+|grant_type|body|string|true|By default, use client_credentials|
 
 > Example responses
 
@@ -142,6 +144,6 @@ grant_type: client_credentials
 
 <h3 id="post_passport-oauth-token-responseschema">Response Schema</h3>
 
-<aside class="success">
-This operation does not require authentication
+<aside class="warning">
+This operation requires authentication using the Authorization header
 </aside>

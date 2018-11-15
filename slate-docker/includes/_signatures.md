@@ -45,4 +45,21 @@ signatureCipher = httpMethod + “&”+ url + “&” +timestamp + “&” + non
 signatureCipher = httpMethod + “&”+ url + “&” +timestamp + “&” + nonce + “&” + clientId + “&” + clientSecret + “&” + otp + “&” + authdata
 ```
 
+## Transaction Validation Request (VISA)
+
+ > Code Samples
+
+ ```
+signatureCipher = httpMethod + “&”+ url + “&” +timestamp + “&” + nonce + “&” + clientId + “&” + clientSecret
+ ```
+
+## Card Enrollment Request
+
+> Code Samples
+
+```
+signatureCipher = httpMethod + “&”+ url + “&” +timestamp + “&” + nonce + “&” + clientId + “&” + clientSecret
+```
+
+
 

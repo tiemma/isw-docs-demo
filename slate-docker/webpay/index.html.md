@@ -7,7 +7,7 @@ language_tabs:
   - python: Python
   - ruby: Ruby
 toc_footers: []
-includes: [notes,signatures,passport,purchases,enrollment,visa-docs,validation,errors]
+includes: [notes,passport,signatures,purchases,enrollment,visa-docs,validation,errors]
 search: true
 highlight_theme: darkula
 headingLevel: 2
