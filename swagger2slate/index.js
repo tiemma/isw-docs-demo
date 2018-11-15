@@ -11,7 +11,7 @@ const renderSlateMarkdown = (apiObj) => {
     let options = {}; // defaults shown
     options.codeSamples = true;
     options.httpsnippet = false;
-    options.language_tabs = [{ 'go': 'Go' }, { 'java': 'Java' }, { 'javascript': 'JavaScript' }, { 'python': 'Python' }, { 'ruby': 'Ruby' }];   
+    options.language_tabs = [{ 'go': 'Go' }, { 'java': 'Java' }, { 'javascript': 'JavaScript' }, { 'python': 'Python' }, { 'ruby': 'Ruby' }, {"C#": "C#"}];   
      //options.language_clients = [];
     //options.loadedFrom = sourceUrl; // only needed if input document is relative
     //options.user_templates = './user_templates';

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Merchant X V3</title>
+    <title>Interswitch Payment Gateway</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -119,7 +119,7 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id=""> Merchant X V3 </h1>
+        <h1 id=""> Interswitch Payment Gateway </h1>
 
 <blockquote>
 <p>Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.</p>
@@ -305,7 +305,7 @@
 
 <p><code class="prettyprint">POST /passport/oauth/token</code></p>
 
-<p>Before making any request, you&rsquo;re required to generate a Bearer token using this endpoint. </p>
+<p>Before making any request, you&rsquo;re required to generate a Bearer token using this endpoint. This will be the new Authorization header value when making a request.</p>
 
 <blockquote>
 <p>Body parameter</p>
@@ -337,7 +337,7 @@
 <td>header</td>
 <td>string</td>
 <td>true</td>
-<td>The content here is a basic token coupled with the Base64 encoding of the string combination of the client ID and the secret key <br> <code class="prettyprint">Basic Base64(clientId+&quot;:&quot;+secretKey)</code></td>
+<td>The content here is a basic token coupled with the Base64 encoding of the string combination of the client ID and the secret key: <br > <strong><em>Basic Base64(clientId+&ldquo;:&rdquo;+secretKey)</em></strong></td>
 </tr>
 </tbody></table>
 
@@ -365,7 +365,7 @@
 <p>Response Sample</p>
 </blockquote>
 <pre class="highlight json"><span class="p">{</span><span class="w">
-    </span><span class="s2">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJSUzI1NiJ9.eyJhdWQiOlsiY2FyZGxlc3Mtc2VydmljZSIsImluY29nbml0byIsImlzdy1jb2xsZWN0aW9ucyIsImlzdy1jb3JlIiwiaXN3LWxlbmRpbmctc2VydmljZSIsImlzdy1wYXltZW50Z2F0ZXdheSIsInBhc3Nwb3J0IiwicGF5bWVudC1zZXJ2aWNlIiwicHJvamVjdC14LW1lcmNoYW50IiwidmF1bHQiXSwibWVyY2hhbnRfY29kZSI6Ik1YMTg3IiwicHJvZHVjdGlvbl9wYXltZW50X2NvZGUiOiIwMDE2NDYzOTg1NCIsInJlcXVlc3Rvcl9pZCI6IjAwMTE3NjE0OTkyIiwic2NvcGUiOlsicHJvZmlsZSJdLCJqdGkiOiI0ODdhMzM4Yi0zMjkwLTQxODQtYWQ0OC0yOGEyOGYzODM4YjYiLCJwYXlhYmxlX2lkIjoiMjMyNCIsImNsaWVudF9pZCI6IklLSUE5NjE0QjgyMDY0RDYzMkU5QjY0MThERjM1OEE2QTRBRUE4NEQ3MjE4IiwicGF5bWVudF9jb2RlIjoiMDQyNTk0MTMwMjQ2In0.dnybJSGaWkSujqqC0aSSCPwpI2ROLfv2mTiFAnqQiq56A8_3uUS7veRwIZU2zQfHn1sI9UQJ-2Dl-TA7ktWoP9EMVW-6AP1DlDEPQuQtXCuhYFHQNAdw6WlYQYYbaekakvv4hzj0VuGTUiQomS_jPJOq3ajoIXH639Ly8wvx7cjzelprWIyFRCgiXJII6LAXer2Rk_idPCcBRnsFI_uK94KxdnQ7vejMyg34EvXK3AnhmrYAifPTk3lMZEHNTti_T7bS1kjhMTxAlQ01Yxsf19Cah7mU1e8SDcO9RYlbHSZqlGsKyLSOUcCwaOYBCaqGrkblXyli4XSFHiMX94Sm7w"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;ACCESS_TOKEN&gt;"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bearer"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"scope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"profile"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"merchant_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MX187"</span><span class="p">,</span><span class="w">
@@ -377,11 +377,7 @@
 </span><span class="p">}</span><span class="w">
 </span></pre>
 
-<blockquote>
-<p>default Response</p>
-</blockquote>
-
-<h3 id="post_passport-oauth-token-responses">Responses</h3>
+<h3 id="post_passport-oauth-token-responses">Response Body</h3>
 
 <table><thead>
 <tr>
@@ -427,12 +423,30 @@
 <td>string</td>
 <td>Your requestor identity code</td>
 </tr>
+<tr>
+<td>payable_id</td>
+<td>response</td>
+<td>string</td>
+<td>none</td>
+</tr>
+<tr>
+<td>payment_code</td>
+<td>response</td>
+<td>string</td>
+<td>none</td>
+</tr>
+<tr>
+<td>jti</td>
+<td>response</td>
+<td>string</td>
+<td>none</td>
+</tr>
 </tbody></table>
 
 <h3 id="post_passport-oauth-token-responseschema">Response Schema</h3>
 
 <p><aside class="warning">
-This operation requires authentication using the Authorization header
+This operation requires authentication using the <strong><em>Basic Authorization</em></strong> header
 </aside></p>
 
           <h1 id='signatures'>Signatures</h1>
@@ -440,12 +454,7 @@ This operation requires authentication using the Authorization header
 <p>Request header sample is in JSON</p>
 </blockquote>
 <pre class="highlight json"><span class="p">{</span><span class="w">
-    </span><span class="s2">"Authorization"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bearer eyJhbGciOiJSUzI1NiJ9.eyJhdWQiOlsidmF1bHQiXSwicHJvZHVjdGlvbl9wYXltZW50X2NvZGUiOiIwNDIzODcxMDE5OTUiLCJyZXF1ZXN0b3JfaWQiOiIw
-    MDE4MzQzODA5MSIsInNjb3BlIjpbInByb2ZpbGUiXSwiZXhwIjoxNDUzMjM4NjY4LCJqdGkiOiIzMWYwNmJkOC04MTlhLTQ4OTMtOWM5NC1kMDhmMTgwOGY3NjgiLCJjbGllbnRfaWQiOiJ
-    JS0lBNTFFNTI2MDkxNzFGNUMwMkQ2MzgzNTU2NkIwMTZBN0JEQ0EzRTc1MSIsInBheW1lbnRfY29kZSI6IjA1MTQxMzcxMTYyNDEifQ.KTwAdq55udg_CcZ7Q5hurvIwRTETm0fpWYSHBzG
-    RlKA4vyMhJJn-1mvhxV79RC3VpaJc0W0hcTNEMQWmY4yrSzsyakzBzc_XrLVM8ZmBRNqalFY7IoJFCHONiGlxklujjK600aUBtKhLxwWEV6wUU_O8qZqI1ea4fJRHdAyUetsBUSqvYB1vBM
-    T6luamaDOtaBDiikxy0giwP5oiOFjuBvd8a33ROaWE0DuQz7EfobfbZiXKdiEHV5c9bZmImIGwiLtJXBesPImn1eBrM5wWJ_gMLueCnBrisxXyTkLjVMBJJJy5AT8OjY1bAAn8cjwDLORO5
-    -ejQxMMh15U59fWIQ"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Authorization"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;ACCESS_TOKEN&gt;"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1361281946"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Nonce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"634968823463411609"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Signature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2cFwCfkgRR7mlIOlcjTQXCUYpLmtlKJkCb8RUzIX0-k="</span><span class="p">,</span><span class="w">
@@ -455,29 +464,35 @@ This operation requires authentication using the Authorization header
 
 <p>Signature ciphers have to be generated before a request is sent. They are included in your request headers and act as a check for all requests sent to the API.</p>
 
-<p>Different purchase requests have different signature contents. The signatures themselves are <strong><em>base64</em></strong> encoded versions of the string combinations.</p>
+<p>Different purchase requests have different signature contents. The signatures themselves are <strong><em>Base64</em></strong> encoded versions of the string combinations.</p>
 
-<p>As you&rsquo;d notice from the request header on the right tab, the Signature contains a hash along with its hashing method.</p>
+<p>As you&rsquo;d notice from the request header on the right tab, the <strong><em>Signature</em></strong> contains a hash along with its <strong><em>Signature Method</em></strong>.</p>
 
-<p>The data for which the signature can be generated from for different requests is illustrated below</p>
+<p>The data for which the signature can be generated from for different requests is illustrated below. The http method for the request is one of either <strong><em>POST, GET etc.</em></strong></p>
 <h2 id='basic-purchase-request'>Basic Purchase Request</h2>
 <blockquote>
 <p>Code Samples</p>
 </blockquote>
 <pre class="highlight plaintext">signatureCipher = httpMethod + “&amp;”+ url + “&amp;” +timestamp + “&amp;” + nonce + “&amp;” + clientId + “&amp;” + clientSecret + “&amp;” + amount + “&amp;” + authdata
 </pre>
+
+<p>The signature can be generated from the <strong><em>Base64</em></strong> encoding of the cipher on the right.</p>
 <h2 id='otp-validation-request'>OTP Validation Request</h2>
 <blockquote>
 <p>Code Samples</p>
 </blockquote>
 <pre class="highlight plaintext">signatureCipher = httpMethod + “&amp;”+ url + “&amp;” +timestamp + “&amp;” + nonce + “&amp;” + clientId + “&amp;” + clientSecret + “&amp;” + otp + “&amp;” + authdata
 </pre>
+
+<p>The signature can be generated from the <strong><em>Base64</em></strong> encoding of the cipher on the right.</p>
 <h2 id='transaction-validation-request-visa'>Transaction Validation Request (VISA)</h2>
 <blockquote>
 <p>Code Samples</p>
 </blockquote>
 <pre class="highlight plaintext">signatureCipher = httpMethod + “&amp;”+ url + “&amp;” +timestamp + “&amp;” + nonce + “&amp;” + clientId + “&amp;” + clientSecret
 </pre>
+
+<p>The signature can be generated from the <strong><em>Base64</em></strong> encoding of the cipher on the right.</p>
 <h2 id='card-enrollment-request'>Card Enrollment Request</h2>
 <blockquote>
 <p>Code Samples</p>
@@ -485,9 +500,11 @@ This operation requires authentication using the Authorization header
 <pre class="highlight plaintext">signatureCipher = httpMethod + “&amp;”+ url + “&amp;” +timestamp + “&amp;” + nonce + “&amp;” + clientId + “&amp;” + clientSecret
 </pre>
 
+<p>The signature can be generated from the <strong><em>Base64</em></strong> encoding of the cipher on the right.</p>
+
           <h1 id='purchases'>Purchases</h1>
 <p>This holds APIs for all purchase and payment related endpoints covering the following post payment processes involving OTP and Pin processing.</p>
-<h2 id='post_api-v3-purchases'>POST_api-v3-purchases</h2>
+<h2 id='basic-purchase'>Basic Purchase</h2>
 <p><a id="opIdPOST_api-v3-purchases"></a></p>
 
 <blockquote>

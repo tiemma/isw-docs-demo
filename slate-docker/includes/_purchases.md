@@ -3,7 +3,7 @@
 
 This holds APIs for all purchase and payment related endpoints covering the following post payment processes involving OTP and Pin processing.
 
-## POST_api-v3-purchases
+## Basic Purchase
 
 <a id="opIdPOST_api-v3-purchases"></a>
 

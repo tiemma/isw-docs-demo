@@ -111,7 +111,7 @@ p JSON.parse(result)
 
 `POST /passport/oauth/token`
 
-Before making any request, you're required to generate a Bearer token using this endpoint. 
+Before making any request, you're required to generate a Bearer token using this endpoint. This will be the new Authorization header value when making a request.
 
 > Body parameter
 
@@ -123,9 +123,9 @@ grant_type: client_credentials
 <h3 id="post_passport-oauth-token-headers">Headers</h3>
 
 |Parameter|In|Type|Required|Description|
-|---|---|---|---|---|
+|---|---|---|---|---|---|
 |Content-Type|header|string|true|application/x-www-form-urlencoded|
-|Authorization|header|string|true|The content here is a basic token coupled with the Base64 encoding of the string combination of the client ID and the secret key <br> ```Basic Base64(clientId+":"+secretKey)```|
+|Authorization|header|string|true|The content here is a basic token coupled with the Base64 encoding of the string combination of the client ID and the secret key: <br > ***Basic Base64(clientId+":"+secretKey)***|
 
 <h3 id="post_passport-oauth-token-body">Request Body</h3>
 
@@ -137,7 +137,7 @@ grant_type: client_credentials
 
 ```
 {
-    "access_token": "eyJhbGciOiJSUzI1NiJ9.eyJhdWQiOlsiY2FyZGxlc3Mtc2VydmljZSIsImluY29nbml0byIsImlzdy1jb2xsZWN0aW9ucyIsImlzdy1jb3JlIiwiaXN3LWxlbmRpbmctc2VydmljZSIsImlzdy1wYXltZW50Z2F0ZXdheSIsInBhc3Nwb3J0IiwicGF5bWVudC1zZXJ2aWNlIiwicHJvamVjdC14LW1lcmNoYW50IiwidmF1bHQiXSwibWVyY2hhbnRfY29kZSI6Ik1YMTg3IiwicHJvZHVjdGlvbl9wYXltZW50X2NvZGUiOiIwMDE2NDYzOTg1NCIsInJlcXVlc3Rvcl9pZCI6IjAwMTE3NjE0OTkyIiwic2NvcGUiOlsicHJvZmlsZSJdLCJqdGkiOiI0ODdhMzM4Yi0zMjkwLTQxODQtYWQ0OC0yOGEyOGYzODM4YjYiLCJwYXlhYmxlX2lkIjoiMjMyNCIsImNsaWVudF9pZCI6IklLSUE5NjE0QjgyMDY0RDYzMkU5QjY0MThERjM1OEE2QTRBRUE4NEQ3MjE4IiwicGF5bWVudF9jb2RlIjoiMDQyNTk0MTMwMjQ2In0.dnybJSGaWkSujqqC0aSSCPwpI2ROLfv2mTiFAnqQiq56A8_3uUS7veRwIZU2zQfHn1sI9UQJ-2Dl-TA7ktWoP9EMVW-6AP1DlDEPQuQtXCuhYFHQNAdw6WlYQYYbaekakvv4hzj0VuGTUiQomS_jPJOq3ajoIXH639Ly8wvx7cjzelprWIyFRCgiXJII6LAXer2Rk_idPCcBRnsFI_uK94KxdnQ7vejMyg34EvXK3AnhmrYAifPTk3lMZEHNTti_T7bS1kjhMTxAlQ01Yxsf19Cah7mU1e8SDcO9RYlbHSZqlGsKyLSOUcCwaOYBCaqGrkblXyli4XSFHiMX94Sm7w",
+    "access_token": "<ACCESS_TOKEN>",
     "token_type": "bearer",
     "scope": "profile",
     "merchant_code": "MX187",
@@ -149,25 +149,23 @@ grant_type: client_credentials
 }
 ```
 
-
-> default Response
-
-<h3 id="post_passport-oauth-token-responses">Responses</h3>
+<h3 id="post_passport-oauth-token-responses">Response Body</h3>
 
 |Parameter|In|Type|Description|
-|---|---|---|---|---|
+|---|---|---|---|
 |access_token|response|string|This is the bearer token that will be used in your transaction|
 |token_type|response|string|Default is ***Bearer***|
 |scope|response|string|Default is ***profile***|
 |merchant_code|response|string|This is the short string representing your business identity|
 |production_payment_code|response|string|Your merchant payment code|
 |requestor_id|response|string|Your requestor identity code|
-
-
+|payable_id|response|string|none|
+|payment_code|response|string|none|
+|jti|response|string|none|
 
 
 <h3 id="post_passport-oauth-token-responseschema">Response Schema</h3>
 
 <aside class="warning">
-This operation requires authentication using the Authorization header
+This operation requires authentication using the ***Basic Authorization*** header
 </aside>

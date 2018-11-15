@@ -1,5 +1,5 @@
 ---
-title: Merchant X V3
+title: Interswitch Payment Gateway
 language_tabs:
   - go: Go
   - java: Java
@@ -14,7 +14,7 @@ headingLevel: 2
 
 ---
 
-<h1 id=""> Merchant X V3 </h1>
+<h1 id=""> Interswitch Payment Gateway </h1>
 
 > Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 

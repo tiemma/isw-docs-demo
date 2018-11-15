@@ -11,6 +11,8 @@ while true; do
 
     git add *
 
+    xdotool key F12
+
     git commit -a
 
     cd .. && git subtree push --prefix slate-docker/build origin gh-pages
