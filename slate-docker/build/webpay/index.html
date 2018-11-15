@@ -213,6 +213,44 @@
 <blockquote>
 <p>Code samples</p>
 </blockquote>
+<pre class="highlight php">
+<span class="cp">&lt;?php</span>  
+
+<span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>  
+
+<span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>  
+  <span class="nx">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"http://undefinedundefined/passport/oauth/token"</span><span class="p">,</span>  
+  <span class="nx">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>  
+  <span class="nx">CURLOPT_ENCODING</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>  
+  <span class="nx">CURLOPT_MAXREDIRS</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>  
+  <span class="nx">CURLOPT_TIMEOUT</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span>  
+  <span class="nx">CURLOPT_HTTP_VERSION</span> <span class="o">=&gt;</span> <span class="nx">CURL_HTTP_VERSION_1_1</span><span class="p">,</span>  
+  <span class="nx">CURLOPT_CUSTOMREQUEST</span> <span class="o">=&gt;</span> <span class="s2">"POST"</span><span class="p">,</span>  
+  <span class="nx">CURLOPT_HTTPHEADER</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>  
+    <span class="s2">"accept: application/x-www-form-urlencoded"</span><span class="p">,</span>  
+    <span class="s2">"authorization: SOME_STRING_VALUE"</span><span class="p">,</span>  
+    <span class="s2">"content-type: SOME_STRING_VALUE"</span>  
+  <span class="p">),</span>  
+<span class="p">));</span>  
+
+<span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>  
+<span class="nv">$err</span> <span class="o">=</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>  
+
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>  
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$err</span><span class="p">)</span> <span class="p">{</span>  
+  <span class="k">echo</span> <span class="s2">"cURL Error #:"</span> <span class="o">.</span> <span class="nv">$err</span><span class="p">;</span>  
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>  
+  <span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>  
+<span class="p">}</span>
+</pre>
+<pre class="highlight csharp"><span class="n">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"http://undefinedundefined/passport/oauth/token"</span><span class="p">);</span>  
+<span class="n">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>  
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"authorization"</span><span class="p">,</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">);</span>  
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">);</span>  
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"accept"</span><span class="p">,</span> <span class="s">"application/x-www-form-urlencoded"</span><span class="p">);</span>  
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+</pre>
 <pre class="highlight go"><span class="k">package</span><span class="x"> </span><span class="n">main</span><span class="x">
 
 </span><span class="k">import</span><span class="x"> </span><span class="p">(</span><span class="x">
@@ -508,12 +546,143 @@ This operation requires authentication using the <strong><em>Basic Authorization
 
           <h1 id='purchases'>Purchases</h1>
 <p>This holds APIs for all purchase and payment related endpoints covering the following post payment processes involving OTP and Pin processing.</p>
-<h2 id='basic-purchase'>Basic Purchase</h2>
+<h2 id='basic-purchasev3'>Basic Purchase[V3]</h2>
 <p><a id="opIdPOST_api-v3-purchases"></a></p>
 
 <blockquote>
 <p>Code samples</p>
 </blockquote>
+<pre class="highlight csharp"><span class="n">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"http://undefinedundefined/api/v3/purchases"</span><span class="p">);</span>  
+<span class="n">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>  
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"authkeyversion"</span><span class="p">,</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">);</span>  
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"signaturemethod"</span><span class="p">,</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">);</span>  
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"signature"</span><span class="p">,</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">);</span>  
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"nonce"</span><span class="p">,</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">);</span>  
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"timestamp"</span><span class="p">,</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">);</span>  
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"authorization"</span><span class="p">,</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">);</span>  
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">);</span>  
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"accept"</span><span class="p">,</span> <span class="s">"text/plain"</span><span class="p">);</span>  
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"SOME_STRING_VALUE"</span><span class="p">,</span> <span class="s">"{\\"</span><span class="n">customerId</span><span class="err">\\</span><span class="s">":\\"</span><span class="p">&lt;</span><span class="n">ADD</span> <span class="n">STRING</span> <span class="n">VALUE</span><span class="p">&gt;</span><span class="err">\\</span><span class="s">",\\"</span><span class="n">amount</span><span class="err">\\</span><span class="s">":\\"</span><span class="p">&lt;</span><span class="n">ADD</span> <span class="n">STRING</span> <span class="n">VALUE</span><span class="p">&gt;</span><span class="err">\\</span><span class="s">",\\"</span><span class="n">authData</span><span class="err">\\</span><span class="s">":\\"</span><span class="p">&lt;</span><span class="n">ADD</span> <span class="n">STRING</span> <span class="n">VALUE</span><span class="p">&gt;</span><span class="err">\\</span><span class="s">",\\"</span><span class="n">currency</span><span class="err">\\</span><span class="s">":\\"</span><span class="p">&lt;</span><span class="n">ADD</span> <span class="n">STRING</span> <span class="n">VALUE</span><span class="p">&gt;</span><span class="err">\\</span><span class="s">",\\"</span><span class="n">transactionRef</span><span class="err">\\</span><span class="s">":\\"</span><span class="p">&lt;</span><span class="n">ADD</span> <span class="n">STRING</span> <span class="n">VALUE</span><span class="p">&gt;</span><span class="err">\\</span><span class="s">"}"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>  
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+
+</pre>
+<pre class="highlight php"><span class="cp">&lt;?php</span>  
+
+<span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>  
+
+<span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>  
+  <span class="nx">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"http://undefinedundefined/api/v3/purchases"</span><span class="p">,</span>  
+  <span class="nx">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>  
+  <span class="nx">CURLOPT_ENCODING</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>  
+  <span class="nx">CURLOPT_MAXREDIRS</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>  
+  <span class="nx">CURLOPT_TIMEOUT</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span>  
+  <span class="nx">CURLOPT_HTTP_VERSION</span> <span class="o">=&gt;</span> <span class="nx">CURL_HTTP_VERSION_1_1</span><span class="p">,</span>  
+  <span class="nx">CURLOPT_CUSTOMREQUEST</span> <span class="o">=&gt;</span> <span class="s2">"POST"</span><span class="p">,</span>  
+  <span class="nx">CURLOPT_POSTFIELDS</span> <span class="o">=&gt;</span> <span class="s2">"{\\"</span><span class="nx">customerId\\</span><span class="s2">":</span><span class="se">\\</span><span class="s2">"</span><span class="o">&lt;</span><span class="nx">ADD</span> <span class="nx">STRING</span> <span class="nx">VALUE</span><span class="o">&gt;</span><span class="nx">\\</span><span class="s2">",</span><span class="se">\\</span><span class="s2">"</span><span class="nx">amount\\</span><span class="s2">":</span><span class="se">\\</span><span class="s2">"</span><span class="o">&lt;</span><span class="nx">ADD</span> <span class="nx">STRING</span> <span class="nx">VALUE</span><span class="o">&gt;</span><span class="nx">\\</span><span class="s2">",</span><span class="se">\\</span><span class="s2">"</span><span class="nx">authData\\</span><span class="s2">":</span><span class="se">\\</span><span class="s2">"</span><span class="o">&lt;</span><span class="nx">ADD</span> <span class="nx">STRING</span> <span class="nx">VALUE</span><span class="o">&gt;</span><span class="nx">\\</span><span class="s2">",</span><span class="se">\\</span><span class="s2">"</span><span class="nx">currency\\</span><span class="s2">":</span><span class="se">\\</span><span class="s2">"</span><span class="o">&lt;</span><span class="nx">ADD</span> <span class="nx">STRING</span> <span class="nx">VALUE</span><span class="o">&gt;</span><span class="nx">\\</span><span class="s2">",</span><span class="se">\\</span><span class="s2">"</span><span class="nx">transactionRef\\</span><span class="s2">":</span><span class="se">\\</span><span class="s2">"</span><span class="o">&lt;</span><span class="nx">ADD</span> <span class="nx">STRING</span> <span class="nx">VALUE</span><span class="o">&gt;</span><span class="nx">\\</span><span class="s2">"}"</span><span class="p">,</span>  
+  <span class="nx">CURLOPT_HTTPHEADER</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>  
+    <span class="s2">"accept: text/plain"</span><span class="p">,</span>  
+    <span class="s2">"authkeyversion: SOME_STRING_VALUE"</span><span class="p">,</span>  
+    <span class="s2">"authorization: SOME_STRING_VALUE"</span><span class="p">,</span>  
+    <span class="s2">"content-type: SOME_STRING_VALUE"</span><span class="p">,</span>  
+    <span class="s2">"nonce: SOME_STRING_VALUE"</span><span class="p">,</span>  
+    <span class="s2">"signature: SOME_STRING_VALUE"</span><span class="p">,</span>  
+    <span class="s2">"signaturemethod: SOME_STRING_VALUE"</span><span class="p">,</span>  
+    <span class="s2">"timestamp: SOME_STRING_VALUE"</span>  
+  <span class="p">),</span>  
+<span class="p">));</span>  
+
+<span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>  
+<span class="nv">$err</span> <span class="o">=</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>  
+
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>  
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$err</span><span class="p">)</span> <span class="p">{</span>  
+  <span class="k">echo</span> <span class="s2">"cURL Error #:"</span> <span class="o">.</span> <span class="nv">$err</span><span class="p">;</span>  
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>  
+  <span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>  
+<span class="p">}</span>
+
+</pre>
+<pre class="highlight objective_c"><span class="cp">#import &lt;Foundation/Foundation.h&gt;  
+</span>
+<span class="n">NSDictionary</span> <span class="o">*</span><span class="n">headers</span> <span class="o">=</span> <span class="err">@</span><span class="p">{</span> <span class="s">@"accept"</span><span class="o">:</span> <span class="s">@"text/plain"</span><span class="p">,</span>  
+                           <span class="s">@"content-type"</span><span class="o">:</span> <span class="s">@"SOME_STRING_VALUE"</span><span class="p">,</span>  
+                           <span class="s">@"authorization"</span><span class="o">:</span> <span class="s">@"SOME_STRING_VALUE"</span><span class="p">,</span>  
+                           <span class="s">@"timestamp"</span><span class="o">:</span> <span class="s">@"SOME_STRING_VALUE"</span><span class="p">,</span>  
+                           <span class="s">@"nonce"</span><span class="o">:</span> <span class="s">@"SOME_STRING_VALUE"</span><span class="p">,</span>  
+                           <span class="s">@"signature"</span><span class="o">:</span> <span class="s">@"SOME_STRING_VALUE"</span><span class="p">,</span>  
+                           <span class="s">@"signaturemethod"</span><span class="o">:</span> <span class="s">@"SOME_STRING_VALUE"</span><span class="p">,</span>  
+                           <span class="s">@"authkeyversion"</span><span class="o">:</span> <span class="s">@"SOME_STRING_VALUE"</span> <span class="p">};</span>  
+<span class="n">NSDictionary</span> <span class="o">*</span><span class="n">parameters</span> <span class="o">=</span> <span class="err">@</span><span class="p">{</span> <span class="s">@"customerId"</span><span class="o">:</span> <span class="s">@"&lt;ADD STRING VALUE&gt;"</span><span class="p">,</span>  
+                              <span class="s">@"amount"</span><span class="o">:</span> <span class="s">@"&lt;ADD STRING VALUE&gt;"</span><span class="p">,</span>  
+                              <span class="s">@"authData"</span><span class="o">:</span> <span class="s">@"&lt;ADD STRING VALUE&gt;"</span><span class="p">,</span>  
+                              <span class="s">@"currency"</span><span class="o">:</span> <span class="s">@"&lt;ADD STRING VALUE&gt;"</span><span class="p">,</span>  
+                              <span class="s">@"transactionRef"</span><span class="o">:</span> <span class="s">@"&lt;ADD STRING VALUE&gt;"</span> <span class="p">};</span>  
+
+<span class="n">NSData</span> <span class="o">*</span><span class="n">postData</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSJSONSerialization</span> <span class="nf">dataWithJSONObject</span><span class="p">:</span><span class="n">parameters</span> <span class="nf">options</span><span class="p">:</span><span class="mi">0</span> <span class="nf">error</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>  
+
+<span class="n">NSMutableURLRequest</span> <span class="o">*</span><span class="n">request</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSMutableURLRequest</span> <span class="nf">requestWithURL</span><span class="p">:[</span><span class="n">NSURL</span> <span class="nf">URLWithString</span><span class="p">:</span><span class="s">@"http://undefinedundefined/api/v3/purchases"</span><span class="p">]</span>  
+                                                       <span class="nf">cachePolicy</span><span class="p">:</span><span class="n">NSURLRequestUseProtocolCachePolicy</span>  
+                                                   <span class="nf">timeoutInterval</span><span class="p">:</span><span class="mi">10</span><span class="p">.</span><span class="mi">0</span><span class="p">];</span>  
+<span class="p">[</span><span class="n">request</span> <span class="nf">setHTTPMethod</span><span class="p">:</span><span class="s">@"POST"</span><span class="p">];</span>  
+<span class="p">[</span><span class="n">request</span> <span class="nf">setAllHTTPHeaderFields</span><span class="p">:</span><span class="n">headers</span><span class="p">];</span>  
+<span class="p">[</span><span class="n">request</span> <span class="nf">setHTTPBody</span><span class="p">:</span><span class="n">postData</span><span class="p">];</span>  
+
+<span class="n">NSURLSession</span> <span class="o">*</span><span class="n">session</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSURLSession</span> <span class="nf">sharedSession</span><span class="p">];</span>  
+<span class="n">NSURLSessionDataTask</span> <span class="o">*</span><span class="n">dataTask</span> <span class="o">=</span> <span class="p">[</span><span class="n">session</span> <span class="nf">dataTaskWithRequest</span><span class="p">:</span><span class="n">request</span>  
+                                            <span class="nf">completionHandler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSData</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="n">NSURLResponse</span> <span class="o">*</span><span class="n">response</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>  
+                                                <span class="k">if</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>  
+                                                    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%@"</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span><span class="err">;</span>  
+                                                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>  
+                                                    <span class="n">NSHTTPURLResponse</span> <span class="o">*</span><span class="n">httpResponse</span> <span class="o">=</span> <span class="p">(</span><span class="n">NSHTTPURLResponse</span> <span class="o">*</span><span class="p">)</span> <span class="n">response</span><span class="err">;</span>  
+                                                    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%@"</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">)</span><span class="err">;</span>  
+                                                <span class="p">}</span>  
+                                            <span class="p">}];</span>  
+<span class="p">[</span><span class="n">dataTask</span> <span class="nf">resume</span><span class="p">];</span>
+
+</pre>
+<pre class="highlight c"><span class="n">import</span> <span class="n">Foundation</span>  
+
+<span class="n">let</span> <span class="n">headers</span> <span class="o">=</span> <span class="p">[</span>  
+  <span class="s">"accept"</span><span class="o">:</span> <span class="s">"text/plain"</span><span class="p">,</span>  
+  <span class="s">"content-type"</span><span class="o">:</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">,</span>  
+  <span class="s">"authorization"</span><span class="o">:</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">,</span>  
+  <span class="s">"timestamp"</span><span class="o">:</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">,</span>  
+  <span class="s">"nonce"</span><span class="o">:</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">,</span>  
+  <span class="s">"signature"</span><span class="o">:</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">,</span>  
+  <span class="s">"signaturemethod"</span><span class="o">:</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">,</span>  
+  <span class="s">"authkeyversion"</span><span class="o">:</span> <span class="s">"SOME_STRING_VALUE"</span>  
+<span class="p">]</span>  
+<span class="n">let</span> <span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span>  
+  <span class="s">"customerId"</span><span class="o">:</span> <span class="s">"&lt;ADD STRING VALUE&gt;"</span><span class="p">,</span>  
+  <span class="s">"amount"</span><span class="o">:</span> <span class="s">"&lt;ADD STRING VALUE&gt;"</span><span class="p">,</span>  
+  <span class="s">"authData"</span><span class="o">:</span> <span class="s">"&lt;ADD STRING VALUE&gt;"</span><span class="p">,</span>  
+  <span class="s">"currency"</span><span class="o">:</span> <span class="s">"&lt;ADD STRING VALUE&gt;"</span><span class="p">,</span>  
+  <span class="s">"transactionRef"</span><span class="o">:</span> <span class="s">"&lt;ADD STRING VALUE&gt;"</span>  
+<span class="p">]</span>  
+
+<span class="n">let</span> <span class="n">postData</span> <span class="o">=</span> <span class="n">NSJSONSerialization</span><span class="p">.</span><span class="n">dataWithJSONObject</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">options</span><span class="o">:</span> <span class="n">nil</span><span class="p">,</span> <span class="n">error</span><span class="o">:</span> <span class="n">nil</span><span class="p">)</span>  
+
+<span class="n">var</span> <span class="n">request</span> <span class="o">=</span> <span class="n">NSMutableURLRequest</span><span class="p">(</span><span class="n">URL</span><span class="o">:</span> <span class="n">NSURL</span><span class="p">(</span><span class="n">string</span><span class="o">:</span> <span class="s">"http://undefinedundefined/api/v3/purchases"</span><span class="p">)</span><span class="o">!</span><span class="p">,</span>  
+                                        <span class="n">cachePolicy</span><span class="o">:</span> <span class="p">.</span><span class="n">UseProtocolCachePolicy</span><span class="p">,</span>  
+                                    <span class="n">timeoutInterval</span><span class="o">:</span> <span class="mi">10</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span>  
+<span class="n">request</span><span class="p">.</span><span class="n">HTTPMethod</span> <span class="o">=</span> <span class="s">"POST"</span>  
+<span class="n">request</span><span class="p">.</span><span class="n">allHTTPHeaderFields</span> <span class="o">=</span> <span class="n">headers</span>  
+<span class="n">request</span><span class="p">.</span><span class="n">HTTPBody</span> <span class="o">=</span> <span class="n">postData</span>  
+
+<span class="n">let</span> <span class="n">session</span> <span class="o">=</span> <span class="n">NSURLSession</span><span class="p">.</span><span class="n">sharedSession</span><span class="p">()</span>  
+<span class="n">let</span> <span class="n">dataTask</span> <span class="o">=</span> <span class="n">session</span><span class="p">.</span><span class="n">dataTaskWithRequest</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">completionHandler</span><span class="o">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Void</span> <span class="n">in</span>  
+  <span class="k">if</span> <span class="p">(</span><span class="n">error</span> <span class="o">!=</span> <span class="n">nil</span><span class="p">)</span> <span class="p">{</span>  
+    <span class="n">println</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>  
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>  
+    <span class="n">let</span> <span class="n">httpResponse</span> <span class="o">=</span> <span class="n">response</span> <span class="n">as</span><span class="o">?</span> <span class="n">NSHTTPURLResponse</span>  
+    <span class="n">println</span><span class="p">(</span><span class="n">httpResponse</span><span class="p">)</span>  
+  <span class="p">}</span>  
+<span class="p">})</span>  
+
+<span class="n">dataTask</span><span class="p">.</span><span class="n">resume</span><span class="p">()</span>
+
+</pre>
 <pre class="highlight go"><span class="k">package</span><span class="x"> </span><span class="n">main</span><span class="x">
 
 </span><span class="k">import</span><span class="x"> </span><span class="p">(</span><span class="x">
@@ -1132,12 +1301,144 @@ This operation does not require authentication
 <p><aside class="success">
 This operation does not require authentication
 </aside></p>
-<h2 id='post_api-v2-purchases-recurrents'>POST_api-v2-purchases-recurrents</h2>
+<h2 id='recurrent-purchases-v2'>Recurrent Purchases [V2]</h2>
 <p><a id="opIdPOST_api-v2-purchases-recurrents"></a></p>
 
 <blockquote>
 <p>Code samples</p>
 </blockquote>
+<pre class="highlight objective_c"><span class="cp">#import &lt;Foundation/Foundation.h&gt;  
+</span>
+<span class="n">NSDictionary</span> <span class="o">*</span><span class="n">headers</span> <span class="o">=</span> <span class="err">@</span><span class="p">{</span> <span class="s">@"accept"</span><span class="o">:</span> <span class="s">@"text/plain"</span><span class="p">,</span>  
+                           <span class="s">@"content-type"</span><span class="o">:</span> <span class="s">@"SOME_STRING_VALUE"</span><span class="p">,</span>  
+                           <span class="s">@"authorization"</span><span class="o">:</span> <span class="s">@"SOME_STRING_VALUE"</span><span class="p">,</span>  
+                           <span class="s">@"timestamp"</span><span class="o">:</span> <span class="s">@"SOME_STRING_VALUE"</span><span class="p">,</span>  
+                           <span class="s">@"nonce"</span><span class="o">:</span> <span class="s">@"SOME_STRING_VALUE"</span><span class="p">,</span>  
+                           <span class="s">@"signature"</span><span class="o">:</span> <span class="s">@"SOME_STRING_VALUE"</span><span class="p">,</span>  
+                           <span class="s">@"signaturemethod"</span><span class="o">:</span> <span class="s">@"SOME_STRING_VALUE"</span><span class="p">,</span>  
+                           <span class="s">@"authkeyversion"</span><span class="o">:</span> <span class="s">@"SOME_STRING_VALUE"</span> <span class="p">};</span>  
+<span class="n">NSDictionary</span> <span class="o">*</span><span class="n">parameters</span> <span class="o">=</span> <span class="err">@</span><span class="p">{</span> <span class="s">@"customerId"</span><span class="o">:</span> <span class="s">@"&lt;ADD STRING VALUE&gt;"</span><span class="p">,</span>  
+                              <span class="s">@"amount"</span><span class="o">:</span> <span class="s">@"&lt;ADD STRING VALUE&gt;"</span><span class="p">,</span>  
+                              <span class="s">@"currency"</span><span class="o">:</span> <span class="s">@"&lt;ADD STRING VALUE&gt;"</span><span class="p">,</span>  
+                              <span class="s">@"token"</span><span class="o">:</span> <span class="s">@"&lt;ADD STRING VALUE&gt;"</span><span class="p">,</span>  
+                              <span class="s">@"tokenExpiryDate"</span><span class="o">:</span> <span class="s">@"&lt;ADD STRING VALUE&gt;"</span><span class="p">,</span>  
+                              <span class="s">@"transactionRef"</span><span class="o">:</span> <span class="s">@"&lt;ADD STRING VALUE&gt;"</span> <span class="p">};</span>  
+
+<span class="n">NSData</span> <span class="o">*</span><span class="n">postData</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSJSONSerialization</span> <span class="nf">dataWithJSONObject</span><span class="p">:</span><span class="n">parameters</span> <span class="nf">options</span><span class="p">:</span><span class="mi">0</span> <span class="nf">error</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>  
+
+<span class="n">NSMutableURLRequest</span> <span class="o">*</span><span class="n">request</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSMutableURLRequest</span> <span class="nf">requestWithURL</span><span class="p">:[</span><span class="n">NSURL</span> <span class="nf">URLWithString</span><span class="p">:</span><span class="s">@"http://undefinedundefined/api/v2/purchases/recurrents"</span><span class="p">]</span>  
+                                                       <span class="nf">cachePolicy</span><span class="p">:</span><span class="n">NSURLRequestUseProtocolCachePolicy</span>  
+                                                   <span class="nf">timeoutInterval</span><span class="p">:</span><span class="mi">10</span><span class="p">.</span><span class="mi">0</span><span class="p">];</span>  
+<span class="p">[</span><span class="n">request</span> <span class="nf">setHTTPMethod</span><span class="p">:</span><span class="s">@"POST"</span><span class="p">];</span>  
+<span class="p">[</span><span class="n">request</span> <span class="nf">setAllHTTPHeaderFields</span><span class="p">:</span><span class="n">headers</span><span class="p">];</span>  
+<span class="p">[</span><span class="n">request</span> <span class="nf">setHTTPBody</span><span class="p">:</span><span class="n">postData</span><span class="p">];</span>  
+
+<span class="n">NSURLSession</span> <span class="o">*</span><span class="n">session</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSURLSession</span> <span class="nf">sharedSession</span><span class="p">];</span>  
+<span class="n">NSURLSessionDataTask</span> <span class="o">*</span><span class="n">dataTask</span> <span class="o">=</span> <span class="p">[</span><span class="n">session</span> <span class="nf">dataTaskWithRequest</span><span class="p">:</span><span class="n">request</span>  
+                                            <span class="nf">completionHandler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSData</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="n">NSURLResponse</span> <span class="o">*</span><span class="n">response</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>  
+                                                <span class="k">if</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>  
+                                                    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%@"</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span><span class="err">;</span>  
+                                                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>  
+                                                    <span class="n">NSHTTPURLResponse</span> <span class="o">*</span><span class="n">httpResponse</span> <span class="o">=</span> <span class="p">(</span><span class="n">NSHTTPURLResponse</span> <span class="o">*</span><span class="p">)</span> <span class="n">response</span><span class="err">;</span>  
+                                                    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%@"</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">)</span><span class="err">;</span>  
+                                                <span class="p">}</span>  
+                                            <span class="p">}];</span>  
+<span class="p">[</span><span class="n">dataTask</span> <span class="nf">resume</span><span class="p">];</span>
+
+</pre>
+<pre class="highlight c"><span class="n">import</span> <span class="n">Foundation</span>  
+
+<span class="n">let</span> <span class="n">headers</span> <span class="o">=</span> <span class="p">[</span>  
+  <span class="s">"accept"</span><span class="o">:</span> <span class="s">"text/plain"</span><span class="p">,</span>  
+  <span class="s">"content-type"</span><span class="o">:</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">,</span>  
+  <span class="s">"authorization"</span><span class="o">:</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">,</span>  
+  <span class="s">"timestamp"</span><span class="o">:</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">,</span>  
+  <span class="s">"nonce"</span><span class="o">:</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">,</span>  
+  <span class="s">"signature"</span><span class="o">:</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">,</span>  
+  <span class="s">"signaturemethod"</span><span class="o">:</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">,</span>  
+  <span class="s">"authkeyversion"</span><span class="o">:</span> <span class="s">"SOME_STRING_VALUE"</span>  
+<span class="p">]</span>  
+<span class="n">let</span> <span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span>  
+  <span class="s">"customerId"</span><span class="o">:</span> <span class="s">"&lt;ADD STRING VALUE&gt;"</span><span class="p">,</span>  
+  <span class="s">"amount"</span><span class="o">:</span> <span class="s">"&lt;ADD STRING VALUE&gt;"</span><span class="p">,</span>  
+  <span class="s">"currency"</span><span class="o">:</span> <span class="s">"&lt;ADD STRING VALUE&gt;"</span><span class="p">,</span>  
+  <span class="s">"token"</span><span class="o">:</span> <span class="s">"&lt;ADD STRING VALUE&gt;"</span><span class="p">,</span>  
+  <span class="s">"tokenExpiryDate"</span><span class="o">:</span> <span class="s">"&lt;ADD STRING VALUE&gt;"</span><span class="p">,</span>  
+  <span class="s">"transactionRef"</span><span class="o">:</span> <span class="s">"&lt;ADD STRING VALUE&gt;"</span>  
+<span class="p">]</span>  
+
+<span class="n">let</span> <span class="n">postData</span> <span class="o">=</span> <span class="n">NSJSONSerialization</span><span class="p">.</span><span class="n">dataWithJSONObject</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">options</span><span class="o">:</span> <span class="n">nil</span><span class="p">,</span> <span class="n">error</span><span class="o">:</span> <span class="n">nil</span><span class="p">)</span>  
+
+<span class="n">var</span> <span class="n">request</span> <span class="o">=</span> <span class="n">NSMutableURLRequest</span><span class="p">(</span><span class="n">URL</span><span class="o">:</span> <span class="n">NSURL</span><span class="p">(</span><span class="n">string</span><span class="o">:</span> <span class="s">"http://undefinedundefined/api/v2/purchases/recurrents"</span><span class="p">)</span><span class="o">!</span><span class="p">,</span>  
+                                        <span class="n">cachePolicy</span><span class="o">:</span> <span class="p">.</span><span class="n">UseProtocolCachePolicy</span><span class="p">,</span>  
+                                    <span class="n">timeoutInterval</span><span class="o">:</span> <span class="mi">10</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span>  
+<span class="n">request</span><span class="p">.</span><span class="n">HTTPMethod</span> <span class="o">=</span> <span class="s">"POST"</span>  
+<span class="n">request</span><span class="p">.</span><span class="n">allHTTPHeaderFields</span> <span class="o">=</span> <span class="n">headers</span>  
+<span class="n">request</span><span class="p">.</span><span class="n">HTTPBody</span> <span class="o">=</span> <span class="n">postData</span>  
+
+<span class="n">let</span> <span class="n">session</span> <span class="o">=</span> <span class="n">NSURLSession</span><span class="p">.</span><span class="n">sharedSession</span><span class="p">()</span>  
+<span class="n">let</span> <span class="n">dataTask</span> <span class="o">=</span> <span class="n">session</span><span class="p">.</span><span class="n">dataTaskWithRequest</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">completionHandler</span><span class="o">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Void</span> <span class="n">in</span>  
+  <span class="k">if</span> <span class="p">(</span><span class="n">error</span> <span class="o">!=</span> <span class="n">nil</span><span class="p">)</span> <span class="p">{</span>  
+    <span class="n">println</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>  
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>  
+    <span class="n">let</span> <span class="n">httpResponse</span> <span class="o">=</span> <span class="n">response</span> <span class="n">as</span><span class="o">?</span> <span class="n">NSHTTPURLResponse</span>  
+    <span class="n">println</span><span class="p">(</span><span class="n">httpResponse</span><span class="p">)</span>  
+  <span class="p">}</span>  
+<span class="p">})</span>  
+
+<span class="n">dataTask</span><span class="p">.</span><span class="n">resume</span><span class="p">()</span>
+
+</pre>
+<pre class="highlight php"><span class="cp">&lt;?php</span>  
+
+<span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>  
+
+<span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>  
+  <span class="nx">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"http://undefinedundefined/api/v2/purchases/recurrents"</span><span class="p">,</span>  
+  <span class="nx">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>  
+  <span class="nx">CURLOPT_ENCODING</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>  
+  <span class="nx">CURLOPT_MAXREDIRS</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>  
+  <span class="nx">CURLOPT_TIMEOUT</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span>  
+  <span class="nx">CURLOPT_HTTP_VERSION</span> <span class="o">=&gt;</span> <span class="nx">CURL_HTTP_VERSION_1_1</span><span class="p">,</span>  
+  <span class="nx">CURLOPT_CUSTOMREQUEST</span> <span class="o">=&gt;</span> <span class="s2">"POST"</span><span class="p">,</span>  
+  <span class="nx">CURLOPT_POSTFIELDS</span> <span class="o">=&gt;</span> <span class="s2">"{\\"</span><span class="nx">customerId\\</span><span class="s2">":</span><span class="se">\\</span><span class="s2">"</span><span class="o">&lt;</span><span class="nx">ADD</span> <span class="nx">STRING</span> <span class="nx">VALUE</span><span class="o">&gt;</span><span class="nx">\\</span><span class="s2">",</span><span class="se">\\</span><span class="s2">"</span><span class="nx">amount\\</span><span class="s2">":</span><span class="se">\\</span><span class="s2">"</span><span class="o">&lt;</span><span class="nx">ADD</span> <span class="nx">STRING</span> <span class="nx">VALUE</span><span class="o">&gt;</span><span class="nx">\\</span><span class="s2">",</span><span class="se">\\</span><span class="s2">"</span><span class="nx">currency\\</span><span class="s2">":</span><span class="se">\\</span><span class="s2">"</span><span class="o">&lt;</span><span class="nx">ADD</span> <span class="nx">STRING</span> <span class="nx">VALUE</span><span class="o">&gt;</span><span class="nx">\\</span><span class="s2">",</span><span class="se">\\</span><span class="s2">"</span><span class="nx">token\\</span><span class="s2">":</span><span class="se">\\</span><span class="s2">"</span><span class="o">&lt;</span><span class="nx">ADD</span> <span class="nx">STRING</span> <span class="nx">VALUE</span><span class="o">&gt;</span><span class="nx">\\</span><span class="s2">",</span><span class="se">\\</span><span class="s2">"</span><span class="nx">tokenExpiryDate\\</span><span class="s2">":</span><span class="se">\\</span><span class="s2">"</span><span class="o">&lt;</span><span class="nx">ADD</span> <span class="nx">STRING</span> <span class="nx">VALUE</span><span class="o">&gt;</span><span class="nx">\\</span><span class="s2">",</span><span class="se">\\</span><span class="s2">"</span><span class="nx">transactionRef\\</span><span class="s2">":</span><span class="se">\\</span><span class="s2">"</span><span class="o">&lt;</span><span class="nx">ADD</span> <span class="nx">STRING</span> <span class="nx">VALUE</span><span class="o">&gt;</span><span class="nx">\\</span><span class="s2">"}"</span><span class="p">,</span>  
+  <span class="nx">CURLOPT_HTTPHEADER</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>  
+    <span class="s2">"accept: text/plain"</span><span class="p">,</span>  
+    <span class="s2">"authkeyversion: SOME_STRING_VALUE"</span><span class="p">,</span>  
+    <span class="s2">"authorization: SOME_STRING_VALUE"</span><span class="p">,</span>  
+    <span class="s2">"content-type: SOME_STRING_VALUE"</span><span class="p">,</span>  
+    <span class="s2">"nonce: SOME_STRING_VALUE"</span><span class="p">,</span>  
+    <span class="s2">"signature: SOME_STRING_VALUE"</span><span class="p">,</span>  
+    <span class="s2">"signaturemethod: SOME_STRING_VALUE"</span><span class="p">,</span>  
+    <span class="s2">"timestamp: SOME_STRING_VALUE"</span>  
+  <span class="p">),</span>  
+<span class="p">));</span>  
+
+<span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>  
+<span class="nv">$err</span> <span class="o">=</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>  
+
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>  
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$err</span><span class="p">)</span> <span class="p">{</span>  
+  <span class="k">echo</span> <span class="s2">"cURL Error #:"</span> <span class="o">.</span> <span class="nv">$err</span><span class="p">;</span>  
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>  
+  <span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>  
+<span class="p">}</span>
+</pre>
+<pre class="highlight csharp"><span class="n">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"http://undefinedundefined/api/v2/purchases/recurrents"</span><span class="p">);</span>  
+<span class="n">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>  
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"authkeyversion"</span><span class="p">,</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">);</span>  
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"signaturemethod"</span><span class="p">,</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">);</span>  
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"signature"</span><span class="p">,</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">);</span>  
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"nonce"</span><span class="p">,</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">);</span>  
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"timestamp"</span><span class="p">,</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">);</span>  
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"authorization"</span><span class="p">,</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">);</span>  
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">);</span>  
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"accept"</span><span class="p">,</span> <span class="s">"text/plain"</span><span class="p">);</span>  
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"SOME_STRING_VALUE"</span><span class="p">,</span> <span class="s">"{\\"</span><span class="n">customerId</span><span class="err">\\</span><span class="s">":\\"</span><span class="p">&lt;</span><span class="n">ADD</span> <span class="n">STRING</span> <span class="n">VALUE</span><span class="p">&gt;</span><span class="err">\\</span><span class="s">",\\"</span><span class="n">amount</span><span class="err">\\</span><span class="s">":\\"</span><span class="p">&lt;</span><span class="n">ADD</span> <span class="n">STRING</span> <span class="n">VALUE</span><span class="p">&gt;</span><span class="err">\\</span><span class="s">",\\"</span><span class="n">currency</span><span class="err">\\</span><span class="s">":\\"</span><span class="p">&lt;</span><span class="n">ADD</span> <span class="n">STRING</span> <span class="n">VALUE</span><span class="p">&gt;</span><span class="err">\\</span><span class="s">",\\"</span><span class="n">token</span><span class="err">\\</span><span class="s">":\\"</span><span class="p">&lt;</span><span class="n">ADD</span> <span class="n">STRING</span> <span class="n">VALUE</span><span class="p">&gt;</span><span class="err">\\</span><span class="s">",\\"</span><span class="n">tokenExpiryDate</span><span class="err">\\</span><span class="s">":\\"</span><span class="p">&lt;</span><span class="n">ADD</span> <span class="n">STRING</span> <span class="n">VALUE</span><span class="p">&gt;</span><span class="err">\\</span><span class="s">",\\"</span><span class="n">transactionRef</span><span class="err">\\</span><span class="s">":\\"</span><span class="p">&lt;</span><span class="n">ADD</span> <span class="n">STRING</span> <span class="n">VALUE</span><span class="p">&gt;</span><span class="err">\\</span><span class="s">"}"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>  
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+
+</pre>
 <pre class="highlight go"><span class="k">package</span><span class="x"> </span><span class="n">main</span><span class="x">
 
 </span><span class="k">import</span><span class="x"> </span><span class="p">(</span><span class="x">
@@ -3141,6 +3442,131 @@ This operation does not require authentication
 <blockquote>
 <p>Code samples</p>
 </blockquote>
+<pre class="highlight objective_c"><span class="cp">#import &lt;Foundation/Foundation.h&gt;  
+</span>
+<span class="n">NSDictionary</span> <span class="o">*</span><span class="n">headers</span> <span class="o">=</span> <span class="err">@</span><span class="p">{</span> <span class="s">@"accept"</span><span class="o">:</span> <span class="s">@"text/plain"</span><span class="p">,</span>  
+                           <span class="s">@"content-type"</span><span class="o">:</span> <span class="s">@"SOME_STRING_VALUE"</span><span class="p">,</span>  
+                           <span class="s">@"authorization"</span><span class="o">:</span> <span class="s">@"SOME_STRING_VALUE"</span><span class="p">,</span>  
+                           <span class="s">@"timestamp"</span><span class="o">:</span> <span class="s">@"SOME_STRING_VALUE"</span><span class="p">,</span>  
+                           <span class="s">@"nonce"</span><span class="o">:</span> <span class="s">@"SOME_STRING_VALUE"</span><span class="p">,</span>  
+                           <span class="s">@"signature"</span><span class="o">:</span> <span class="s">@"SOME_STRING_VALUE"</span><span class="p">,</span>  
+                           <span class="s">@"signaturemethod"</span><span class="o">:</span> <span class="s">@"SOME_STRING_VALUE"</span><span class="p">,</span>  
+                           <span class="s">@"authkeyversion"</span><span class="o">:</span> <span class="s">@"SOME_STRING_VALUE"</span> <span class="p">};</span>  
+<span class="n">NSDictionary</span> <span class="o">*</span><span class="n">parameters</span> <span class="o">=</span> <span class="err">@</span><span class="p">{</span> <span class="s">@"transactionRef"</span><span class="o">:</span> <span class="s">@"&lt;ADD STRING VALUE&gt;"</span><span class="p">,</span>  
+                              <span class="s">@"authData"</span><span class="o">:</span> <span class="s">@"&lt;ADD STRING VALUE&gt;"</span> <span class="p">};</span>  
+
+<span class="n">NSData</span> <span class="o">*</span><span class="n">postData</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSJSONSerialization</span> <span class="nf">dataWithJSONObject</span><span class="p">:</span><span class="n">parameters</span> <span class="nf">options</span><span class="p">:</span><span class="mi">0</span> <span class="nf">error</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>  
+
+<span class="n">NSMutableURLRequest</span> <span class="o">*</span><span class="n">request</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSMutableURLRequest</span> <span class="nf">requestWithURL</span><span class="p">:[</span><span class="n">NSURL</span> <span class="nf">URLWithString</span><span class="p">:</span><span class="s">@"http://undefinedundefined/api/v2/purchases/validations/recurrents"</span><span class="p">]</span>  
+                                                       <span class="nf">cachePolicy</span><span class="p">:</span><span class="n">NSURLRequestUseProtocolCachePolicy</span>  
+                                                   <span class="nf">timeoutInterval</span><span class="p">:</span><span class="mi">10</span><span class="p">.</span><span class="mi">0</span><span class="p">];</span>  
+<span class="p">[</span><span class="n">request</span> <span class="nf">setHTTPMethod</span><span class="p">:</span><span class="s">@"POST"</span><span class="p">];</span>  
+<span class="p">[</span><span class="n">request</span> <span class="nf">setAllHTTPHeaderFields</span><span class="p">:</span><span class="n">headers</span><span class="p">];</span>  
+<span class="p">[</span><span class="n">request</span> <span class="nf">setHTTPBody</span><span class="p">:</span><span class="n">postData</span><span class="p">];</span>  
+
+<span class="n">NSURLSession</span> <span class="o">*</span><span class="n">session</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSURLSession</span> <span class="nf">sharedSession</span><span class="p">];</span>  
+<span class="n">NSURLSessionDataTask</span> <span class="o">*</span><span class="n">dataTask</span> <span class="o">=</span> <span class="p">[</span><span class="n">session</span> <span class="nf">dataTaskWithRequest</span><span class="p">:</span><span class="n">request</span>  
+                                            <span class="nf">completionHandler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSData</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="n">NSURLResponse</span> <span class="o">*</span><span class="n">response</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>  
+                                                <span class="k">if</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>  
+                                                    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%@"</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span><span class="err">;</span>  
+                                                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>  
+                                                    <span class="n">NSHTTPURLResponse</span> <span class="o">*</span><span class="n">httpResponse</span> <span class="o">=</span> <span class="p">(</span><span class="n">NSHTTPURLResponse</span> <span class="o">*</span><span class="p">)</span> <span class="n">response</span><span class="err">;</span>  
+                                                    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%@"</span><span class="p">,</span> <span class="n">httpResponse</span><span class="p">)</span><span class="err">;</span>  
+                                                <span class="p">}</span>  
+                                            <span class="p">}];</span>  
+<span class="p">[</span><span class="n">dataTask</span> <span class="nf">resume</span><span class="p">];</span>
+
+</pre>
+<pre class="highlight c"><span class="n">import</span> <span class="n">Foundation</span>  
+
+<span class="n">let</span> <span class="n">headers</span> <span class="o">=</span> <span class="p">[</span>  
+  <span class="s">"accept"</span><span class="o">:</span> <span class="s">"text/plain"</span><span class="p">,</span>  
+  <span class="s">"content-type"</span><span class="o">:</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">,</span>  
+  <span class="s">"authorization"</span><span class="o">:</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">,</span>  
+  <span class="s">"timestamp"</span><span class="o">:</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">,</span>  
+  <span class="s">"nonce"</span><span class="o">:</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">,</span>  
+  <span class="s">"signature"</span><span class="o">:</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">,</span>  
+  <span class="s">"signaturemethod"</span><span class="o">:</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">,</span>  
+  <span class="s">"authkeyversion"</span><span class="o">:</span> <span class="s">"SOME_STRING_VALUE"</span>  
+<span class="p">]</span>  
+<span class="n">let</span> <span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span>  
+  <span class="s">"transactionRef"</span><span class="o">:</span> <span class="s">"&lt;ADD STRING VALUE&gt;"</span><span class="p">,</span>  
+  <span class="s">"authData"</span><span class="o">:</span> <span class="s">"&lt;ADD STRING VALUE&gt;"</span>  
+<span class="p">]</span>  
+
+<span class="n">let</span> <span class="n">postData</span> <span class="o">=</span> <span class="n">NSJSONSerialization</span><span class="p">.</span><span class="n">dataWithJSONObject</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">options</span><span class="o">:</span> <span class="n">nil</span><span class="p">,</span> <span class="n">error</span><span class="o">:</span> <span class="n">nil</span><span class="p">)</span>  
+
+<span class="n">var</span> <span class="n">request</span> <span class="o">=</span> <span class="n">NSMutableURLRequest</span><span class="p">(</span><span class="n">URL</span><span class="o">:</span> <span class="n">NSURL</span><span class="p">(</span><span class="n">string</span><span class="o">:</span> <span class="s">"http://undefinedundefined/api/v2/purchases/validations/recurrents"</span><span class="p">)</span><span class="o">!</span><span class="p">,</span>  
+                                        <span class="n">cachePolicy</span><span class="o">:</span> <span class="p">.</span><span class="n">UseProtocolCachePolicy</span><span class="p">,</span>  
+                                    <span class="n">timeoutInterval</span><span class="o">:</span> <span class="mi">10</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span>  
+<span class="n">request</span><span class="p">.</span><span class="n">HTTPMethod</span> <span class="o">=</span> <span class="s">"POST"</span>  
+<span class="n">request</span><span class="p">.</span><span class="n">allHTTPHeaderFields</span> <span class="o">=</span> <span class="n">headers</span>  
+<span class="n">request</span><span class="p">.</span><span class="n">HTTPBody</span> <span class="o">=</span> <span class="n">postData</span>  
+
+<span class="n">let</span> <span class="n">session</span> <span class="o">=</span> <span class="n">NSURLSession</span><span class="p">.</span><span class="n">sharedSession</span><span class="p">()</span>  
+<span class="n">let</span> <span class="n">dataTask</span> <span class="o">=</span> <span class="n">session</span><span class="p">.</span><span class="n">dataTaskWithRequest</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">completionHandler</span><span class="o">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Void</span> <span class="n">in</span>  
+  <span class="k">if</span> <span class="p">(</span><span class="n">error</span> <span class="o">!=</span> <span class="n">nil</span><span class="p">)</span> <span class="p">{</span>  
+    <span class="n">println</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>  
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>  
+    <span class="n">let</span> <span class="n">httpResponse</span> <span class="o">=</span> <span class="n">response</span> <span class="n">as</span><span class="o">?</span> <span class="n">NSHTTPURLResponse</span>  
+    <span class="n">println</span><span class="p">(</span><span class="n">httpResponse</span><span class="p">)</span>  
+  <span class="p">}</span>  
+<span class="p">})</span>  
+
+<span class="n">dataTask</span><span class="p">.</span><span class="n">resume</span><span class="p">()</span>
+
+</pre>
+<pre class="highlight php"><span class="cp">&lt;?php</span>  
+
+<span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>  
+
+<span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>  
+  <span class="nx">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s2">"http://undefinedundefined/api/v2/purchases/validations/recurrents"</span><span class="p">,</span>  
+  <span class="nx">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>  
+  <span class="nx">CURLOPT_ENCODING</span> <span class="o">=&gt;</span> <span class="s2">""</span><span class="p">,</span>  
+  <span class="nx">CURLOPT_MAXREDIRS</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>  
+  <span class="nx">CURLOPT_TIMEOUT</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span>  
+  <span class="nx">CURLOPT_HTTP_VERSION</span> <span class="o">=&gt;</span> <span class="nx">CURL_HTTP_VERSION_1_1</span><span class="p">,</span>  
+  <span class="nx">CURLOPT_CUSTOMREQUEST</span> <span class="o">=&gt;</span> <span class="s2">"POST"</span><span class="p">,</span>  
+  <span class="nx">CURLOPT_POSTFIELDS</span> <span class="o">=&gt;</span> <span class="s2">"{\\"</span><span class="nx">transactionRef\\</span><span class="s2">":</span><span class="se">\\</span><span class="s2">"</span><span class="o">&lt;</span><span class="nx">ADD</span> <span class="nx">STRING</span> <span class="nx">VALUE</span><span class="o">&gt;</span><span class="nx">\\</span><span class="s2">",</span><span class="se">\\</span><span class="s2">"</span><span class="nx">authData\\</span><span class="s2">":</span><span class="se">\\</span><span class="s2">"</span><span class="o">&lt;</span><span class="nx">ADD</span> <span class="nx">STRING</span> <span class="nx">VALUE</span><span class="o">&gt;</span><span class="nx">\\</span><span class="s2">"}"</span><span class="p">,</span>  
+  <span class="nx">CURLOPT_HTTPHEADER</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>  
+    <span class="s2">"accept: text/plain"</span><span class="p">,</span>  
+    <span class="s2">"authkeyversion: SOME_STRING_VALUE"</span><span class="p">,</span>  
+    <span class="s2">"authorization: SOME_STRING_VALUE"</span><span class="p">,</span>  
+    <span class="s2">"content-type: SOME_STRING_VALUE"</span><span class="p">,</span>  
+    <span class="s2">"nonce: SOME_STRING_VALUE"</span><span class="p">,</span>  
+    <span class="s2">"signature: SOME_STRING_VALUE"</span><span class="p">,</span>  
+    <span class="s2">"signaturemethod: SOME_STRING_VALUE"</span><span class="p">,</span>  
+    <span class="s2">"timestamp: SOME_STRING_VALUE"</span>  
+  <span class="p">),</span>  
+<span class="p">));</span>  
+
+<span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>  
+<span class="nv">$err</span> <span class="o">=</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>  
+
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>  
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$err</span><span class="p">)</span> <span class="p">{</span>  
+  <span class="k">echo</span> <span class="s2">"cURL Error #:"</span> <span class="o">.</span> <span class="nv">$err</span><span class="p">;</span>  
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>  
+  <span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>  
+<span class="p">}</span>
+
+</pre>
+<pre class="highlight csharp"><span class="n">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"http://undefinedundefined/api/v2/purchases/validations/recurrents"</span><span class="p">);</span>  
+<span class="n">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>  
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"authkeyversion"</span><span class="p">,</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">);</span>  
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"signaturemethod"</span><span class="p">,</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">);</span>  
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"signature"</span><span class="p">,</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">);</span>  
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"nonce"</span><span class="p">,</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">);</span>  
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"timestamp"</span><span class="p">,</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">);</span>  
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"authorization"</span><span class="p">,</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">);</span>  
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">);</span>  
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"accept"</span><span class="p">,</span> <span class="s">"text/plain"</span><span class="p">);</span>  
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"SOME_STRING_VALUE"</span><span class="p">,</span> <span class="s">"{\\"</span><span class="n">transactionRef</span><span class="err">\\</span><span class="s">":\\"</span><span class="p">&lt;</span><span class="n">ADD</span> <span class="n">STRING</span> <span class="n">VALUE</span><span class="p">&gt;</span><span class="err">\\</span><span class="s">",\\"</span><span class="n">authData</span><span class="err">\\</span><span class="s">":\\"</span><span class="p">&lt;</span><span class="n">ADD</span> <span class="n">STRING</span> <span class="n">VALUE</span><span class="p">&gt;</span><span class="err">\\</span><span class="s">"}"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>  
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+
+</pre>
 <pre class="highlight go"><span class="k">package</span><span class="x"> </span><span class="n">main</span><span class="x">
 
 </span><span class="k">import</span><span class="x"> </span><span class="p">(</span><span class="x">

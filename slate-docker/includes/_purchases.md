@@ -3,11 +3,153 @@
 
 This holds APIs for all purchase and payment related endpoints covering the following post payment processes involving OTP and Pin processing.
 
-## Basic Purchase
+## Basic Purchase[V3]
 
 <a id="opIdPOST_api-v3-purchases"></a>
 
 > Code samples
+
+```csharp
+var client = new RestClient("http://undefinedundefined/api/v3/purchases");  
+var request = new RestRequest(Method.POST);  
+request.AddHeader("authkeyversion", "SOME_STRING_VALUE");  
+request.AddHeader("signaturemethod", "SOME_STRING_VALUE");  
+request.AddHeader("signature", "SOME_STRING_VALUE");  
+request.AddHeader("nonce", "SOME_STRING_VALUE");  
+request.AddHeader("timestamp", "SOME_STRING_VALUE");  
+request.AddHeader("authorization", "SOME_STRING_VALUE");  
+request.AddHeader("content-type", "SOME_STRING_VALUE");  
+request.AddHeader("accept", "text/plain");  
+request.AddParameter("SOME_STRING_VALUE", "{\\"customerId\\":\\"<ADD STRING VALUE>\\",\\"amount\\":\\"<ADD STRING VALUE>\\",\\"authData\\":\\"<ADD STRING VALUE>\\",\\"currency\\":\\"<ADD STRING VALUE>\\",\\"transactionRef\\":\\"<ADD STRING VALUE>\\"}", ParameterType.RequestBody);  
+IRestResponse response = client.Execute(request);
+
+```
+
+
+```php
+<?php  
+  
+$curl = curl_init();  
+  
+curl_setopt_array($curl, array(  
+  CURLOPT_URL => "http://undefinedundefined/api/v3/purchases",  
+  CURLOPT_RETURNTRANSFER => true,  
+  CURLOPT_ENCODING => "",  
+  CURLOPT_MAXREDIRS => 10,  
+  CURLOPT_TIMEOUT => 30,  
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,  
+  CURLOPT_CUSTOMREQUEST => "POST",  
+  CURLOPT_POSTFIELDS => "{\\"customerId\\":\\"<ADD STRING VALUE>\\",\\"amount\\":\\"<ADD STRING VALUE>\\",\\"authData\\":\\"<ADD STRING VALUE>\\",\\"currency\\":\\"<ADD STRING VALUE>\\",\\"transactionRef\\":\\"<ADD STRING VALUE>\\"}",  
+  CURLOPT_HTTPHEADER => array(  
+    "accept: text/plain",  
+    "authkeyversion: SOME_STRING_VALUE",  
+    "authorization: SOME_STRING_VALUE",  
+    "content-type: SOME_STRING_VALUE",  
+    "nonce: SOME_STRING_VALUE",  
+    "signature: SOME_STRING_VALUE",  
+    "signaturemethod: SOME_STRING_VALUE",  
+    "timestamp: SOME_STRING_VALUE"  
+  ),  
+));  
+  
+$response = curl_exec($curl);  
+$err = curl_error($curl);  
+  
+curl_close($curl);  
+  
+if ($err) {  
+  echo "cURL Error #:" . $err;  
+} else {  
+  echo $response;  
+}
+
+```
+
+
+```objective_c
+#import <Foundation/Foundation.h>  
+  
+NSDictionary *headers = @{ @"accept": @"text/plain",  
+                           @"content-type": @"SOME_STRING_VALUE",  
+                           @"authorization": @"SOME_STRING_VALUE",  
+                           @"timestamp": @"SOME_STRING_VALUE",  
+                           @"nonce": @"SOME_STRING_VALUE",  
+                           @"signature": @"SOME_STRING_VALUE",  
+                           @"signaturemethod": @"SOME_STRING_VALUE",  
+                           @"authkeyversion": @"SOME_STRING_VALUE" };  
+NSDictionary *parameters = @{ @"customerId": @"<ADD STRING VALUE>",  
+                              @"amount": @"<ADD STRING VALUE>",  
+                              @"authData": @"<ADD STRING VALUE>",  
+                              @"currency": @"<ADD STRING VALUE>",  
+                              @"transactionRef": @"<ADD STRING VALUE>" };  
+  
+NSData *postData = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:nil];  
+  
+NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://undefinedundefined/api/v3/purchases"]  
+                                                       cachePolicy:NSURLRequestUseProtocolCachePolicy  
+                                                   timeoutInterval:10.0];  
+[request setHTTPMethod:@"POST"];  
+[request setAllHTTPHeaderFields:headers];  
+[request setHTTPBody:postData];  
+  
+NSURLSession *session = [NSURLSession sharedSession];  
+NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request  
+                                            completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {  
+                                                if (error) {  
+                                                    NSLog(@"%@", error);  
+                                                } else {  
+                                                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;  
+                                                    NSLog(@"%@", httpResponse);  
+                                                }  
+                                            }];  
+[dataTask resume];
+
+```
+
+
+```c
+import Foundation  
+  
+let headers = [  
+  "accept": "text/plain",  
+  "content-type": "SOME_STRING_VALUE",  
+  "authorization": "SOME_STRING_VALUE",  
+  "timestamp": "SOME_STRING_VALUE",  
+  "nonce": "SOME_STRING_VALUE",  
+  "signature": "SOME_STRING_VALUE",  
+  "signaturemethod": "SOME_STRING_VALUE",  
+  "authkeyversion": "SOME_STRING_VALUE"  
+]  
+let parameters = [  
+  "customerId": "<ADD STRING VALUE>",  
+  "amount": "<ADD STRING VALUE>",  
+  "authData": "<ADD STRING VALUE>",  
+  "currency": "<ADD STRING VALUE>",  
+  "transactionRef": "<ADD STRING VALUE>"  
+]  
+  
+let postData = NSJSONSerialization.dataWithJSONObject(parameters, options: nil, error: nil)  
+  
+var request = NSMutableURLRequest(URL: NSURL(string: "http://undefinedundefined/api/v3/purchases")!,  
+                                        cachePolicy: .UseProtocolCachePolicy,  
+                                    timeoutInterval: 10.0)  
+request.HTTPMethod = "POST"  
+request.allHTTPHeaderFields = headers  
+request.HTTPBody = postData  
+  
+let session = NSURLSession.sharedSession()  
+let dataTask = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in  
+  if (error != nil) {  
+    println(error)  
+  } else {  
+    let httpResponse = response as? NSHTTPURLResponse  
+    println(httpResponse)  
+  }  
+})  
+  
+dataTask.resume()
+
+```
 
 
 
@@ -480,11 +622,152 @@ null
 This operation does not require authentication
 </aside>
 
-## POST_api-v2-purchases-recurrents
+## Recurrent Purchases [V2]
 
 <a id="opIdPOST_api-v2-purchases-recurrents"></a>
 
 > Code samples
+
+
+```objective_c
+#import <Foundation/Foundation.h>  
+  
+NSDictionary *headers = @{ @"accept": @"text/plain",  
+                           @"content-type": @"SOME_STRING_VALUE",  
+                           @"authorization": @"SOME_STRING_VALUE",  
+                           @"timestamp": @"SOME_STRING_VALUE",  
+                           @"nonce": @"SOME_STRING_VALUE",  
+                           @"signature": @"SOME_STRING_VALUE",  
+                           @"signaturemethod": @"SOME_STRING_VALUE",  
+                           @"authkeyversion": @"SOME_STRING_VALUE" };  
+NSDictionary *parameters = @{ @"customerId": @"<ADD STRING VALUE>",  
+                              @"amount": @"<ADD STRING VALUE>",  
+                              @"currency": @"<ADD STRING VALUE>",  
+                              @"token": @"<ADD STRING VALUE>",  
+                              @"tokenExpiryDate": @"<ADD STRING VALUE>",  
+                              @"transactionRef": @"<ADD STRING VALUE>" };  
+  
+NSData *postData = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:nil];  
+  
+NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://undefinedundefined/api/v2/purchases/recurrents"]  
+                                                       cachePolicy:NSURLRequestUseProtocolCachePolicy  
+                                                   timeoutInterval:10.0];  
+[request setHTTPMethod:@"POST"];  
+[request setAllHTTPHeaderFields:headers];  
+[request setHTTPBody:postData];  
+  
+NSURLSession *session = [NSURLSession sharedSession];  
+NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request  
+                                            completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {  
+                                                if (error) {  
+                                                    NSLog(@"%@", error);  
+                                                } else {  
+                                                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;  
+                                                    NSLog(@"%@", httpResponse);  
+                                                }  
+                                            }];  
+[dataTask resume];
+
+```
+
+```c
+import Foundation  
+  
+let headers = [  
+  "accept": "text/plain",  
+  "content-type": "SOME_STRING_VALUE",  
+  "authorization": "SOME_STRING_VALUE",  
+  "timestamp": "SOME_STRING_VALUE",  
+  "nonce": "SOME_STRING_VALUE",  
+  "signature": "SOME_STRING_VALUE",  
+  "signaturemethod": "SOME_STRING_VALUE",  
+  "authkeyversion": "SOME_STRING_VALUE"  
+]  
+let parameters = [  
+  "customerId": "<ADD STRING VALUE>",  
+  "amount": "<ADD STRING VALUE>",  
+  "currency": "<ADD STRING VALUE>",  
+  "token": "<ADD STRING VALUE>",  
+  "tokenExpiryDate": "<ADD STRING VALUE>",  
+  "transactionRef": "<ADD STRING VALUE>"  
+]  
+  
+let postData = NSJSONSerialization.dataWithJSONObject(parameters, options: nil, error: nil)  
+  
+var request = NSMutableURLRequest(URL: NSURL(string: "http://undefinedundefined/api/v2/purchases/recurrents")!,  
+                                        cachePolicy: .UseProtocolCachePolicy,  
+                                    timeoutInterval: 10.0)  
+request.HTTPMethod = "POST"  
+request.allHTTPHeaderFields = headers  
+request.HTTPBody = postData  
+  
+let session = NSURLSession.sharedSession()  
+let dataTask = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in  
+  if (error != nil) {  
+    println(error)  
+  } else {  
+    let httpResponse = response as? NSHTTPURLResponse  
+    println(httpResponse)  
+  }  
+})  
+  
+dataTask.resume()
+
+```
+
+```php
+<?php  
+  
+$curl = curl_init();  
+  
+curl_setopt_array($curl, array(  
+  CURLOPT_URL => "http://undefinedundefined/api/v2/purchases/recurrents",  
+  CURLOPT_RETURNTRANSFER => true,  
+  CURLOPT_ENCODING => "",  
+  CURLOPT_MAXREDIRS => 10,  
+  CURLOPT_TIMEOUT => 30,  
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,  
+  CURLOPT_CUSTOMREQUEST => "POST",  
+  CURLOPT_POSTFIELDS => "{\\"customerId\\":\\"<ADD STRING VALUE>\\",\\"amount\\":\\"<ADD STRING VALUE>\\",\\"currency\\":\\"<ADD STRING VALUE>\\",\\"token\\":\\"<ADD STRING VALUE>\\",\\"tokenExpiryDate\\":\\"<ADD STRING VALUE>\\",\\"transactionRef\\":\\"<ADD STRING VALUE>\\"}",  
+  CURLOPT_HTTPHEADER => array(  
+    "accept: text/plain",  
+    "authkeyversion: SOME_STRING_VALUE",  
+    "authorization: SOME_STRING_VALUE",  
+    "content-type: SOME_STRING_VALUE",  
+    "nonce: SOME_STRING_VALUE",  
+    "signature: SOME_STRING_VALUE",  
+    "signaturemethod: SOME_STRING_VALUE",  
+    "timestamp: SOME_STRING_VALUE"  
+  ),  
+));  
+  
+$response = curl_exec($curl);  
+$err = curl_error($curl);  
+  
+curl_close($curl);  
+  
+if ($err) {  
+  echo "cURL Error #:" . $err;  
+} else {  
+  echo $response;  
+}
+```
+
+```csharp
+var client = new RestClient("http://undefinedundefined/api/v2/purchases/recurrents");  
+var request = new RestRequest(Method.POST);  
+request.AddHeader("authkeyversion", "SOME_STRING_VALUE");  
+request.AddHeader("signaturemethod", "SOME_STRING_VALUE");  
+request.AddHeader("signature", "SOME_STRING_VALUE");  
+request.AddHeader("nonce", "SOME_STRING_VALUE");  
+request.AddHeader("timestamp", "SOME_STRING_VALUE");  
+request.AddHeader("authorization", "SOME_STRING_VALUE");  
+request.AddHeader("content-type", "SOME_STRING_VALUE");  
+request.AddHeader("accept", "text/plain");  
+request.AddParameter("SOME_STRING_VALUE", "{\\"customerId\\":\\"<ADD STRING VALUE>\\",\\"amount\\":\\"<ADD STRING VALUE>\\",\\"currency\\":\\"<ADD STRING VALUE>\\",\\"token\\":\\"<ADD STRING VALUE>\\",\\"tokenExpiryDate\\":\\"<ADD STRING VALUE>\\",\\"transactionRef\\":\\"<ADD STRING VALUE>\\"}", ParameterType.RequestBody);  
+IRestResponse response = client.Execute(request);
+
+```
 
 ```go
 package main
