@@ -14,7 +14,7 @@
 NSDictionary *headers = @{ @"accept": @"application/x-www-form-urlencoded",  
                            @"content-type": @"SOME_STRING_VALUE" };  
   
-NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://undefinedundefined/V3DSStart?osb=visa-3&VAA=B"]  
+NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"/V3DSStart?osb=visa-3&VAA=B"]  
                                                        cachePolicy:NSURLRequestUseProtocolCachePolicy  
                                                    timeoutInterval:10.0];  
 [request setHTTPMethod:@"POST"];  
@@ -42,7 +42,7 @@ let headers = [
   "content-type": "SOME_STRING_VALUE"  
 ]  
   
-var request = NSMutableURLRequest(URL: NSURL(string: "http://undefinedundefined/V3DSStart?osb=visa-3&VAA=B")!,  
+var request = NSMutableURLRequest(URL: NSURL(string: "/V3DSStart?osb=visa-3&VAA=B")!,  
                                         cachePolicy: .UseProtocolCachePolicy,  
                                     timeoutInterval: 10.0)  
 request.HTTPMethod = "POST"  
@@ -62,7 +62,7 @@ dataTask.resume()
 ```
 
 ```csharp
-var client = new RestClient("http://undefinedundefined/V3DSStart?osb=visa-3&VAA=B");  
+var client = new RestClient("/V3DSStart?osb=visa-3&VAA=B");  
 var request = new RestRequest(Method.POST);  
 request.AddHeader("content-type", "SOME_STRING_VALUE");  
 request.AddHeader("accept", "application/x-www-form-urlencoded");  
@@ -76,7 +76,7 @@ IRestResponse response = client.Execute(request);
 $curl = curl_init();  
   
 curl_setopt_array($curl, array(  
-  CURLOPT_URL => "http://undefinedundefined/V3DSStart?osb=visa-3&VAA=B",  
+  CURLOPT_URL => "/V3DSStart?osb=visa-3&VAA=B",  
   CURLOPT_RETURNTRANSFER => true,  
   CURLOPT_ENCODING => "",  
   CURLOPT_MAXREDIRS => 10,  

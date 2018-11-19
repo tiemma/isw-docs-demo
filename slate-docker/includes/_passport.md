@@ -6,6 +6,61 @@
 
 > Code samples
 
+```objective_c
+#import <Foundation/Foundation.h>  
+  
+NSDictionary *headers = @{ @"accept": @"application/x-www-form-urlencoded",  
+                           @"content-type": @"SOME_STRING_VALUE",  
+                           @"authorization": @"SOME_STRING_VALUE" };  
+  
+NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"/passport/oauth/token"]  
+                                                       cachePolicy:NSURLRequestUseProtocolCachePolicy  
+                                                   timeoutInterval:10.0];  
+[request setHTTPMethod:@"POST"];  
+[request setAllHTTPHeaderFields:headers];  
+  
+NSURLSession *session = [NSURLSession sharedSession];  
+NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request  
+                                            completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {  
+                                                if (error) {  
+                                                    NSLog(@"%@", error);  
+                                                } else {  
+                                                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;  
+                                                    NSLog(@"%@", httpResponse);  
+                                                }  
+                                            }];  
+[dataTask resume];
+
+```
+
+```c
+import Foundation  
+  
+let headers = [  
+  "accept": "application/x-www-form-urlencoded",  
+  "content-type": "SOME_STRING_VALUE",  
+  "authorization": "SOME_STRING_VALUE"  
+]  
+  
+var request = NSMutableURLRequest(URL: NSURL(string: "/passport/oauth/token")!,  
+                                        cachePolicy: .UseProtocolCachePolicy,  
+                                    timeoutInterval: 10.0)  
+request.HTTPMethod = "POST"  
+request.allHTTPHeaderFields = headers  
+  
+let session = NSURLSession.sharedSession()  
+let dataTask = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in  
+  if (error != nil) {  
+    println(error)  
+  } else {  
+    let httpResponse = response as? NSHTTPURLResponse  
+    println(httpResponse)  
+  }  
+})  
+  
+dataTask.resume()
+```
+
 
 ```php
 
@@ -14,7 +69,7 @@
 $curl = curl_init();  
   
 curl_setopt_array($curl, array(  
-  CURLOPT_URL => "http://undefinedundefined/passport/oauth/token",  
+  CURLOPT_URL => "/passport/oauth/token",  
   CURLOPT_RETURNTRANSFER => true,  
   CURLOPT_ENCODING => "",  
   CURLOPT_MAXREDIRS => 10,  
@@ -41,7 +96,7 @@ if ($err) {
 ```
 
 ```csharp
-var client = new RestClient("http://undefinedundefined/passport/oauth/token");  
+var client = new RestClient("/passport/oauth/token");  
 var request = new RestRequest(Method.POST);  
 request.AddHeader("authorization", "SOME_STRING_VALUE");  
 request.AddHeader("content-type", "SOME_STRING_VALUE");  

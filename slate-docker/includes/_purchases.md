@@ -10,7 +10,7 @@ This holds APIs for all purchase and payment related endpoints covering the foll
 > Code samples
 
 ```csharp
-var client = new RestClient("http://undefinedundefined/api/v3/purchases");  
+var client = new RestClient("/api/v3/purchases");  
 var request = new RestRequest(Method.POST);  
 request.AddHeader("authkeyversion", "SOME_STRING_VALUE");  
 request.AddHeader("signaturemethod", "SOME_STRING_VALUE");  
@@ -32,7 +32,7 @@ IRestResponse response = client.Execute(request);
 $curl = curl_init();  
   
 curl_setopt_array($curl, array(  
-  CURLOPT_URL => "http://undefinedundefined/api/v3/purchases",  
+  CURLOPT_URL => "/api/v3/purchases",  
   CURLOPT_RETURNTRANSFER => true,  
   CURLOPT_ENCODING => "",  
   CURLOPT_MAXREDIRS => 10,  
@@ -85,7 +85,7 @@ NSDictionary *parameters = @{ @"customerId": @"<ADD STRING VALUE>",
   
 NSData *postData = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:nil];  
   
-NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://undefinedundefined/api/v3/purchases"]  
+NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"/api/v3/purchases"]  
                                                        cachePolicy:NSURLRequestUseProtocolCachePolicy  
                                                    timeoutInterval:10.0];  
 [request setHTTPMethod:@"POST"];  
@@ -130,7 +130,7 @@ let parameters = [
   
 let postData = NSJSONSerialization.dataWithJSONObject(parameters, options: nil, error: nil)  
   
-var request = NSMutableURLRequest(URL: NSURL(string: "http://undefinedundefined/api/v3/purchases")!,  
+var request = NSMutableURLRequest(URL: NSURL(string: "/api/v3/purchases")!,  
                                         cachePolicy: .UseProtocolCachePolicy,  
                                     timeoutInterval: 10.0)  
 request.HTTPMethod = "POST"  
@@ -340,7 +340,7 @@ NSDictionary *headers = @{ @"accept": @"text/plain",
                            @"signaturemethod": @"SOME_STRING_VALUE",  
                            @"authkeyversion": @"SOME_STRING_VALUE" };  
   
-NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://undefinedundefined/api/v3/purchases"]  
+NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"/api/v3/purchases"]  
                                                        cachePolicy:NSURLRequestUseProtocolCachePolicy  
                                                    timeoutInterval:10.0];  
 [request setHTTPMethod:@"GET"];  
@@ -377,7 +377,7 @@ let headers = [
   "authkeyversion": "SOME_STRING_VALUE"  
 ]  
   
-var request = NSMutableURLRequest(URL: NSURL(string: "http://undefinedundefined/api/v3/purchases")!,  
+var request = NSMutableURLRequest(URL: NSURL(string: "/api/v3/purchases")!,  
                                         cachePolicy: .UseProtocolCachePolicy,  
                                     timeoutInterval: 10.0)  
 request.HTTPMethod = "GET"  
@@ -402,7 +402,7 @@ dataTask.resume()
 $curl = curl_init();  
   
 curl_setopt_array($curl, array(  
-  CURLOPT_URL => "http://undefinedundefined/api/v3/purchases",  
+  CURLOPT_URL => "/api/v3/purchases",  
   CURLOPT_RETURNTRANSFER => true,  
   CURLOPT_ENCODING => "",  
   CURLOPT_MAXREDIRS => 10,  
@@ -438,7 +438,7 @@ if ($err) {
 ```
 
 ```csharp
-var client = new RestClient("http://undefinedundefined/api/v3/purchases");  
+var client = new RestClient("/api/v3/purchases");  
 var request = new RestRequest(Method.GET);  
 request.AddHeader("authkeyversion", "SOME_STRING_VALUE");  
 request.AddHeader("signaturemethod", "SOME_STRING_VALUE");  
@@ -649,7 +649,7 @@ NSDictionary *parameters = @{ @"customerId": @"<ADD STRING VALUE>",
   
 NSData *postData = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:nil];  
   
-NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://undefinedundefined/api/v2/purchases/recurrents"]  
+NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"/api/v2/purchases/recurrents"]  
                                                        cachePolicy:NSURLRequestUseProtocolCachePolicy  
                                                    timeoutInterval:10.0];  
 [request setHTTPMethod:@"POST"];  
@@ -694,7 +694,7 @@ let parameters = [
   
 let postData = NSJSONSerialization.dataWithJSONObject(parameters, options: nil, error: nil)  
   
-var request = NSMutableURLRequest(URL: NSURL(string: "http://undefinedundefined/api/v2/purchases/recurrents")!,  
+var request = NSMutableURLRequest(URL: NSURL(string: "/api/v2/purchases/recurrents")!,  
                                         cachePolicy: .UseProtocolCachePolicy,  
                                     timeoutInterval: 10.0)  
 request.HTTPMethod = "POST"  
@@ -721,7 +721,7 @@ dataTask.resume()
 $curl = curl_init();  
   
 curl_setopt_array($curl, array(  
-  CURLOPT_URL => "http://undefinedundefined/api/v2/purchases/recurrents",  
+  CURLOPT_URL => "/api/v2/purchases/recurrents",  
   CURLOPT_RETURNTRANSFER => true,  
   CURLOPT_ENCODING => "",  
   CURLOPT_MAXREDIRS => 10,  
@@ -754,7 +754,7 @@ if ($err) {
 ```
 
 ```csharp
-var client = new RestClient("http://undefinedundefined/api/v2/purchases/recurrents");  
+var client = new RestClient("/api/v2/purchases/recurrents");  
 var request = new RestRequest(Method.POST);  
 request.AddHeader("authkeyversion", "SOME_STRING_VALUE");  
 request.AddHeader("signaturemethod", "SOME_STRING_VALUE");  

@@ -13,7 +13,7 @@
 $curl = curl_init();  
   
 curl_setopt_array($curl, array(  
-  CURLOPT_URL => "http://undefinedundefined/collections/api/v1/pay/cardinalCallBack",  
+  CURLOPT_URL => "/collections/api/v1/pay/cardinalCallBack",  
   CURLOPT_RETURNTRANSFER => true,  
   CURLOPT_ENCODING => "",  
   CURLOPT_MAXREDIRS => 10,  
@@ -52,7 +52,7 @@ NSDictionary *headers = @{ @"accept": @"application/x-www-form-urlencoded",
                            @"content-type": @"SOME_STRING_VALUE",  
                            @"user-agent": @"SOME_STRING_VALUE" };  
   
-NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://undefinedundefined/collections/api/v1/pay/cardinalCallBack"]  
+NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"/collections/api/v1/pay/cardinalCallBack"]  
                                                        cachePolicy:NSURLRequestUseProtocolCachePolicy  
                                                    timeoutInterval:10.0];  
 [request setHTTPMethod:@"POST"];  
@@ -85,7 +85,7 @@ let headers = [
   "user-agent": "SOME_STRING_VALUE"  
 ]  
   
-var request = NSMutableURLRequest(URL: NSURL(string: "http://undefinedundefined/collections/api/v1/pay/cardinalCallBack")!,  
+var request = NSMutableURLRequest(URL: NSURL(string: "/collections/api/v1/pay/cardinalCallBack")!,  
                                         cachePolicy: .UseProtocolCachePolicy,  
                                     timeoutInterval: 10.0)  
 request.HTTPMethod = "POST"  
@@ -106,7 +106,7 @@ dataTask.resume()
 ```
 
 ```csharp
-var client = new RestClient("http://undefinedundefined/collections/api/v1/pay/cardinalCallBack");  
+var client = new RestClient("/collections/api/v1/pay/cardinalCallBack");  
 var request = new RestRequest(Method.POST);  
 request.AddHeader("user-agent", "SOME_STRING_VALUE");  
 request.AddHeader("content-type", "SOME_STRING_VALUE");  
@@ -288,7 +288,7 @@ This operation does not require authentication
 > Code samples
 
 ```csharp
-var client = new RestClient("http://undefinedundefined/collections/api/v1/gettransaction.json?getacquirerdata=true&transactionreference=%3C%3CtransactionRef%3E%3E&amount=66666&merchantcode=MX187");  
+var client = new RestClient("/collections/api/v1/gettransaction.json?getacquirerdata=true&transactionreference=%3C%3CtransactionRef%3E%3E&amount=66666&merchantcode=MX187");  
 var request = new RestRequest(Method.GET);  
 request.AddHeader("accept", "text/plain");  
 IRestResponse response = client.Execute(request);
@@ -300,7 +300,7 @@ IRestResponse response = client.Execute(request);
   
 NSDictionary *headers = @{ @"accept": @"text/plain" };  
   
-NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://undefinedundefined/collections/api/v1/gettransaction.json?getacquirerdata=true&transactionreference=%3C%3CtransactionRef%3E%3E&amount=66666&merchantcode=MX187"]  
+NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"/collections/api/v1/gettransaction.json?getacquirerdata=true&transactionreference=%3C%3CtransactionRef%3E%3E&amount=66666&merchantcode=MX187"]  
                                                        cachePolicy:NSURLRequestUseProtocolCachePolicy  
                                                    timeoutInterval:10.0];  
 [request setHTTPMethod:@"GET"];  
@@ -324,7 +324,7 @@ import Foundation
   
 let headers = ["accept": "text/plain"]  
   
-var request = NSMutableURLRequest(URL: NSURL(string: "http://undefinedundefined/collections/api/v1/gettransaction.json?getacquirerdata=true&transactionreference=%3C%3CtransactionRef%3E%3E&amount=66666&merchantcode=MX187")!,  
+var request = NSMutableURLRequest(URL: NSURL(string: "/collections/api/v1/gettransaction.json?getacquirerdata=true&transactionreference=%3C%3CtransactionRef%3E%3E&amount=66666&merchantcode=MX187")!,  
                                         cachePolicy: .UseProtocolCachePolicy,  
                                     timeoutInterval: 10.0)  
 request.HTTPMethod = "GET"  
@@ -349,7 +349,7 @@ dataTask.resume()
 $curl = curl_init();  
   
 curl_setopt_array($curl, array(  
-  CURLOPT_URL => "http://undefinedundefined/collections/api/v1/gettransaction.json?getacquirerdata=true&transactionreference=%3C%3CtransactionRef%3E%3E&amount=66666&merchantcode=MX187",  
+  CURLOPT_URL => "/collections/api/v1/gettransaction.json?getacquirerdata=true&transactionreference=%3C%3CtransactionRef%3E%3E&amount=66666&merchantcode=MX187",  
   CURLOPT_RETURNTRANSFER => true,  
   CURLOPT_ENCODING => "",  
   CURLOPT_MAXREDIRS => 10,  

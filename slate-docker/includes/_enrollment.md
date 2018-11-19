@@ -25,7 +25,7 @@ NSDictionary *parameters = @{ @"paymentId": @"<ADD STRING VALUE>",
   
 NSData *postData = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:nil];  
   
-NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://undefinedundefined/api/v3/purchases/otps/enrollments"]  
+NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"/api/v3/purchases/otps/enrollments"]  
                                                        cachePolicy:NSURLRequestUseProtocolCachePolicy  
                                                    timeoutInterval:10.0];  
 [request setHTTPMethod:@"POST"];  
@@ -67,7 +67,7 @@ let parameters = [
   
 let postData = NSJSONSerialization.dataWithJSONObject(parameters, options: nil, error: nil)  
   
-var request = NSMutableURLRequest(URL: NSURL(string: "http://undefinedundefined/api/v3/purchases/otps/enrollments")!,  
+var request = NSMutableURLRequest(URL: NSURL(string: "/api/v3/purchases/otps/enrollments")!,  
                                         cachePolicy: .UseProtocolCachePolicy,  
                                     timeoutInterval: 10.0)  
 request.HTTPMethod = "POST"  
@@ -94,7 +94,7 @@ dataTask.resume()
 $curl = curl_init();  
   
 curl_setopt_array($curl, array(  
-  CURLOPT_URL => "http://undefinedundefined/api/v3/purchases/otps/enrollments",  
+  CURLOPT_URL => "/api/v3/purchases/otps/enrollments",  
   CURLOPT_RETURNTRANSFER => true,  
   CURLOPT_ENCODING => "",  
   CURLOPT_MAXREDIRS => 10,  
@@ -127,7 +127,7 @@ if ($err) {
 ```
 
 ```csharp
-var client = new RestClient("http://undefinedundefined/api/v3/purchases/otps/enrollments");  
+var client = new RestClient("/api/v3/purchases/otps/enrollments");  
 var request = new RestRequest(Method.POST);  
 request.AddHeader("authkeyversion", "SOME_STRING_VALUE");  
 request.AddHeader("signaturemethod", "SOME_STRING_VALUE");  
