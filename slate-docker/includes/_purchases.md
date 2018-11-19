@@ -3,6 +3,39 @@
 
 This holds APIs for all purchase and payment related endpoints covering the following post payment processes involving OTP and Pin processing.
 
+
+## Transaction References
+
+ <a id="transaction-references"></a>
+
+ > Implementation
+
+ ```javascript
+    JB-{{Insert Timestamp here}}-{{Transaction Type}}
+
+    Transaction can have the formats of either one declared below:
+
+    // For transactions that do not require OTP authentication
+    - NoOTP  
+
+    // For transactions that require OTP authentication
+    - OTPPurchase 
+
+    //For VISA transaction
+    - VISA 
+
+    //For enrolling cards to use OTP for authentication
+    - Enrol 
+
+
+    For example, JB-124334323-OTPPurchase
+ ```
+
+ This is used to state what type of transaction you'd be performing.
+
+ Generally, it has a format as shown on the other side.
+
+
 ## Basic Purchase[V3]
 
 <a id="opIdPOST_api-v3-purchases"></a>
@@ -303,7 +336,7 @@ This API manages an API transaction for performing debits on a user's card data.
 |amount|body|string|true|Debitable amount on the user side|
 |authData|body|string|true|Reference [here](#authdata) for details on generating the authData hash|
 |currency|body|string|true|Currency code for the transaction, for now use NGN |
-|transactionRef|body|string|true|These are used to specify the transaction type reference e.g OTP, NoOTP|
+|transactionRef|body|string|true|These are used to specify the transaction type reference e.g OTP, NoOTP. Kindly check for the documentation regarding this [here]()|
 
 > Example responses
 

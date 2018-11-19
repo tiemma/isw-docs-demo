@@ -2,6 +2,9 @@
 
 <h1 id="-default-notes"> Notes </h1>
 
+
+
+
 ## AuthData
 
 > Code Samples are in Java
@@ -50,14 +53,5 @@ The BouncyCastle library is required for this.
  For more information about these possibilities, please send an email to [ipgsupport@interswitchgroup.com](mailto:ipgsupport@interswitchgroup.com)
 
 
- ## Transaction References
 
- ```
-    JB-{{Insert Timestamp here}}-{{Transaction Type}}
 
-    
- ```
-
- This is used to state what type of transaction you'd be performing.
-
- Generally, it has a format taken 

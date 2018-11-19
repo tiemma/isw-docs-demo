@@ -207,16 +207,6 @@
 
 <p>For more information about these possibilities, please send an email to <a href="mailto:ipgsupport@interswitchgroup.com">ipgsupport@interswitchgroup.com</a></p>
 
-<p>## Transaction References</p>
-<pre class="highlight plaintext">    JB-{{Insert Timestamp here}}-{{Transaction Type}}
-
-
-</pre>
-
-<p>This is used to state what type of transaction you&rsquo;d be performing.</p>
-
-<p>Generally, it has a format taken </p>
-
           <h2 id='getting-a-bearer-token'>Getting a Bearer Token</h2>
 <p><a id="opIdPOST_passport-oauth-token"></a></p>
 
@@ -607,6 +597,35 @@ This operation requires authentication using the <strong><em>Basic Authorization
 
           <h1 id='purchases'>Purchases</h1>
 <p>This holds APIs for all purchase and payment related endpoints covering the following post payment processes involving OTP and Pin processing.</p>
+<h2 id='transaction-references'>Transaction References</h2>
+<p><a id="transaction-references"></a></p>
+
+<blockquote>
+<p>Implementation</p>
+</blockquote>
+<pre class="highlight javascript">    <span class="nx">JB</span><span class="o">-</span><span class="p">{{</span><span class="nx">Insert</span> <span class="nx">Timestamp</span> <span class="nx">here</span><span class="p">}}</span><span class="o">-</span><span class="p">{{</span><span class="nx">Transaction</span> <span class="nx">Type</span><span class="p">}}</span>
+
+    <span class="nx">Transaction</span> <span class="nx">can</span> <span class="nx">have</span> <span class="nx">the</span> <span class="nx">formats</span> <span class="nx">of</span> <span class="nx">either</span> <span class="nx">one</span> <span class="nx">declared</span> <span class="nx">below</span><span class="err">:</span>
+
+    <span class="c1">// For transactions that do not require OTP authentication
+</span>    <span class="o">-</span> <span class="nx">NoOTP</span>  
+
+    <span class="c1">// For transactions that require OTP authentication
+</span>    <span class="o">-</span> <span class="nx">OTPPurchase</span> 
+
+    <span class="c1">//For VISA transaction
+</span>    <span class="o">-</span> <span class="nx">VISA</span> 
+
+    <span class="c1">//For enrolling cards to use OTP for authentication
+</span>    <span class="o">-</span> <span class="nx">Enrol</span> 
+
+
+    <span class="nx">For</span> <span class="nx">example</span><span class="p">,</span> <span class="nx">JB</span><span class="o">-</span><span class="mi">124334323</span><span class="o">-</span><span class="nx">OTPPurchase</span>
+</pre>
+
+<p>This is used to state what type of transaction you&rsquo;d be performing.</p>
+
+<p>Generally, it has a format as shown on the other side.</p>
 <h2 id='basic-purchasev3'>Basic Purchase[V3]</h2>
 <p><a id="opIdPOST_api-v3-purchases"></a></p>
 
@@ -974,7 +993,7 @@ This operation requires authentication using the <strong><em>Basic Authorization
 <td>body</td>
 <td>string</td>
 <td>true</td>
-<td>These are used to specify the transaction type reference e.g OTP, NoOTP</td>
+<td>These are used to specify the transaction type reference e.g OTP, NoOTP. Kindly check for the documentation regarding this <a href="#">here</a></td>
 </tr>
 </tbody></table>
 
