@@ -280,27 +280,30 @@ p JSON.parse(result)
 
 */api/v3/purchases*
 
-null
+This API manages an API transaction for performing debits on a user's card data. 
 
 > Body parameter
 
-<h3 id="post_api-v3-purchases-parameters">Parameters</h3>
+<h3 id="post_api-v3-purchases-parameters">Headers</h3>
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|Content-Type|header|string|false|none|
-|Authorization|header|string|false|none|
-|Timestamp|header|string|false|none|
-|Nonce|header|string|false|none|
-|Signature|header|string|false|none|
-|SignatureMethod|header|string|false|none|
-|AuthKeyVersion|header|string|false|none|
-|body|body|object|false|none|
-|» customerId|body|string|false|none|
-|» amount|body|string|false|none|
-|» authData|body|string|false|none|
-|» currency|body|string|false|none|
-|» transactionRef|body|string|false|none|
+|Content-Type|header|string|true|application/json|
+|Authorization|header|string|true|Reference [here](#getting-a-bearer-token) to get started on setting up a Bearer Authorization token|
+|Timestamp|header|string|true|Time the transaction was performed|
+|Nonce|header|string|true|none|
+|Signature|header|string|true|Reference [here](#signatures) for more info|
+|SignatureMethod|header|string|true|none|
+|AuthKeyVersion|header|string|true|By default, ***1.0***|
+
+<h3 id="post_api-v3-purchases-parameters">Body Parameters</h3>
+|Parameter|In|Type|Required|Description|
+|---|---|---|---|---|
+|customerId|body|string|true|Identifier for the user e.g. email|
+|amount|body|string|true|Debitable amount on the user side|
+|authData|body|string|true|Reference [here](#authdata) for details on generating the authData hash|
+|currency|body|string|true|Currency code for the transaction, for now use NGN |
+|transactionRef|body|string|true|These are used to specify the transaction type reference e.g OTP, NoOTP|
 
 > Example responses
 

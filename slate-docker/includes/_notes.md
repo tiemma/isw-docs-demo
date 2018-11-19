@@ -48,3 +48,16 @@ The BouncyCastle library is required for this.
  You will also be provided with a public key exponent as well as a modulus.
 
  For more information about these possibilities, please send an email to [ipgsupport@interswitchgroup.com](mailto:ipgsupport@interswitchgroup.com)
+
+
+ ## Transaction References
+
+ ```
+    JB-{{Insert Timestamp here}}-{{Transaction Type}}
+
+    
+ ```
+
+ This is used to state what type of transaction you'd be performing.
+
+ Generally, it has a format taken 

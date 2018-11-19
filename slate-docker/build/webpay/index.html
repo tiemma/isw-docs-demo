@@ -207,6 +207,16 @@
 
 <p>For more information about these possibilities, please send an email to <a href="mailto:ipgsupport@interswitchgroup.com">ipgsupport@interswitchgroup.com</a></p>
 
+<p>## Transaction References</p>
+<pre class="highlight plaintext">    JB-{{Insert Timestamp here}}-{{Transaction Type}}
+
+
+</pre>
+
+<p>This is used to state what type of transaction you&rsquo;d be performing.</p>
+
+<p>Generally, it has a format taken </p>
+
           <h2 id='getting-a-bearer-token'>Getting a Bearer Token</h2>
 <p><a id="opIdPOST_passport-oauth-token"></a></p>
 
@@ -852,13 +862,13 @@ This operation requires authentication using the <strong><em>Basic Authorization
 
 <p><em>/api/v3/purchases</em></p>
 
-<p>null</p>
+<p>This API manages an API transaction for performing debits on a user&rsquo;s card data. </p>
 
 <blockquote>
 <p>Body parameter</p>
 </blockquote>
 
-<h3 id="post_api-v3-purchases-parameters">Parameters</h3>
+<h3 id="post_api-v3-purchases-parameters">Headers</h3>
 
 <table><thead>
 <tr>
@@ -873,92 +883,98 @@ This operation requires authentication using the <strong><em>Basic Authorization
 <td>Content-Type</td>
 <td>header</td>
 <td>string</td>
-<td>false</td>
-<td>none</td>
+<td>true</td>
+<td>application/json</td>
 </tr>
 <tr>
 <td>Authorization</td>
 <td>header</td>
 <td>string</td>
-<td>false</td>
-<td>none</td>
+<td>true</td>
+<td>Reference <a href="#getting-a-bearer-token">here</a> to get started on setting up a Bearer Authorization token</td>
 </tr>
 <tr>
 <td>Timestamp</td>
 <td>header</td>
 <td>string</td>
-<td>false</td>
-<td>none</td>
+<td>true</td>
+<td>Time the transaction was performed</td>
 </tr>
 <tr>
 <td>Nonce</td>
 <td>header</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>none</td>
 </tr>
 <tr>
 <td>Signature</td>
 <td>header</td>
 <td>string</td>
-<td>false</td>
-<td>none</td>
+<td>true</td>
+<td>Reference <a href="#signatures">here</a> for more info</td>
 </tr>
 <tr>
 <td>SignatureMethod</td>
 <td>header</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>none</td>
 </tr>
 <tr>
 <td>AuthKeyVersion</td>
 <td>header</td>
 <td>string</td>
-<td>false</td>
-<td>none</td>
+<td>true</td>
+<td>By default, <strong><em>1.0</em></strong></td>
 </tr>
+</tbody></table>
+
+<h3 id="post_api-v3-purchases-parameters">Body Parameters</h3>
+
+<table><thead>
 <tr>
-<td>body</td>
-<td>body</td>
-<td>object</td>
-<td>false</td>
-<td>none</td>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
 </tr>
+</thead><tbody>
 <tr>
-<td>» customerId</td>
+<td>customerId</td>
 <td>body</td>
 <td>string</td>
-<td>false</td>
-<td>none</td>
+<td>true</td>
+<td>Identifier for the user e.g. email</td>
 </tr>
 <tr>
-<td>» amount</td>
+<td>amount</td>
 <td>body</td>
 <td>string</td>
-<td>false</td>
-<td>none</td>
+<td>true</td>
+<td>Debitable amount on the user side</td>
 </tr>
 <tr>
-<td>» authData</td>
+<td>authData</td>
 <td>body</td>
 <td>string</td>
-<td>false</td>
-<td>none</td>
+<td>true</td>
+<td>Reference <a href="#authdata">here</a> for details on generating the authData hash</td>
 </tr>
 <tr>
-<td>» currency</td>
+<td>currency</td>
 <td>body</td>
 <td>string</td>
-<td>false</td>
-<td>none</td>
+<td>true</td>
+<td>Currency code for the transaction, for now use NGN</td>
 </tr>
 <tr>
-<td>» transactionRef</td>
+<td>transactionRef</td>
 <td>body</td>
 <td>string</td>
-<td>false</td>
-<td>none</td>
+<td>true</td>
+<td>These are used to specify the transaction type reference e.g OTP, NoOTP</td>
 </tr>
 </tbody></table>
 
