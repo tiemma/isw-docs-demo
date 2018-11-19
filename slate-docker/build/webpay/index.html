@@ -603,24 +603,24 @@ This operation requires authentication using the <strong><em>Basic Authorization
 <blockquote>
 <p>Implementation</p>
 </blockquote>
-<pre class="highlight javascript">    <span class="nx">JB</span><span class="o">-</span><span class="p">{{</span><span class="nx">Insert</span> <span class="nx">Timestamp</span> <span class="nx">here</span><span class="p">}}</span><span class="o">-</span><span class="p">{{</span><span class="nx">Transaction</span> <span class="nx">Type</span><span class="p">}}</span>
+<pre class="highlight plaintext">    JB-{{Insert Timestamp here}}-{{Transaction Type}}
 
-    <span class="nx">Transaction</span> <span class="nx">can</span> <span class="nx">have</span> <span class="nx">the</span> <span class="nx">formats</span> <span class="nx">of</span> <span class="nx">either</span> <span class="nx">one</span> <span class="nx">declared</span> <span class="nx">below</span><span class="err">:</span>
+    Transaction can have the formats of either one of the types declared below:
 
-    <span class="c1">// For transactions that do not require OTP authentication
-</span>    <span class="o">-</span> <span class="nx">NoOTP</span>  
+    // For transactions that do not require OTP authentication
+    - NoOTP  
 
-    <span class="c1">// For transactions that require OTP authentication
-</span>    <span class="o">-</span> <span class="nx">OTPPurchase</span> 
+    // For transactions that require OTP authentication
+    - OTPPurchase 
 
-    <span class="c1">//For VISA transaction
-</span>    <span class="o">-</span> <span class="nx">VISA</span> 
+    //For VISA transaction
+    - VISA 
 
-    <span class="c1">//For enrolling cards to use OTP for authentication
-</span>    <span class="o">-</span> <span class="nx">Enrol</span> 
+    //For enrolling cards to use OTP for authentication
+    - Enrol 
 
 
-    <span class="nx">For</span> <span class="nx">example</span><span class="p">,</span> <span class="nx">JB</span><span class="o">-</span><span class="mi">124334323</span><span class="o">-</span><span class="nx">OTPPurchase</span>
+    For example, JB-124334323-OTPPurchase
 </pre>
 
 <p>This is used to state what type of transaction you&rsquo;d be performing.</p>
@@ -879,13 +879,20 @@ This operation requires authentication using the <strong><em>Basic Authorization
 
 <p><code class="prettyprint">POST /api/v3/purchases</code></p>
 
-<p><em>/api/v3/purchases</em></p>
-
 <p>This API manages an API transaction for performing debits on a user&rsquo;s card data. </p>
 
 <blockquote>
 <p>Body parameter</p>
 </blockquote>
+<pre class="highlight json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"customerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;&lt;USER_ID&gt;&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;&lt;AMOUNT&gt;&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"authData"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;&lt;AMOUNT&gt;&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NGN"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"transactionRef"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JB-{{Timestamp}}-NoOTP"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></pre>
 
 <h3 id="post_api-v3-purchases-parameters">Headers</h3>
 
@@ -938,7 +945,7 @@ This operation requires authentication using the <strong><em>Basic Authorization
 <td>header</td>
 <td>string</td>
 <td>true</td>
-<td>none</td>
+<td>The hashing method the signature is encoded in.</td>
 </tr>
 <tr>
 <td>AuthKeyVersion</td>
@@ -949,7 +956,7 @@ This operation requires authentication using the <strong><em>Basic Authorization
 </tr>
 </tbody></table>
 
-<h3 id="post_api-v3-purchases-parameters">Body Parameters</h3>
+<h3 id="post_api-v3-purchases-parameters">Request Body</h3>
 
 <table><thead>
 <tr>
@@ -993,17 +1000,15 @@ This operation requires authentication using the <strong><em>Basic Authorization
 <td>body</td>
 <td>string</td>
 <td>true</td>
-<td>These are used to specify the transaction type reference e.g OTP, NoOTP. Kindly check for the documentation regarding this <a href="#">here</a></td>
+<td>These are used to specify the transaction type reference e.g OTP, NoOTP. Kindly check for the documentation regarding this <a href="#transaction-references">here</a></td>
 </tr>
 </tbody></table>
 
 <blockquote>
 <p>Example responses</p>
-
-<p>default Response</p>
 </blockquote>
 
-<h3 id="post_api-v3-purchases-responses">Responses</h3>
+<h3 id="post_api-v3-purchases-responses">Response Body</h3>
 
 <table><thead>
 <tr>
@@ -1021,10 +1026,13 @@ This operation requires authentication using the <strong><em>Basic Authorization
 </tr>
 </tbody></table>
 
-<h3 id="post_api-v3-purchases-responseschema">Response Schema</h3>
-
-<p><aside class="success">
-This operation does not require authentication
+<p><aside class="warning">
+This operation requires the following details to be configured properly.
+<ol> 
+<li><a href="#authdata">Auth Data</a></li>
+<li> <a href="#opIdPOST_passport-oauth-token">Bearer Authorization</a> must have been obtained </li>
+<li> Ensure the right <a href="#transaction-references">transaction reference</a> is set to ensure post request authentication is properly continued </li>
+</ol>
 </aside></p>
 <h2 id='get_api-v3-purchases'>GET_api-v3-purchases</h2>
 <p><a id="opIdGET_api-v3-purchases"></a></p>
@@ -1070,8 +1078,7 @@ This operation does not require authentication
 <span class="n">let</span> <span class="n">headers</span> <span class="o">=</span> <span class="p">[</span>  
   <span class="s">"accept"</span><span class="o">:</span> <span class="s">"text/plain"</span><span class="p">,</span>  
   <span class="s">"amount"</span><span class="o">:</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">,</span>  
-  <span class="s">"transactionref"</span><span class="o">:</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">,</span>  
-  <span class="s">"-----------------------------------------------------------------------------------------------"</span><span class="o">:</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">,</span>  
+  <span class="s">"transactionref"</span><span class="o">:</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">,</span>   
   <span class="s">"content-type"</span><span class="o">:</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">,</span>  
   <span class="s">"authorization"</span><span class="o">:</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">,</span>  
   <span class="s">"timestamp"</span><span class="o">:</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">,</span>  
@@ -1111,8 +1118,7 @@ This operation does not require authentication
   <span class="nx">CURLOPT_TIMEOUT</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span>  
   <span class="nx">CURLOPT_HTTP_VERSION</span> <span class="o">=&gt;</span> <span class="nx">CURL_HTTP_VERSION_1_1</span><span class="p">,</span>  
   <span class="nx">CURLOPT_CUSTOMREQUEST</span> <span class="o">=&gt;</span> <span class="s2">"GET"</span><span class="p">,</span>  
-  <span class="nx">CURLOPT_HTTPHEADER</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>  
-    <span class="s2">"-----------------------------------------------------------------------------------------------: SOME_STRING_VALUE"</span><span class="p">,</span>  
+  <span class="nx">CURLOPT_HTTPHEADER</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>   
     <span class="s2">"accept: text/plain"</span><span class="p">,</span>  
     <span class="s2">"amount: SOME_STRING_VALUE"</span><span class="p">,</span>  
     <span class="s2">"authkeyversion: SOME_STRING_VALUE"</span><span class="p">,</span>  
@@ -1147,7 +1153,6 @@ This operation does not require authentication
 <span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"timestamp"</span><span class="p">,</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">);</span>  
 <span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"authorization"</span><span class="p">,</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">);</span>  
 <span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">);</span>  
-<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"-----------------------------------------------------------------------------------------------"</span><span class="p">,</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">);</span>  
 <span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"transactionref"</span><span class="p">,</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">);</span>  
 <span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"amount"</span><span class="p">,</span> <span class="s">"SOME_STRING_VALUE"</span><span class="p">);</span>  
 <span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"accept"</span><span class="p">,</span> <span class="s">"text/plain"</span><span class="p">);</span>  
@@ -1167,7 +1172,6 @@ This operation does not require authentication
         </span><span class="s">"Accept"</span><span class="o">:</span><span class="x"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"*/*"</span><span class="p">},</span><span class="x">
         </span><span class="s">"Amount"</span><span class="o">:</span><span class="x"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">" 666.66"</span><span class="p">},</span><span class="x">
         </span><span class="s">"transactionRef"</span><span class="o">:</span><span class="x"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">" &lt;&lt;transactionRef&gt;&gt;"</span><span class="p">},</span><span class="x">
-        </span><span class="s">"-----------------------------------------------------------------------------------------------"</span><span class="o">:</span><span class="x"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">" ---------------------------------------------------------------------------------------"</span><span class="p">},</span><span class="x">
         </span><span class="s">"Content-Type"</span><span class="o">:</span><span class="x"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">" application/json"</span><span class="p">},</span><span class="x">
         </span><span class="s">"Authorization"</span><span class="o">:</span><span class="x"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">" &lt;&lt;Access_token&gt;&gt;"</span><span class="p">},</span><span class="x">
         </span><span class="s">"Timestamp"</span><span class="o">:</span><span class="x"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">" &lt;&lt;Timestamp&gt;&gt;"</span><span class="p">},</span><span class="x">
@@ -1207,7 +1211,6 @@ This operation does not require authentication
   <span class="s1">'Accept'</span><span class="err">:</span><span class="s1">'*/*'</span><span class="p">,</span>
   <span class="s1">'Amount'</span><span class="err">:</span><span class="s1">' 666.66'</span><span class="p">,</span>
   <span class="s1">'transactionRef'</span><span class="err">:</span><span class="s1">' &lt;&lt;transactionRef&gt;&gt;'</span><span class="p">,</span>
-  <span class="s1">'-----------------------------------------------------------------------------------------------'</span><span class="err">:</span><span class="s1">' ---------------------------------------------------------------------------------------'</span><span class="p">,</span>
   <span class="s1">'Content-Type'</span><span class="err">:</span><span class="s1">' application/json'</span><span class="p">,</span>
   <span class="s1">'Authorization'</span><span class="err">:</span><span class="s1">' &lt;&lt;Access_token&gt;&gt;'</span><span class="p">,</span>
   <span class="s1">'Timestamp'</span><span class="err">:</span><span class="s1">' &lt;&lt;Timestamp&gt;&gt;'</span><span class="p">,</span>
@@ -1234,7 +1237,6 @@ This operation does not require authentication
   <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'*/*'</span><span class="p">,</span>
   <span class="s">'Amount'</span><span class="p">:</span> <span class="s">' 666.66'</span><span class="p">,</span>
   <span class="s">'transactionRef'</span><span class="p">:</span> <span class="s">' &lt;&lt;transactionRef&gt;&gt;'</span><span class="p">,</span>
-  <span class="s">'-----------------------------------------------------------------------------------------------'</span><span class="p">:</span> <span class="s">' ---------------------------------------------------------------------------------------'</span><span class="p">,</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">' application/json'</span><span class="p">,</span>
   <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">' &lt;&lt;Access_token&gt;&gt;'</span><span class="p">,</span>
   <span class="s">'Timestamp'</span><span class="p">:</span> <span class="s">' &lt;&lt;Timestamp&gt;&gt;'</span><span class="p">,</span>
@@ -1258,7 +1260,6 @@ This operation does not require authentication
   <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'*/*'</span><span class="p">,</span>
   <span class="s1">'Amount'</span> <span class="o">=&gt;</span> <span class="s1">' 666.66'</span><span class="p">,</span>
   <span class="s1">'transactionRef'</span> <span class="o">=&gt;</span> <span class="s1">' &lt;&lt;transactionRef&gt;&gt;'</span><span class="p">,</span>
-  <span class="s1">'-----------------------------------------------------------------------------------------------'</span> <span class="o">=&gt;</span> <span class="s1">' ---------------------------------------------------------------------------------------'</span><span class="p">,</span>
   <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">' application/json'</span><span class="p">,</span>
   <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">' &lt;&lt;Access_token&gt;&gt;'</span><span class="p">,</span>
   <span class="s1">'Timestamp'</span> <span class="o">=&gt;</span> <span class="s1">' &lt;&lt;Timestamp&gt;&gt;'</span><span class="p">,</span>
@@ -1277,8 +1278,6 @@ This operation does not require authentication
 </pre>
 
 <p><code class="prettyprint">GET /api/v3/purchases</code></p>
-
-<p><em>/api/v3/purchases</em></p>
 
 <p>null</p>
 

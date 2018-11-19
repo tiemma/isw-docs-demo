@@ -10,10 +10,10 @@ This holds APIs for all purchase and payment related endpoints covering the foll
 
  > Implementation
 
- ```javascript
+ ```
     JB-{{Insert Timestamp here}}-{{Transaction Type}}
 
-    Transaction can have the formats of either one declared below:
+    Transaction can have the formats of either one of the types declared below:
 
     // For transactions that do not require OTP authentication
     - NoOTP  
@@ -311,11 +311,20 @@ p JSON.parse(result)
 
 `POST /api/v3/purchases`
 
-*/api/v3/purchases*
-
 This API manages an API transaction for performing debits on a user's card data. 
 
 > Body parameter
+
+```
+{
+    "customerId": "<<USER_ID>>",
+    "amount": "<<AMOUNT>>",
+    "authData": "<<AMOUNT>>",
+    "currency": "NGN",
+    "transactionRef": "JB-{{Timestamp}}-NoOTP"
+}
+
+```
 
 <h3 id="post_api-v3-purchases-parameters">Headers</h3>
 
@@ -326,32 +335,33 @@ This API manages an API transaction for performing debits on a user's card data.
 |Timestamp|header|string|true|Time the transaction was performed|
 |Nonce|header|string|true|none|
 |Signature|header|string|true|Reference [here](#signatures) for more info|
-|SignatureMethod|header|string|true|none|
+|SignatureMethod|header|string|true|The hashing method the signature is encoded in.|
 |AuthKeyVersion|header|string|true|By default, ***1.0***|
 
-<h3 id="post_api-v3-purchases-parameters">Body Parameters</h3>
+<h3 id="post_api-v3-purchases-parameters">Request Body</h3>
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
 |customerId|body|string|true|Identifier for the user e.g. email|
 |amount|body|string|true|Debitable amount on the user side|
 |authData|body|string|true|Reference [here](#authdata) for details on generating the authData hash|
 |currency|body|string|true|Currency code for the transaction, for now use NGN |
-|transactionRef|body|string|true|These are used to specify the transaction type reference e.g OTP, NoOTP. Kindly check for the documentation regarding this [here]()|
+|transactionRef|body|string|true|These are used to specify the transaction type reference e.g OTP, NoOTP. Kindly check for the documentation regarding this [here](#transaction-references)|
 
 > Example responses
 
-> default Response
-
-<h3 id="post_api-v3-purchases-responses">Responses</h3>
+<h3 id="post_api-v3-purchases-responses">Response Body</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |default|Default|Default response|Inline|
 
-<h3 id="post_api-v3-purchases-responseschema">Response Schema</h3>
-
-<aside class="success">
-This operation does not require authentication
+<aside class="warning">
+This operation requires the following details to be configured properly.
+<ol> 
+<li>[Auth Data](#authdata)</li>
+<li> [Bearer Authorization](#opIdPOST_passport-oauth-token) must have been obtained </li>
+<li> Ensure the right [transaction reference](#transaction-references) is set to ensure post request authentication is properly continued </li>
+</ol>
 </aside>
 
 ## GET_api-v3-purchases
@@ -402,8 +412,7 @@ import Foundation
 let headers = [  
   "accept": "text/plain",  
   "amount": "SOME_STRING_VALUE",  
-  "transactionref": "SOME_STRING_VALUE",  
-  "-----------------------------------------------------------------------------------------------": "SOME_STRING_VALUE",  
+  "transactionref": "SOME_STRING_VALUE",   
   "content-type": "SOME_STRING_VALUE",  
   "authorization": "SOME_STRING_VALUE",  
   "timestamp": "SOME_STRING_VALUE",  
@@ -445,8 +454,7 @@ curl_setopt_array($curl, array(
   CURLOPT_TIMEOUT => 30,  
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,  
   CURLOPT_CUSTOMREQUEST => "GET",  
-  CURLOPT_HTTPHEADER => array(  
-    "-----------------------------------------------------------------------------------------------: SOME_STRING_VALUE",  
+  CURLOPT_HTTPHEADER => array(   
     "accept: text/plain",  
     "amount: SOME_STRING_VALUE",  
     "authkeyversion: SOME_STRING_VALUE",  
@@ -483,7 +491,6 @@ request.AddHeader("nonce", "SOME_STRING_VALUE");
 request.AddHeader("timestamp", "SOME_STRING_VALUE");  
 request.AddHeader("authorization", "SOME_STRING_VALUE");  
 request.AddHeader("content-type", "SOME_STRING_VALUE");  
-request.AddHeader("-----------------------------------------------------------------------------------------------", "SOME_STRING_VALUE");  
 request.AddHeader("transactionref", "SOME_STRING_VALUE");  
 request.AddHeader("amount", "SOME_STRING_VALUE");  
 request.AddHeader("accept", "text/plain");  
@@ -505,7 +512,6 @@ func main() {
         "Accept": []string{"*/*"},
         "Amount": []string{" 666.66"},
         "transactionRef": []string{" <<transactionRef>>"},
-        "-----------------------------------------------------------------------------------------------": []string{" ---------------------------------------------------------------------------------------"},
         "Content-Type": []string{" application/json"},
         "Authorization": []string{" <<Access_token>>"},
         "Timestamp": []string{" <<Timestamp>>"},
@@ -549,7 +555,6 @@ var headers = {
   'Accept':'*/*',
   'Amount':' 666.66',
   'transactionRef':' <<transactionRef>>',
-  '-----------------------------------------------------------------------------------------------':' ---------------------------------------------------------------------------------------',
   'Content-Type':' application/json',
   'Authorization':' <<Access_token>>',
   'Timestamp':' <<Timestamp>>',
@@ -578,7 +583,6 @@ headers = {
   'Accept': '*/*',
   'Amount': ' 666.66',
   'transactionRef': ' <<transactionRef>>',
-  '-----------------------------------------------------------------------------------------------': ' ---------------------------------------------------------------------------------------',
   'Content-Type': ' application/json',
   'Authorization': ' <<Access_token>>',
   'Timestamp': ' <<Timestamp>>',
@@ -604,7 +608,6 @@ headers = {
   'Accept' => '*/*',
   'Amount' => ' 666.66',
   'transactionRef' => ' <<transactionRef>>',
-  '-----------------------------------------------------------------------------------------------' => ' ---------------------------------------------------------------------------------------',
   'Content-Type' => ' application/json',
   'Authorization' => ' <<Access_token>>',
   'Timestamp' => ' <<Timestamp>>',
@@ -623,8 +626,6 @@ p JSON.parse(result)
 ```
 
 `GET /api/v3/purchases`
-
-*/api/v3/purchases*
 
 null
 
