@@ -177,14 +177,14 @@ app_code: <<YOUR_APP_CODE>>
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|at|query|string|false|none|
-|app_id|query|string|false|none|
-|app_code|query|string|false|none|
-|Accept|header|string|false|none|
-|body|body|object|false|none|
-|» at|body|string|false|none|
-|» app_id|body|string|false|none|
-|» app_code|body|string|false|none|
+|at|query|string|true|none|
+|app_id|query|string|true|none|
+|app_code|query|string|true|none|
+|Accept|header|string|true|none|
+|body|body|object|true|none|
+|» at|body|string|true|none|
+|» app_id|body|string|true|none|
+|» app_code|body|string|true|none|
 
 > Example responses
 
@@ -357,19 +357,19 @@ app_code: <<YOUR_APP_CODE>>
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|at|query|string|false|none|
-|app_id|query|string|false|none|
-|app_code|query|string|false|none|
-|cat|query|string|false|none|
-|in|query|string|false|none|
-|Accept|header|string|false|none|
-|Accept-Language|header|string|false|none|
-|Geolocation|header|string|false|none|
-|X-Map-Viewport|header|string|false|none|
-|body|body|object|false|none|
-|» at|body|string|false|none|
-|» app_id|body|string|false|none|
-|» app_code|body|string|false|none|
+|at|query|string|true|none|
+|app_id|query|string|true|none|
+|app_code|query|string|true|none|
+|cat|query|string|true|none|
+|in|query|string|true|none|
+|Accept|header|string|true|none|
+|Accept-Language|header|string|true|none|
+|Geolocation|header|string|true|none|
+|X-Map-Viewport|header|string|true|none|
+|body|body|object|true|none|
+|» at|body|string|true|none|
+|» app_id|body|string|true|none|
+|» app_code|body|string|true|none|
 
 > Example responses
 
@@ -526,14 +526,14 @@ app_code: <<YOUR_APP_CODE>>
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|at|query|string|false|none|
-|app_id|query|string|false|none|
-|app_code|query|string|false|none|
-|Accept|header|string|false|none|
-|body|body|object|false|none|
-|» at|body|string|false|none|
-|» app_id|body|string|false|none|
-|» app_code|body|string|false|none|
+|at|query|string|true|none|
+|app_id|query|string|true|none|
+|app_code|query|string|true|none|
+|Accept|header|string|true|none|
+|body|body|object|true|none|
+|» at|body|string|true|none|
+|» app_id|body|string|true|none|
+|» app_code|body|string|true|none|
 
 > Example responses
 
@@ -694,16 +694,16 @@ app_code: <<YOUR_APP_CODE>>
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|at|query|string|false|none|
-|q|query|string|false|none|
-|app_id|query|string|false|none|
-|app_code|query|string|false|none|
-|Accept|header|string|false|none|
-|body|body|object|false|none|
-|» at|body|string|false|none|
-|» q|body|string|false|none|
-|» app_id|body|string|false|none|
-|» app_code|body|string|false|none|
+|at|query|string|true|none|
+|q|query|string|true|none|
+|app_id|query|string|true|none|
+|app_code|query|string|true|none|
+|Accept|header|string|true|none|
+|body|body|object|true|none|
+|» at|body|string|true|none|
+|» q|body|string|true|none|
+|» app_id|body|string|true|none|
+|» app_code|body|string|true|none|
 
 > Example responses
 
@@ -864,16 +864,16 @@ app_code: <<YOUR_APP_CODE>>
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|at|query|string|false|none|
-|q|query|string|false|none|
-|app_id|query|string|false|none|
-|app_code|query|string|false|none|
-|Accept|header|string|false|none|
-|body|body|object|false|none|
-|» at|body|string|false|none|
-|» q|body|string|false|none|
-|» app_id|body|string|false|none|
-|» app_code|body|string|false|none|
+|at|query|string|true|none|
+|q|query|string|true|none|
+|app_id|query|string|true|none|
+|app_code|query|string|true|none|
+|Accept|header|string|true|none|
+|body|body|object|true|none|
+|» at|body|string|true|none|
+|» q|body|string|true|none|
+|» app_id|body|string|true|none|
+|» app_code|body|string|true|none|
 
 > Example responses
 

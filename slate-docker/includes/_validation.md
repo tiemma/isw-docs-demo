@@ -273,16 +273,16 @@ p JSON.parse(result)
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|Content-Type|header|string|false|none|
-|Authorization|header|string|false|none|
-|Timestamp|header|string|false|none|
-|Nonce|header|string|false|none|
-|Signature|header|string|false|none|
-|SignatureMethod|header|string|false|none|
-|AuthKeyVersion|header|string|false|none|
-|body|body|object|false|none|
-|» transactionRef|body|string|false|none|
-|» authData|body|string|false|none|
+|Content-Type|header|string|true|application/json|
+|Authorization|header|string|true|none|
+|Timestamp|header|string|true|none|
+|Nonce|header|string|true|Reference [here](#nonce) for more info|
+|Signature|header|string|true|none|
+|SignatureMethod|header|string|true|none|
+|AuthKeyVersion|header|string|true|none|
+|body|body|object|true|none|
+|» transactionRef|body|string|true|none|
+|» authData|body|string|true|none|
 
 > Example responses
 
@@ -577,16 +577,16 @@ null
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|Content-Type|header|string|false|none|
-|Authorization|header|string|false|none|
-|Timestamp|header|string|false|none|
-|Nonce|header|string|false|none|
-|Signature|header|string|false|none|
-|SignatureMethod|header|string|false|none|
-|AuthKeyVersion|header|string|false|none|
-|body|body|object|false|none|
-|» transactionRef|body|string|false|none|
-|» authData|body|string|false|none|
+|Content-Type|header|string|true|application/json|
+|Authorization|header|string|true|none|
+|Timestamp|header|string|true|none|
+|Nonce|header|string|true|Reference [here](#nonce) for more info|
+|Signature|header|string|true|none|
+|SignatureMethod|header|string|true|none|
+|AuthKeyVersion|header|string|true|none|
+|body|body|object|true|none|
+|» transactionRef|body|string|true|none|
+|» authData|body|string|true|none|
 
 > Example responses
 
@@ -875,16 +875,16 @@ p JSON.parse(result)
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|Content-Type|header|string|false|none|
-|Authorization|header|string|false|none|
-|Timestamp|header|string|false|none|
-|Nonce|header|string|false|none|
-|Signature|header|string|false|none|
-|SignatureMethod|header|string|false|none|
-|AuthKeyVersion|header|string|false|none|
-|body|body|object|false|none|
-|» transactionRef|body|string|false|none|
-|» otp|body|string|false|none|
+|Content-Type|header|string|true|application/json|
+|Authorization|header|string|true|none|
+|Timestamp|header|string|true|none|
+|Nonce|header|string|true|Reference [here](#nonce) for more info|
+|Signature|header|string|true|none|
+|SignatureMethod|header|string|true|none|
+|AuthKeyVersion|header|string|true|none|
+|body|body|object|true|none|
+|» transactionRef|body|string|true|none|
+|» otp|body|string|true|none|
 
 > Example responses
 
@@ -1178,17 +1178,17 @@ p JSON.parse(result)
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|Content-Type|header|string|false|none|
-|Authorization|header|string|false|none|
-|Timestamp|header|string|false|none|
-|Nonce|header|string|false|none|
-|Signature|header|string|false|none|
-|SignatureMethod|header|string|false|none|
-|AuthKeyVersion|header|string|false|none|
-|body|body|object|false|none|
-|» paymentId|body|string|false|none|
-|» authData|body|string|false|none|
-|» otp|body|string|false|none|
+|Content-Type|header|string|true|application/json|
+|Authorization|header|string|true|none|
+|Timestamp|header|string|true|none|
+|Nonce|header|string|true|Reference [here](#nonce) for more info|
+|Signature|header|string|true|none|
+|SignatureMethod|header|string|true|none|
+|AuthKeyVersion|header|string|true|none|
+|body|body|object|true|none|
+|» paymentId|body|string|true|none|
+|» authData|body|string|true|none|
+|» otp|body|string|true|none|
 
 > Example responses
 

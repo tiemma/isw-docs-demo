@@ -255,15 +255,15 @@ PaRes: >-
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|Accept|header|string|false|none|
-|Accept-Encoding|header|string|false|none|
-|Accept-Language|header|string|false|none|
-|Content-Length|header|string|false|none|
-|Content-Type|header|string|false|none|
-|User-Agent|header|string|false|none|
-|body|body|object|false|none|
-|» MD|body|string|false|none|
-|» PaRes|body|string|false|none|
+|Accept|header|string|true|none|
+|Accept-Encoding|header|string|true|none|
+|Accept-Language|header|string|true|none|
+|Content-Length|header|string|true|none|
+|Content-Type|header|string|true|application/json|
+|User-Agent|header|string|true|none|
+|body|body|object|true|none|
+|» MD|body|string|true|none|
+|» PaRes|body|string|true|none|
 
 > Example responses
 
@@ -475,10 +475,10 @@ Returns Bank Code and Account Number
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|getacquirerdata|query|string|false|none|
-|transactionreference|query|string|false|none|
-|amount|query|string|false|none|
-|merchantcode|query|string|false|none|
+|getacquirerdata|query|string|true|none|
+|transactionreference|query|string|true|none|
+|amount|query|string|true|none|
+|merchantcode|query|string|true|none|
 
 > Example responses
 
@@ -643,16 +643,16 @@ null
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|Amount|header|string|false|none|
-|transactionRef|header|string|false|none|
-|-----------------------------------------------------------------------------------------------|header|string|false|none|
-|Content-Type|header|string|false|none|
-|Authorization|header|string|false|none|
-|Timestamp|header|string|false|none|
-|Nonce|header|string|false|none|
-|Signature|header|string|false|none|
-|SignatureMethod|header|string|false|none|
-|AuthKeyVersion|header|string|false|none|
+|Amount|header|string|true|none|
+|transactionRef|header|string|true|none|
+|-----------------------------------------------------------------------------------------------|header|string|true|none|
+|Content-Type|header|string|true|application/json|
+|Authorization|header|string|true|none|
+|Timestamp|header|string|true|none|
+|Nonce|header|string|true|Reference [here](#nonce) for more info|
+|Signature|header|string|true|none|
+|SignatureMethod|header|string|true|none|
+|AuthKeyVersion|header|string|true|none|
 
 > Example responses
 

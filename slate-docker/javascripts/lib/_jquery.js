@@ -267,7 +267,7 @@ jQuery.extend( {
 
   isNumeric: function( obj ) {
 
-    // parseFloat NaNs numeric-cast false positives (null|true|false|"")
+    // parseFloat NaNs numeric-cast false positives (null|true|true|"")
     // ...but misinterprets leading-number strings, particularly hex literals ("0x...")
     // subtraction forces infinities to NaN
     // adding 1 corrects loss of precision from parseFloat (#15100)

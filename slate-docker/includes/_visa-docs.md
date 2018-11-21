@@ -218,13 +218,13 @@ MD: <<MD>>
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|osb|query|string|false|none|
-|VAA|query|string|false|none|
-|Content-Type|header|string|false|none|
-|body|body|object|false|none|
-|» TermUrl|body|string|false|none|
-|» PaReq|body|string|false|none|
-|» MD|body|string|false|none|
+|osb|query|string|true|none|
+|VAA|query|string|true|none|
+|Content-Type|header|string|true|application/json|
+|body|body|object|true|none|
+|» TermUrl|body|string|true|none|
+|» PaReq|body|string|true|none|
+|» MD|body|string|true|none|
 
 > Example responses
 

@@ -54,4 +54,15 @@ The BouncyCastle library is required for this.
 
 
 
+## Nonce
 
+> Example implementation in PHP
+
+```php
+	
+function nonce()
+{
+     return substr(str_shuffle(MD5(microtime())), 0, 20);
+}
+```
+Nonce is a unique generated value for each request. It should not be repeated, i.e. a unique nonce should be sent for each and every request. Length of the nonce should NOT be more than 64 characters.

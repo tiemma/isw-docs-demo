@@ -333,7 +333,7 @@ This API manages an API transaction for performing debits on a user's card data.
 |Content-Type|header|string|true|application/json|
 |Authorization|header|string|true|Reference [here](#getting-a-bearer-token) to get started on setting up a Bearer Authorization token|
 |Timestamp|header|string|true|Time the transaction was performed|
-|Nonce|header|string|true|none|
+|Nonce|header|string|true|Reference [here](#nonce) for more info|
 |Signature|header|string|true|Reference [here](#signatures) for more info|
 |SignatureMethod|header|string|true|The hashing method the signature is encoded in.|
 |AuthKeyVersion|header|string|true|By default, ***1.0***|
@@ -349,22 +349,50 @@ This API manages an API transaction for performing debits on a user's card data.
 
 > Example responses
 
+```
+{
+    "transactionIdentifier": "UBA|API|MX187|21-11-2018|266074|217513",
+    "message": "Approved by Financial Institution",
+    "amount": "666.66",
+    "transactionRef": "JB-1542785291-NoOTP"
+}
+```
+
 <h3 id="post_api-v3-purchases-responses">Response Body</h3>
 
-|Status|Meaning|Description|Schema|
+|Parameter|In|Type|Description|
 |---|---|---|---|
-|default|Default|Default response|Inline|
+|transactionIdentifier|response|string|This is the response code from the bank which can be used to track a successful transaction|
+|message|response|string|Default should be ***Approved by Financial Institution***|A basic acknowledgement response message|
+|amount|response|string|The amount of the transaction|
+|transactionRef|response|string|The transaction reference initially sent in the request|
+
+
+> Error responses
+
+```
+{
+    "errors": [
+        {
+            "code": "<<ERROR CODE>>",
+            "message": "The service provider is unreachable at the moment, please try again later."
+        }
+    ],
+    "transactionRef": "<<TRANSACTION REF>>"
+}
+```
 
 <aside class="warning">
 This operation requires the following details to be configured properly.
 <ol> 
 <li>[Auth Data](#authdata)</li>
 <li> [Bearer Authorization](#opIdPOST_passport-oauth-token) must have been obtained </li>
+<li> Ensure you update the signature, more details [here](#signatures) </li>
 <li> Ensure the right [transaction reference](#transaction-references) is set to ensure post request authentication is properly continued </li>
 </ol>
 </aside>
 
-## GET_api-v3-purchases
+## Verify Transaction Status
 
 <a id="opIdGET_api-v3-purchases"></a>
 
@@ -627,36 +655,41 @@ p JSON.parse(result)
 
 `GET /api/v3/purchases`
 
-null
+This is an API which fetches the transactions status using the transaction reference and the amount debited from the user.
 
 <h3 id="get_api-v3-purchases-parameters">Parameters</h3>
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|Amount|header|string|false|none|
-|transactionRef|header|string|false|none|
-|Content-Type|header|string|false|none|
-|Authorization|header|string|false|none|
-|Timestamp|header|string|false|none|
-|Nonce|header|string|false|none|
-|Signature|header|string|false|none|
-|SignatureMethod|header|string|false|none|
-|AuthKeyVersion|header|string|false|none|
+|Amount|header|string|true|The amount debited from the user|
+|transactionRef|header|string|true|The transaction reference which was defined in the initial purchase request|
+|Content-Type|header|string|true|application/json|
+|Authorization|header|string|true|Reference [here](#getting-a-bearer-token) to get started on setting up a Bearer Authorization token|
+|Timestamp|header|string|true|The current time in [unix timestamps](https://www.unixtimestamp.com/) when the transaction happened|
+|Nonce|header|string|true|Reference [here](#nonce) for more info|
+|Signature|header|string|true|Reference [here](#signatures) for more info|
+|SignatureMethod|header|string|true|The hashing method the signature is encoded in.|
+|AuthKeyVersion|header|string|true|By default, ***1.0***|
 
 > Example responses
 
-> default Response
 
-<h3 id="get_api-v3-purchases-responses">Responses</h3>
+<h3 id="get_api-v3-purchases-responses">Response Body</h3>
 
-|Status|Meaning|Description|Schema|
+|Parameter|In|Type|Description|
 |---|---|---|---|
 |default|Default|Default response|Inline|
 
-<h3 id="get_api-v3-purchases-responseschema">Response Schema</h3>
 
-<aside class="success">
-This operation does not require authentication
+<aside class="warning">
+This operation requires the following details to be configured properly.
+<ol> 
+<li>The exact amount debited from the user</li>
+<li> [Bearer Authorization](#opIdPOST_passport-oauth-token) must have been obtained </li>
+<li> The exact transaction reference for that session </li>
+<li> Ensure you update the signature, more details [here](#signatures) </li>
+
+</ol>
 </aside>
 
 ## Recurrent Purchases [V2]
@@ -941,20 +974,20 @@ null
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
-|Content-Type|header|string|false|none|
-|Authorization|header|string|false|none|
-|Timestamp|header|string|false|none|
-|Nonce|header|string|false|none|
-|Signature|header|string|false|none|
-|SignatureMethod|header|string|false|none|
-|AuthKeyVersion|header|string|false|none|
-|body|body|object|false|none|
-|» customerId|body|string|false|none|
-|» amount|body|string|false|none|
-|» currency|body|string|false|none|
-|» token|body|string|false|none|
-|» tokenExpiryDate|body|string|false|none|
-|» transactionRef|body|string|false|none|
+|Content-Type|header|string|true|application/json|
+|Authorization|header|string|true|none|
+|Timestamp|header|string|true|none|
+|Nonce|header|string|true|Reference [here](#nonce) for more info|
+|Signature|header|string|true|none|
+|SignatureMethod|header|string|true|none|
+|AuthKeyVersion|header|string|true|none|
+|body|body|object|true|none|
+|» customerId|body|string|true|none|
+|» amount|body|string|true|none|
+|» currency|body|string|true|none|
+|» token|body|string|true|none|
+|» tokenExpiryDate|body|string|true|none|
+|» transactionRef|body|string|true|none|
 
 > Example responses
 
