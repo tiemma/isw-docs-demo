@@ -33,7 +33,15 @@ html, body {
   background-color: $main-bg;
   height: 100%;
   -webkit-text-size-adjust: none; /* Never autoresize text */
-  font-size: 1rem;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  h1, h2, h3, h4{
+    color: $header-text-color;
+  }
+
+  th{
+    color: $nav-active-bg;
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -84,6 +92,7 @@ html, body {
   &>img {
     display: block;
     max-width: 100%;
+    padding: 1.5rem;
   }
 
   &>.search {
@@ -134,10 +143,11 @@ html, body {
     li {
       margin: 1em $nav-padding;
       line-height: 1;
+      // color: $nav-active-text !important;
     }
 
     a {
-      color: $nav-text;
+      color: $nav-active-text;
       text-decoration: none;
 
       &:hover {
@@ -164,6 +174,7 @@ html, body {
     padding: 0;
     line-height: 28px;
   }
+
 
   li {
     color: $nav-text;
@@ -194,6 +205,10 @@ html, body {
     @include embossed-bg;
     &>li:last-child {
       box-shadow: none; // otherwise it'll overflow out of the subheader
+    }
+
+    li{
+      color: $main-bg;
     }
   }
 
@@ -295,12 +310,13 @@ html, body {
   a {
     display: block;
     float:left;
-    color: $lang-select-text;
+    // color: $lang-select-text;
+    color: $nav-bg;
     text-decoration: none;
     padding: 0 10px;
     line-height: 30px;
     outline: 0;
-    font-size: 0.5rem;
+    font-size: 0.7rem;
 
     &:active, &:focus {
       background-color: $lang-select-pressed-bg;
@@ -341,7 +357,7 @@ html, body {
     padding: 0 $main-padding;
     box-sizing: border-box;
     display: block;
-    text-shadow: $main-embossed-text-shadow;
+    text-shadow: $main-embossed-text-shadow;  
 
     @extend %left-col;
   }
@@ -357,7 +373,7 @@ html, body {
 
   h1 {
     @extend %header-font;
-    font-size: 30px;
+    font-size: 1.5rem;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     border-bottom: 1px solid #ccc;

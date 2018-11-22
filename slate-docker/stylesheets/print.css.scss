@@ -37,7 +37,7 @@ body {
 }
 
 .content {
-  font-size: 12px;
+  font-size: 0.9rem;
 
   pre, code {
     @extend %code-font;
@@ -82,7 +82,7 @@ body {
 
   h1 {
     @extend %header-font;
-    font-size: 2.5em;
+    font-size: 1.5em;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     margin-top: 1em;

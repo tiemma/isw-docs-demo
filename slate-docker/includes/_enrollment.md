@@ -1,8 +1,7 @@
 
 <h1 id="enrollment"> Enrollments </h1>
 
-## POST_api-v3-purchases-otps-enrollments
-
+## Enroll Card For OTP
 <a id="opIdPOST_api-v3-purchases-otps-enrollments"></a>
 
 > Code samples
@@ -266,29 +265,76 @@ p JSON.parse(result)
 
 `POST /api/v3/purchases/otps/enrollments`
 
-*Enroll card for OTP*
+This API is used to make requests to enroll a card so that it can then use OTP as its 2FA.
 
 > Body parameter
+
+```
+{
+    "paymentId":"{{paymentId}}",
+    "mobilePhoneNumber":"{{PhoneNumber}}",
+    "transactionRef":"{{TransactionRef}}"
+}
+
+```
 
 <h3 id="post_api-v3-purchases-otps-enrollments-parameters">Parameters</h3>
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
 |Content-Type|header|string|true|application/json|
-|Authorization|header|string|true|none|
-|Timestamp|header|string|true|none|
+|Authorization|header|string|true|Reference [here](#getting-a-bearer-token) to get started on setting up a Bearer Authorization token|
+|Timestamp|header|string|true|The current time in [unix timestamps](https://www.unixtimestamp.com/) when the transaction happened|
 |Nonce|header|string|true|Reference [here](#nonce) for more info|
-|Signature|header|string|true|none|
-|SignatureMethod|header|string|true|none|
-|AuthKeyVersion|header|string|true|none|
-|body|body|object|true|none|
-|» paymentId|body|string|true|none|
-|» mobilePhoneNumber|body|string|true|none|
-|» transactionRef|body|string|true|none|
+|Signature|header|string|true|Reference [here](#signatures) for more info|
+|SignatureMethod|header|string|true|The hashing method the signature is encoded in.|
+|AuthKeyVersion|header|string|true|By default, ***1.0***|
 
-> Example responses
 
-> default Response
+   <h3 id="get_api-v3-purchases-responses">Request Body</h3>
+ 
+
+|Parameter|In|Type|Description| 
+|---|---|---|---|
+|paymentId|body|number|The payment identifier for the transaction|
+|mobilePhoneNumber|body|number|The mobile number of the person |
+|transactionRef|body|string|The transaction reference for this particular transaction|
+
+
+
+> Sample responses
+
+```
+
+```
+
+> Error Response
+
+```
+{
+    "errors": [
+        {
+            "code": "-2",
+            "message": "An OTP related error has occured, please contact support."
+        }
+    ],
+    "transactionRef": "JB-1532673233-Enrol",
+    "paymentId": ""
+}
+
+
+// Occurs if the number is already enrolled
+{
+    "errors": [
+        {
+            "code": "10403",
+            "message": "Payments is not allowed for auto enrollment"
+        }
+    ],
+    "transactionRef": "JB-1542891523-Enrol",
+    "paymentId": "266274"
+}
+```
 
 <h3 id="post_api-v3-purchases-otps-enrollments-responses">Responses</h3>
 

@@ -4,38 +4,6 @@
 This holds APIs for all purchase and payment related endpoints covering the following post payment processes involving OTP and Pin processing.
 
 
-## Transaction References
-
- <a id="transaction-references"></a>
-
- > Implementation
-
- ```
-    JB-{{Insert Timestamp here}}-{{Transaction Type}}
-
-    Transaction can have the formats of either one of the types declared below:
-
-    // For transactions that do not require OTP authentication
-    - NoOTP  
-
-    // For transactions that require OTP authentication
-    - OTPPurchase 
-
-    //For VISA transaction
-    - VISA 
-
-    //For enrolling cards to use OTP for authentication
-    - Enrol 
-
-
-    For example, JB-124334323-OTPPurchase
- ```
-
- This is used to state what type of transaction you'd be performing.
-
- Generally, it has a format as shown on the other side.
-
-
 ## Basic Purchase[V3]
 
 <a id="opIdPOST_api-v3-purchases"></a>
@@ -347,7 +315,7 @@ This API manages an API transaction for performing debits on a user's card data.
 |currency|body|string|true|Currency code for the transaction, for now use NGN |
 |transactionRef|body|string|true|These are used to specify the transaction type reference e.g OTP, NoOTP. Kindly check for the documentation regarding this [here](#transaction-references)|
 
-> Example responses
+> Sample responses
 
 ```
 {
@@ -360,7 +328,7 @@ This API manages an API transaction for performing debits on a user's card data.
 
 <h3 id="post_api-v3-purchases-responses">Response Body</h3>
 
-|Parameter|In|Type|Description|
+|Parameter|In|Type|Description| 
 |---|---|---|---|
 |transactionIdentifier|response|string|This is the response code from the bank which can be used to track a successful transaction|
 |message|response|string|Default should be ***Approved by Financial Institution***|A basic acknowledgement response message|
@@ -387,307 +355,7 @@ This operation requires the following details to be configured properly.
 <ol> 
 <li>[Auth Data](#authdata)</li>
 <li> [Bearer Authorization](#opIdPOST_passport-oauth-token) must have been obtained </li>
-<li> Ensure you update the signature, more details [here](#signatures) </li>
-<li> Ensure the right [transaction reference](#transaction-references) is set to ensure post request authentication is properly continued </li>
-</ol>
-</aside>
-
-## Verify Transaction Status
-
-<a id="opIdGET_api-v3-purchases"></a>
-
-> Code samples
-
-
-```objective_c
-#import <Foundation/Foundation.h>  
-  
-NSDictionary *headers = @{ @"accept": @"text/plain",  
-                           @"amount": @"SOME_STRING_VALUE",  
-                           @"transactionref": @"SOME_STRING_VALUE",  
-                           @"-----------------------------------------------------------------------------------------------": @"SOME_STRING_VALUE",  
-                           @"content-type": @"SOME_STRING_VALUE",  
-                           @"authorization": @"SOME_STRING_VALUE",  
-                           @"timestamp": @"SOME_STRING_VALUE",  
-                           @"nonce": @"SOME_STRING_VALUE",  
-                           @"signature": @"SOME_STRING_VALUE",  
-                           @"signaturemethod": @"SOME_STRING_VALUE",  
-                           @"authkeyversion": @"SOME_STRING_VALUE" };  
-  
-NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"/api/v3/purchases"]  
-                                                       cachePolicy:NSURLRequestUseProtocolCachePolicy  
-                                                   timeoutInterval:10.0];  
-[request setHTTPMethod:@"GET"];  
-[request setAllHTTPHeaderFields:headers];  
-  
-NSURLSession *session = [NSURLSession sharedSession];  
-NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request  
-                                            completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {  
-                                                if (error) {  
-                                                    NSLog(@"%@", error);  
-                                                } else {  
-                                                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;  
-                                                    NSLog(@"%@", httpResponse);  
-                                                }  
-                                            }];  
-[dataTask resume];
-
-```
-
-```c
-import Foundation  
-  
-let headers = [  
-  "accept": "text/plain",  
-  "amount": "SOME_STRING_VALUE",  
-  "transactionref": "SOME_STRING_VALUE",   
-  "content-type": "SOME_STRING_VALUE",  
-  "authorization": "SOME_STRING_VALUE",  
-  "timestamp": "SOME_STRING_VALUE",  
-  "nonce": "SOME_STRING_VALUE",  
-  "signature": "SOME_STRING_VALUE",  
-  "signaturemethod": "SOME_STRING_VALUE",  
-  "authkeyversion": "SOME_STRING_VALUE"  
-]  
-  
-var request = NSMutableURLRequest(URL: NSURL(string: "/api/v3/purchases")!,  
-                                        cachePolicy: .UseProtocolCachePolicy,  
-                                    timeoutInterval: 10.0)  
-request.HTTPMethod = "GET"  
-request.allHTTPHeaderFields = headers  
-  
-let session = NSURLSession.sharedSession()  
-let dataTask = session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in  
-  if (error != nil) {  
-    println(error)  
-  } else {  
-    let httpResponse = response as? NSHTTPURLResponse  
-    println(httpResponse)  
-  }  
-})  
-  
-dataTask.resume()
-```
-
-```php
-<?php  
-  
-$curl = curl_init();  
-  
-curl_setopt_array($curl, array(  
-  CURLOPT_URL => "/api/v3/purchases",  
-  CURLOPT_RETURNTRANSFER => true,  
-  CURLOPT_ENCODING => "",  
-  CURLOPT_MAXREDIRS => 10,  
-  CURLOPT_TIMEOUT => 30,  
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,  
-  CURLOPT_CUSTOMREQUEST => "GET",  
-  CURLOPT_HTTPHEADER => array(   
-    "accept: text/plain",  
-    "amount: SOME_STRING_VALUE",  
-    "authkeyversion: SOME_STRING_VALUE",  
-    "authorization: SOME_STRING_VALUE",  
-    "content-type: SOME_STRING_VALUE",  
-    "nonce: SOME_STRING_VALUE",  
-    "signature: SOME_STRING_VALUE",  
-    "signaturemethod: SOME_STRING_VALUE",  
-    "timestamp: SOME_STRING_VALUE",  
-    "transactionref: SOME_STRING_VALUE"  
-  ),  
-));  
-  
-$response = curl_exec($curl);  
-$err = curl_error($curl);  
-  
-curl_close($curl);  
-  
-if ($err) {  
-  echo "cURL Error #:" . $err;  
-} else {  
-  echo $response;  
-}
-
-```
-
-```csharp
-var client = new RestClient("/api/v3/purchases");  
-var request = new RestRequest(Method.GET);  
-request.AddHeader("authkeyversion", "SOME_STRING_VALUE");  
-request.AddHeader("signaturemethod", "SOME_STRING_VALUE");  
-request.AddHeader("signature", "SOME_STRING_VALUE");  
-request.AddHeader("nonce", "SOME_STRING_VALUE");  
-request.AddHeader("timestamp", "SOME_STRING_VALUE");  
-request.AddHeader("authorization", "SOME_STRING_VALUE");  
-request.AddHeader("content-type", "SOME_STRING_VALUE");  
-request.AddHeader("transactionref", "SOME_STRING_VALUE");  
-request.AddHeader("amount", "SOME_STRING_VALUE");  
-request.AddHeader("accept", "text/plain");  
-IRestResponse response = client.Execute(request);
-
-```
-
-```go
-package main
-
-import (
-       "bytes"
-       "net/http"
-)
-
-func main() {
-
-    headers := map[string][]string{
-        "Accept": []string{"*/*"},
-        "Amount": []string{" 666.66"},
-        "transactionRef": []string{" <<transactionRef>>"},
-        "Content-Type": []string{" application/json"},
-        "Authorization": []string{" <<Access_token>>"},
-        "Timestamp": []string{" <<Timestamp>>"},
-        "Nonce": []string{" <<Nonce>>"},
-        "Signature": []string{" <<Signature>>"},
-        "SignatureMethod": []string{" <<SignatureMethod>>"},
-        "AuthKeyVersion": []string{" 1"},
-        
-    }
-
-    data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "/api/v3/purchases", data)
-    req.Header = headers
-
-    client := &http.Client{}
-    resp, err := client.Do(req)
-    // ...
-}
-
-```
-
-```java
-URL obj = new URL("/api/v3/purchases");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("GET");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-
-```
-
-```javascript
-var headers = {
-  'Accept':'*/*',
-  'Amount':' 666.66',
-  'transactionRef':' <<transactionRef>>',
-  'Content-Type':' application/json',
-  'Authorization':' <<Access_token>>',
-  'Timestamp':' <<Timestamp>>',
-  'Nonce':' <<Nonce>>',
-  'Signature':' <<Signature>>',
-  'SignatureMethod':' <<SignatureMethod>>',
-  'AuthKeyVersion':' 1'
-
-};
-
-$.ajax({
-  url: '/api/v3/purchases',
-  method: 'get',
-
-  headers: headers,
-  success: function(data) {
-    console.log(JSON.stringify(data));
-  }
-})
-
-```
-
-```python
-import requests
-headers = {
-  'Accept': '*/*',
-  'Amount': ' 666.66',
-  'transactionRef': ' <<transactionRef>>',
-  'Content-Type': ' application/json',
-  'Authorization': ' <<Access_token>>',
-  'Timestamp': ' <<Timestamp>>',
-  'Nonce': ' <<Nonce>>',
-  'Signature': ' <<Signature>>',
-  'SignatureMethod': ' <<SignatureMethod>>',
-  'AuthKeyVersion': ' 1'
-}
-
-r = requests.get('/api/v3/purchases', params={
-
-}, headers = headers)
-
-print r.json()
-
-```
-
-```ruby
-require 'rest-client'
-require 'json'
-
-headers = {
-  'Accept' => '*/*',
-  'Amount' => ' 666.66',
-  'transactionRef' => ' <<transactionRef>>',
-  'Content-Type' => ' application/json',
-  'Authorization' => ' <<Access_token>>',
-  'Timestamp' => ' <<Timestamp>>',
-  'Nonce' => ' <<Nonce>>',
-  'Signature' => ' <<Signature>>',
-  'SignatureMethod' => ' <<SignatureMethod>>',
-  'AuthKeyVersion' => ' 1'
-}
-
-result = RestClient.get '/api/v3/purchases',
-  params: {
-  }, headers: headers
-
-p JSON.parse(result)
-
-```
-
-`GET /api/v3/purchases`
-
-This is an API which fetches the transactions status using the transaction reference and the amount debited from the user.
-
-<h3 id="get_api-v3-purchases-parameters">Parameters</h3>
-
-|Parameter|In|Type|Required|Description|
-|---|---|---|---|---|
-|Amount|header|string|true|The amount debited from the user|
-|transactionRef|header|string|true|The transaction reference which was defined in the initial purchase request|
-|Content-Type|header|string|true|application/json|
-|Authorization|header|string|true|Reference [here](#getting-a-bearer-token) to get started on setting up a Bearer Authorization token|
-|Timestamp|header|string|true|The current time in [unix timestamps](https://www.unixtimestamp.com/) when the transaction happened|
-|Nonce|header|string|true|Reference [here](#nonce) for more info|
-|Signature|header|string|true|Reference [here](#signatures) for more info|
-|SignatureMethod|header|string|true|The hashing method the signature is encoded in.|
-|AuthKeyVersion|header|string|true|By default, ***1.0***|
-
-> Example responses
-
-
-<h3 id="get_api-v3-purchases-responses">Response Body</h3>
-
-|Parameter|In|Type|Description|
-|---|---|---|---|
-|default|Default|Default response|Inline|
-
-
-<aside class="warning">
-This operation requires the following details to be configured properly.
-<ol> 
-<li>The exact amount debited from the user</li>
-<li> [Bearer Authorization](#opIdPOST_passport-oauth-token) must have been obtained </li>
-<li> The exact transaction reference for that session </li>
-<li> Ensure you update the signature, more details [here](#signatures) </li>
+<li> Ensure you update the signature, more details [here](#signatures), same for the [nonce](#nonce)  </li>
 
 </ol>
 </aside>
@@ -966,32 +634,65 @@ p JSON.parse(result)
 
 *Recurrent Purchase*
 
-null
+This is used to setup a recurrent purchase which allows a biller to debit a user multiple times without additional transaction setup. The transaction details including the user's card details are tokenized and then sent back for future use.
 
 > Body parameter
 
-<h3 id="post_api-v2-purchases-recurrents-parameters">Parameters</h3>
+```
+{
+    "customerId": "CustID-{{Timestamp}}",
+    "amount": "90",
+    "currency":"NGN",
+    "token": "{{token}}",
+    "tokenExpiryDate": "{{tokenExpiryDate}}",
+    "transactionRef": "JB-{{Timestamp}}-ReccPurch"
+}  
+
+```
+
+
+
+<h3 id="post_api-v2-purchases-recurrents-parameters">Header Parameters</h3>
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
 |Content-Type|header|string|true|application/json|
-|Authorization|header|string|true|none|
-|Timestamp|header|string|true|none|
+|Authorization|header|string|true|Reference [here](#getting-a-bearer-token) to get started on setting up a Bearer Authorization token|
+|Timestamp|header|string|true|The current time in [unix timestamps](https://www.unixtimestamp.com/) when the transaction happened|
 |Nonce|header|string|true|Reference [here](#nonce) for more info|
-|Signature|header|string|true|none|
-|SignatureMethod|header|string|true|none|
-|AuthKeyVersion|header|string|true|none|
-|body|body|object|true|none|
-|» customerId|body|string|true|none|
-|» amount|body|string|true|none|
-|» currency|body|string|true|none|
-|» token|body|string|true|none|
-|» tokenExpiryDate|body|string|true|none|
-|» transactionRef|body|string|true|none|
+|Signature|header|string|true|Reference [here](#signatures) for more info|
+|SignatureMethod|header|string|true|The hashing method the signature is encoded in.|
+|AuthKeyVersion|header|string|true|By default, ***1.0***|
 
-> Example responses
 
-> default Response
+<h3 id="post_api-v2-purchases-recurrents-request">Request Body</h3>
+
+
+
+|Parameter|In|Type|Description| 
+|---|---|---|---|
+|customerId|body|string|The identifier you set for the customer|
+|amount|body|string|The amount debited during the transaction|
+|currency|body|string|Default ***NGN***|
+|token|body|string|This is the key that can be used in making further recurrent transactions automatically|
+|tokenExpiryDate|body|string|Time the token would expire and a reactivation would need to be done|
+|transactionRef|body|string|These are used to specify the transaction type reference e.g OTP, NoOTP. Kindly check for the documentation regarding this [here](#transaction-references)|
+
+
+
+> Error response
+
+```
+{
+    "errors": [
+        {
+            "code": "<<ERROR CODE>>",
+            "message": "The service provider is unreachable at the moment, please try again later."
+        }
+    ],
+    "transactionRef": "<<TRANSACTION REF>>"
+}
+```
 
 <h3 id="post_api-v2-purchases-recurrents-responses">Responses</h3>
 
@@ -999,8 +700,12 @@ null
 |---|---|---|---|
 |default|Default|Default response|Inline|
 
-<h3 id="post_api-v2-purchases-recurrents-responseschema">Response Schema</h3>
 
-<aside class="success">
-This operation does not require authentication
+<aside class="warning">
+This operation requires the following details to be configured properly.
+<ol> 
+<li> [Bearer Authorization](#opIdPOST_passport-oauth-token) must have been obtained </li>
+<li> Ensure you update the signature, more details [here](#signatures), same for the [nonce](#nonce)  </li>
+
+</ol>
 </aside>

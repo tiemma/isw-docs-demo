@@ -249,7 +249,7 @@ grant_type: client_credentials
 
 <h3 id="post_passport-oauth-token-responses">Response Body</h3>
 
-|Parameter|In|Type|Description|
+|Parameter|In|Type|Description| 
 |---|---|---|---|
 |access_token|response|string|This is the bearer token that will be used in your transaction|
 |token_type|response|string|Default is ***Bearer***|

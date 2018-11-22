@@ -2,8 +2,16 @@
 
 <h1 id="-default-notes"> Notes </h1>
 
+## Endpoints
 
+Base endpoints for this documentation can be referenced from this table:
 
+|Function|Sandbox|Production|
+|---|---|---|
+|**Passport / Access Token**|https://sandbox.interswitchng.com|https://passport.interswitchng.com|
+|**Transactions and Purchases**|https://sandbox.interswitchng.com|https://saturn.interswitchng.com|
+|***Querying Transaction Status using Webpay*** <br \> Reference API docs [here](#opIdGET_collections-api-v1-gettransaction-json)|https://sandbox.interswitchng.com|https://webpay.interswitchng.com|
+|***Visa Transactions***|All endpoints are returned in the purchase response|Ditto|
 
 ## AuthData
 
@@ -56,7 +64,7 @@ The BouncyCastle library is required for this.
 
 ## Nonce
 
-> Example implementation in PHP
+> Sample implementation in PHP
 
 ```php
 	
@@ -66,3 +74,45 @@ function nonce()
 }
 ```
 Nonce is a unique generated value for each request. It should not be repeated, i.e. a unique nonce should be sent for each and every request. Length of the nonce should NOT be more than 64 characters.
+
+
+
+## Transaction References
+
+ <a id="transaction-references"></a>
+
+ > Implementation
+
+ ```
+    JB-{{Insert Timestamp here}}-{{Transaction Type}}
+
+    Transaction can have the formats of either one of the types declared below:
+
+    // For transactions that do not require OTP authentication
+    - NoOTP  
+
+    // For transactions that require OTP authentication
+    - OTPPurchase 
+
+    //For VISA transaction
+    - VISA 
+
+    //For enrolling cards to use OTP for authentication
+    - Enrol 
+
+    //Used to obtain the token for  a recurring transaction
+    - ReccValid
+
+    //Used to make a recurrent purchase [Requires a token]
+    - ReccPurch
+
+
+    For Sample, JB-124334323-OTPPurchase
+ ```
+
+ This is used to state what type of transaction you'd be performing.
+
+ Generally, it has a format as shown on the other side.
+
+ Using this format is not compulsory but it does aid in debugging fail transactions and assessing what kind is being used.
+

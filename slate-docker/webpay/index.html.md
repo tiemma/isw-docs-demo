@@ -11,7 +11,7 @@ language_tabs:
   - objective_c: 'Objective-C'
   - php: PHP
 toc_footers: []
-includes: [notes,passport,signatures,purchases,collections,enrollment,visa-docs,validation,errors]
+includes: [notes,passport,signatures,purchases,transaction_status,enrollment,visa-docs,validation,codes,tests]
 search: true
 highlight_theme: darkula
 headingLevel: 2
@@ -20,7 +20,7 @@ headingLevel: 2
 
 <h1 id=""> Interswitch Payment Gateway </h1>
 
-> Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
+> Scroll down for code samples, Sample requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 
 This document describes how a third-party will request for Interswitch Payment Gateway API. Note that all data formats and response definitions are in conformance with the REST standard.
 
@@ -37,7 +37,6 @@ To begin the using the platform, you must register for an account on the [Inters
 
 Please follow the registration process and you'd be redirected to the platform.
 
-
 <h1 id="-default">APIs Currently Enrolled</h1>
 
 The following APIs are avaiable for us and have been categorised for ease of access as follows below:
@@ -49,5 +48,4 @@ The following APIs are avaiable for us and have been categorised for ease of acc
 - Auto Enrollment (M0 Transaction)
 - Card Validation (Adding Card)
 - Recurring Payments
-- [Error Codes](#errors)
 

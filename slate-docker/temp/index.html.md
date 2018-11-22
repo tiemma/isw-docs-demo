@@ -19,7 +19,7 @@ headingLevel: 2
 
 <h1 id="">1 - Merchant X V3 v</h1>
 
-> Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
+> Scroll down for code samples, Sample requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 
 <h1 id="-default">Default</h1>
 
@@ -194,12 +194,23 @@ MD: <<MD>>
 |osb|query|string|true|none|
 |VAA|query|string|true|none|
 |Content-Type|header|string|true|application/json|
-|body|body|object|true|none|
-|» TermUrl|body|string|true|none|
-|» PaReq|body|string|true|none|
-|» MD|body|string|true|none|
+   <h3 id="get_api-v3-purchases-responses">Request Body</h3>
+ 
+> Sample Response 
+  
+ ```  
 
-> Example responses
+
+  
+ ```  
+
+|Parameter|In|Type|Description| 
+ |---|---|---|---|
+|TermUrl|body|string|true|none|
+|PaReq|body|string|true|none|
+|MD|body|string|true|none|
+
+> Sample responses
 
 > default Response
 
@@ -420,17 +431,28 @@ null
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
 |Content-Type|header|string|true|application/json|
-|Authorization|header|string|true|none|
-|Timestamp|header|string|true|none|
+|Authorization|header|string|true|Reference [here](#getting-a-bearer-token) to get started on setting up a Bearer Authorization token|
+|Timestamp|header|string|true|The current time in [unix timestamps](https://www.unixtimestamp.com/) when the transaction happened|
 |Nonce|header|string|true|Reference [here](#nonce) for more info|
-|Signature|header|string|true|none|
-|SignatureMethod|header|string|true|none|
-|AuthKeyVersion|header|string|true|none|
-|body|body|object|true|none|
-|» transactionRef|body|string|true|none|
-|» authData|body|string|true|none|
+|Signature|header|string|true|Reference [here](#signatures) for more info|
+|SignatureMethod|header|string|true|The hashing method the signature is encoded in.|
+|AuthKeyVersion|header|string|true|By default, ***1.0***|
+   <h3 id="get_api-v3-purchases-responses">Request Body</h3>
+ 
+> Sample Response 
+  
+ ```  
 
-> Example responses
+
+  
+ ```  
+
+|Parameter|In|Type|Description| 
+ |---|---|---|---|
+|transactionRef|body|string|true|none|
+|authData|body|string|true|none|
+
+> Sample responses
 
 > default Response
 
@@ -618,11 +640,22 @@ grant_type: client_credentials
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
 |Content-Type|header|string|true|application/json|
-|Authorization|header|string|true|none|
-|body|body|object|true|none|
-|» grant_type|body|string|true|none|
+|Authorization|header|string|true|Reference [here](#getting-a-bearer-token) to get started on setting up a Bearer Authorization token|
+   <h3 id="get_api-v3-purchases-responses">Request Body</h3>
+ 
+> Sample Response 
+  
+ ```  
 
-> Example responses
+
+  
+ ```  
+
+|Parameter|In|Type|Description| 
+ |---|---|---|---|
+|grant_type|body|string|true|none|
+
+> Sample responses
 
 > default Response
 
@@ -842,18 +875,29 @@ func main() {
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
 |Content-Type|header|string|true|application/json|
-|Authorization|header|string|true|none|
-|Timestamp|header|string|true|none|
+|Authorization|header|string|true|Reference [here](#getting-a-bearer-token) to get started on setting up a Bearer Authorization token|
+|Timestamp|header|string|true|The current time in [unix timestamps](https://www.unixtimestamp.com/) when the transaction happened|
 |Nonce|header|string|true|Reference [here](#nonce) for more info|
-|Signature|header|string|true|none|
-|SignatureMethod|header|string|true|none|
-|AuthKeyVersion|header|string|true|none|
-|body|body|object|true|none|
-|» paymentId|body|string|true|none|
-|» mobilePhoneNumber|body|string|true|none|
-|» transactionRef|body|string|true|none|
+|Signature|header|string|true|Reference [here](#signatures) for more info|
+|SignatureMethod|header|string|true|The hashing method the signature is encoded in.|
+|AuthKeyVersion|header|string|true|By default, ***1.0***|
+   <h3 id="get_api-v3-purchases-responses">Request Body</h3>
+ 
+> Sample Response 
+  
+ ```  
 
-> Example responses
+
+  
+ ```  
+
+|Parameter|In|Type|Description| 
+ |---|---|---|---|
+|paymentId|body|string|true|none|
+|mobilePhoneNumber|body|string|true|none|
+|transactionRef|body|string|true|none|
+
+> Sample responses
 
 > default Response
 
@@ -1072,17 +1116,28 @@ func main() {
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
 |Content-Type|header|string|true|application/json|
-|Authorization|header|string|true|none|
-|Timestamp|header|string|true|none|
+|Authorization|header|string|true|Reference [here](#getting-a-bearer-token) to get started on setting up a Bearer Authorization token|
+|Timestamp|header|string|true|The current time in [unix timestamps](https://www.unixtimestamp.com/) when the transaction happened|
 |Nonce|header|string|true|Reference [here](#nonce) for more info|
-|Signature|header|string|true|none|
-|SignatureMethod|header|string|true|none|
-|AuthKeyVersion|header|string|true|none|
-|body|body|object|true|none|
-|» transactionRef|body|string|true|none|
-|» authData|body|string|true|none|
+|Signature|header|string|true|Reference [here](#signatures) for more info|
+|SignatureMethod|header|string|true|The hashing method the signature is encoded in.|
+|AuthKeyVersion|header|string|true|By default, ***1.0***|
+   <h3 id="get_api-v3-purchases-responses">Request Body</h3>
+ 
+> Sample Response 
+  
+ ```  
 
-> Example responses
+
+  
+ ```  
+
+|Parameter|In|Type|Description| 
+ |---|---|---|---|
+|transactionRef|body|string|true|none|
+|authData|body|string|true|none|
+
+> Sample responses
 
 > default Response
 
@@ -1308,11 +1363,22 @@ PaRes: >-
 |Content-Length|header|string|true|none|
 |Content-Type|header|string|true|application/json|
 |User-Agent|header|string|true|none|
-|body|body|object|true|none|
-|» MD|body|string|true|none|
-|» PaRes|body|string|true|none|
+   <h3 id="get_api-v3-purchases-responses">Request Body</h3>
+ 
+> Sample Response 
+  
+ ```  
 
-> Example responses
+
+  
+ ```  
+
+|Parameter|In|Type|Description| 
+ |---|---|---|---|
+|MD|body|string|true|none|
+|PaRes|body|string|true|none|
+
+> Sample responses
 
 > default Response
 
@@ -1476,7 +1542,7 @@ Returns Bank Code and Account Number
 |amount|query|string|true|none|
 |merchantcode|query|string|true|none|
 
-> Example responses
+> Sample responses
 
 > default Response
 
@@ -1700,20 +1766,31 @@ null
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
 |Content-Type|header|string|true|application/json|
-|Authorization|header|string|true|none|
-|Timestamp|header|string|true|none|
+|Authorization|header|string|true|Reference [here](#getting-a-bearer-token) to get started on setting up a Bearer Authorization token|
+|Timestamp|header|string|true|The current time in [unix timestamps](https://www.unixtimestamp.com/) when the transaction happened|
 |Nonce|header|string|true|Reference [here](#nonce) for more info|
-|Signature|header|string|true|none|
-|SignatureMethod|header|string|true|none|
-|AuthKeyVersion|header|string|true|none|
-|body|body|object|true|none|
-|» customerId|body|string|true|none|
-|» amount|body|string|true|none|
-|» authData|body|string|true|none|
-|» currency|body|string|true|none|
-|» transactionRef|body|string|true|none|
+|Signature|header|string|true|Reference [here](#signatures) for more info|
+|SignatureMethod|header|string|true|The hashing method the signature is encoded in.|
+|AuthKeyVersion|header|string|true|By default, ***1.0***|
+   <h3 id="get_api-v3-purchases-responses">Request Body</h3>
+ 
+> Sample Response 
+  
+ ```  
 
-> Example responses
+
+  
+ ```  
+
+|Parameter|In|Type|Description| 
+ |---|---|---|---|
+|customerId|body|string|true|none|
+|amount|body|string|true|none|
+|authData|body|string|true|none|
+|currency|body|string|true|none|
+|transactionRef|body|string|true|none|
+
+> Sample responses
 
 > default Response
 
@@ -1946,14 +2023,14 @@ null
 |transactionRef|header|string|true|none|
 |-----------------------------------------------------------------------------------------------|header|string|true|none|
 |Content-Type|header|string|true|application/json|
-|Authorization|header|string|true|none|
-|Timestamp|header|string|true|none|
+|Authorization|header|string|true|Reference [here](#getting-a-bearer-token) to get started on setting up a Bearer Authorization token|
+|Timestamp|header|string|true|The current time in [unix timestamps](https://www.unixtimestamp.com/) when the transaction happened|
 |Nonce|header|string|true|Reference [here](#nonce) for more info|
-|Signature|header|string|true|none|
-|SignatureMethod|header|string|true|none|
-|AuthKeyVersion|header|string|true|none|
+|Signature|header|string|true|Reference [here](#signatures) for more info|
+|SignatureMethod|header|string|true|The hashing method the signature is encoded in.|
+|AuthKeyVersion|header|string|true|By default, ***1.0***|
 
-> Example responses
+> Sample responses
 
 > default Response
 
@@ -2178,21 +2255,32 @@ null
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
 |Content-Type|header|string|true|application/json|
-|Authorization|header|string|true|none|
-|Timestamp|header|string|true|none|
+|Authorization|header|string|true|Reference [here](#getting-a-bearer-token) to get started on setting up a Bearer Authorization token|
+|Timestamp|header|string|true|The current time in [unix timestamps](https://www.unixtimestamp.com/) when the transaction happened|
 |Nonce|header|string|true|Reference [here](#nonce) for more info|
-|Signature|header|string|true|none|
-|SignatureMethod|header|string|true|none|
-|AuthKeyVersion|header|string|true|none|
-|body|body|object|true|none|
-|» customerId|body|string|true|none|
-|» amount|body|string|true|none|
-|» currency|body|string|true|none|
-|» token|body|string|true|none|
-|» tokenExpiryDate|body|string|true|none|
-|» transactionRef|body|string|true|none|
+|Signature|header|string|true|Reference [here](#signatures) for more info|
+|SignatureMethod|header|string|true|The hashing method the signature is encoded in.|
+|AuthKeyVersion|header|string|true|By default, ***1.0***|
+   <h3 id="get_api-v3-purchases-responses">Request Body</h3>
+ 
+> Sample Response 
+  
+ ```  
 
-> Example responses
+
+  
+ ```  
+
+|Parameter|In|Type|Description| 
+ |---|---|---|---|
+|customerId|body|string|true|none|
+|amount|body|string|true|none|
+|currency|body|string|true|none|
+|token|body|string|true|none|
+|tokenExpiryDate|body|string|true|none|
+|transactionRef|body|string|true|none|
+
+> Sample responses
 
 > default Response
 
@@ -2411,17 +2499,28 @@ func main() {
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
 |Content-Type|header|string|true|application/json|
-|Authorization|header|string|true|none|
-|Timestamp|header|string|true|none|
+|Authorization|header|string|true|Reference [here](#getting-a-bearer-token) to get started on setting up a Bearer Authorization token|
+|Timestamp|header|string|true|The current time in [unix timestamps](https://www.unixtimestamp.com/) when the transaction happened|
 |Nonce|header|string|true|Reference [here](#nonce) for more info|
-|Signature|header|string|true|none|
-|SignatureMethod|header|string|true|none|
-|AuthKeyVersion|header|string|true|none|
-|body|body|object|true|none|
-|» transactionRef|body|string|true|none|
-|» otp|body|string|true|none|
+|Signature|header|string|true|Reference [here](#signatures) for more info|
+|SignatureMethod|header|string|true|The hashing method the signature is encoded in.|
+|AuthKeyVersion|header|string|true|By default, ***1.0***|
+   <h3 id="get_api-v3-purchases-responses">Request Body</h3>
+ 
+> Sample Response 
+  
+ ```  
 
-> Example responses
+
+  
+ ```  
+
+|Parameter|In|Type|Description| 
+ |---|---|---|---|
+|transactionRef|body|string|true|none|
+|otp|body|string|true|none|
+
+> Sample responses
 
 > default Response
 
@@ -2431,7 +2530,7 @@ func main() {
 |---|---|---|---|
 |default|Default|Default response|Inline|
 
-<h3 id="post_api-v3-purchases-validations-otps-auths-responseschema">Response Schema</h3>
+
 
 <aside class="success">
 This operation does not require authentication
@@ -2641,18 +2740,29 @@ func main() {
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
 |Content-Type|header|string|true|application/json|
-|Authorization|header|string|true|none|
-|Timestamp|header|string|true|none|
+|Authorization|header|string|true|Reference [here](#getting-a-bearer-token) to get started on setting up a Bearer Authorization token|
+|Timestamp|header|string|true|The current time in [unix timestamps](https://www.unixtimestamp.com/) when the transaction happened|
 |Nonce|header|string|true|Reference [here](#nonce) for more info|
-|Signature|header|string|true|none|
-|SignatureMethod|header|string|true|none|
-|AuthKeyVersion|header|string|true|none|
-|body|body|object|true|none|
-|» paymentId|body|string|true|none|
-|» authData|body|string|true|none|
-|» otp|body|string|true|none|
+|Signature|header|string|true|Reference [here](#signatures) for more info|
+|SignatureMethod|header|string|true|The hashing method the signature is encoded in.|
+|AuthKeyVersion|header|string|true|By default, ***1.0***|
+   <h3 id="get_api-v3-purchases-responses">Request Body</h3>
+ 
+> Sample Response 
+  
+ ```  
 
-> Example responses
+
+  
+ ```  
+
+|Parameter|In|Type|Description| 
+ |---|---|---|---|
+|paymentId|body|string|true|none|
+|authData|body|string|true|none|
+|otp|body|string|true|none|
+
+> Sample responses
 
 > default Response
 

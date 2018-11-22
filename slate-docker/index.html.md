@@ -16,7 +16,7 @@ headingLevel: 2
 
 <h1 id="">Places API v</h1>
 
-> Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
+> Scroll down for code samples, Sample requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 
 The **HERE Places (Search) API** is a web service which allows users to search and explore locations, buildings and other points of interest.
 
@@ -32,7 +32,7 @@ Within place discovery, the API has endpoints supporting a number of use cases, 
 * here – identify what place is at a given location
 * around – similar to explore, but optimised for augmented reality visual exploration applications such as LiveSight.
 
-This example set works with version **1.0** or higher
+This Sample set works with version **1.0** or higher
 
 Additional information can be found on [developer.here.com](https://developer.here.com/rest-apis/documentation/places)
 
@@ -181,12 +181,16 @@ app_code: <<YOUR_APP_CODE>>
 |app_id|query|string|true|none|
 |app_code|query|string|true|none|
 |Accept|header|string|true|none|
-|body|body|object|true|none|
-|» at|body|string|true|none|
-|» app_id|body|string|true|none|
-|» app_code|body|string|true|none|
+   <h3 id="get_api-v3-purchases-responses">Request Body</h3>
+ 
 
-> Example responses
+|Parameter|In|Type|Description| 
+ |---|---|---|---|
+|at|body|string|true|none|
+|app_id|body|string|true|none|
+|app_code|body|string|true|none|
+
+> Sample responses
 
 > default Response
 
@@ -366,12 +370,23 @@ app_code: <<YOUR_APP_CODE>>
 |Accept-Language|header|string|true|none|
 |Geolocation|header|string|true|none|
 |X-Map-Viewport|header|string|true|none|
-|body|body|object|true|none|
-|» at|body|string|true|none|
-|» app_id|body|string|true|none|
-|» app_code|body|string|true|none|
+   <h3 id="get_api-v3-purchases-responses">Request Body</h3>
+ 
+> Sample Response 
+  
+ ```  
 
-> Example responses
+
+  
+ ```  
+
+|Parameter|In|Type|Description| 
+ |---|---|---|---|
+|at|body|string|true|none|
+|app_id|body|string|true|none|
+|app_code|body|string|true|none|
+
+> Sample responses
 
 > default Response
 
@@ -530,12 +545,23 @@ app_code: <<YOUR_APP_CODE>>
 |app_id|query|string|true|none|
 |app_code|query|string|true|none|
 |Accept|header|string|true|none|
-|body|body|object|true|none|
-|» at|body|string|true|none|
-|» app_id|body|string|true|none|
-|» app_code|body|string|true|none|
+   <h3 id="get_api-v3-purchases-responses">Request Body</h3>
+ 
+> Sample Response 
+  
+ ```  
 
-> Example responses
+
+  
+ ```  
+
+|Parameter|In|Type|Description| 
+ |---|---|---|---|
+|at|body|string|true|none|
+|app_id|body|string|true|none|
+|app_code|body|string|true|none|
+
+> Sample responses
 
 > default Response
 
@@ -699,13 +725,24 @@ app_code: <<YOUR_APP_CODE>>
 |app_id|query|string|true|none|
 |app_code|query|string|true|none|
 |Accept|header|string|true|none|
-|body|body|object|true|none|
-|» at|body|string|true|none|
-|» q|body|string|true|none|
-|» app_id|body|string|true|none|
-|» app_code|body|string|true|none|
+   <h3 id="get_api-v3-purchases-responses">Request Body</h3>
+ 
+> Sample Response 
+  
+ ```  
 
-> Example responses
+
+  
+ ```  
+
+|Parameter|In|Type|Description| 
+ |---|---|---|---|
+|at|body|string|true|none|
+|q|body|string|true|none|
+|app_id|body|string|true|none|
+|app_code|body|string|true|none|
+
+> Sample responses
 
 > default Response
 
@@ -869,13 +906,24 @@ app_code: <<YOUR_APP_CODE>>
 |app_id|query|string|true|none|
 |app_code|query|string|true|none|
 |Accept|header|string|true|none|
-|body|body|object|true|none|
-|» at|body|string|true|none|
-|» q|body|string|true|none|
-|» app_id|body|string|true|none|
-|» app_code|body|string|true|none|
+   <h3 id="get_api-v3-purchases-responses">Request Body</h3>
+ 
+> Sample Response 
+  
+ ```  
 
-> Example responses
+
+  
+ ```  
+
+|Parameter|In|Type|Description| 
+ |---|---|---|---|
+|at|body|string|true|none|
+|q|body|string|true|none|
+|app_id|body|string|true|none|
+|app_code|body|string|true|none|
+
+> Sample responses
 
 > default Response
 

@@ -265,7 +265,7 @@ p JSON.parse(result)
 
 `POST /api/v3/purchases/validations`
 
-*Validation Request*
+*This API is used to validate the status of a transaction*
 
 > Body parameter
 
@@ -274,19 +274,29 @@ p JSON.parse(result)
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
 |Content-Type|header|string|true|application/json|
-|Authorization|header|string|true|none|
-|Timestamp|header|string|true|none|
+|Authorization|header|string|true|Reference [here](#getting-a-bearer-token) to get started on setting up a Bearer Authorization token|
+|Timestamp|header|string|true|The current time in [unix timestamps](https://www.unixtimestamp.com/) when the transaction happened|
 |Nonce|header|string|true|Reference [here](#nonce) for more info|
-|Signature|header|string|true|none|
-|SignatureMethod|header|string|true|none|
-|AuthKeyVersion|header|string|true|none|
-|body|body|object|true|none|
-|» transactionRef|body|string|true|none|
-|» authData|body|string|true|none|
+|Signature|header|string|true|Reference [here](#signatures) for more info|
+|SignatureMethod|header|string|true|The hashing method the signature is encoded in.|
+|AuthKeyVersion|header|string|true|By default, ***1.0***|
 
-> Example responses
 
-> default Response
+   <h3 id="get_api-v3-purchases-responses">Request Body</h3>
+ 
+> Sample Response 
+  
+ ```  
+
+ ```  
+
+|Parameter|In|Type|Description| 
+|---|---|---|---|
+|transactionRef|response|string|The transaction reference initially sent in the request|
+|authData|body|string|Reference [here](#authdata) for details on generating the authData hash|
+
+
+> Error Response
 
 <h3 id="post_api-v3-purchases-validations-responses">Responses</h3>
 
@@ -294,10 +304,9 @@ p JSON.parse(result)
 |---|---|---|---|
 |default|Default|Default response|Inline|
 
-<h3 id="post_api-v3-purchases-validations-responseschema">Response Schema</h3>
 
-<aside class="success">
-This operation does not require authentication
+<aside class="warning">
+This operation requires authentication using the ***Basic Authorization*** header
 </aside>
 
 
@@ -567,9 +576,8 @@ p JSON.parse(result)
 
 `POST /api/v2/purchases/validations/recurrents`
 
-*Recurrent Get Token*
+*This validates a recurrent transaction and provides access to a token which may be used to reinitiate a recurrent billing transaction*
 
-null
 
 > Body parameter
 
@@ -578,30 +586,56 @@ null
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
 |Content-Type|header|string|true|application/json|
-|Authorization|header|string|true|none|
-|Timestamp|header|string|true|none|
+|Authorization|header|string|true|Reference [here](#getting-a-bearer-token) to get started on setting up a Bearer Authorization token|
+|Timestamp|header|string|true|The current time in [unix timestamps](https://www.unixtimestamp.com/) when the transaction happened|
 |Nonce|header|string|true|Reference [here](#nonce) for more info|
-|Signature|header|string|true|none|
-|SignatureMethod|header|string|true|none|
-|AuthKeyVersion|header|string|true|none|
-|body|body|object|true|none|
-|» transactionRef|body|string|true|none|
-|» authData|body|string|true|none|
+|Signature|header|string|true|Reference [here](#signatures) for more info|
+|SignatureMethod|header|string|true|The hashing method the signature is encoded in.|
+|AuthKeyVersion|header|string|true|By default, ***1.0***|
 
-> Example responses
 
-> default Response
+   <h3 id="get_api-v3-purchases-responses">Request Body</h3>
+ 
+> Sample Response 
+  
+ ```  
+{
+    "cardType": "MasterCard",
+    "balance": "100.00",
+    "token": "<<TOKEN>>",
+    "tokenExpiryDate": "2004",
+    "panLast4Digits": "<<LAST 4 PAN DIGITS>>",
+    "transactionRef": "<<TRANSACTION REFERENCE>>"
+}
+ 
+ ```  
 
-<h3 id="post_api-v2-purchases-validations-recurrents-responses">Responses</h3>
-
-|Status|Meaning|Description|Schema|
+|Parameter|In|Type|Description| 
 |---|---|---|---|
-|default|Default|Default response|Inline|
+|transactionRef|response|string|The transaction reference initially sent in the request|
+|authData|body|string|Reference [here](#authdata) for details on generating the authData hash|
+
+<h3 id="post_api-v3-purchases-responses">Response Body</h3>
+
+|Parameter|In|Type|Description| 
+|---|---|---|---|
+|cardType|response|string|The name of the card provider used in the transaction|
+|balance|response|string|The amount debited from the user account|
+|token|response|number|The tokenized version of the transaction which can be used in a recurrent billing purchase|
+|tokenExpiryDate|response|number|A 4 digit number representing when the token would be invalid|
+|panLast4Digits|response|number|The last 4 digits of the card number|
+|transactionRef|response|string|The transaction reference initially sent in the request|
+
 
 <h3 id="post_api-v2-purchases-validations-recurrents-responseschema">Response Schema</h3>
 
-<aside class="success">
-This operation does not require authentication
+<aside class="warning">
+This operation requires the following details to be configured properly.
+<ol> 
+<li>[Auth Data](#authdata)</li>
+<li> [Bearer Authorization](#opIdPOST_passport-oauth-token) must have been obtained </li>
+<li> Ensure you update the signature, more details [here](#signatures), same for the [nonce](#nonce)  </li>
+</ol>
 </aside>
 
 
@@ -876,30 +910,50 @@ p JSON.parse(result)
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
 |Content-Type|header|string|true|application/json|
-|Authorization|header|string|true|none|
-|Timestamp|header|string|true|none|
+|Authorization|header|string|true|Reference [here](#getting-a-bearer-token) to get started on setting up a Bearer Authorization token|
+|Timestamp|header|string|true|The current time in [unix timestamps](https://www.unixtimestamp.com/) when the transaction happened|
 |Nonce|header|string|true|Reference [here](#nonce) for more info|
-|Signature|header|string|true|none|
-|SignatureMethod|header|string|true|none|
-|AuthKeyVersion|header|string|true|none|
-|body|body|object|true|none|
-|» transactionRef|body|string|true|none|
-|» otp|body|string|true|none|
+|Signature|header|string|true|Reference [here](#signatures) for more info|
+|SignatureMethod|header|string|true|The hashing method the signature is encoded in.|
+|AuthKeyVersion|header|string|true|By default, ***1.0***|
 
-> Example responses
 
-> default Response
+<h3 id="get_api-v3-purchases-responses">Request Body</h3>
+ 
+> Sample Response 
+  
+ ```  
 
-<h3 id="post_api-v3-purchases-validations-otps-auths-responses">Responses</h3>
+ ```  
+
+|Parameter|In|Type|Description| 
+|---|---|---|---|
+|transactionRef|response|string|The transaction reference initially sent in the request|
+|otp|body|string|The OTP code which was sent to the user|
+
+> Error Response
+
+```
+
+```
+
+
+<h3 id="post_api-v3-purchases-validations-otps-auths-responses">Response Body</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |default|Default|Default response|Inline|
 
-<h3 id="post_api-v3-purchases-validations-otps-auths-responseschema">Response Schema</h3>
 
-<aside class="success">
-This operation does not require authentication
+
+<aside class="warning">
+This operation requires the following details to be configured properly.
+<ol> 
+<li>[Auth Data](#authdata)</li>
+<li> [Bearer Authorization](#opIdPOST_passport-oauth-token) must have been obtained </li>
+<li> Ensure you update the signature, more details [here](#signatures), same for the [nonce](#nonce)  </li>
+
+</ol>
 </aside>
 
 
@@ -1170,29 +1224,62 @@ p JSON.parse(result)
 
 `POST /api/v3/purchases/otps/auths`
 
-*/api/v3/purchases/otps/auths*
+*This is used to validate a transaction which requires an OTP for 2FA*
 
 > Body parameter
+
+```
+{
+  "paymentId":"{{paymentId}}",
+  "authData": <<AUTH DATA>>"",
+  "otp":"<<OTP>>"               
+}
+```
 
 <h3 id="post_api-v3-purchases-otps-auths-parameters">Parameters</h3>
 
 |Parameter|In|Type|Required|Description|
 |---|---|---|---|---|
 |Content-Type|header|string|true|application/json|
-|Authorization|header|string|true|none|
-|Timestamp|header|string|true|none|
+|Authorization|header|string|true|Reference [here](#getting-a-bearer-token) to get started on setting up a Bearer Authorization token|
+|Timestamp|header|string|true|The current time in [unix timestamps](https://www.unixtimestamp.com/) when the transaction happened|
 |Nonce|header|string|true|Reference [here](#nonce) for more info|
-|Signature|header|string|true|none|
-|SignatureMethod|header|string|true|none|
-|AuthKeyVersion|header|string|true|none|
-|body|body|object|true|none|
-|» paymentId|body|string|true|none|
-|» authData|body|string|true|none|
-|» otp|body|string|true|none|
+|Signature|header|string|true|Reference [here](#signatures) for more info|
+|SignatureMethod|header|string|true|The hashing method the signature is encoded in.|
+|AuthKeyVersion|header|string|true|By default, ***1.0***|
 
-> Example responses
 
-> default Response
+<h3 id="get_api-v3-purchases-responses">Request Body</h3>
+ 
+> Sample Response 
+  
+ ```  
+
+
+ ```  
+
+ > Error Response
+
+
+ ```
+{
+    "errors": [
+        {
+            "code": "XS1",
+            "message": "Your payment has exceeded the time required to pay"
+        }
+    ],
+    "paymentId": "<<PAYMENT ID>>"
+}
+
+ ```
+
+|Parameter|In|Type|Description| 
+|---|---|---|---|
+|paymentId|body|number|The payment identifier for the transaction|
+|authData|body|string|Reference [here](#authdata) for details on generating the authData hash|
+|otp|body|string|The OTP code required to validate the transaction|
+
 
 <h3 id="post_api-v3-purchases-otps-auths-responses">Responses</h3>
 
@@ -1200,9 +1287,14 @@ p JSON.parse(result)
 |---|---|---|---|
 |default|Default|Default response|Inline|
 
-<h3 id="post_api-v3-purchases-otps-auths-responseschema">Response Schema</h3>
 
-<aside class="success">
-This operation does not require authentication
+<aside class="warning">
+This operation requires the following details to be configured properly.
+<ol> 
+<li>[Auth Data](#authdata)</li>
+<li> [Bearer Authorization](#opIdPOST_passport-oauth-token) must have been obtained </li>
+<li> Ensure you update the signature, more details [here](#signatures), same for the [nonce](#nonce)  </li>
+
+</ol>
 </aside>
 
