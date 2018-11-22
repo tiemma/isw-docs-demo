@@ -155,7 +155,6 @@
 <li>Auto Enrollment (M0 Transaction)</li>
 <li>Card Validation (Adding Card)</li>
 <li>Recurring Payments</li>
-<li><a href="#errors">Error Codes</a></li>
 </ul>
 
           <h1 id="-default-notes"> Notes </h1>
@@ -284,6 +283,8 @@ function nonce()
 <p>This is used to state what type of transaction you&rsquo;d be performing.</p>
 
 <p>Generally, it has a format as shown on the other side.</p>
+
+<p>Using this format is not compulsory but it does aid in debugging fail transactions and assessing what kind is being used.</p>
 
           <h2 id='getting-a-bearer-token'>Getting a Bearer Token</h2>
 <p><a id="opIdPOST_passport-oauth-token"></a></p>
@@ -1884,10 +1885,39 @@ This operation requires the following details to be configured properly.
 
 <h3 id="get_api-v3-purchases-responses">Response Body</h3>
 
-<p>|Parameter|In|Type|Description| 
- |&mdash;|&mdash;|&mdash;|&mdash;|
-|&mdash;|&mdash;|&mdash;|&mdash;|
-|default|Default|Default response|Inline|</p>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>amount</td>
+<td>response</td>
+<td>number</td>
+<td>The amount debited from the user</td>
+</tr>
+<tr>
+<td>transactionRef</td>
+<td>response</td>
+<td>string</td>
+<td>The transaction reference initially sent in the request</td>
+</tr>
+<tr>
+<td>transactionDate</td>
+<td>response</td>
+<td>number</td>
+<td>The date the transaction was performed</td>
+</tr>
+<tr>
+<td>message</td>
+<td>response</td>
+<td>number</td>
+<td>The status message of the transaction</td>
+</tr>
+</tbody></table>
 
 <p><aside class="warning">
 This operation requires the following details to be configured properly.
@@ -2482,25 +2512,29 @@ This operation does not require authentication
 <td>paymentId</td>
 <td>body</td>
 <td>number</td>
-<td>true</td>
+<td>The payment identifier for the transaction</td>
 </tr>
 <tr>
 <td>mobilePhoneNumber</td>
 <td>body</td>
 <td>number</td>
-<td>true</td>
+<td>The mobile number of the person</td>
 </tr>
 <tr>
 <td>transactionRef</td>
 <td>body</td>
 <td>string</td>
-<td>true</td>
+<td>The transaction reference for this particular transaction</td>
 </tr>
 </tbody></table>
 
 <blockquote>
 <p>Sample responses</p>
+</blockquote>
+<pre class="highlight plaintext">
+</pre>
 
+<blockquote>
 <p>Error Response</p>
 </blockquote>
 <pre class="highlight json"><span class="p">{</span><span class="w">
@@ -4313,7 +4347,6 @@ This operation requires the following details to be configured properly.
 <p>Sample Response </p>
 </blockquote>
 <pre class="highlight plaintext">
-
 </pre>
 
 <table><thead>
@@ -4334,13 +4367,15 @@ This operation requires the following details to be configured properly.
 <td>otp</td>
 <td>body</td>
 <td>string</td>
-<td>true</td>
+<td>The OTP code which was sent to the user</td>
 </tr>
 </tbody></table>
 
 <blockquote>
 <p>Error Response</p>
 </blockquote>
+<pre class="highlight plaintext">
+</pre>
 
 <h3 id="post_api-v3-purchases-validations-otps-auths-responses">Response Body</h3>
 
@@ -4618,11 +4653,17 @@ This operation requires the following details to be configured properly.
 
 <p><code class="prettyprint">POST /api/v3/purchases/otps/auths</code></p>
 
-<p><em>/api/v3/purchases/otps/auths</em></p>
+<p><em>This is used to validate a transaction which requires an OTP for 2FA</em></p>
 
 <blockquote>
 <p>Body parameter</p>
 </blockquote>
+<pre class="highlight json"><span class="p">{</span><span class="w">
+  </span><span class="s2">"paymentId"</span><span class="p">:</span><span class="s2">"{{paymentId}}"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"authData"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;&lt;AUTH</span><span class="w"> </span><span class="err">DATA&gt;&gt;</span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"otp"</span><span class="p">:</span><span class="s2">"&lt;&lt;OTP&gt;&gt;"</span><span class="w">               
+</span><span class="p">}</span><span class="w">
+</span></pre>
 
 <h3 id="post_api-v3-purchases-otps-auths-parameters">Parameters</h3>
 
@@ -4686,15 +4727,30 @@ This operation requires the following details to be configured properly.
 </tr>
 </tbody></table>
 
-<p><h3 id="get_api-v3-purchases-responses">Request Body</h3></p>
+<h3 id="get_api-v3-purchases-responses">Request Body</h3>
+ 
 
 <blockquote>
 <p>Sample Response </p>
 </blockquote>
 <pre class="highlight plaintext">
 
-
 </pre>
+
+<blockquote>
+<p>Error Response</p>
+</blockquote>
+<pre class="highlight json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XS1"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your payment has exceeded the time required to pay"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"paymentId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;&lt;PAYMENT ID&gt;&gt;"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></pre>
 
 <table><thead>
 <tr>
@@ -4723,10 +4779,6 @@ This operation requires the following details to be configured properly.
 <td>The OTP code required to validate the transaction</td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p>Sample responses</p>
-</blockquote>
 
 <h3 id="post_api-v3-purchases-otps-auths-responses">Responses</h3>
 
@@ -4797,6 +4849,258 @@ This operation requires the following details to be configured properly.
 </tr>
 </tbody></table>
 <h1 id='transaction-response-codes'>Transaction Response Codes</h1>
+<table><thead>
+<tr>
+<th>S/N</th>
+<th>Response Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>E10</td>
+<td>The service field tag has not been populated.  Please ask Interswitch Support for more help.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>E11</td>
+<td>This requests expects a transactionType field to be set and it is not.  Please ask Interswitch Support for more help</td>
+</tr>
+<tr>
+<td>3</td>
+<td>E12</td>
+<td>SecurityToken header is missing.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>E13</td>
+<td>Username or password is wrong.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>E14</td>
+<td>Missing content type header.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>E15</td>
+<td>The transaction you are trying to do is not supported</td>
+</tr>
+<tr>
+<td>7</td>
+<td>E16</td>
+<td>The service you have specified is not available</td>
+</tr>
+<tr>
+<td>8</td>
+<td>E17</td>
+<td>The service provider you have specified has not been set up on the platform.</td>
+</tr>
+<tr>
+<td>9</td>
+<td>E18</td>
+<td>The service is unreachable at the moment</td>
+</tr>
+<tr>
+<td>10</td>
+<td>E19</td>
+<td>A bad response was received from service provider</td>
+</tr>
+<tr>
+<td>11</td>
+<td>E20</td>
+<td>Your request has timed out</td>
+</tr>
+<tr>
+<td>12</td>
+<td>E21</td>
+<td>An unknown error has occurred. Please ask Interswitch Support for more help.</td>
+</tr>
+<tr>
+<td>13</td>
+<td>E22</td>
+<td>Access key has not been supplied. Ensure the Authorization header has been set appropriately.</td>
+</tr>
+<tr>
+<td>14</td>
+<td>E23</td>
+<td>Nonce has not been supplied. Ensure the Nonce header has been set appropriately.</td>
+</tr>
+<tr>
+<td>15</td>
+<td>E24</td>
+<td>Please synchronize your time with the server and ensure your time is not outside of 30mins of the Server local time. The standard time zone used is GMT</td>
+</tr>
+<tr>
+<td>16</td>
+<td>E25</td>
+<td>Nonce has already been used</td>
+</tr>
+<tr>
+<td>17</td>
+<td>E26</td>
+<td>Signature failed for this request.  Please ask Interswitch Support for more help.</td>
+</tr>
+<tr>
+<td>18</td>
+<td>E27</td>
+<td>An unknown error occured during Authentication.  Please ask Interswitch Support for more help.</td>
+</tr>
+<tr>
+<td>19</td>
+<td>E28</td>
+<td>Your credentials do not have access to this resource</td>
+</tr>
+<tr>
+<td>20</td>
+<td>E29</td>
+<td>Timestamp is missing in your header</td>
+</tr>
+<tr>
+<td>21</td>
+<td>E30</td>
+<td>SecurityToken header is bad.</td>
+</tr>
+<tr>
+<td>22</td>
+<td>E31</td>
+<td>XML data is badly formatted</td>
+</tr>
+<tr>
+<td>23</td>
+<td>E32</td>
+<td>JSON data is badly formatted</td>
+</tr>
+<tr>
+<td>24</td>
+<td>E33</td>
+<td>Keystore is not accessible. Contact Interswitch.</td>
+</tr>
+<tr>
+<td>25</td>
+<td>E34</td>
+<td>The system is busy at the moment, please try again later.</td>
+</tr>
+<tr>
+<td>26</td>
+<td>E35</td>
+<td>Bad request to service provider. Contact Interswitch.</td>
+</tr>
+<tr>
+<td>26</td>
+<td>E36</td>
+<td>Bad request to service processor. Contact Interswitch.</td>
+</tr>
+<tr>
+<td>27</td>
+<td>E37</td>
+<td>Bad request from client. Kindly check your message.</td>
+</tr>
+<tr>
+<td>28</td>
+<td>E38</td>
+<td>Bad response from service provider. Contact Interswitch.</td>
+</tr>
+<tr>
+<td>29</td>
+<td>E39</td>
+<td>Bad response from service processor. Contact Interswitch.</td>
+</tr>
+<tr>
+<td>30</td>
+<td>E40</td>
+<td>Bad response to client. Contact Interswitch.</td>
+</tr>
+<tr>
+<td>31</td>
+<td>E41</td>
+<td>Bad request from client. Kindly check your message.</td>
+</tr>
+</tbody></table>
+
+          <h1 id='test-transaction-details'>Test Transaction Details</h1><h2 id='test-card-details'>Test Card Details</h2>
+<table><thead>
+<tr>
+<th>Description</th>
+<th>PAN</th>
+<th>Expiry Date</th>
+<th>PIN</th>
+<th>CVC</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Successful Transaction Verve Test Card (No OTP)</td>
+<td>5061030000000000084</td>
+<td>Sept 2019</td>
+<td>1234</td>
+<td>123</td>
+</tr>
+<tr>
+<td></td>
+<td>6280511000000095</td>
+<td>Dec 2026</td>
+<td>0000</td>
+<td>123</td>
+</tr>
+<tr>
+<td>Insufficient Funds Verve Test Card</td>
+<td>5061030000000000027</td>
+<td>Sept 2019</td>
+<td>1234</td>
+<td>123</td>
+</tr>
+<tr>
+<td>VISA Test Card (iPIN)</td>
+<td>4000000000000002</td>
+<td>Apr 2020</td>
+<td><No PIN></td>
+<td>123</td>
+</tr>
+<tr>
+<td>Incorrect PIN (Masked as “Transaction Error”) Verve Test Card</td>
+<td>5061030000000000035</td>
+<td>Sept 2019</td>
+<td>0000</td>
+<td>123</td>
+</tr>
+<tr>
+<td>AutoEnrollment Test Card (Response Code ‘M0’ returned)</td>
+<td>5061040000000000231</td>
+<td>Jan 2019</td>
+<td>1234</td>
+<td>123</td>
+</tr>
+<tr>
+<td>Successful Transaction Verve Test Card (OTP)</td>
+<td>Kindly request for a test card to be configured for you, so as to receive OTP via email.</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='test-merchant-details'>Test Merchant Details</h2>
+<table><thead>
+<tr>
+<th>Client ID</th>
+<th>Secret Key</th>
+<th>Merchant Code</th>
+<th>Requestor ID</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>IKIA9614B82064D632E9B6418DF358A6A4AEA84D7218</td>
+<td>XCTiBtLy1G9chAnyg0z3BcaFK4cVpwDg/GTw2EmjTZ8=</td>
+<td>MX187</td>
+<td>00117614992</td>
+</tr>
+<tr>
+<td>IKIACA67D931869E40BE07EE418A0B07A4A6D9EEF588</td>
+<td>y0FISAGAS+OSIASec5Cts/khsWVXaWCoxZcLF2d8o/A=</td>
+<td>MX1209</td>
+<td>None</td>
+</tr>
+</tbody></table>
+
       </div>
       <div class="dark-box">
           <div class="lang-selector">
