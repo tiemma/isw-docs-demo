@@ -5,7 +5,9 @@ while true; do
 
     echo "Running under loop $COUNTER"
 
-    # sleep 600;
+    if [[ -z $1 ]]; then
+        sleep 600;
+    fi
 
     docker-compose exec docs sh -c "rm -r /app/source/build; cd .. && bundle exec middleman build; mv /app/build/ /app/source"
 

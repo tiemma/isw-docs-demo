@@ -55,6 +55,48 @@ html, body {
   width: 20px;
 }
 
+.hide-all{
+  display: none !important;
+}
+
+.content{
+  transition: all 1s ease-in-out;
+}
+
+.content.remove-margin > *{
+  margin-right: 0 !important;
+}
+
+#hide-button{
+  position: fixed;
+  color: red;
+  top: 90vh;
+  left: 60vw;
+  z-index: 100;
+  transform: rotate(90deg);
+}
+
+#hide-button.active{
+  left: 95vw;
+}
+
+#hide-button img{
+  width: 2rem;
+}
+
+#hide-button.active img{
+  transform: rotate(180deg);
+}
+
+#hide-button .hide-text::after{
+  content:  "Hide";
+}
+
+#hide-button.active .hide-text::after{
+  content:  "Show";
+}
+
+
 @mixin embossed-bg {
   background:
     linear-gradient(to bottom, rgba(#000, 0.2), rgba(#000, 0) 8px),
@@ -597,6 +639,10 @@ html, body {
     }
   }
 
+  a#hide-button{
+    left: 48%;
+  }
+
   .page-wrapper {
     margin-left: 0;
   }
@@ -613,6 +659,10 @@ html, body {
 
 @media (max-width: $phone-width) {
   .dark-box {
+    display: none;
+  }
+
+  a#hide-button{
     display: none;
   }
 
