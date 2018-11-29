@@ -10,5 +10,6 @@
             $("pre").toggleClass(hideClass);
             $("div.content").toggleClass("remove-margin");
         });
+        $('a#hide-button').trigger('click');
     }
 })(window);

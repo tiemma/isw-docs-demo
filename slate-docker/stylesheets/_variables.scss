@@ -24,7 +24,7 @@ under the License.
 // BACKGROUND COLORS
 ////////////////////
 // $nav-bg: #393939;
-$nav-bg: #fff;
+$nav-bg: #eaf2f6;
 // $examples-bg: #393939;
 $examples-bg: $nav-bg;
 $header-text-color: #ff0000;
@@ -41,7 +41,8 @@ $lang-select-border: #000;
 $lang-select-bg: $code-annotation-bg;
 $lang-select-active-bg: $examples-bg; // feel free to change this to blue or something
 $lang-select-pressed-bg: #111; // color of language tab bg when mouse is pressed
-$main-bg: #eaf2f6;
+// $main-bg-sidebar: #eaf2f6;
+$main-bg: #fafcfc;
 $aside-notice-bg: #8fbcd4;
 $aside-warning-bg: #c97a7e;
 $aside-success-bg: #6ac174;
