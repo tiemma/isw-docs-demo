@@ -19,6 +19,11 @@ while true; do
 
     cd .. && git subtree push --prefix slate-docker/build origin gh-pages && cd slate-docker
 
+    if [[ ! -z $1 ]]; then
+        exit;
+    fi
+
+
     COUNTER=$[$COUNTER+1]
 
 done
