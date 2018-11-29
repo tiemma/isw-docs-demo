@@ -37,15 +37,5 @@ To begin the using the platform, you must register for an account on the [Inters
 
 Please follow the registration process and you'd be redirected to the platform.
 
-<h1 id="-default">APIs Currently Enrolled</h1>
 
-The following APIs are avaiable for us and have been categorised for ease of access as follows below:
-
-- [Basic Purchase](#basic-purchase)
-- [OTP Purchase]()
-- [Payment Token Purchase](#payment-token)
-- VISA Cardinal Transaction (NoPIN)
-- Auto Enrollment (M0 Transaction)
-- Card Validation (Adding Card)
-- Recurring Payments
 

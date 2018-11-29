@@ -2,7 +2,7 @@
 @import 'normalize';
 @import 'variables';
 @import 'icon-font';
-
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Raleway');
 /*
 Copyright 2008-2013 Concur Technologies, Inc.
 
@@ -34,14 +34,22 @@ html, body {
   height: 100%;
   -webkit-text-size-adjust: none; /* Never autoresize text */
   font-size: 0.9rem;
-  letter-spacing: 1px;
-  h1, h2, h3, h4{
+  letter-spacing: 0px;
+  h1, h2, h3, h4, .tocify-wrapper{
     color: $header-text-color;
+    font-family: 'Raleway', sans-serif !important;
+    font-weight: 400 !important;
   }
 
-  th{
-    color: $nav-active-bg;
-  }
+  // th{
+  //   color: $nav-active-bg;
+  // }
+}
+
+body{
+
+  font-family: 'Open Sans', sans-serif;
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -119,8 +127,8 @@ html, body {
   bottom: 0;
   width: $nav-width;
   background-color: $nav-bg;
-  font-size: 13px;
-  font-weight: bold;
+  font-size: 0.85rem;
+  // font-weight: bold;
 
   // language selector for mobile devices
   .lang-selector {
@@ -176,21 +184,24 @@ html, body {
     transition-property: height, margin;
     transition-duration: 180ms;
     transition-timing-function: ease-in-out;
+    background: none !important;
+    background: $nav-subitem-bg !important;
     &.visible {
       height: 30%;
       margin-bottom: 1em;
+      border-bottom: 1px dashed $main-text;
     }
 
     @include embossed-bg;
 
     li {
       margin: 1em $nav-padding;
-      line-height: 1;
-      // color: $nav-active-text !important;
+      line-height: 1.2;
+      font-size: 0.8rem;
     }
 
     a {
-      color: $nav-active-text;
+      color: $nav-active-text !important;
       text-decoration: none;
 
       &:hover {
@@ -228,16 +239,20 @@ html, body {
 
   // This is the currently selected ToC entry
   .tocify-focus {
-    box-shadow: 0px 1px 0px $nav-active-shadow;
+    // box-shadow: 0px 1px 0px $nav-active-shadow;
     background-color: $nav-active-bg;
-    color: $nav-active-text;
+    color: $main-bg !important;
+    // color: $nav-active-text;
+    margin: 0.5rem 1rem;
+    border-radius: 0.1rem;
   }
 
   // Subheaders are the submenus that slide open
   // in the table of contents.
   .tocify-subheader {
     display: none; // tocify will override this when needed
-    background-color: $nav-subitem-bg;
+    background: $nav-subitem-bg !important;
+    // background: none !important;
     font-weight: 500;
     .tocify-item>a {
       padding-left: $nav-padding + $nav-indent;
@@ -251,7 +266,7 @@ html, body {
     }
 
     li{
-      color: $main-bg;
+      color: $main-text;
     }
   }
 
@@ -297,7 +312,7 @@ html, body {
   z-index: 100;
   color: #000;
   text-decoration: none;
-  font-weight: bold;
+  // font-weight: bold;
   opacity: 0.7;
   line-height: 16px;
   img {
@@ -395,7 +410,7 @@ html, body {
     clear: both;
   }
 
-  &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl {
+  &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>ul, &>ol, &>aside, &>dl {
     margin-right: $examples-width;
     padding: 0 $main-padding;
     box-sizing: border-box;
@@ -469,6 +484,12 @@ html, body {
   table {
     margin-bottom: 1em;
     overflow: auto;
+
+    thead{
+      background: $code-annotation-bg;
+      color: white !important;
+    }
+
     th,td {
       text-align: left;
       vertical-align: top;
@@ -483,6 +504,10 @@ html, body {
 
     td {
       padding: 10px;
+
+      *{
+        font-size: 0.7rem;
+      }
     }
 
     tr:last-child {
