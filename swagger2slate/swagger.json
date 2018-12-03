@@ -1,1 +1,942 @@
-{"swagger":"2.0","info":{"version":"","title":"1 - Merchant X V3","description":""},"paths":{"/V3DSStart":{"post":{"operationId":"POST_V3DSStart","summary":"VISA Auth Page (Load Page for iPIN)","consumes":["application/x-www-form-urlencoded"],"parameters":[{"name":"osb","in":"query","required":false,"type":"string","default":"visa-3"},{"name":"VAA","in":"query","required":false,"type":"string","default":"B"},{"name":"TermUrl","in":"formData","type":"string","default":"<<TermUrl>>"},{"name":"PaReq","in":"formData","type":"string","default":"<<PaReq>>"},{"name":"MD","in":"formData","type":"string","default":"<<MD>>"},{"name":"Content-Type","in":"header","required":false,"type":"string","default":" application/x-www-form-urlencoded"}],"responses":{"default":{"description":"","schema":{}}}}},"/api/v2/purchases/validations/recurrents":{"post":{"operationId":"POST_api-v2-purchases-validations-recurrents","summary":"Recurrent Get Token","description":"null","consumes":["text/plain"],"parameters":[{"name":"body","in":"body","schema":{"type":"object","properties":{"transactionRef":{"type":"string"},"authData":{"type":"string"}},"example":{"transactionRef":"JB-{{Timestamp}}-ReccValid","authData":"mGR04cy8g7bKhGiF+2YdPB+2+mbZYrH90mrhc5DM1g/YpkHMbeuNWu1JpYzUpO/zRrhalAAudhp9+mlb/FmR+ihGxr7hk+GvrVWQRod+kuXPiooPStFHjU3tPYKiDkiiIWXhjWk92BkNkuKYWRqeo/Va8rkAF24BS45mjxWHbpRKEUysfDCRLTqPx2rwdt2lQ03J+eKriJ0Hf9U2FY8WHjQCp6axsSqF0sHGO8OVf2KjTDeFt2KyRmEaNWxjuNpFOgW9YG2BPrKs7YuefDqHmRJYWnyn5O1c+9N9Iz9RB7AK8z0gFBZI2rH+pxx7qaxpwx/CpTFiOWE+d9EKQliAnw=="}}},{"name":"Content-Type","in":"header","required":false,"type":"string","default":" application/json"},{"name":"Authorization","in":"header","required":false,"type":"string","default":" <<Access_token>>"},{"name":"Timestamp","in":"header","required":false,"type":"string","default":" <<Timestamp>>"},{"name":"Nonce","in":"header","required":false,"type":"string","default":" <<Nonce>>"},{"name":"Signature","in":"header","required":false,"type":"string","default":" <<Signature>>"},{"name":"SignatureMethod","in":"header","required":false,"type":"string","default":" <<SignatureMethod>>"},{"name":"AuthKeyVersion","in":"header","required":false,"type":"string","default":" 1"}],"responses":{"default":{"description":"","schema":{}}}}},"/passport/oauth/token":{"post":{"operationId":"POST_passport-oauth-token","summary":"/passport/oauth/token","consumes":["application/x-www-form-urlencoded"],"parameters":[{"name":"grant_type","in":"formData","type":"string","default":"client_credentials"},{"name":"Content-Type","in":"header","required":false,"type":"string","default":" application/x-www-form-urlencoded"},{"name":"Authorization","in":"header","required":false,"type":"string","default":" <<Authorization>>"}],"responses":{"default":{"description":"","schema":{}}}}},"/api/v3/purchases/otps/enrollments":{"post":{"operationId":"POST_api-v3-purchases-otps-enrollments","summary":"Enroll card for OTP","consumes":["text/plain"],"parameters":[{"name":"body","in":"body","schema":{"type":"object","properties":{"paymentId":{"type":"string"},"mobilePhoneNumber":{"type":"string"},"transactionRef":{"type":"string"}},"example":{"paymentId":"{{paymentId}}","mobilePhoneNumber":"+2348090673520","transactionRef":"{{TransactionRef}}"}}},{"name":"Content-Type","in":"header","required":false,"type":"string","default":" application/json"},{"name":"Authorization","in":"header","required":false,"type":"string","default":" <<Access_token>>"},{"name":"Timestamp","in":"header","required":false,"type":"string","default":" <<Timestamp>>"},{"name":"Nonce","in":"header","required":false,"type":"string","default":" <<Nonce>>"},{"name":"Signature","in":"header","required":false,"type":"string","default":" <<Signature>>"},{"name":"SignatureMethod","in":"header","required":false,"type":"string","default":" <<SignatureMethod>>"},{"name":"AuthKeyVersion","in":"header","required":false,"type":"string","default":" 1"}],"responses":{"default":{"description":"","schema":{}}}}},"/api/v3/purchases/validations":{"post":{"operationId":"POST_api-v3-purchases-validations","summary":"Validation Request","consumes":["text/plain"],"parameters":[{"name":"body","in":"body","schema":{"type":"object","properties":{"transactionRef":{"type":"string"},"authData":{"type":"string"}},"example":{"transactionRef":"JB-{{Timestamp}}-Validate","authData":"UX1NSY0cF988psw+rSUYPy1mUyFWPjKztmUHujTORVgbSCWSKp4Ow5d4/1eq6/oZBRHHTV3SAnGALpwnbyHdjN943Ode65owhehqkJ8TAS/7ZNdRLl7hDRiU9TsZfLsDEMAYNEvPoFwye2BG0DIaLxPDAzPimpt5W5rJIjA7kMknOkHBwijkEM+F+UZGcLRB9Oj4QYlzK55bc2Wyhtqz29bAFQaL4hYqHuTQ+hD3IQnvGM7xKmRoxUTvii4LcGrXnRFbmdk7gJZf/gaabrRlbTSbo5WqYeUAm2ksy81aVgRBFVENaeSBA+OFDLmB2l1knRMJmboy96K6oe0IwXQwGQ=="}}},{"name":"Content-Type","in":"header","required":false,"type":"string","default":" application/json"},{"name":"Authorization","in":"header","required":false,"type":"string","default":" <<Access_token>>"},{"name":"Timestamp","in":"header","required":false,"type":"string","default":" <<Timestamp>>"},{"name":"Nonce","in":"header","required":false,"type":"string","default":" <<Nonce>>"},{"name":"Signature","in":"header","required":false,"type":"string","default":" <<Signature>>"},{"name":"SignatureMethod","in":"header","required":false,"type":"string","default":" <<SignatureMethod>>"},{"name":"AuthKeyVersion","in":"header","required":false,"type":"string","default":" 1"}],"responses":{"default":{"description":"","schema":{}}}}},"/collections/api/v1/pay/cardinalCallBack":{"post":{"operationId":"POST_collections-api-v1-pay-cardinalCallBack","summary":"VISA -> ISW CallBack","description":"null","consumes":["application/x-www-form-urlencoded"],"parameters":[{"name":"MD","in":"formData","type":"string","default":"240412"},{"name":"PaRes","in":"formData","type":"string","default":"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"},{"name":"Accept","in":"header","required":false,"type":"string","default":" text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8"},{"name":"Accept-Encoding","in":"header","required":false,"type":"string","default":" gzip, deflate, br"},{"name":"Accept-Language","in":"header","required":false,"type":"string","default":" fr-FR,fr;q=0.9,en-GB;q=0.8,en;q=0.7,fr-CA;q=0.6,en-US;q=0.5"},{"name":"Content-Length","in":"header","required":false,"type":"string","default":" 4170"},{"name":"Content-Type","in":"header","required":false,"type":"string","default":" application/x-www-form-urlencoded"},{"name":"User-Agent","in":"header","required":false,"type":"string","default":" Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36"}],"responses":{"default":{"description":"","schema":{}}}}},"/collections/api/v1/gettransaction.json":{"get":{"operationId":"GET_collections-api-v1-gettransaction-json","summary":"Get Transaction 2.0 ","description":"Returns Bank Code and Account Number","consumes":["text/plain"],"parameters":[{"name":"getacquirerdata","in":"query","required":false,"type":"string","default":"true"},{"name":"transactionreference","in":"query","required":false,"type":"string","default":"<<transactionRef>>"},{"name":"amount","in":"query","required":false,"type":"string","default":"66666"},{"name":"merchantcode","in":"query","required":false,"type":"string","default":"MX187"}],"responses":{"default":{"description":"","schema":{}}}}},"/api/v3/purchases":{"post":{"operationId":"POST_api-v3-purchases","summary":"/api/v3/purchases","description":"null","consumes":["text/plain"],"parameters":[{"name":"body","in":"body","schema":{"type":"object","properties":{"customerId":{"type":"string"},"amount":{"type":"string"},"authData":{"type":"string"},"currency":{"type":"string"},"transactionRef":{"type":"string"}},"example":{"customerId":"JOnJazzy@gmail.com","amount":"666.66","authData":"IWrhQ49/8oe7Cs6TCSAHyz7V1KB9si63uAuY2H+SR1piYRLN3vHN8v/RFXSmirM1wfGQevRUZADtvUNEtkS007QtD5lINQCcZrpB2jOyX7GBLPRkVuhKUVJEA4HLbllAkCflasT/X4vP7jo+qokyYQW6I9VOqEfwvoLnduHpC1MqJuiruHMCflOYqtnw5ECDgUNYgoKUPbK4zrr8b663ZUJr8a4ENygOZOMOu7Ame7zo8UcnO7zxh6nI/q4crlT2YnuE/tFa/HN9Yh76pU3kcXd0q70+bh6xNDeH1JOSyqVB/OkbArsCHWjC1naxS6+PbEI5vf4gp/AU0ZN61QKvEg==","currency":"NGN","transactionRef":"JB-{{Timestamp}}-NoOTP"}}},{"name":"Content-Type","in":"header","required":false,"type":"string","default":" application/json"},{"name":"Authorization","in":"header","required":false,"type":"string","default":" <<Access_token>>"},{"name":"Timestamp","in":"header","required":false,"type":"string","default":" <<Timestamp>>"},{"name":"Nonce","in":"header","required":false,"type":"string","default":" <<Nonce>>"},{"name":"Signature","in":"header","required":false,"type":"string","default":" <<Signature>>"},{"name":"SignatureMethod","in":"header","required":false,"type":"string","default":" <<SignatureMethod>>"},{"name":"AuthKeyVersion","in":"header","required":false,"type":"string","default":" 1"}],"responses":{"default":{"description":"","schema":{}}}},"get":{"operationId":"GET_api-v3-purchases","summary":"/api/v3/purchases","description":"null","consumes":["text/plain"],"parameters":[{"name":"Amount","in":"header","required":false,"type":"string","default":" 666.66"},{"name":"transactionRef","in":"header","required":false,"type":"string","default":" <<transactionRef>>"},{"name":"-----------------------------------------------------------------------------------------------","in":"header","required":false,"type":"string","default":" ---------------------------------------------------------------------------------------"},{"name":"Content-Type","in":"header","required":false,"type":"string","default":" application/json"},{"name":"Authorization","in":"header","required":false,"type":"string","default":" <<Access_token>>"},{"name":"Timestamp","in":"header","required":false,"type":"string","default":" <<Timestamp>>"},{"name":"Nonce","in":"header","required":false,"type":"string","default":" <<Nonce>>"},{"name":"Signature","in":"header","required":false,"type":"string","default":" <<Signature>>"},{"name":"SignatureMethod","in":"header","required":false,"type":"string","default":" <<SignatureMethod>>"},{"name":"AuthKeyVersion","in":"header","required":false,"type":"string","default":" 1"}],"responses":{"default":{"description":"","schema":{}}}}},"/api/v2/purchases/recurrents":{"post":{"operationId":"POST_api-v2-purchases-recurrents","summary":"Recurrent Purchase","description":"null","consumes":["text/plain"],"parameters":[{"name":"body","in":"body","schema":{"type":"object","properties":{"customerId":{"type":"string"},"amount":{"type":"string"},"currency":{"type":"string"},"token":{"type":"string"},"tokenExpiryDate":{"type":"string"},"transactionRef":{"type":"string"}},"example":{"customerId":"CustID-{{Timestamp}}","amount":"90","currency":"NGN","token":"{{token}}","tokenExpiryDate":"{{tokenExpiryDate}}","transactionRef":"JB-{{Timestamp}}-ReccPurch"}}},{"name":"Content-Type","in":"header","required":false,"type":"string","default":" application/json"},{"name":"Authorization","in":"header","required":false,"type":"string","default":" <<Access_token>>"},{"name":"Timestamp","in":"header","required":false,"type":"string","default":" <<Timestamp>>"},{"name":"Nonce","in":"header","required":false,"type":"string","default":" <<Nonce>>"},{"name":"Signature","in":"header","required":false,"type":"string","default":" <<Signature>>"},{"name":"SignatureMethod","in":"header","required":false,"type":"string","default":" <<SignatureMethod>>"},{"name":"AuthKeyVersion","in":"header","required":false,"type":"string","default":" 1"}],"responses":{"default":{"description":"","schema":{}}}}},"/api/v3/purchases/validations/otps/auths":{"post":{"operationId":"POST_api-v3-purchases-validations-otps-auths","summary":"Validation Request - OTP","consumes":["text/plain"],"parameters":[{"name":"body","in":"body","schema":{"type":"object","properties":{"transactionRef":{"type":"string"},"otp":{"type":"string"}},"example":{"transactionRef":"{{transactionRef}}","otp":"770718"}}},{"name":"Content-Type","in":"header","required":false,"type":"string","default":" application/json"},{"name":"Authorization","in":"header","required":false,"type":"string","default":" <<Access_token>>"},{"name":"Timestamp","in":"header","required":false,"type":"string","default":" <<Timestamp>>"},{"name":"Nonce","in":"header","required":false,"type":"string","default":" <<Nonce>>"},{"name":"Signature","in":"header","required":false,"type":"string","default":" <<Signature>>"},{"name":"SignatureMethod","in":"header","required":false,"type":"string","default":" <<SignatureMethod>>"},{"name":"AuthKeyVersion","in":"header","required":false,"type":"string","default":" 1"}],"responses":{"default":{"description":"","schema":{}}}}},"/api/v3/purchases/otps/auths":{"post":{"operationId":"POST_api-v3-purchases-otps-auths","summary":"/api/v3/purchases/otps/auths","consumes":["text/plain"],"parameters":[{"name":"body","in":"body","schema":{"type":"object","properties":{"paymentId":{"type":"string"},"authData":{"type":"string"},"otp":{"type":"string"}},"example":{"paymentId":"{{paymentId}}","authData":"QQaOpQg9fqq0p8Q6IpZHdWSNacfkGnU04Woq7AMhvZG5Ev+VbQAKYHIv95IM9tG1uUwRYA4eWz9WJ8CbMntoegW7nunrnWei2dgeQ50CfM5kefk4IRcK7yyCaM7kz0ifNorRFFF3et4C+saZ3Hm7XzyxivAOAIfZsmNdbRYPSOYm66+9tJix8mRpC0DCRg6Bn7pSx/Gy3ewiataMTCX+0X9b3j0SiYNVUhP+BfpXZEX3XcqpThT4HJDTKaeBlFIrG4N53mw+eaHj2/cg6VxWoMnv4HpAKYnG1Pyi+lnBCmtwJEmEd0r8+v4yLOAvm8rR2cM+jGtBRwsSjwmJ4Nj3FQ==","otp":"760437"}}},{"name":"Content-Type","in":"header","required":false,"type":"string","default":" application/json"},{"name":"Authorization","in":"header","required":false,"type":"string","default":" <<Access_token>>"},{"name":"Timestamp","in":"header","required":false,"type":"string","default":" <<Timestamp>>"},{"name":"Nonce","in":"header","required":false,"type":"string","default":" <<Nonce>>"},{"name":"Signature","in":"header","required":false,"type":"string","default":" <<Signature>>"},{"name":"SignatureMethod","in":"header","required":false,"type":"string","default":" <<SignatureMethod>>"},{"name":"AuthKeyVersion","in":"header","required":false,"type":"string","default":" 1"}],"responses":{"default":{"description":"","schema":{}}}}}},"definitions":{}}
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "",
+        "title": "1 - Merchant X V3",
+        "description": ""
+    },
+    "paths": {
+        "/V3DSStart": {
+            "post": {
+                "operationId": "POST_V3DSStart",
+                "summary": "VISA Auth Page (Load Page for iPIN)",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "name": "osb",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "default": "visa-3"
+                    },
+                    {
+                        "name": "VAA",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "default": "B"
+                    },
+                    {
+                        "name": "TermUrl",
+                        "in": "formData",
+                        "type": "string",
+                        "default": "<<TermUrl>>"
+                    },
+                    {
+                        "name": "PaReq",
+                        "in": "formData",
+                        "type": "string",
+                        "default": "<<PaReq>>"
+                    },
+                    {
+                        "name": "MD",
+                        "in": "formData",
+                        "type": "string",
+                        "default": "<<MD>>"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " application/x-www-form-urlencoded"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/v2/purchases/validations/recurrents": {
+            "post": {
+                "operationId": "POST_api-v2-purchases-validations-recurrents",
+                "summary": "Recurrent Get Token",
+                "description": "null",
+                "consumes": [
+                    "text/plain"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "transactionRef": {
+                                    "type": "string"
+                                },
+                                "authData": {
+                                    "type": "string"
+                                }
+                            },
+                            "example": {
+                                "transactionRef": "JB-{{Timestamp}}-ReccValid",
+                                "authData": "mGR04cy8g7bKhGiF+2YdPB+2+mbZYrH90mrhc5DM1g/YpkHMbeuNWu1JpYzUpO/zRrhalAAudhp9+mlb/FmR+ihGxr7hk+GvrVWQRod+kuXPiooPStFHjU3tPYKiDkiiIWXhjWk92BkNkuKYWRqeo/Va8rkAF24BS45mjxWHbpRKEUysfDCRLTqPx2rwdt2lQ03J+eKriJ0Hf9U2FY8WHjQCp6axsSqF0sHGO8OVf2KjTDeFt2KyRmEaNWxjuNpFOgW9YG2BPrKs7YuefDqHmRJYWnyn5O1c+9N9Iz9RB7AK8z0gFBZI2rH+pxx7qaxpwx/CpTFiOWE+d9EKQliAnw=="
+                            }
+                        }
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " application/json"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<Access_token>>"
+                    },
+                    {
+                        "name": "Timestamp",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<Timestamp>>"
+                    },
+                    {
+                        "name": "Nonce",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<Nonce>>"
+                    },
+                    {
+                        "name": "Signature",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<Signature>>"
+                    },
+                    {
+                        "name": "SignatureMethod",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<SignatureMethod>>"
+                    },
+                    {
+                        "name": "AuthKeyVersion",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " 1"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/passport/oauth/token": {
+            "post": {
+                "operationId": "POST_passport-oauth-token",
+                "summary": "/passport/oauth/token",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "name": "grant_type",
+                        "in": "formData",
+                        "type": "string",
+                        "default": "client_credentials"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " application/x-www-form-urlencoded"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<Authorization>>"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/v3/purchases/otps/enrollments": {
+            "post": {
+                "operationId": "POST_api-v3-purchases-otps-enrollments",
+                "summary": "Enroll card for OTP",
+                "consumes": [
+                    "text/plain"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "paymentId": {
+                                    "type": "string"
+                                },
+                                "mobilePhoneNumber": {
+                                    "type": "string"
+                                },
+                                "transactionRef": {
+                                    "type": "string"
+                                }
+                            },
+                            "example": {
+                                "paymentId": "{{paymentId}}",
+                                "mobilePhoneNumber": "+2348090673520",
+                                "transactionRef": "{{TransactionRef}}"
+                            }
+                        }
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " application/json"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<Access_token>>"
+                    },
+                    {
+                        "name": "Timestamp",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<Timestamp>>"
+                    },
+                    {
+                        "name": "Nonce",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<Nonce>>"
+                    },
+                    {
+                        "name": "Signature",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<Signature>>"
+                    },
+                    {
+                        "name": "SignatureMethod",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<SignatureMethod>>"
+                    },
+                    {
+                        "name": "AuthKeyVersion",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " 1"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/v3/purchases/validations": {
+            "post": {
+                "operationId": "POST_api-v3-purchases-validations",
+                "summary": "Validation Request",
+                "consumes": [
+                    "text/plain"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "transactionRef": {
+                                    "type": "string"
+                                },
+                                "authData": {
+                                    "type": "string"
+                                }
+                            },
+                            "example": {
+                                "transactionRef": "JB-{{Timestamp}}-Validate",
+                                "authData": "UX1NSY0cF988psw+rSUYPy1mUyFWPjKztmUHujTORVgbSCWSKp4Ow5d4/1eq6/oZBRHHTV3SAnGALpwnbyHdjN943Ode65owhehqkJ8TAS/7ZNdRLl7hDRiU9TsZfLsDEMAYNEvPoFwye2BG0DIaLxPDAzPimpt5W5rJIjA7kMknOkHBwijkEM+F+UZGcLRB9Oj4QYlzK55bc2Wyhtqz29bAFQaL4hYqHuTQ+hD3IQnvGM7xKmRoxUTvii4LcGrXnRFbmdk7gJZf/gaabrRlbTSbo5WqYeUAm2ksy81aVgRBFVENaeSBA+OFDLmB2l1knRMJmboy96K6oe0IwXQwGQ=="
+                            }
+                        }
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " application/json"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<Access_token>>"
+                    },
+                    {
+                        "name": "Timestamp",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<Timestamp>>"
+                    },
+                    {
+                        "name": "Nonce",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<Nonce>>"
+                    },
+                    {
+                        "name": "Signature",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<Signature>>"
+                    },
+                    {
+                        "name": "SignatureMethod",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<SignatureMethod>>"
+                    },
+                    {
+                        "name": "AuthKeyVersion",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " 1"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/collections/api/v1/pay/cardinalCallBack": {
+            "post": {
+                "operationId": "POST_collections-api-v1-pay-cardinalCallBack",
+                "summary": "VISA -> ISW CallBack",
+                "description": "null",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "parameters": [
+                    {
+                        "name": "MD",
+                        "in": "formData",
+                        "type": "string",
+                        "default": "240412"
+                    },
+                    {
+                        "name": "PaRes",
+                        "in": "formData",
+                        "type": "string",
+                        "default": "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"
+                    },
+                    {
+                        "name": "Accept",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8"
+                    },
+                    {
+                        "name": "Accept-Encoding",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " gzip, deflate, br"
+                    },
+                    {
+                        "name": "Accept-Language",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " fr-FR,fr;q=0.9,en-GB;q=0.8,en;q=0.7,fr-CA;q=0.6,en-US;q=0.5"
+                    },
+                    {
+                        "name": "Content-Length",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " 4170"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " application/x-www-form-urlencoded"
+                    },
+                    {
+                        "name": "User-Agent",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/collections/api/v1/gettransaction.json": {
+            "get": {
+                "operationId": "GET_collections-api-v1-gettransaction-json",
+                "summary": "Get Transaction 2.0 ",
+                "description": "Returns Bank Code and Account Number",
+                "consumes": [
+                    "text/plain"
+                ],
+                "parameters": [
+                    {
+                        "name": "getacquirerdata",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "default": "true"
+                    },
+                    {
+                        "name": "transactionreference",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "default": "<<transactionRef>>"
+                    },
+                    {
+                        "name": "amount",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "default": "66666"
+                    },
+                    {
+                        "name": "merchantcode",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "default": "MX187"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/v3/purchases": {
+            "post": {
+                "operationId": "POST_api-v3-purchases",
+                "summary": "/api/v3/purchases",
+                "description": "null",
+                "consumes": [
+                    "text/plain"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "customerId": {
+                                    "type": "string"
+                                },
+                                "amount": {
+                                    "type": "string"
+                                },
+                                "authData": {
+                                    "type": "string"
+                                },
+                                "currency": {
+                                    "type": "string"
+                                },
+                                "transactionRef": {
+                                    "type": "string"
+                                }
+                            },
+                            "example": {
+                                "customerId": "JOnJazzy@gmail.com",
+                                "amount": "666.66",
+                                "authData": "IWrhQ49/8oe7Cs6TCSAHyz7V1KB9si63uAuY2H+SR1piYRLN3vHN8v/RFXSmirM1wfGQevRUZADtvUNEtkS007QtD5lINQCcZrpB2jOyX7GBLPRkVuhKUVJEA4HLbllAkCflasT/X4vP7jo+qokyYQW6I9VOqEfwvoLnduHpC1MqJuiruHMCflOYqtnw5ECDgUNYgoKUPbK4zrr8b663ZUJr8a4ENygOZOMOu7Ame7zo8UcnO7zxh6nI/q4crlT2YnuE/tFa/HN9Yh76pU3kcXd0q70+bh6xNDeH1JOSyqVB/OkbArsCHWjC1naxS6+PbEI5vf4gp/AU0ZN61QKvEg==",
+                                "currency": "NGN",
+                                "transactionRef": "JB-{{Timestamp}}-NoOTP"
+                            }
+                        }
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " application/json"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<Access_token>>"
+                    },
+                    {
+                        "name": "Timestamp",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<Timestamp>>"
+                    },
+                    {
+                        "name": "Nonce",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<Nonce>>"
+                    },
+                    {
+                        "name": "Signature",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<Signature>>"
+                    },
+                    {
+                        "name": "SignatureMethod",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<SignatureMethod>>"
+                    },
+                    {
+                        "name": "AuthKeyVersion",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " 1"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "",
+                        "schema": {}
+                    }
+                }
+            },
+            "get": {
+                "operationId": "GET_api-v3-purchases",
+                "summary": "/api/v3/purchases",
+                "description": "null",
+                "consumes": [
+                    "text/plain"
+                ],
+                "parameters": [
+                    {
+                        "name": "Amount",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " 666.66"
+                    },
+                    {
+                        "name": "transactionRef",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<transactionRef>>"
+                    },
+                    {
+                        "name": "-----------------------------------------------------------------------------------------------",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " ---------------------------------------------------------------------------------------"
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " application/json"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<Access_token>>"
+                    },
+                    {
+                        "name": "Timestamp",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<Timestamp>>"
+                    },
+                    {
+                        "name": "Nonce",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<Nonce>>"
+                    },
+                    {
+                        "name": "Signature",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<Signature>>"
+                    },
+                    {
+                        "name": "SignatureMethod",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<SignatureMethod>>"
+                    },
+                    {
+                        "name": "AuthKeyVersion",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " 1"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/v2/purchases/recurrents": {
+            "post": {
+                "operationId": "POST_api-v2-purchases-recurrents",
+                "summary": "Recurrent Purchase",
+                "description": "null",
+                "consumes": [
+                    "text/plain"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "customerId": {
+                                    "type": "string"
+                                },
+                                "amount": {
+                                    "type": "string"
+                                },
+                                "currency": {
+                                    "type": "string"
+                                },
+                                "token": {
+                                    "type": "string"
+                                },
+                                "tokenExpiryDate": {
+                                    "type": "string"
+                                },
+                                "transactionRef": {
+                                    "type": "string"
+                                }
+                            },
+                            "example": {
+                                "customerId": "CustID-{{Timestamp}}",
+                                "amount": "90",
+                                "currency": "NGN",
+                                "token": "{{token}}",
+                                "tokenExpiryDate": "{{tokenExpiryDate}}",
+                                "transactionRef": "JB-{{Timestamp}}-ReccPurch"
+                            }
+                        }
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " application/json"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<Access_token>>"
+                    },
+                    {
+                        "name": "Timestamp",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<Timestamp>>"
+                    },
+                    {
+                        "name": "Nonce",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<Nonce>>"
+                    },
+                    {
+                        "name": "Signature",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<Signature>>"
+                    },
+                    {
+                        "name": "SignatureMethod",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<SignatureMethod>>"
+                    },
+                    {
+                        "name": "AuthKeyVersion",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " 1"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/v3/purchases/validations/otps/auths": {
+            "post": {
+                "operationId": "POST_api-v3-purchases-validations-otps-auths",
+                "summary": "Validation Request - OTP",
+                "consumes": [
+                    "text/plain"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "transactionRef": {
+                                    "type": "string"
+                                },
+                                "otp": {
+                                    "type": "string"
+                                }
+                            },
+                            "example": {
+                                "transactionRef": "{{transactionRef}}",
+                                "otp": "770718"
+                            }
+                        }
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " application/json"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<Access_token>>"
+                    },
+                    {
+                        "name": "Timestamp",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<Timestamp>>"
+                    },
+                    {
+                        "name": "Nonce",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<Nonce>>"
+                    },
+                    {
+                        "name": "Signature",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<Signature>>"
+                    },
+                    {
+                        "name": "SignatureMethod",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<SignatureMethod>>"
+                    },
+                    {
+                        "name": "AuthKeyVersion",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " 1"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "",
+                        "schema": {}
+                    }
+                }
+            }
+        },
+        "/api/v3/purchases/otps/auths": {
+            "post": {
+                "operationId": "POST_api-v3-purchases-otps-auths",
+                "summary": "/api/v3/purchases/otps/auths",
+                "consumes": [
+                    "text/plain"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "paymentId": {
+                                    "type": "string"
+                                },
+                                "authData": {
+                                    "type": "string"
+                                },
+                                "otp": {
+                                    "type": "string"
+                                }
+                            },
+                            "example": {
+                                "paymentId": "{{paymentId}}",
+                                "authData": "QQaOpQg9fqq0p8Q6IpZHdWSNacfkGnU04Woq7AMhvZG5Ev+VbQAKYHIv95IM9tG1uUwRYA4eWz9WJ8CbMntoegW7nunrnWei2dgeQ50CfM5kefk4IRcK7yyCaM7kz0ifNorRFFF3et4C+saZ3Hm7XzyxivAOAIfZsmNdbRYPSOYm66+9tJix8mRpC0DCRg6Bn7pSx/Gy3ewiataMTCX+0X9b3j0SiYNVUhP+BfpXZEX3XcqpThT4HJDTKaeBlFIrG4N53mw+eaHj2/cg6VxWoMnv4HpAKYnG1Pyi+lnBCmtwJEmEd0r8+v4yLOAvm8rR2cM+jGtBRwsSjwmJ4Nj3FQ==",
+                                "otp": "760437"
+                            }
+                        }
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " application/json"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<Access_token>>"
+                    },
+                    {
+                        "name": "Timestamp",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<Timestamp>>"
+                    },
+                    {
+                        "name": "Nonce",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<Nonce>>"
+                    },
+                    {
+                        "name": "Signature",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<Signature>>"
+                    },
+                    {
+                        "name": "SignatureMethod",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " <<SignatureMethod>>"
+                    },
+                    {
+                        "name": "AuthKeyVersion",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "default": " 1"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "",
+                        "schema": {}
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {}
+}

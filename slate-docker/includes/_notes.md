@@ -76,6 +76,8 @@ function nonce()
 Nonce is a unique generated value for each request. It should not be repeated, i.e. a unique nonce should be sent for each and every request. Length of the nonce should NOT be more than 64 characters.
 
 
+## Timestamps
+
 
 ## Transaction References
 
@@ -115,4 +117,7 @@ Nonce is a unique generated value for each request. It should not be repeated, i
  Generally, it has a format as shown on the other side.
 
  Using this format is not compulsory but it does aid in debugging fail transactions and assessing what kind is being used.
+
+
+
 

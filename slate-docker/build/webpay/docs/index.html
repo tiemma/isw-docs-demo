@@ -241,7 +241,7 @@ function nonce()
 </pre>
 
 <p>Nonce is a unique generated value for each request. It should not be repeated, i.e. a unique nonce should be sent for each and every request. Length of the nonce should NOT be more than 64 characters.</p>
-<h2 id='transaction-references'>Transaction References</h2>
+<h2 id='timestamps'>Timestamps</h2><h2 id='transaction-references'>Transaction References</h2>
 <p><a id="transaction-references"></a></p>
 
 <blockquote>
@@ -278,6 +278,68 @@ function nonce()
 <p>Generally, it has a format as shown on the other side.</p>
 
 <p>Using this format is not compulsory but it does aid in debugging fail transactions and assessing what kind is being used.</p>
+
+          <h1 id='signatures'>Signatures</h1>
+<blockquote>
+<p>Request header sample is in JSON</p>
+</blockquote>
+<pre class="highlight json"><span class="p">{</span><span class="w">
+    </span><span class="s2">"Authorization"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;ACCESS_TOKEN&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1361281946"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Nonce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"634968823463411609"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Signature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2cFwCfkgRR7mlIOlcjTQXCUYpLmtlKJkCb8RUzIX0-k="</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"SignatureMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SHA-256"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre>
+
+<p>Signature ciphers have to be generated before a request is sent. They are included in your request headers and act as a check for all requests sent to the API.</p>
+
+<p>All signatures must be hashed in base64 before they are sent. The hashing method presented here will be used to hash the string combination which will also be encoded in base64 before it is sent.</p>
+
+<p>Different purchase requests have different signature contents. The signatures themselves are <strong><em>Base64</em></strong> encoded versions of the encrypted string combinations in the hashing method of your choice.</p>
+
+<p>As you&rsquo;d notice from the request header on the right tab, the <strong><em>Signature</em></strong> contains a hash along with its <strong><em>Signature Method</em></strong>.</p>
+
+<p>The data for which the signature can be generated from for different requests is illustrated below. The http method for the request is one of either <strong><em>POST, GET etc.</em></strong></p>
+
+<p>The <strong><em>url</em></strong> is the encoded url version of the access url and the endpoint used. An example is stated here for any requests.
+<br />
+<h3><strong><em>https://{ACCESS_URL}/{WHATEVER_ENDPOINT_YOU_CHOOSE}</em></strong></h3>
+<br/></p>
+
+<p>You can check for the access url for testing and production <a href="#endpoints">here</a></p>
+<h2 id='basic-purchase-request'>Basic Purchase Request</h2>
+<blockquote>
+<p>Code Samples</p>
+</blockquote>
+<pre class="highlight plaintext">signatureCipher = httpMethod + “&amp;”+ url + “&amp;” +timestamp + “&amp;” + nonce + “&amp;” + clientId + “&amp;” + clientSecret + “&amp;” + amount + “&amp;” + authdata
+</pre>
+
+<p>The signature can be generated from the <strong><em>Base64</em></strong> encoding of the cipher on the right.</p>
+<h2 id='otp-validation-request'>OTP Validation Request</h2>
+<blockquote>
+<p>Code Samples</p>
+</blockquote>
+<pre class="highlight plaintext">signatureCipher = httpMethod + “&amp;”+ url + “&amp;” +timestamp + “&amp;” + nonce + “&amp;” + clientId + “&amp;” + clientSecret + “&amp;” + otp + “&amp;” + authdata
+</pre>
+
+<p>The signature can be generated from the <strong><em>Base64</em></strong> encoding of the cipher on the right.</p>
+<h2 id='transaction-validation-request-visa'>Transaction Validation Request (VISA)</h2>
+<blockquote>
+<p>Code Samples</p>
+</blockquote>
+<pre class="highlight plaintext">signatureCipher = httpMethod + “&amp;”+ url + “&amp;” +timestamp + “&amp;” + nonce + “&amp;” + clientId + “&amp;” + clientSecret
+</pre>
+
+<p>The signature can be generated from the <strong><em>Base64</em></strong> encoding of the cipher on the right.</p>
+<h2 id='card-enrollment-request'>Card Enrollment Request</h2>
+<blockquote>
+<p>Code Samples</p>
+</blockquote>
+<pre class="highlight plaintext">signatureCipher = httpMethod + “&amp;”+ url + “&amp;” +timestamp + “&amp;” + nonce + “&amp;” + clientId + “&amp;” + clientSecret
+</pre>
+
+<p>The signature can be generated from the <strong><em>Base64</em></strong> encoding of the cipher on the right.</p>
 
           <h2 id='getting-a-bearer-token'>Getting a Bearer Token</h2>
 <p><a id="opIdPOST_passport-oauth-token"></a></p>
@@ -613,59 +675,6 @@ function nonce()
 <p><aside class="warning">
 This operation requires authentication using the <strong><em>Basic Authorization</em></strong> header
 </aside></p>
-
-          <h1 id='signatures'>Signatures</h1>
-<blockquote>
-<p>Request header sample is in JSON</p>
-</blockquote>
-<pre class="highlight json"><span class="p">{</span><span class="w">
-    </span><span class="s2">"Authorization"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;ACCESS_TOKEN&gt;"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1361281946"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Nonce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"634968823463411609"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Signature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2cFwCfkgRR7mlIOlcjTQXCUYpLmtlKJkCb8RUzIX0-k="</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"SignatureMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SHA-256"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></pre>
-
-<p>Signature ciphers have to be generated before a request is sent. They are included in your request headers and act as a check for all requests sent to the API.</p>
-
-<p>Different purchase requests have different signature contents. The signatures themselves are <strong><em>Base64</em></strong> encoded versions of the string combinations.</p>
-
-<p>As you&rsquo;d notice from the request header on the right tab, the <strong><em>Signature</em></strong> contains a hash along with its <strong><em>Signature Method</em></strong>.</p>
-
-<p>The data for which the signature can be generated from for different requests is illustrated below. The http method for the request is one of either <strong><em>POST, GET etc.</em></strong></p>
-<h2 id='basic-purchase-request'>Basic Purchase Request</h2>
-<blockquote>
-<p>Code Samples</p>
-</blockquote>
-<pre class="highlight plaintext">signatureCipher = httpMethod + “&amp;”+ url + “&amp;” +timestamp + “&amp;” + nonce + “&amp;” + clientId + “&amp;” + clientSecret + “&amp;” + amount + “&amp;” + authdata
-</pre>
-
-<p>The signature can be generated from the <strong><em>Base64</em></strong> encoding of the cipher on the right.</p>
-<h2 id='otp-validation-request'>OTP Validation Request</h2>
-<blockquote>
-<p>Code Samples</p>
-</blockquote>
-<pre class="highlight plaintext">signatureCipher = httpMethod + “&amp;”+ url + “&amp;” +timestamp + “&amp;” + nonce + “&amp;” + clientId + “&amp;” + clientSecret + “&amp;” + otp + “&amp;” + authdata
-</pre>
-
-<p>The signature can be generated from the <strong><em>Base64</em></strong> encoding of the cipher on the right.</p>
-<h2 id='transaction-validation-request-visa'>Transaction Validation Request (VISA)</h2>
-<blockquote>
-<p>Code Samples</p>
-</blockquote>
-<pre class="highlight plaintext">signatureCipher = httpMethod + “&amp;”+ url + “&amp;” +timestamp + “&amp;” + nonce + “&amp;” + clientId + “&amp;” + clientSecret
-</pre>
-
-<p>The signature can be generated from the <strong><em>Base64</em></strong> encoding of the cipher on the right.</p>
-<h2 id='card-enrollment-request'>Card Enrollment Request</h2>
-<blockquote>
-<p>Code Samples</p>
-</blockquote>
-<pre class="highlight plaintext">signatureCipher = httpMethod + “&amp;”+ url + “&amp;” +timestamp + “&amp;” + nonce + “&amp;” + clientId + “&amp;” + clientSecret
-</pre>
-
-<p>The signature can be generated from the <strong><em>Base64</em></strong> encoding of the cipher on the right.</p>
 
           <h1 id='purchases'>Purchases</h1>
 <p>This holds APIs for all purchase and payment related endpoints covering the following post payment processes involving OTP and Pin processing.</p>
