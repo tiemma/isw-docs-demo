@@ -254,7 +254,16 @@ function nonce()
 </pre>
 
 <p>Nonce is a unique generated value for each request. It should not be repeated, i.e. a unique nonce should be sent for each and every request. Length of the nonce should NOT be more than 64 characters.</p>
-<h2 id='timestamps'>Timestamps</h2><h2 id='transaction-references'>Transaction References</h2>
+<h2 id='timestamps'>Timestamps</h2>
+<blockquote>
+<p>Sample pseudo code</p>
+</blockquote>
+<pre class="highlight plaintext">timestamp = $CURRENT_TIMESTAMP / 1000
+
+</pre>
+
+<p>The current time in <a href="https://www.unixtimestamp.com/">unix timestamps</a> when the transaction happened divided by a 1000.</p>
+<h2 id='transaction-references'>Transaction References</h2>
 <p><a id="transaction-references"></a></p>
 
 <blockquote>

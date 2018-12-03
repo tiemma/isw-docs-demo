@@ -241,7 +241,16 @@ function nonce()
 </pre>
 
 <p>Nonce is a unique generated value for each request. It should not be repeated, i.e. a unique nonce should be sent for each and every request. Length of the nonce should NOT be more than 64 characters.</p>
-<h2 id='timestamps'>Timestamps</h2><h2 id='transaction-references'>Transaction References</h2>
+<h2 id='timestamps'>Timestamps</h2>
+<blockquote>
+<p>Sample pseudo code</p>
+</blockquote>
+<pre class="highlight plaintext">timestamp = $CURRENT_TIMESTAMP / 1000
+
+</pre>
+
+<p>The current time in <a href="https://www.unixtimestamp.com/">unix timestamps</a> when the transaction happened divided by a 1000.</p>
+<h2 id='transaction-references'>Transaction References</h2>
 <p><a id="transaction-references"></a></p>
 
 <blockquote>
@@ -283,14 +292,17 @@ function nonce()
 <blockquote>
 <p>Request header sample is in JSON</p>
 </blockquote>
-<pre class="highlight json"><span class="p">{</span><span class="w">
-    </span><span class="s2">"Authorization"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;ACCESS_TOKEN&gt;"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1361281946"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Nonce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"634968823463411609"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"Signature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2cFwCfkgRR7mlIOlcjTQXCUYpLmtlKJkCb8RUzIX0-k="</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"SignatureMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SHA-256"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></pre>
+<pre class="highlight plaintext">Signature = url_encode(access_url+endpoint)
+
+
+{
+    "Authorization": "&lt;ACCESS_TOKEN&gt;",
+    "Timestamp": "1361281946",
+    "Nonce": "634968823463411609",
+    "Signature": "2cFwCfkgRR7mlIOlcjTQXCUYpLmtlKJkCb8RUzIX0-k=",
+    "SignatureMethod": "SHA-256"
+}
+</pre>
 
 <p>Signature ciphers have to be generated before a request is sent. They are included in your request headers and act as a check for all requests sent to the API.</p>
 

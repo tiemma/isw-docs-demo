@@ -79,6 +79,15 @@ Nonce is a unique generated value for each request. It should not be repeated, i
 ## Timestamps
 
 
+> Sample pseudo code
+
+```
+timestamp = $CURRENT_TIMESTAMP / 1000
+
+```
+The current time in [unix timestamps](https://www.unixtimestamp.com/) when the transaction happened divided by a 1000.
+
+
 ## Transaction References
 
  <a id="transaction-references"></a>

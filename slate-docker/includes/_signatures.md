@@ -5,6 +5,9 @@
 > Request header sample is in JSON
 
 ```
+Signature = url_encode(access_url+endpoint)
+
+
 {
     "Authorization": "<ACCESS_TOKEN>",
     "Timestamp": "1361281946",
