@@ -381,7 +381,7 @@ app_code: <<YOUR_APP_CODE>>
  ```  
 
 |Parameter|In|Type|Description| 
- |---|---|---|---|
+|---|---|---|---|
 |at|body|string|true|none|
 |app_id|body|string|true|none|
 |app_code|body|string|true|none|
@@ -556,7 +556,7 @@ app_code: <<YOUR_APP_CODE>>
  ```  
 
 |Parameter|In|Type|Description| 
- |---|---|---|---|
+|---|---|---|---|
 |at|body|string|true|none|
 |app_id|body|string|true|none|
 |app_code|body|string|true|none|
@@ -736,7 +736,7 @@ app_code: <<YOUR_APP_CODE>>
  ```  
 
 |Parameter|In|Type|Description| 
- |---|---|---|---|
+|---|---|---|---|
 |at|body|string|true|none|
 |q|body|string|true|none|
 |app_id|body|string|true|none|
@@ -917,7 +917,7 @@ app_code: <<YOUR_APP_CODE>>
  ```  
 
 |Parameter|In|Type|Description| 
- |---|---|---|---|
+|---|---|---|---|
 |at|body|string|true|none|
 |q|body|string|true|none|
 |app_id|body|string|true|none|
