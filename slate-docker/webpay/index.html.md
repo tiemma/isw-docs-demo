@@ -11,7 +11,7 @@ language_tabs:
   - objective_c: 'Objective-C'
   - php: PHP
 toc_footers: []
-includes: [summary,notes,passport, tests]
+includes: [summary,notes,tests]
 search: true
 highlight_theme: darkula
 headingLevel: 2

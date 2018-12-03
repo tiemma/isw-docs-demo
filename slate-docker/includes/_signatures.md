@@ -27,7 +27,7 @@ As you'd notice from the request header on the right tab, the ***Signature*** co
 
 The data for which the signature can be generated from for different requests is illustrated below. The http method for the request is one of either ***POST, GET etc.***
 
-The ***url*** is the encoded url version of the access url and the endpoint used. An example is stated here for any requests.
+The ***url*** is the encoded url version of the access url and the endpoint used. An example is stated here for any request.
 <br />
 <h3>***https://{ACCESS_URL}/{WHATEVER_ENDPOINT_YOU_CHOOSE}***</h3>
 <br/>
