@@ -1,11 +1,11 @@
 ---
 title: Interswitch Documentation
-# language_tabs:
-#   - go: Go
-#   - java: Java
-#   - javascript: JavaScript
-#   - python: Python
-#   - ruby: Ruby
+language_tabs:
+  - go: Go
+  - java: Java
+  - javascript: JavaScript
+  - python: Python
+  - ruby: Ruby
 toc_footers: []
 includes: []
 search: true
