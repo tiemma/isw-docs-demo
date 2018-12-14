@@ -13,6 +13,8 @@ while true; do
 
     git add *
 
+
+    # Install guake for this
     xdotool key F12
 
     git commit -a

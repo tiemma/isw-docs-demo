@@ -1,0 +1,15 @@
+{
+  "name": "hads-switch",
+  "version": "1.0.0",
+  "description": "Documentation server built on hads ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/tiemma/isw-docs-demo"
+  },
+  "author": "Bakare Emmanuel",
+  "license": "ISC"
+}

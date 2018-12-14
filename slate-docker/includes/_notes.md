@@ -85,7 +85,7 @@ Nonce is a unique generated value for each request. It should not be repeated, i
 timestamp = $CURRENT_TIMESTAMP / 1000
 
 ```
-The current time in [unix timestamps](https://www.unixtimestamp.com/) when the transaction happened divided by a 1000.
+The current time in [unix timestamps](https://www.unixtimestamp.com/) when the transaction happened in seconds. The default epoch unix timestamp is in milliseconds, dividing it by a 1000 gives the timestamp in seconds.
 
 
 ## Transaction References

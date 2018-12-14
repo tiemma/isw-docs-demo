@@ -3,7 +3,7 @@ const fs = require('fs');
 
 
 // Convert postman to swagger to slate docs
-const postmanToSwagger = new transformer.Converter(transformer.Formats.POSTMAN, transformer.Formats.SWAGGER);
+const postmanToSwagger = new transformer.Converter(transformer.Formats.AUTO, transformer.Formats.SWAGGER);
 // const url = 'https://raw.githubusercontent.com/heremaps/postman-collections/master/places.postman_collection'
 const url = 'https://www.getpostman.com/collections/8f9716a93d14fc04498e'
 
