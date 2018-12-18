@@ -31,4 +31,4 @@ For now, we're launching a beta test of the current draft.
 
 Product Name|Documentation Links
 ---|---
-Interswitch Payment Gateway|[Quickstart Guide](/isw-docs-demo/v1/webpay/quickstart)<br />[Full Docs](/isw-docs-demo/v1/webpay/docs)
+Interswitch Payment Gateway|[Quickstart Guide](./webpay/quickstart)<br />[Full Docs](./webpay/docs)
