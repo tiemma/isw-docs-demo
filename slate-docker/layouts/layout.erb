@@ -20,6 +20,14 @@ under the License.
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta content="Use Interswitch Developer APIs, secure development tools, Visa experts and resources from the world's largest payment network" name="description">
+    <meta content="Copyright&copy; 2018 Interswitch Group. All rights reserved." name="copyright">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Yrsa:300" rel="stylesheet">
+    <link href="/css/prism.css" rel="stylesheet" type="text/css">
+    <link href="https://mufasa.interswitchng.com/p/favicons/favicon_isw.png" rel="icon" sizes="16x16 32x32 48x48 64x64" type="image/x-icon">
+  
+      
     <title><%= current_page.data.title || "API Documentation" %></title>
 
     <style>
@@ -42,13 +50,14 @@ under the License.
       </span>
     </a>
     <a id="hide-button">
-      <span>
+      <div>
         <span class="hide-text"></span>
-        <%= image_tag('hide.png') %>
-      </span>
+          <%= image_tag('hide.png') %> 
+      </div>
     </a>
     
     <div class="tocify-wrapper">
+ 
       <%= image_tag "logo.png" %>
       <% if language_tabs %>
         <div class="lang-selector">
@@ -77,9 +86,14 @@ under the License.
         </ul>
       <% end %>
     </div>
+    
     <div class="page-wrapper">
-      <div class="dark-box"></div>
+    <div class="dark-box"></div>
+    <div class="intro">
+        <%= image_tag('Payment-Illustration-bluebckgrnd.svg') %>
+      </div>
       <div class="content">
+      
         <%= yield %>
         <% current_page.data.includes && current_page.data.includes.each do |include| %>
           <%= partial "includes/#{include}" %>

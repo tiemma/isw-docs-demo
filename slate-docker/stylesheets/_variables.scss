@@ -24,19 +24,19 @@ under the License.
 // BACKGROUND COLORS
 ////////////////////
 // $nav-bg: #393939;
-$nav-bg: #eaf2f6;
+$nav-bg: #eaecef;
 // $examples-bg: #393939;
 $examples-bg: $nav-bg;
-$header-text-color: #ff0000;
+$header-text-color: #222228;
 
 // $code-bg: #292929;
-$code-bg: #1e3955;
+$code-bg: transparent;
 // $code-annotation-bg: #1c1c1c;
 $code-annotation-bg: #393939;
 $nav-subitem-bg: #eceff1;
 // $nav-subitem-bg: #0089c5;
-$nav-active-bg: #1e3955;
-$lang-select-border: #000;
+$nav-active-bg: #00b8de;
+$lang-select-border: rgb(12, 11, 11);
 // $lang-select-bg: #222;
 $lang-select-bg: $code-annotation-bg;
 $lang-select-active-bg: $examples-bg; // feel free to change this to blue or something
@@ -44,15 +44,15 @@ $lang-select-pressed-bg: #111; // color of language tab bg when mouse is pressed
 // $main-bg-sidebar: #eaf2f6;
 $main-bg: #fafcfc;
 $aside-notice-bg: #8fbcd4;
-$aside-warning-bg: #c97a7e;
-$aside-success-bg: #6ac174;
+$aside-warning-bg: #fdf7f7;
+$aside-success-bg: #f3f8f3;
 $search-notice-bg: #c97a7e;
 
 
 // TEXT COLORS
 ////////////////////
 
-$main-text: #1e3955; // main content text color
+$main-text: #4a4a4a; // main content text color
 $nav-text: #1e3955;
 $nav-active-text: $nav-text;
 // $nav-active-text: black;
@@ -89,8 +89,8 @@ $phone-width: $tablet-width - $nav-width; // min width before reverting to mobil
 }
 
 %code-font {
-  font-family: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
-  font-size: 12px;
+  // font-family: "Fira Code", Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
+  font-size: 1rem;
   line-height: 1.5;
 }
 
