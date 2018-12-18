@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+	<title>Interswitch Developer Center</title>
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+	<meta content="Documentation of Apify Crawler that enables recursive crawling of websites and extracts structured data from them using a few simple lines of JavaScript." name="description">
+	<meta content="Copyright&copy; 2018 Apify Technologies s.r.o. All rights reserved." name="copyright">
+	<meta content="web scraper, web crawler, scraping, data extraction, API" name="keywords">
+	<meta content="index, follow" name="robots">
+	<meta content="origin" name="referrer">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Yrsa:300" rel="stylesheet">
+	<link href="../css/style.css?v=1521212734" rel="stylesheet">
+	<link href="../css/prism.css" rel="stylesheet" type="text/css">
+<link href="https://mufasa.interswitchng.com/p/favicons/favicon_isw.png" rel="icon" sizes="16x16 32x32 48x48 64x64" type="image/x-icon">
+
+
+	<script src="js/vendor/modernizr-2.8.3.min.js">
+	</script>
+	
+</head>
+<body>
+	<div id="content">
+		<header class="header header-docs" id='xxx'>
+			<div class="wrap-wide cf">
+				<span class="logo tfloat-left"><a class="logo tfloat-left" href="../index.html"><img src="../img/logo_blue.png"></a>
+                </span>
+				<nav class="cf">
+					<div class="head-search dfloat-left"></div>
+					<div class="docs-menu">
+						<ul>
+							<li>
+								<a class="external" href="docs/crawler">Crawler</a>
+							</li>
+							<li>
+								<a class="external" href="docs/actor">Actor</a>
+							</li>
+							<li>
+								<a class="external" href="docs/scheduler">Scheduler</a>
+							</li>
+							<li>
+								<a class="external" href="docs/storage">Storage</a>
+							</li>
+							<li>
+								<a class="external" href="docs/api">API</a>
+							</li>
+							<li>
+								<a class="external" href="docs/sdk">SDK</a>
+							</li>
+						</ul>
+					</div>
+					<ul class="head-ctas dfloat-right unlogged-menu" style="display: none">
+                        <li>
+							<a class="cta-login" href="../payment_services/mobile.html">SDK</a>
+						</li>
+						<li>
+							<a class="cta-login" href="">Log in</a>
+						</li>
+						<li>
+							<a class="btn-head" href="">Sign up</a>
+						</li>
+					</ul>
+					<ul class="head-ctas dfloat-right logged-in-menu" style="display: none">
+						<li>
+							<a class="btn-head" href="#">Go to app</a>
+						</li>
+					</ul>
+				</nav><a class="menu-opener" href="#"><span></span></a>
+			</div>
+		</header>
+		<main id="main">
+			<div class="line">
+				<div class="wrap">
+					<div class="docs-wrap cf">
+						<nav class="docs-menu mt-none">
+							<div>
+								<ul>
+									<li>
+										<a class="external" href="crawler.html">Introduction</a>
+									</li>
+									<li>
+										<a class="active" href="#home">Interswitch Payment Gateway API</a>
+										<ul>
+											<li>
+												<a href="#basic-settings">Payment Overview</a>
+                                            </li>
+													<li>
+														<a href="#authId">What is AuthData?</a>
+													</li>
+													<li>
+														<a href="#responseId">API & HTTP Response Codes</a>
+													</li>
+													<li>
+														<a href="#requestsId">Request headers & Signature Calculation</a>
+													</li>
+													
+													
+											
+											
+										</ul>
+									</li>
+                                            <li>
+												<a href="#tokenId">Getting Access Token</a>
+												
+											</li>
+											<li>
+												<a href="#internals">Basic Purchase</a>
+												<ul>
+													<li>
+														<a href="#requestObject">Payment with Card (No OTP)</a>
+													</li>
+                                                    <li>
+														<a href="#requestObject">Response for Payment with Card (No OTP)</a>
+													</li>
+												</ul>
+											</li>
+									<li>
+										<a class="external" href="docs/actor">Basic Purchase (Hard Token/SMS OTP Required)</a>
+										<ul>
+											<li>
+												<a href="#quick-start">What is a One-Time-Password (OTP)</a>
+											</li>
+											<li>
+												<a href="#source">Payment with Card (Requires OTP)</a>
+												<ul>
+													<li>
+														<a href="#hosted-source">Response for Payment with Card (Requires OTP)</a>
+													</li>
+													
+												</ul>
+											</li>
+											
+										
+										
+											
+											
+										</ul>
+									</li>
+									<li>
+										<a class="external" href="docs/scheduler">Basic Purchase (VISA Card)</a>
+									</li>
+                                    <li>
+										<a class="external" href="#">Card AutoEnrollment</a>
+									</li>
+                                     <li>
+										<a class="external" href="#">Card Validation (Adding Card)</a>
+									</li>
+                                    <li>
+										<a class="external" href="#">Payment using Token</a>
+									</li>
+                                    <li>
+										<a class="external" href="#">Payment with Card (With Split Information)</a>
+									</li>
+                                    <li>
+										<a class="external" href="#">Transaction Query</a>
+									</li>
+                                    <li>
+										<a class="external" href="#">Test Payment Cards</a>
+									</li>
+                                    <li>
+										<a class="external" href="#">Sample Codes and Collections</a>
+									</li>
+                                    <li>
+										<a class="external" href="#">FAQ</a>
+									</li>
+<!--
+									<li>
+										<a class="external" href="docs/storage">Storage</a>
+										<ul>
+											<li>
+												<a href="#kv-store">Key-value store</a>
+												<ul>
+													<li>
+														<a href="#kv-store-basic-usage">Basic usage</a>
+													</li>
+													<li>
+														<a href="#kv-store-actor">Use in actor</a>
+													</li>
+												</ul>
+											</li>
+											<li>
+												<a href="#dataset">Dataset</a>
+												<ul>
+													<li>
+														<a href="#dataset-basic-usage">Basic usage</a>
+													</li>
+													<li>
+														<a href="#dataset-actor">Use in actor</a>
+													</li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+-->
+<!--
+									<li>
+										<a class="external" href="docs/api">API</a>
+										<ul>
+											<li>
+												<a class="external" href="docs/api/v1">Crawlers API (v1) <i class="material-icons small">open_in_new</i></a>
+											</li>
+											<li>
+												<a class="external" href="docs/api/v2">Acts API (v2) <i class="material-icons small">open_in_new</i></a>
+											</li>
+										</ul>
+									</li>
+-->
+<!--
+									<li>
+										<a class="external" href="docs/sdk">SDK</a>
+										<ul>
+											<li>
+												<a class="external" href="docs/sdk/apify-runtime-js/latest">JavaScript SDK <i class="material-icons small">open_in_new</i></a>
+											</li>
+											<li>
+												<a class="external" href="docs/sdk/apify-client-js/latest">JavaScript API client <i class="material-icons small">open_in_new</i></a>
+											</li>
+										</ul>
+									</li>
+-->
+								</ul>
+							</div>
+						</nav>
+						<div class="docs-content mleft">
+							<div id="home">
+								<h2><a href="./crawler"><i aria-hidden="true" class=""></i></a>Interswitch Payment Gateway API</h2>
+								<p>This document describes how a third-party will request for Interswitch Payment Gateway API. Note that all data formats and response definitions are in conformance with the REST standard.Interswitch payment gateway is a product for businesses who would like to accept payments online and on mobile devices. If you are a certified and regulated payment processor who would like to provide your own payment gateway, this payment gateway makes available a processing API with which you can process both local and international card payments for businesses in Nigeria, Kenya, Uganda and Gambia. For more information about these possibilities, please send an email to ipgsupport@interswitchgroup.com.</p>
+								
+						
+					
+							
+								<section id="basic-settings">
+									<h2><a href="#basic-settings"><i aria-hidden="true" class="fa fa-link"></i></a>Payment Overview</h2>
+									<section id="customId">
+									
+										<p>
+                                        <img src="../img/payment-api-flow.png" class="img-responsive">
+                                        </p>
+									</section>
+								<section id="authId">
+                                    	<h2><a href="#"><i aria-hidden="true" class=""></i></a>What is AuthData?</h2>
+									<p>
+                                    AuthData is a combination of your payment’s sensitive data mainly: PAN, PIN, Expiry Date, and CVV2. The BouncyCastle library is required for this. Kindly download the appropriate BouncyCastle library for your platform.  You will also be provided with a public key exponent as well as a modulus.
+                                        Please contact ipg@interswitchgroup.com for more information.
+                                    </p>
+										<p>
+                                        <img src="../img/auth_img.png" class="img-responsive">
+                                        </p>
+									</section>
+								    <section id="responseId">
+                                        <h2><a href="#"><i aria-hidden="true" class="fa fa-link"></i></a>API & HTTP Response Codes</h2>
+                                    <table class="table table-bordered table-condensed">
+                                         <tr>
+                                             <th>Response Code</th>
+                                                 <th>Response Descripton</th>
+                                             </tr>
+											<tbody>
+												<tr>
+													<td><code>200</code></td>
+													<td>
+														Approved
+													</td>
+												</tr>
+												<tr>
+													<td><code>202</code></td>
+													<td>
+															Transaction Accepted, further action is required form client. An applcation response will be returned to furhter described the type of authentication required.
+													</td>
+												</tr>
+												<tr>
+													<td><code>400</code></td>
+													<td>
+														The request is badly formatted by client
+													</td>
+												</tr>
+												<tr>
+													<td><code>401</code></td>
+													<td>Not authorized to Client.</td>
+												</tr>
+                                                <tr>
+													<td><code>403</code></td>
+													<td>Transaction not completed because of user</td>
+												</tr>
+                                                 <tr>
+													<td><code>404</code></td>
+													<td>Transaction/Payment/Customer/Payment Method (Resource) not found</td>
+												</tr>
+                                                 <tr>
+													<td><code>500</code></td>
+													<td>Internal applcaition error. Please contact Interswitch</td>
+												</tr>
+											</tbody>
+										</table>
+                                    
+                                        
+                                        <h4>Further action required from Client, An HTTP response code 202 is returned</h4>
+                                         <table class="table table-bordered table-condensed">
+                                             <tr>
+                                             <th>Response Code</th>
+                                                 <th>Response Descripton</th>
+                                             </tr>
+											<tbody>
+												<tr>
+													<td><code>T0</code></td>
+													<td>
+														An OTP is required before transaction is approved
+													</td>
+												</tr>
+												<tr>
+													<td><code>S0</code></td>
+													<td>
+												    A Visa 3DSecure is required before transaction is approved
+													</td>
+												</tr>
+										
+											</tbody>
+										</table>
+                                        
+                                        
+                                        
+                                        <h4>Bad Request: The request was invalid because of something you ae doing wrong. An HTTP 400 will be returned.</h4>
+                                         <table class="table table-bordered table-condensed">
+                                         <tr>
+                                             <th>Response Code</th>
+                                                 <th>Response Descripton</th>
+                                             </tr>
+											<tbody>
+												<tr>
+													<td><code>E32</code></td>
+													<td>
+														JSON is badly formatted or it contains invalid character.
+													</td>
+												</tr>
+												<tr>
+													<td><code>E37</code></td>
+													<td>
+														Invalid consumer request
+													</td>
+												</tr>
+												<tr>
+													<td><code>E39</code></td>
+													<td>
+															transactionRef field cannot be null/empty
+													</td>
+												</tr>
+												<tr>
+													<td><code>E42</code></td>
+													<td>
+                                                        <p>Auth data error</p>
+                                                         <p>PAN cannot be empty</p>
+                                                        <p>Expiry Date cannot be empty</li>
+                                                        <p>PIN cannot be empty</p>
+                                                        </td>
+												</tr>
+                                                <tr>
+													<td><code>E43</code></td>
+													<td>PAN cannot be null or empty</td>
+												</tr>
+                                                 <tr>
+													<td><code>E44</code></td>
+													<td>transactionRef must be between 6 and 50 characters</td>
+												</tr>
+                                                 <tr>
+													<td><code>E40</code></td>
+													<td>currency field cannot be null/empty</td>
+												</tr>
+                                        
+                                                <tr>
+													<td><code>E41</code></td>
+													<td>Currency not yet supported</td>
+												</tr>
+                                                 <tr>
+													<td><code>E45</code></td>
+													<td>customerId field connot be null/empty</td>
+												</tr>
+                                                 <tr>
+													<td><code>E47</code></td>
+													<td>	Otp field cannot be null or empty</td>
+												</tr>
+                                        
+                                                <tr>
+													<td><code>E48</code></td>
+													<td>otpIdentifier field cannot be null or empty</td>
+												</tr>
+                                        
+                                                <tr>
+													<td><code>E49</code></td>
+													<td>authData version not supported</td>
+												</tr>
+                                                 <tr>
+													<td><code>E50</code></td>
+													<td>no valid paymentCode found, please contact system administrator</td>
+												</tr>
+                                                 <tr>
+													<td><code>E51</code></td>
+													<td>amount field cannot be null/empty</td>
+												</tr>
+                                                <tr>
+													<td><code>E56</code></td>
+													<td>The PAN contains an invalid character</td>
+												</tr>
+                                                <tr>
+													<td><code>E57</code></td>
+													<td>The PIN contains an invalid character</td>
+												</tr>
+                                                <tr>
+													<td><code>E58</code></td>
+													<td>The Expiry Date contains an invalid character</td>
+												</tr>
+                                                <tr>
+													<td><code>E59</code></td>
+													<td>The Cvv2 contains an invalid character</td>
+												</tr>
+											</tbody>
+										</table>
+                                    </section>
+								<section  id="requestsId">
+                                     <h4><a href="#"><i aria-hidden="true" class=""></i></a>Request headers & Signature Calculation</h4>
+                                    <p>
+                                        <img src="../img/requestimg.png" class="img-responsive">
+                                        </p>
+                                    </section>
+								
+								</section>
+                                
+                                
+                                
+                                
+                                
+								<section id="tokenId">
+									<h2><a href="#advanced-settings"><i aria-hidden="true" class=""></i></a>Getting Access Token</h2>
+									<section id="interceptRequest">
+									
+										  <p>
+                                        <img src="../img/token.png" class="img-responsive">
+                                        </p>  
+                                    </section>
+								</section>
+								<section id="internals">
+									<h2><a href="#internals"><i aria-hidden="true" class="fa fa-link"></i></a></h2>
+    
+								</section>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+	 <script src="../js/jquery-3.2.1.min.js">
+    </script>
+    <script src="../js/popper-1.12.6.min.js">
+    </script>
+    <script src="../js/tooltip-1.1.6.min.js">
+    </script>
+    <script src="../js/production.min.js?v&#x3D;1521212734">
+    </script>
+    <script src="../js/prism.min.js">
+    </script>
+    <script src="../js/smooth-scroll-12.1.5.min.js">
+    </script>
+	<script>
+	   $(function () {
+	       $("a[href^='#']")
+	       .click(function (event) {
+	           event.preventDefault();
+	           var href = $(this)
+	           .attr('href');
+	           if (href !== '#') scrollToHash(href);
+	       });
+	       scrollToHash();
+	       window.onhashchange = scrollToHash;
+	   });
+	</script>
+
+</body>
+</html>
