@@ -11,7 +11,7 @@ language_tabs:
   - objective_c: 'Objective-C'
   - php: PHP
 toc_footers: []
-includes: [summary,notes,tests]
+includes: [notes,signatures,purchases,transaction_status,enrollment,visa-docs,validation,test-details,codes]
 search: true
 highlight_theme: darkula
 headingLevel: 2
@@ -36,12 +36,6 @@ For more information about these possibilities, please send an email to [ipgsupp
 To begin the using the platform, you must register for an account on the [Interswitch Payment Gateway portal](https://www.interswitchgroup.com/paymentgateway/). 
 
 Please follow the registration process and you'd be redirected to the platform.
-
-
-<aside class="warning">
-Note that the link above gives you production keys, use the test samples available [here](#test-merchant-details) if you're using the sandbox test environment.
-</aside>
-
 
 
 

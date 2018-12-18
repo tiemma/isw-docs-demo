@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+	<title>Interswitch Developer Center</title>
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+	<meta content="Documentation of Apify Crawler that enables recursive crawling of websites and extracts structured data from them using a few simple lines of JavaScript." name="description">
+	<meta content="Copyright&copy; 2018 Apify Technologies s.r.o. All rights reserved." name="copyright">
+	<meta content="web scraper, web crawler, scraping, data extraction, API" name="keywords">
+	<meta content="index, follow" name="robots">
+	<meta content="origin" name="referrer">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Yrsa:300" rel="stylesheet">
+	<link href="../css/style.css?v=1521212734" rel="stylesheet">
+	<link href="../css/prism.css" rel="stylesheet" type="text/css">
+<link href="https://mufasa.interswitchng.com/p/favicons/favicon_isw.png" rel="icon" sizes="16x16 32x32 48x48 64x64" type="image/x-icon">
+
+	
+	<script src="/js/vendor/modernizr-2.8.3.min.js">
+	</script>
+	
+</head>
+<body>
+	<div id="content">
+		<header class="header header-docs" id='xxx'>
+			<div class="wrap-wide cf">
+				<span class="logo tfloat-left"><a class="logo tfloat-left" href="../index.html"><img src="../img/logo_blue.png"></a>
+                </span>
+				<nav class="cf">
+					<div class="head-search dfloat-left"></div>
+					<div class="docs-menu">
+						<ul>
+							<li>
+								<a class="external" href="docs/crawler">Crawler</a>
+							</li>
+							<li>
+								<a class="external" href="docs/actor">Actor</a>
+							</li>
+							<li>
+								<a class="external" href="docs/scheduler">Scheduler</a>
+							</li>
+							<li>
+								<a class="external" href="docs/storage">Storage</a>
+							</li>
+							<li>
+								<a class="external" href="docs/api">API</a>
+							</li>
+							<li>
+								<a class="external" href="docs/sdk">SDK</a>
+							</li>
+						</ul>
+					</div>
+					<ul class="head-ctas dfloat-right unlogged-menu" style="display: none">
+                           <li>
+							<a class="btn-head" href="../payment_services/mobile.html">SDK</a>
+						</li>
+						<li>
+							<a class="cta-login" href="#">Log in</a>
+						</li>
+						<li>
+							<a class="cta-login" href="#">Sign up</a>
+						</li>
+					</ul>
+					<ul class="head-ctas dfloat-right logged-in-menu" style="display: none">
+						<li>
+							<a class="btn-head" href="#">Go to app</a>
+						</li>
+					</ul>
+				</nav><a class="menu-opener" href="#"><span></span></a>
+			</div>
+		</header>
+		<main id="main">
+			<div class="line">
+				<div class="wrap">
+					<div class="docs-wrap cf">
+						<nav class="docs-menu mt-none">
+							<div>
+								<ul>
+									<li>
+										<a class="external" href="mobile.html">Introduction</a>
+									</li>
+									<li>
+										<a class="active" href="#home">Interswitch Payment Gateway API</a>
+										<ul>
+											<li>
+												<a href="#basic-settings">Do I need to be PCI-DSS Certified</a>
+                                            </li>
+													<li>
+														<a href="#authId">Android</a>
+													</li>
+													<li>
+														<a href="#responseId">iOS</a>
+													</li>
+													<li>
+														<a href="#requestsId">Cordova</a>
+													</li>
+													<li>
+														<a href="#requestsId">Test Cards</a>
+													</li>
+													<li>
+														<a href="#requestsId">FAQ</a>
+													</li>
+											     <li>
+														<a href="#requestsId">Sample Codes and Projects</a>
+													</li>
+											
+										</ul>
+									</li>
+
+
+									</li>
+
+								</ul>
+							</div>
+						</nav>
+						<div class="docs-content mleft">
+							<div id="home">
+								<h2><a href="./crawler"><i aria-hidden="true" class=""></i></a>Interswitch Payment Gateway – Mobile InApp/SDK Implementation</h2>
+								<p>Here we provide general information about using our APIs/SDKs in order to enable you have a base level understanding of all the components of our API/SDK workflow and how they interrelate. Our Payment API’s are designed to send payment requests to debit customer’s payment instrument and send a notification to merchants about a payment that has just been made.This document describes how a third-party will request for Interswitch Payment Gateway API. Note that all data formats and response definitions are in conformance with the REST standard.</p>
+								<p>
+                                        <img src="../img/processflow.png" class="img-responsive">
+                                        </p>
+						
+					
+							
+								<section id="basic-settings">
+									<h2><a href="#basic-settings"><i aria-hidden="true" class=""></i></a>Do I need to be PCI-DSS Certified?</h2>
+									<section id="customId">
+									
+										<p>
+                                       
+                                        The Payment Card Industry Data Security Standard (PCI DSS) is an information security standard for organisations that handle branded credit cards from the major card schemes.
+
+                                        The PCI Standard is mandated by the card brands and administered by the Payment Card Industry Security Standards Council.
+                                        The standard was created to increase controls around cardholder data to reduce credit card fraud. Validation of compliance is performed annually, either by an external Qualified Security Assessor (QSA) or by a firm specific Internal Security Assessor that creates a Report on Compliance for organisations handling large volumes of transactions, or by Self-Assessment Questionnaire (SAQ) for companies handling smaller volumes.
+
+                                        To integrate the Mobile Payment SDK whilst processing customer card details directly, a PCI DSS compliance certificate is needed. If this is not available you will have to make use of our SDK Card collection User Interface (UI). All interactions between your app and the payment service will be done via the pop up/UI. Each section of the documentation has a section for UI Integrators (i.e. those that are not PCI-DSS compliant) and another section for Non-UI (i.e. those that are PCI-DSS compliant).
+
+                                        Below is an image of the card collection UI. Once transaction is completed, status will be passed from the SDK to your application.
+                                        </p>
+									</section>
+								<section id="authId">
+                                    	<h2><a href="#"><i aria-hidden="true" class=""></i></a>Payment SDK for Android</h2>
+									<p>
+                                   Interswitch payment SDK allows you to accept payments from customers within your mobile application. Please Note: The current supported currency is naira (NGN), support for other currencies would be added later The first step to using the Android SDK is to register as a merchant. This is described [here] (merchantxuat.interswitchng.com)
+                                    </p>
+										<p>
+                                        <img src="../img/auth_img.png" class="img-responsive">
+                                        </p>
+									</section>
+						
+								
+								</section>
+                    
+								<section id="internals">
+									<h2><a href="#internals"><i aria-hidden="true" class="fa fa-link"></i></a></h2>
+    
+								</section>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+	 <script src="../js/jquery-3.2.1.min.js">
+    </script>
+    <script src="../js/popper-1.12.6.min.js">
+    </script>
+    <script src="../js/tooltip-1.1.6.min.js">
+    </script>
+    <script src="../js/production.min.js?v&#x3D;1521212734">
+    </script>
+    <script src="../js/prism.min.js">
+    </script>
+    <script src="../js/smooth-scroll-12.1.5.min.js">
+    </script>
+	<script>
+	   $(function () {
+	       $("a[href^='#']")
+	       .click(function (event) {
+	           event.preventDefault();
+	           var href = $(this)
+	           .attr('href');
+	           if (href !== '#') scrollToHash(href);
+	       });
+	       scrollToHash();
+	       window.onhashchange = scrollToHash;
+	   });
+	</script>
+
+</body>
+</html>
+
+

@@ -2,7 +2,9 @@
 @import 'normalize';
 @import 'variables';
 @import 'icon-font';
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Raleway');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Nanum+Gothic');
+@import url(https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css);
+@import url(//db.onlinewebfonts.com/c/0dd7edde115ef38e7def4b16e93b5884?family=HarmoniaSansW01-Regular);
 /*
 Copyright 2008-2013 Concur Technologies, Inc.
 
@@ -29,22 +31,25 @@ html, body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
   @extend %default-font;
   // background-color: $main-bg;
   background: $main-bg;
-  height: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
   -webkit-text-size-adjust: none; /* Never autoresize text */
-  font-size: 1rem;
+  font-size: 15px;
   letter-spacing: 0px;
   h1, h2, h3, h4, .tocify-wrapper{
     color: $header-text-color;
-    font-family: 'Raleway', sans-serif !important;
-    font-weight: 400 !important;
+    font-family: 'HarmoniaSansW01-Regular', sans-serif !important;
+    font-weight: 400;
   }
 
   h1{
-    background-color: #1e3955;
-    color: white;
+    // background-color: #1e3955;
+    color: black;
+    font-weight: bolder;
   }
 
   // th{
@@ -54,7 +59,7 @@ html, body {
 
 body{
 
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Nanum Gothic', sans-serif;
 
 }
 
@@ -73,12 +78,17 @@ body{
   display: none !important;
 }
 
-.content{
-  transition: all 1s ease-in-out;
-}
 
-.content.remove-margin > *{
-  margin-right: 0 !important;
+.content.remove-margin{
+
+  *{
+    margin-right: 0 !important;
+  }
+
+  table{
+    width: 100%;
+  }
+
 }
 
 #hide-button{
@@ -87,31 +97,44 @@ body{
   top: calc(50vh - 4rem);
   left: 57.5vw;
   z-index: 100;
-  transform: rotate(90deg);
   cursor: pointer;
-  background-color: #1e3955;
-  padding: 1rem
+  transform: rotate(90deg);
+  background-color: #4a4a4a;
+  text-align: center;
+  padding: 1rem;
+  width: fit-content;
+
+  div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 
 #hide-button.active{
-  left: 95vw;
+  left: 97vw;
+  transform: rotate(270deg);
 }
 
 #hide-button img{
   width: 2rem;
+  height: 2rem;
+  transform: rotate(90deg);
 }
 
-#hide-button.active img{
-  transform: rotate(180deg);
+#hide-button .hide-text{
+  display: inline-block;
 }
 
-#hide-button .hide-text::after{
-  content:  "Hide";
-}
+// #hide-button .hide-text::after{
+//   content:  "Hide";
+//   padding: 0.7rem;
 
-#hide-button.active .hide-text::after{
-  content:  "Show";
-}
+// }
+
+// #hide-button.active .hide-text::after{
+//   content:  "Show";
+// }
 
 
 @mixin embossed-bg {
@@ -126,6 +149,7 @@ body{
 .tocify-wrapper {
   transition: left 0.3s ease-in-out;
 
+
   overflow-y: auto;
   overflow-x: hidden;
   position: fixed;
@@ -135,7 +159,7 @@ body{
   bottom: 0;
   width: $nav-width;
   background-color: $nav-bg;
-  font-size: 0.85rem;
+  font-size: 13px;
   // font-weight: bold;
 
   // language selector for mobile devices
@@ -239,7 +263,7 @@ body{
 
 
   li {
-    color: $nav-text;
+    color:#333;
     transition-property: background;
     transition-timing-function: linear;
     transition-duration: 230ms;
@@ -251,7 +275,7 @@ body{
     background-color: $nav-active-bg;
     color: $main-bg !important;
     // color: $nav-active-text;
-    margin: 0.5rem 1rem;
+    // margin: 0.5rem 1rem;
     border-radius: 0.1rem;
   }
 
@@ -259,8 +283,8 @@ body{
   // in the table of contents.
   .tocify-subheader {
     display: none; // tocify will override this when needed
-    background: $nav-subitem-bg !important;
-    // background: none !important;
+    // background: $nav-subitem-bg !important;
+    background: white !important;
     font-weight: 500;
     .tocify-item>a {
       padding-left: $nav-padding + $nav-indent;
@@ -268,7 +292,7 @@ body{
     }
 
     // for embossed look:
-    @include embossed-bg;
+    // @include embossed-bg;
     &>li:last-child {
       box-shadow: none; // otherwise it'll overflow out of the subheader
     }
@@ -365,7 +389,9 @@ body{
   .lang-selector {
     position: fixed;
     z-index: 50;
-    border-bottom: 5px solid $lang-select-active-bg;
+    // border-bottom: 5px solid $lang-select-active-bg;
+    border-bottom: 5px solid black;
+    padding: 1rem;
   }
 }
 
@@ -383,6 +409,7 @@ body{
     line-height: 30px;
     outline: 0;
     font-size: 0.7rem;
+    border-radius: 1rem;
 
     &:active, &:focus {
       background-color: $lang-select-pressed-bg;
@@ -411,6 +438,7 @@ body{
   // to place content above the dark box
   position: relative;
   z-index: 30;
+  // background: #393939;
 
   &:after {
     content: '';
@@ -420,15 +448,19 @@ body{
 
   &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl {
     margin-right: $examples-width;
+    margin-bottom: 0;
     padding: 0 $main-padding;
     box-sizing: border-box;
     display: block;
     text-shadow: $main-embossed-text-shadow;
+    background: $main-bg;
 
     @extend %left-col;
   }
 
   &>table{
+    margin: 0 28px;
+    width: calc(50% - 56px);
   }
 
   &>ul, &>ol {
@@ -495,10 +527,13 @@ body{
   table {
     margin-bottom: 1em;
     overflow: auto;
+    display: table !important;
+
 
     thead{
-      background: $code-annotation-bg;
-      color: white !important;
+      // background: $code-annotation-bg;
+      border: 1px 0 1px 0 black;
+      color: black !important;
     }
 
     th,td {
@@ -515,10 +550,11 @@ body{
 
     td {
       padding: 10px;
+    }
 
-      *{
-        font-size: 0.7rem;
-      }
+    tr{
+      border-bottom: 1px solid #eee;
+      display: table-row;
     }
 
     tr:last-child {
@@ -570,17 +606,28 @@ body{
     text-shadow: 0 1px 0 lighten($aside-notice-bg, 15%);
     margin-top: 1.5em;
     margin-bottom: 1.5em;
+    margin-left: 28px;
     background: $aside-notice-bg;
     line-height: 1.6;
+
+
 
     &.warning {
       background-color: $aside-warning-bg;
       text-shadow: 0 1px 0 lighten($aside-warning-bg, 15%);
+      border-left: 4px solid #d9534f;
+    }
+
+    &.notice{
+      border-left: 4px solid #5bc0de;
+      text-shadow: 0 1px 0 lighten($aside-warning-bg, 15%);
+      background-color: #e3edf2;
     }
 
     &.success {
       background-color: $aside-success-bg;
       text-shadow: 0 1px 0 lighten($aside-success-bg, 15%);
+      border-left: 4px solid #50af51;
     }
   }
 
@@ -592,6 +639,7 @@ body{
 
   aside.notice:before {
     @extend %icon-info-sign;
+
   }
 
   aside.warning:before {
@@ -619,7 +667,8 @@ body{
 
 .content {
   pre, blockquote {
-    background-color: $code-bg;
+    // background-color: $code-bg;
+    background-color: $header-text-color;
     color: #fff;
 
     padding: 2em $main-padding;
@@ -631,8 +680,6 @@ body{
 
     box-sizing: border-box;
     text-shadow: 0px 1px 2px rgba(0,0,0,0.4);
-
-    font-size: 0.7rem;
 
     @extend %right-col;
 
@@ -712,7 +759,7 @@ body{
   }
 
   .page-wrapper .lang-selector {
-    display: none;
+    display: none; 
   }
 
   %right-col {
@@ -731,4 +778,8 @@ body{
 
 .highlight, .highlight .w {
   background-color: $code-bg;
+}
+
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1{
+  color: #a4f46c;
 }
