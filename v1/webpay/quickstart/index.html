@@ -1,0 +1,350 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta content="Use Interswitch Developer APIs, secure development tools, Visa experts and resources from the world's largest payment network" name="description">
+    <meta content="Copyright&copy; 2018 Interswitch Group. All rights reserved." name="copyright">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Yrsa:300" rel="stylesheet">
+    <link href="css/prism.css" rel="stylesheet" type="text/css">
+    <link href="https://mufasa.interswitchng.com/p/favicons/favicon_isw.png" rel="icon" sizes="16x16 32x32 48x48 64x64" type="image/x-icon">
+  
+      
+    <title>Interswitch Payment Gateway</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #f8f8f2;
+  background-color: #272822;
+}
+.highlight .err {
+  color: #151515;
+  background-color: #ac4142;
+}
+.highlight .c, .highlight .cd, .highlight .cm, .highlight .c1, .highlight .cs {
+  color: #505050;
+}
+.highlight .cp {
+  color: #f4bf75;
+}
+.highlight .nt {
+  color: #f4bf75;
+}
+.highlight .o, .highlight .ow {
+  color: #d0d0d0;
+}
+.highlight .p, .highlight .pi {
+  color: #d0d0d0;
+}
+.highlight .gi {
+  color: #90a959;
+}
+.highlight .gd {
+  color: #ac4142;
+}
+.highlight .gh {
+  color: #6a9fb5;
+  background-color: #151515;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #aa759f;
+}
+.highlight .kc {
+  color: #d28445;
+}
+.highlight .kt {
+  color: #d28445;
+}
+.highlight .kd {
+  color: #d28445;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #90a959;
+}
+.highlight .sr {
+  color: #75b5aa;
+}
+.highlight .si {
+  color: #8f5536;
+}
+.highlight .se {
+  color: #8f5536;
+}
+.highlight .nn {
+  color: #f4bf75;
+}
+.highlight .nc {
+  color: #f4bf75;
+}
+.highlight .no {
+  color: #f4bf75;
+}
+.highlight .na {
+  color: #6a9fb5;
+}
+.highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mb, .highlight .mx {
+  color: #90a959;
+}
+.highlight .ss {
+  color: #90a959;
+}
+    </style>
+    <link href="../../../stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="../../../stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
+      <script src="../../../javascripts/all.js" type="text/javascript"></script>
+  </head>
+
+  <body class="v1 v1_webpay v1_webpay_quickstart v1_webpay_quickstart_index" data-languages="[&quot;go&quot;,&quot;java&quot;,&quot;javascript&quot;,&quot;python&quot;,&quot;ruby&quot;,&quot;csharp&quot;,&quot;c&quot;,&quot;objective_c&quot;,&quot;php&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="../../../images/navbar.png" />
+      </span>
+    </a>
+    <a id="hide-button">
+      <div>
+        <span class="hide-text"></span>
+          <img src="../../../images/hide.png" /> 
+      </div>
+    </a>
+    
+    <div class="tocify-wrapper">
+ 
+      <a href="">
+        <img src="../../../images/logo.png" />
+      </a>
+
+        <div class="lang-selector">
+              <a href="#" data-language-name="go">Go</a>
+              <a href="#" data-language-name="java">Java</a>
+              <a href="#" data-language-name="javascript">JavaScript</a>
+              <a href="#" data-language-name="python">Python</a>
+              <a href="#" data-language-name="ruby">Ruby</a>
+              <a href="#" data-language-name="csharp">C#</a>
+              <a href="#" data-language-name="c">Swift</a>
+              <a href="#" data-language-name="objective_c">Objective-C</a>
+              <a href="#" data-language-name="php">PHP</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <div id="toc">
+      </div>
+        <ul class="toc-footer">
+        </ul>
+    </div>
+    
+    <div class="page-wrapper">
+    <div class="dark-box"></div>
+    <div class="intro">
+        <img src="../../../images/Payment-Illustration-bluebckgrnd.svg" />
+      </div>
+      <div class="content">
+      
+        <h1 id=""> Interswitch Payment Gateway </h1>
+
+<blockquote>
+<p>Scroll down for code samples, Sample requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.</p>
+</blockquote>
+
+<p>This document describes how a third-party will request for Interswitch Payment Gateway API. Note that all data formats and response definitions are in conformance with the REST standard.</p>
+
+<p>Interswitch payment gateway is a product for businesses who would like to accept payments online and on mobile devices. </p>
+
+<p>If you are a certified and regulated payment processor who would like to provide your own payment gateway, this payment gateway makes available a processing API with which you can process both local and international card payments for businesses in Nigeria, Kenya, Uganda and Gambia. </p>
+
+<p>For more information about these possibilities, please send an email to <a href="mailto:ipgsupport@interswitchgroup.com">ipgsupport@interswitchgroup.com</a></p>
+
+<h1 id="getting-access-token"> Getting Access Token </h1>
+
+<p>To begin the using the platform, you must register for an account on the <a href="https://www.interswitchgroup.com/paymentgateway/">Interswitch Payment Gateway portal</a>. </p>
+
+<p>Please follow the registration process and you&rsquo;d be redirected to the platform.</p>
+
+<p><aside class="warning">
+Note that the link above gives you production keys, use the test samples available <a href="#test-merchant-details">here</a> if you&rsquo;re using the sandbox test environment.
+</aside></p>
+
+          <h1 id='making-a-quick-transaction'>Making a Quick Transaction</h1>
+<ul>
+<li>Get an account on the payment gateway using the link <a href="https://www.interswitchgroup.com/paymentgateway/">here</a></li>
+</ul>
+
+<p>There are various integration platforms availale</p>
+
+<ul>
+<li><p><a href="#">Web Integration (Pop Up)</a></p></li>
+<li><p><a href="#">Web Redirect</a></p></li>
+<li><p><a href="#">API / SDK Integration</a></p></li>
+<li><p><a href="#">QR Integration</a></p></li>
+</ul>
+<h2 id='web-integration-pop-up'>Web Integration Pop Up</h2>
+<blockquote>
+<p>Code samples are in javascript</p>
+</blockquote>
+
+<p>You can request for a link to pop up a webpay payment terminal using a shortcode after registering on the payment gateway platform</p>
+
+<p>Check out the documentation code panel to see a sample implementation</p>
+
+<p><a data-isw-payment-button data-isw-ref='yLQgIGZ3e'>
+Pay using Pop Up
+  <script type='text/javascript' 
+    src='https://www.interswitchgroup.com/paymentgateway/public/js/webpay.js'
+    data-isw-trans-amount='10000'
+    data-isw-customer-ref='1545060437739'
+    data-isw-customer-callback='customCallback'>
+  </script>
+</a></p>
+<pre class="highlight javascript"><span class="o">&lt;</span><span class="nx">a</span> <span class="nx">data</span><span class="o">-</span><span class="nx">isw</span><span class="o">-</span><span class="nx">payment</span><span class="o">-</span><span class="nx">button</span> <span class="nx">data</span><span class="o">-</span><span class="nx">isw</span><span class="o">-</span><span class="nx">ref</span><span class="o">=</span><span class="s1">'yLQgIGZ3e'</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s1">'text/javascript'</span> 
+    <span class="nx">src</span><span class="o">=</span><span class="s1">'https://www.interswitchgroup.com/paymentgateway/public/js/webpay.js'</span>
+    <span class="nx">data</span><span class="o">-</span><span class="nx">isw</span><span class="o">-</span><span class="nx">trans</span><span class="o">-</span><span class="nx">amount</span><span class="o">=</span><span class="s1">'10000'</span>
+    <span class="nx">data</span><span class="o">-</span><span class="nx">isw</span><span class="o">-</span><span class="nx">customer</span><span class="o">-</span><span class="nx">ref</span><span class="o">=</span><span class="s1">'1545060437739'</span>
+    <span class="nx">data</span><span class="o">-</span><span class="nx">isw</span><span class="o">-</span><span class="nx">customer</span><span class="o">-</span><span class="nx">callback</span><span class="o">=</span><span class="s1">'customCallback'</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="sr">/</span><span class="err">script&gt;</span>
+<span class="o">&lt;</span><span class="sr">/</span><span class="err">a&gt;</span>
+<span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+  <span class="kd">function</span> <span class="nx">customCallback</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span> 
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="o">&lt;</span><span class="sr">/</span><span class="err">script&gt;</span>
+</pre>
+<h2 id='web-redirect'>Web Redirect</h2>
+<blockquote>
+<p>Code Samples are available</p>
+</blockquote>
+
+<p>You can make a direct POST call instead of rendering a popup if you want to redirect to your payment gateway page. Set the amount by providing a value(in minor) to the amount parameter. Other payment options can be specified via other parameters(example below)</p>
+<pre class="highlight html">
+<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;form</span> <span class="na">method=</span><span class="s">'post'</span> <span class="na">action=</span><span class="s">'https://webpay.interswitchng.com/collections/w/pay'</span> <span class="na">style=</span><span class="s">"margin-left: 28px"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;strong&gt;</span>Redirect URL:<span class="nt">&lt;/strong&gt;</span> <span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">'site_redirect_url'</span> <span class="na">value=</span><span class="s">'./'</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+
+   <span class="nt">&lt;strong&gt;</span>Pay Item ID:<span class="nt">&lt;/strong&gt;</span> <span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">'pay_item_id'</span> <span class="na">value=</span><span class="s">'1767603'</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+
+   <span class="nt">&lt;strong&gt;</span>Transaction Reference:<span class="nt">&lt;/strong&gt;</span> <span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">'txn_ref'</span> <span class="na">value=</span><span class="s">'1545060437742'</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+
+   <span class="nt">&lt;strong&gt;</span>Amount:<span class="nt">&lt;/strong&gt;</span> <span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">'amount'</span> <span class="na">value=</span><span class="s">'10000'</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+
+   <span class="nt">&lt;strong&gt;</span>Currency:<span class="nt">&lt;/strong&gt;</span> <span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">'currency'</span> <span class="na">value=</span><span class="s">'566'</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+
+   <span class="nt">&lt;strong&gt;</span>Customer Name:<span class="nt">&lt;/strong&gt;</span> <span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">'cust_name'</span> <span class="na">value=</span><span class="s">'Blank Limited'</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+
+   <span class="nt">&lt;strong&gt;</span>Payment Item Name:<span class="nt">&lt;/strong&gt;</span> <span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">'pay_item_name'</span> <span class="na">value=</span><span class="s">'Item A'</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+
+   <span class="nt">&lt;strong&gt;</span>Display Mode:<span class="nt">&lt;/strong&gt;</span> <span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">'display_mode'</span> <span class="na">value=</span><span class="s">'PAGE'</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+
+   <span class="nt">&lt;strong&gt;</span>Merchant Code:<span class="nt">&lt;/strong&gt;</span> <span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">'merchant_code'</span> <span class="na">value=</span><span class="s">'MX10245'</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+
+   <span class="nt">&lt;strong&gt;</span>Hit submit and complete the transaction:<span class="nt">&lt;/strong&gt;</span> <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">'submit'</span> <span class="na">value=</span><span class="s">'Submit Form'</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/form&gt;</span>
+
+
+</pre>
+
+<p><br />
+<form method='post' action='https://webpay.interswitchng.com/collections/w/pay' style="margin-left: 28px">
+<br />
+<br />
+  <strong>Redirect URL:</strong> <input name='site_redirect_url' value='./' />
+  <br />
+<br /></p>
+
+<p><strong>Pay Item ID:</strong> <input name='pay_item_id' value='1767603' />
+  <br />
+<br /></p>
+
+<p><strong>Transaction Reference:</strong> <input name='txn_ref' value='1545060437742' />
+  <br />
+<br /></p>
+
+<p><strong>Amount:</strong> <input name='amount' value='10000' />
+  <br />
+<br /></p>
+
+<p><strong>Currency:</strong> <input name='currency' value='566' />
+  <br />
+<br /></p>
+
+<p><strong>Customer Name:</strong> <input name='cust_name' value='Blank Limited' />
+  <br />
+<br /></p>
+
+<p><strong>Payment Item Name:</strong> <input name='pay_item_name' value='Item A' />
+  <br />
+<br /></p>
+
+<p><strong>Display Mode:</strong> <input name='display_mode' value='PAGE' />
+  <br />
+<br /></p>
+
+<p><strong>Merchant Code:</strong> <input name='merchant_code' value='MX10245' />
+  <br />
+<br /></p>
+
+<p><strong>Hit submit and complete the transaction:</strong> <input type='submit' value='Submit Form' />
+  <br />
+<br /></p>
+
+<p></form></p>
+<h2 id='api--sdk-integration'>API / SDK Integration</h2>
+<p>Check out the full documentation <a href="./docs">here</a> for more details</p>
+<h2 id='qr-integration'>QR Integration</h2>
+<ul>
+<li>Get an account on the payment gateway using the link <a href="https://www.interswitchgroup.com/paymentgateway/">here</a> and look for the QR integration option on the payment gateway section of the dashoard.
+<br />
+For more information about these possibilities, please send an email to <a href="mailto:ipgsupport@interswitchgroup.com">ipgsupport@interswitchgroup.com</a></li>
+</ul>
+
+<p><br />
+<br /></p>
+
+<p><img alt="QR Image Dashboard" src="../../../images/qr.png" /></p>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="go">Go</a>
+                <a href="#" data-language-name="java">Java</a>
+                <a href="#" data-language-name="javascript">JavaScript</a>
+                <a href="#" data-language-name="python">Python</a>
+                <a href="#" data-language-name="ruby">Ruby</a>
+                <a href="#" data-language-name="csharp">C#</a>
+                <a href="#" data-language-name="c">Swift</a>
+                <a href="#" data-language-name="objective_c">Objective-C</a>
+                <a href="#" data-language-name="php">PHP</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
