@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+	<title>Interswitch Developer Center</title>
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+	<meta content="Documentation of Apify Crawler that enables recursive crawling of websites and extracts structured data from them using a few simple lines of JavaScript." name="description">
+	<meta content="Copyright&copy; 2018 Apify Technologies s.r.o. All rights reserved." name="copyright">
+	<meta content="web scraper, web crawler, scraping, data extraction, API" name="keywords">
+	<meta content="index, follow" name="robots">
+	<meta content="origin" name="referrer">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Yrsa:300" rel="stylesheet">
+	<link href="../css/style.css?v=1521212734" rel="stylesheet">
+	<link href="../css/prism.css" rel="stylesheet" type="text/css">
+<link href="https://mufasa.interswitchng.com/p/favicons/favicon_isw.png" rel="icon" sizes="16x16 32x32 48x48 64x64" type="image/x-icon">
+	<link href="/img/apple-touch-icon-180x180.png" rel="apple-touch-icon" sizes="180x180">
+	<meta content="Apify Docs · Crawler" property="og:title">
+	<meta content="https://www.apify.com/docs/crawler" property="og:url">
+	<meta content="Documentation of Apify Crawler that enables recursive crawling of websites and extracts structured data from them using a few simple lines of JavaScript." property="og:description">
+	<meta content="Apify" property="og:site_name">
+	<meta content="website" property="og:type">
+	<meta content="1636933253245869" property="fb:app_id">
+	<meta content="https://www.apify.com/img/og-image.png" property="og:image">
+	<meta content="1200" property="og:image:width">
+	<meta content="630" property="og:image:height">
+	<meta content="https://www.apify.com/img/og-image-square.png?v=2" property="og:image">
+	<meta content="1000" property="og:image:width">
+	<meta content="1000" property="og:image:height">
+	<meta content="summary_large_image" name="twitter:card">
+	<meta content="@apify" name="twitter:site">
+	<meta content="Apify Docs · Crawler" name="twitter:title">
+	<meta content="Documentation of Apify Crawler that enables recursive crawling of websites and extracts structured data from them using a few simple lines of JavaScript." name="twitter:description">
+	<meta content="https://www.apify.com/img/twitter-image.png" name="twitter:image">
+	<script src="/js/vendor/modernizr-2.8.3.min.js">
+	</script>
+	<script>
+	       (function (i, s, o, g, r, a, m) {
+	           i['GoogleAnalyticsObject'] = r;
+	           i[r] = i[r] || function () {
+	               (i[r].q = i[r].q || []).push(arguments)
+	           }, i[r].l = 1 * new Date();
+	           a = s.createElement(o),
+	               m = s.getElementsByTagName(o)[0];
+	           a.async = 1;
+	           a.src = g;
+	           m.parentNode.insertBefore(a, m)
+	       })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+	       ga('create', 'UA-67003981-4', 'auto');
+	       ga('send', 'pageview');
+	</script>
+	<script>
+	       window.userIdCookieName = 'ApifyProdUserId';
+	       window.appBaseUrl = 'https://my.apify.com';
+	       window.apiBaseUrl = 'https://api.apify.com';
+	</script>
+	<script>
+	       var APP_ID = "kod1r788";
+	       window.intercomSettings = {
+	           app_id: APP_ID
+	       };
+	</script>
+	<script>
+	(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/APP_ID';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()
+	</script>
+</head>
+<body>
+	<div id="content">
+		<header class="header header-docs" id='xxx'>
+			<div class="wrap-wide cf">
+				<span class="logo tfloat-left"><a href="/">
+                    </a>
+                    
+<!--
+                    <svg height="40" viewbox="0 0 152 40" width="152" xmlns="http://www.w3.org/2000/svg">
+
+				<g fill="none" fill-rule="evenodd">
+					<path d="M89.597 20.667H83.92v-7.622h5.679c2.098 0 3.8 1.707 3.8 3.811a3.806 3.806 0 0 1-3.802 3.811zM90.171 9H78.75v23h5.169v-7.288h6.25c4.328 0 7.836-3.517 7.836-7.856S94.498 9 90.17 9zm19.975 23h5.167v-8.157h9.335v-4.145h-9.335v-6.452h11.602V9h-16.77v23zm36.353-23l-5.635 9.46h-.133L135.364 9h-5.868l8.602 14.275V32h5.2v-8.758L152 9h-5.501zm-45.42 23h5.168V9h-5.168v23zm-39.81-8.792l3.2-9.428h.133l3.134 9.428h-6.468zM61.534 9L53 32h5.301l1.6-4.713h9.202l1.6 4.713h5.468L67.636 9h-6.101z" fill="#FFF" id="logo-text"></path>
+					<path d="M5.309 4.755c-3.37.432-5.72 3.287-5.249 6.378L3.696 35 19 3 5.309 4.755z" fill="#6CC04A"></path>
+					<path d="M39.986 23.133L38.689 5.145c-.231-3.198-3.144-5.535-6.347-5.09L27 .794 38.765 27a5.503 5.503 0 0 0 1.22-3.867" fill="#00A7CE"></path>
+					<path d="M9 39.965a5.942 5.942 0 0 0 2.913-.415L33 30.886 22.975 9 9 39.965z" fill="#FF9012"></path>
+				</g></svg>
+                    
+-->
+                    <img src="../img/int.logo.png" class="img-responsive" width="100">
+                    
+<!--
+                    </a> <span><a href="/docs">Docs</a></span>
+                
+-->
+                
+                </span>
+				<nav class="cf">
+					<div class="head-search dfloat-left"></div>
+					<div class="docs-menu">
+						<ul>
+							<li>
+								<a class="external" href="docs/crawler">Crawler</a>
+							</li>
+							<li>
+								<a class="external" href="docs/actor">Actor</a>
+							</li>
+							<li>
+								<a class="external" href="docs/scheduler">Scheduler</a>
+							</li>
+							<li>
+								<a class="external" href="docs/storage">Storage</a>
+							</li>
+							<li>
+								<a class="external" href="docs/api">API</a>
+							</li>
+							<li>
+								<a class="external" href="docs/sdk">SDK</a>
+							</li>
+						</ul>
+					</div>
+					<ul class="head-ctas dfloat-right unlogged-menu" style="display: none">
+						<li>
+							<a class="cta-login" href="https://my.apify.com/sign-in">Log in</a>
+						</li>
+						<li>
+							<a class="btn-head" href="https://my.apify.com/sign-up">Sign up</a>
+						</li>
+					</ul>
+					<ul class="head-ctas dfloat-right logged-in-menu" style="display: none">
+						<li>
+							<a class="btn-head" href="https://my.apify.com">Go to app</a>
+						</li>
+					</ul>
+				</nav><a class="menu-opener" href="#"><span></span></a>
+			</div>
+		</header>
+		<main id="main">
+			<div class="line">
+				<div class="wrap">
+					<div class="docs-wrap cf">
+						<nav class="docs-menu mt-none">
+							<div>
+								<ul>
+									<li>
+										<a class="external" href="../docs.html">Introduction</a>
+									</li>
+									<li>
+										<a class="active" href="#home">Interswitch Payment Gateway API</a>
+										<ul>
+											<li>
+												<a href="#basic-settings">Payment Overview</a>
+												<ul>
+													<li>
+														<a href="#customId">What is AuthData?</a>
+													</li>
+													<li>
+														<a href="#_id">API & HTTP Response Codes</a>
+													</li>
+													<li>
+														<a href="#comments">Request headers & Signature Calculation</a>
+													</li>
+													
+													
+												</ul>
+											</li>
+											<li>
+												<a href="#advanced-settings">Getting Access Token</a>
+												
+											</li>
+											<li>
+												<a href="#internals">Basic Purchase</a>
+												<ul>
+													<li>
+														<a href="#requestObject">Payment with Card (No OTP)</a>
+													</li>
+                                                    <li>
+														<a href="#requestObject">Response for Payment with Card (No OTP)</a>
+													</li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+									<li>
+										<a class="external" href="/docs/actor">Basic Purchase (Hard Token/SMS OTP Required)</a>
+										<ul>
+											<li>
+												<a href="#quick-start">What is a One-Time-Password (OTP)</a>
+											</li>
+											<li>
+												<a href="#source">Payment with Card (Requires OTP)</a>
+												<ul>
+													<li>
+														<a href="#hosted-source">Response for Payment with Card (Requires OTP)</a>
+													</li>
+													
+												</ul>
+											</li>
+											
+										
+										
+											
+											
+										</ul>
+									</li>
+									<li>
+										<a class="external" href="/docs/scheduler">Basic Purchase (VISA Card)</a>
+									</li>
+<!--
+									<li>
+										<a class="external" href="/docs/storage">Storage</a>
+										<ul>
+											<li>
+												<a href="#kv-store">Key-value store</a>
+												<ul>
+													<li>
+														<a href="#kv-store-basic-usage">Basic usage</a>
+													</li>
+													<li>
+														<a href="#kv-store-actor">Use in actor</a>
+													</li>
+												</ul>
+											</li>
+											<li>
+												<a href="#dataset">Dataset</a>
+												<ul>
+													<li>
+														<a href="#dataset-basic-usage">Basic usage</a>
+													</li>
+													<li>
+														<a href="#dataset-actor">Use in actor</a>
+													</li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+-->
+<!--
+									<li>
+										<a class="external" href="/docs/api">API</a>
+										<ul>
+											<li>
+												<a class="external" href="/docs/api/v1">Crawlers API (v1) <i class="material-icons small">open_in_new</i></a>
+											</li>
+											<li>
+												<a class="external" href="/docs/api/v2">Acts API (v2) <i class="material-icons small">open_in_new</i></a>
+											</li>
+										</ul>
+									</li>
+-->
+<!--
+									<li>
+										<a class="external" href="/docs/sdk">SDK</a>
+										<ul>
+											<li>
+												<a class="external" href="/docs/sdk/apify-runtime-js/latest">JavaScript SDK <i class="material-icons small">open_in_new</i></a>
+											</li>
+											<li>
+												<a class="external" href="/docs/sdk/apify-client-js/latest">JavaScript API client <i class="material-icons small">open_in_new</i></a>
+											</li>
+										</ul>
+									</li>
+-->
+								</ul>
+							</div>
+						</nav>
+						<div class="docs-content mleft">
+							<div id="home">
+								<h2><a href="./crawler"><i aria-hidden="true" class="fa fa-link"></i></a>Interswitch Payment Gateway API</h2>
+								<p>This document describes how a third-party will request for Interswitch Payment Gateway API. Note that all data formats and response definitions are in conformance with the REST standard.Interswitch payment gateway is a product for businesses who would like to accept payments online and on mobile devices. If you are a certified and regulated payment processor who would like to provide your own payment gateway, this payment gateway makes available a processing API with which you can process both local and international card payments for businesses in Nigeria, Kenya, Uganda and Gambia. For more information about these possibilities, please send an email to ipgsupport@interswitchgroup.com.</p>
+								
+						
+					
+							
+								<section id="basic-settings">
+									<h2><a href="#basic-settings"><i aria-hidden="true" class="fa fa-link"></i></a>Payment Overview</h2>
+									<section id="customId">
+										<h3><a href="#customId"><i aria-hidden="true" class="fa fa-link"></i></a>Custom ID <span class="api-field-name">{customId: String}</span></h3>
+										<p>A custom unique identifier of the crawler that is used to reference the crawler from API integrations. The string cannot be empty and ideally should not require URL encoding. Beware: if you change this value, the corresponding API endpoint URL will also change and your integrations might break.</p>
+									</section>
+									<section id="_id">
+										<h3><a href="#_id"><i aria-hidden="true" class="fa fa-link"></i></a>Internal ID <span class="api-field-name">{_id: String}</span></h3>
+										<p>An internal unique identifier of the crawler that can be used to reference the crawler in your API integrations instead of <a href="#requestObject">Custom ID</a>. Note that this value is read-only and never changes.</p>
+									</section>
+									<section id="comments">
+										<h3><a href="#comments"><i aria-hidden="true" class="fa fa-link"></i></a>Comments <span class="api-field-name">{comments: String}</span></h3>
+										<p>Arbitrary notes or comments associated with this crawler.</p>
+									</section>
+									<section id="startUrls">
+										<h3><a href="#startUrls"><i aria-hidden="true" class="fa fa-link"></i></a>Start URLs <span class="api-field-name">{startUrls: [{key: String, value: String}]}</span></h3>
+										<p>The list of URLs of the first pages that the crawler will open. Optionally, each URL can be associated with a custom label that can be referenced from your JavaScript code to determine which page is currently open (see <a href="#requestObject">Request object</a> for details). Each URL must start with either a <code>http://</code> or <code>https://</code> protocol prefix!</p>
+										<p>Note that it is possible to instruct the crawler to load a URL using a HTTP POST request simply by suffixing it with a <code>[POST]</code> marker, optionally followed by POST data (e.g. <code>http://www.example.com[POST]<wbr>key1=value1&key2=value2</code>). By default, POST requests are sent with the <code>Content-Type: application/x-www-form-urlencoded</code> header.</p>
+										<p>Maximum label length is 100 characters and maximum URL length is 2000 characters.</p>
+									</section>
+									<section id="crawlPurls">
+										<h3><a href="#crawlPurls"><i aria-hidden="true" class="fa fa-link"></i></a>Pseudo-URLs <span class="api-field-name">{crawlPurls: [{key: String, value: String}]}</span></h3>
+										<p>Specifies which pages will be visited by the crawler using a <i>pseudo-URLs</i> (PURL) format. PURL is simply a URL with special directives enclosed in <code>[]</code> brackets. Currently, the only supported directive is <code>[regexp]</code>, which defines a JavaScript-style regular expression to match against the URL.</p>
+										<p>For example, a PURL <code>http://www.example.com/pages/[(\w|-)*]</code> will match all of the following URLs:</p>
+										<ul>
+											<li><code>http://www.example.com/pages/</code></li>
+											<li><code>http://www.example.com/pages/my-awesome-page</code></li>
+											<li><code>http://www.example.com/pages/something</code></li>
+										</ul>
+										<p></p>
+										<p>If either <code>[</code> or <code>]</code> is part of the normal query string, it must be encoded as <code>[\x5B]</code> or <code>[\x5D]</code>, respectively. For example, the following PURL:</p>
+										<p><code>http://www.example.com/search?do[\x5B]load[\x5D]=1</code></p>
+										<p>will match the URL:</p>
+										<p><code>http://www.example.com/search?do[load]=1</code></p>
+										<p>Optionally, each PURL can be associated with a custom label that can be referenced from your JavaScript code to determine which page is currently open (see <a href="#requestObject">Request object</a> for details).</p>
+										<p>Note that you don't need to use this setting at all, because you can completely control which pages the crawler will access using the <a href="#interceptRequest">Intercept request function</a>.</p>
+										<p>Maximum label length is 100 characters and maximum PURL length is 1000 characters.</p>
+									</section>
+									<section id="clickableElementsSelector">
+										<h3><a href="#clickableElementsSelector"><i aria-hidden="true" class="fa fa-link"></i></a>Clickable elements <span class="api-field-name">{clickableElementsSelector: String}</span></h3>
+										<p>CSS selector used to find links to other web pages. The crawler clicks all DOM elements matching this selector and then monitors whether the page generates a navigation request. If a navigation request is detected, the crawler checks whether it matches <a href="#crawlPurls">Pseudo-URLs</a>, invokes <a href="#interceptRequest">Intercept request function</a>, cancels the request and then continues clicking the next matching elements. By default, new crawlers are created with a safe CSS selector:</p>
+										<p><code>a:not([rel&#x3D;nofollow])</code>.</p>
+										<p>In order to reach more pages, you might want to use a wider CSS selector, such as:</p>
+										<p><code>a:not([rel=nofollow]), input, button, [onclick]:not([rel=nofollow])</code></p>
+										<p>Be careful - clicking certain DOM elements can cause <b>unexpected and potentially harmful side effects</b>. For example, by clicking buttons you might submit forms, flag comments, etc. In principle, the safest option is to narrow the CSS selector to as few elements as possible, which also makes the crawler run much faster.</p>
+										<p>Leave this field empty if you do not want the crawler to click any elements and only open <a href="#startUrls">Start URLs</a> or pages enqueued using <code>enqueuePage()</code>.</p>
+									</section>
+									<section id="pageFunction">
+										<h3><a href="#pageFunction"><i aria-hidden="true" class="fa fa-link"></i></a>Page function <span class="api-field-name">{pageFunction: String}</span></h3>
+										<p>A user-provided JavaScript function that is executed in the context of every page loaded by the crawler. Page function is typically used to extract some data from the page, but it can also be used to perform some non-trivial operation on the page, e.g. handle AJAX-based pagination.</p>
+										<p><b>IMPORTANT:</b> Apify is currently using <a href="http://phantomjs.org/" rel="noopener" target="_blank">PhantomJS</a> headless web-browser, which only supports JavaScript ES5.1 standard (read more in a <a href="https://ariya.io/2014/08/phantomjs-2-and-javascript-goodies" rel="noopener" target="_blank">blog post about PhantomJS 2.0</a>).</p>
+										<p>The basic page function with no effect has the following signature:</p>
+										<pre id="pageFunctionCode"><code class="language-js">function pageFunction(context) {
+    return null;
+}</code></pre>
+										<p>The function can return an arbitrary JavaScript object (including array, string, number, etc.) that can be stringified to JSON; this value will be saved in the crawling results as the <code>pageFunctionResult</code> field of the <a href="#requestObject">Request object</a> corresponding to the web page on which the <code>pageFunction</code> was executed. Note that Apify provides crawling results in a computer-friendly form (JSON, JSONL, XML or RSS format), as well as in a human-friendly tabular form (HTML or CSV format). If the <code>pageFunction</code>'s return value is an array, its elements will be displayed as separate rows in such a table, to make the results more readable.</p>
+										<p>The function accepts a single argument called <code>context</code>, which is an object with the following properties and functions:</p>
+										<table class="table table-bordered">
+											<thead>
+												<tr>
+													<th>Name</th>
+													<th>Description</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td id="context-request"><code>request</code></td>
+													<td>
+														An object holding all the available information about the currently loaded web page. See <a href="#requestObject">Request object</a> for details.
+													</td>
+												</tr>
+												<tr>
+													<td id="context-jQuery"><code>jQuery</code></td>
+													<td>
+														A jQuery object, only available if the <a href="#injectJQuery">Inject jQuery</a> setting is enabled. <!--<?php/* TODO: Although the web page can include jQuery, you shouldnt.. */-->
+													</td>
+												</tr>
+												<tr>
+													<td id="context-underscoreJs"><code>underscoreJs</code></td>
+													<td>
+														The Underscore.js' <code>_</code> object, only available if the <a href="#injectUnderscoreJs">Inject Underscore.js</a> setting is enabled.
+													</td>
+												</tr>
+												<tr>
+													<td id="context-skipLinks"><code>skipLinks()</code></td>
+													<td>If called, the crawler will not follow any links from the current page and will continue with the next page from the queue. This is useful to speed up the crawl by avoiding unnecessary paths.</td>
+												</tr>
+												<tr>
+													<td id="context-skipOutput"><code>skipOutput()</code></td>
+													<td>
+														If called, no information about the current page will be saved to the Results, including the page function result itself. This is useful to reduce the size of the output JSON by skipping unimportant pages. Note that if the page function throws an exception, the <code>skipOutput()</code> call is ignored and the page is outputted anyway, so that the user has a chance to determine whether there was an error (see <a href="#requestObject">Request object</a>'s <code>errorInfo</code> field).
+													</td>
+												</tr>
+												<tr>
+													<td id="context-willFinishLater"><code>willFinishLater()</code></td>
+													<td>
+														Tells the crawler that the page function will continue performing some background operation even after it returns. This is useful when you want to fetch results from an asynchronous operation, e.g. an XHR request or a click on some DOM element. If you use the <code>willFinishLater()</code> function, make sure you also invoke <code>finish()</code> or the crawler will wait infinitely for the result and eventually timeout after the period specified in <a href="#pageFunctionTimeout">Page function timeout</a>. Note that the normal return value of the page function is ignored.
+													</td>
+												</tr>
+												<tr>
+													<td id="context-finish"><code>finish(result)</code></td>
+													<td>Tells the crawler that the page function finished its background operation. The <code>result</code> parameter receives the result of the page function - this is a replacement for the normal return value of the page function that was ignored (see <code>willFinishLater()</code> above).</td>
+												</tr>
+												<tr>
+													<td id="context-saveSnapshot"><code>saveSnapshot()</code></td>
+													<td>Captures a screenshot of the web page and saves its DOM to an HTML file, which are both then displayed in the user's crawling console. This is especially useful for debugging your page function.</td>
+												</tr>
+												<tr>
+													<td id="context-enqueuePage"><code>enqueuePage(request)</code></td>
+													<td>
+														<p>Adds a new page request to the crawling queue, regardless of whether it matches any of the <a href="#crawlPurls">Pseudo-URLs</a>. The <code>request</code> argument is an instance of the <a href="#requestObject">Request object</a>, but only the following properties are taken into account: <code>url</code>, <code>uniqueKey</code>, <code>label</code>, <code>method</code>, <code>postData</code>, <code>contentType</code>, <code>queuePosition</code> and <code>interceptRequestData</code>; all other properties will be ignored. The <code>url</code> property is mandatory.</p>
+														<p>Note that the manually enqueued page is subject to the same processing as any other page found by the crawler. For example, the <a href="#interceptRequest">Intercept request function</a> function will be called for the new request, and the page will be checked to see whether it has already been visited by the crawler and skipped if so.</p>For backwards compatibility, the function also supports the following signature: <code>enqueuePage(url, method, postData, contentType)</code>.
+													</td>
+												</tr>
+												<tr>
+													<td id="context-saveCookies"><code>saveCookies([cookies])</code></td>
+													<td>
+														Saves current cookies of the current PhantomJS browser to the crawler's <a href="#cookies">Initial cookies</a>. All subsequently started PhantomJS processes will use these cookies. For example, this is useful to store a login. Optionally, you can pass an array of cookies to set to the browser before saving (in <a href="http://phantomjs.org/api/phantom/property/cookies.html" rel="noopener" target="_blank">PhantomJS format</a>). Note that by passing an empty array you can unset all cookies.
+													</td>
+												</tr>
+												<tr>
+													<td id="context-customData"><code>customData</code></td>
+													<td>
+														Custom user data from crawler settings. See <a href="#customData">Custom data</a> for details.
+													</td>
+												</tr>
+												<tr>
+													<td id="context-stats"><code>stats</code></td>
+													<td>An object containing a snapshot of statistics from the current crawl (see API section on crawler run page for details). Note that the statistics are collected <b>before</b> the current page has been crawled.</td>
+												</tr>
+												<tr>
+													<td id="context-actExecutionId"><code>actExecutionId</code></td>
+													<td>
+														String containing ID of this crawler execution. It might be used to control the crawler using the <a href="/docs/api/v1">API</a>, e.g. to stop it or fetch its results.
+													</td>
+												</tr>
+												<tr>
+													<td id="context-actId"><code>actId</code></td>
+													<td>
+														String containing internal ID of crawler. See <a href="#_id">Internal ID</a> for details.
+													</td>
+												</tr>
+											</tbody>
+										</table>
+										<p>Note that any changes made to the <code>context</code> parameter will be ignored. When implementing the page function, it is the user's responsibility not to break normal page's scripts which might affect the operation of the crawler.</p>
+										<h4 id="waiting-for-dynamic-content"><a href="#waiting-for-dynamic-content"><i aria-hidden="true" class="fa fa-link"></i></a>Waiting for dynamic content</h4>
+										<p>Some web pages do not load all their content immediately but only fetch it in the background using AJAX, while <code>pageFunction</code> might be executed before the content has actually been loaded. You can wait for dynamic content to load using the following code:</p>
+										<pre><code class="language-js">function pageFunction(context) {
+    var $ = context.jQuery;
+    var startedAt = Date.now();
+
+    var extractData = function() {
+        // timeout after 10 seconds
+        if( Date.now() - startedAt &gt; 10000 ) {
+            context.finish("Timed out before #my_element was loaded");
+            return;
+        }
+
+        // if my element still hasn't been loaded, wait a little more
+        if( $('#my_element').length === 0 ) {
+            setTimeout(extractData, 500);
+            return;
+        }
+
+        // refresh page screenshot and HTML for debugging
+        context.saveSnapshot();
+
+        // save a result
+        context.finish({
+            value: $('#my_element').text()
+        });
+    };
+
+    // tell the crawler that pageFunction will finish asynchronously
+    context.willFinishLater();
+
+    extractData();
+}</code></pre>
+									</section>
+								</section>
+								<section id="advanced-settings">
+									<h2><a href="#advanced-settings"><i aria-hidden="true" class="fa fa-link"></i></a>Advanced settings</h2>
+									<section id="interceptRequest">
+										<h3><a href="#interceptRequest"><i aria-hidden="true" class="fa fa-link"></i></a>Intercept request function <span class="api-field-name">{interceptRequest: String}</span></h3>
+										<p>A user-provided JavaScript function that is called whenever a new URL is about to be added to the crawling queue, which happens at the following times:</p>
+										<ul>
+											<li>At the start of crawling for all <a href="#startUrls">Start URLs.</a>
+											</li>
+											<li>When the crawler looks for links to new pages by clicking elements matching the <a href="#clickableElementsSelector">Clickable elements</a> CSS selector and detects a page navigation request, i.e. a link (GET) or a form submission (POST) that would normally cause the browser to navigate to a new web page.
+											</li>
+											<li>Whenever a loaded page tries to navigate to another page, e.g. by setting <code>window.location</code> in JavaScript.</li>
+											<li>When user code invokes <code>enqueuePage()</code> inside of <a href="#pageFunction">Page function</a>.
+											</li>
+										</ul>
+										<p>The intercept request function allows you to affect on a low level how new pages are enqueued by the crawler. For example, it can be used to ensure that the request is added to the crawling queue even if it doesn't match any of the <a href="#crawlPurls">Pseudo-URLs</a>, or to change the way the crawler determines whether the page has already been visited or not. Similarly to the <a href="#pageFunction">Page function</a>, this function is executed in the context of the originating web page (or in the context of <code>about:blank</code> page for <a href="#startUrls">Start URLs</a>).</p>
+										<p><b>IMPORTANT:</b> Apify is currently using <a href="http://phantomjs.org/" rel="noopener" target="_blank">PhantomJS</a> headless web-browser, which only supports JavaScript ES5.1 standard (read more in <a href="https://ariya.io/2014/08/phantomjs-2-and-javascript-goodies" rel="noopener" target="_blank">blog post about PhantomJS 2.0</a>).</p>
+										<p>The basic intercept request function with no effect has the following signature:</p>
+										<pre id="interceptRequestFunc"><code class="language-js">function interceptRequest(context, newRequest) {
+    return newRequest;
+}</code></pre>
+										<p>The <code>context</code> is an object with the following properties:</p>
+										<table class="table table-bordered table-condensed">
+											<tbody>
+												<tr>
+													<td><code>request</code></td>
+													<td>
+														An object holding all the available information about the currently loaded web page. See <a href="#requestObject">Request object</a> for details.
+													</td>
+												</tr>
+												<tr>
+													<td><code>jQuery</code></td>
+													<td>
+														A <a href="http://api.jquery.com/jQuery/" rel="noopener" target="_blank">jQuery</a> object, only available if the <a href="#injectJQuery">Inject jQuery</a> setting is enabled. <!--<?php/* TODO: Although the web page can include jQuery, you shouldnt.. */?>-->
+													</td>
+												</tr>
+												<tr>
+													<td><code>underscoreJs</code></td>
+													<td>
+														An <a href="http://underscorejs.org/" rel="noopener" target="_blank">Underscore.js</a> object, only available if the <a href="#injectUnderscoreJs">Inject Underscore.js</a> setting is enabled.
+													</td>
+												</tr>
+												<tr>
+													<td><code>clickedElement</code></td>
+													<td>A reference to the DOM object whose clicking initiated the current navigation request. The value is <code>null</code> if the navigation request was initiated by other means, e.g. using some background JavaScript action.</td>
+												</tr>
+											</tbody>
+										</table>
+										<p>Beware that in rare situations when the page redirects in its JavaScript before it was completely loaded by the crawler, the <code>jQuery</code> and <code>underscoreJs</code> objects will be undefined. The <code>newRequest</code> parameter contains a <a href="#requestObject">Request object</a> corresponding to the new page.</p>
+										<p>The way the crawler handles the new page navigation request depends on the return value of the <code>interceptRequest</code> function in the following way:</p>
+										<ul>
+											<li>If function returns the <code>newRequest</code> object unchanged, the default crawler behaviour will apply.</li>
+											<li>If function returns the <code>newRequest</code> object altered, the crawler behavior will be modified, e.g. it will enqueue a page that would not normally be skipped. The following fields can be altered: <code>willLoad</code>, <code>url</code>, <code>method</code>, <code>postData</code>, <code>contentType</code>, <code>uniqueKey</code>, <code>label</code>, <code>interceptRequestData</code> and <code>queuePosition</code> (see <a href="#requestObject">Request object</a> for details).
+											</li>
+											<li>If function returns <code>null</code>, the request will be dropped and a new page will not be enqueued.</li>
+											<li>If function throws an exception, the default crawler behaviour will apply and the error will be logged to Request object's <code>errorInfo</code> field. Note that this is the only way a user can catch and debug such an exception.</li>
+										</ul><!--<?php/* TODO: add this to request object <ul>
+            <li>url (the URL that will be loaded by the crawler)</li>
+            <li>uniqueKey (a key uniquely identifying the page which is used by crawler to determine whether the page was already visited, by default it equals to url)</li>
+            <li>label (the key of the first crawlPurls that matched against this page's URL. If not null, the page will be opened by the crawler)</li>
+            <li>interceptRequestData (custom user data that will be written to the output JSON, e.g. for debugging);</li>
+        </ul> */?>-->
+										<p></p>
+										<p>Note that any changes made to the <code>context</code> parameter will be ignored (unlike the <code>newRequest</code> parameter). When implementing the function, it is the user's responsibility not to break normal page scripts that might affect the operation of the crawler. You have been warned. Also note that the function does not resolve HTTP redirects: it only reports the originally requested URL, but does not open it to find out which URL it eventually redirects to.</p><!--<?php/* TODO: add an example
+        <p>
+            Example:
+        </p>
+        <p>
+<pre id="interceptRequest">function interceptRequest(context, newRequest) {
+
+  // skip this very looooong page
+  if( newRequest.url === "http://www.iana.org/protocols" )
+    return null;
+
+  //alert( "REQUEST: " + JSON.stringify(context.request,undefined,2) );
+  //alert( "NEW REQUEST: " + JSON.stringify(newRequest,undefined,2) );
+  newRequest.interceptRequestData = "Hello world from interceptRequest!";
+  return newRequest;
+}</pre> </p> */?>-->
+									</section>
+									<section id="options">
+										<h3><a href="#options"><i aria-hidden="true" class="fa fa-link"></i></a>Options</h3>
+										<section id="considerUrlFragment">
+											<h4><a href="#considerUrlFragment"><i aria-hidden="true" class="fa fa-link"></i></a>URL #fragments identify unique pages <span class="api-field-name">{considerUrlFragment: Boolean}</span></h4>
+											<p>Indicates that the URL fragment identifier (i.e. <code>http://www.example.com/page#<b>this-guy-here</b></code>) should be considered when matching an URL against a PURL or when checking whether a page has already been visited. Typically, URL fragments are used as internal page anchors and therefore they should be ignored because they don't represent separate pages. However, many AJAX-based website nowadays use URL fragment to represent page parameters; in such cases, this option should be enabled.</p>
+										</section>
+										<section id="loadImages">
+											<h4><a href="#loadImages"><i aria-hidden="true" class="fa fa-link"></i></a>Download HTML images <span class="api-field-name">{loadImages: Boolean}</span></h4>
+											<p>Indicates whether the crawler should load HTML images, both those included using the <code>&lt;img&gt;</code> tag as well as those included in CSS styles. Disable this feature after you have fine-tuned your crawler in order to increase crawling performance and reduce your bandwidth costs.</p>
+										</section>
+										<section id="loadCss">
+											<h4><a href="#loadCss"><i aria-hidden="true" class="fa fa-link"></i></a>Download CSS files <span class="api-field-name">{loadCss: Boolean}</span></h4>
+											<p>Indicates whether the crawler should load CSS stylesheet files. Disable this feature after you have fine-tuned your crawler in order to increase crawling performance and reduce your bandwidth costs.</p>
+										</section>
+										<section id="injectJQuery">
+											<h4><a href="#injectJQuery"><i aria-hidden="true" class="fa fa-link"></i></a>Inject jQuery <span class="api-field-name">{injectJQuery: Boolean}</span></h4>
+											<p>Indicates that the <a href="http://jquery.com" rel="noopener" target="_blank">jQuery</a> library should be injected to each page before <a href="#pageFunction">Page function</a> is invoked. Note that the jQuery object will not be registered into global namespace in order to avoid conflicts with libraries used by the web page. It can only be accessed through <code>context.jQuery</code>.</p>
+										</section>
+										<section id="injectUnderscoreJs">
+											<h4><a href="#injectUnderscoreJs"><i aria-hidden="true" class="fa fa-link"></i></a>Inject Underscore.js <span class="api-field-name">{injectUnderscoreJs: Boolean}</span></h4>
+											<p>Indicates that the <a href="http://underscorejs.org" rel="noopener" target="_blank">Underscore.js</a> library should be injected to each page before <a href="#pageFunction">Page function</a> is invoked. Note that the Underscore object will not be registered into global namespace in order to avoid conflicts with libraries used by the web page. It can only be accessed through <code>context.underscoreJs</code>.</p>
+										</section>
+										<section id="ignoreRobotsTxt">
+											<h4><a href="#ignoreRobotsTxt"><i aria-hidden="true" class="fa fa-link"></i></a>Ignore robots exclusion standards <span class="api-field-name">{ignoreRobotsTxt: Boolean}</span></h4>
+											<p>Indicates that the crawler should ignore <code>robots.txt</code>, <code>&lt;meta name="robots"&gt;</code> tags and <code>X-Robots-Tag</code> HTTP headers. Use this feature at your own risk!</p>
+										</section>
+										<section id="skipLoadingFrames">
+											<h4><a href="#skipLoadingFrames"><i aria-hidden="true" class="fa fa-link"></i></a>Don't load frames and IFRAMEs <span class="api-field-name">{skipLoadingFrames: Boolean}</span></h4>
+											<p>Indicates that child frames included using FRAME or IFRAME tags will not be loaded by the crawler. This might improve crawling performance. As a side-effect, JavaScript redirects issued by the page before it was completely loaded will not be performed, which might be useful in certain situations.</p>
+										</section>
+										<section id="verboseLog">
+											<h4><a href="#verboseLog"><i aria-hidden="true" class="fa fa-link"></i></a>Verbose log <span class="api-field-name">{verboseLog: Boolean}</span></h4>
+											<p>If enabled, the log will also contain DEBUG messages. Note that this setting will dramatically slow down the crawler as well as your web browser and increase the log size.</p>
+										</section>
+										<section id="disableWebSecurity">
+											<h4><a href="#disableWebSecurity"><i aria-hidden="true" class="fa fa-link"></i></a>Disable web security <span class="api-field-name">{disableWebSecurity: Boolean}</span></h4>
+											<p>If checked, the virtual browser will allow cross-domain XHRs and untrusted SSL certificates, so that your crawler can access content from any domain. Only activate this feature if you know what you're doing!</p>
+										</section>
+										<section id="rotateUserAgents">
+											<h4><a href="#rotateUserAgents"><i aria-hidden="true" class="fa fa-link"></i></a>Rotate User-Agent headers <span class="api-field-name">{rotateUserAgents: Boolean}</span></h4>
+											<p>If checked then the crawler automatically rotates the <code>User-Agent</code> HTTP header for each new IP address, from a pre-defined list. This settings overwrites <a href="#customHttpHeaders">Custom HTTP headers</a> with key <code>User-Agent</code> if it is set.</p>
+										</section>
+									</section>
+									<section id="maxCrawledPages">
+										<h3><a href="#maxCrawledPages"><i aria-hidden="true" class="fa fa-link"></i></a>Max pages per crawl <span class="api-field-name">{maxCrawledPages: Number}</span></h3>
+										<p>Maximum number of pages that the crawler will open. The crawl will stop when this limit is reached. Always set this value in order to prevent infinite loops in misconfigured crawlers. For free plan users, the maximum is limited according to the current <i>Monthly pages</i> limit of the free plan (see <a href="/pricing">pricing</a> for details). Note that in cases of parallel crawling, the actual number of pages visited might be slightly higher than this value.</p>
+									</section>
+									<section id="maxOutputPages">
+										<h3><a href="#maxOutputPages"><i aria-hidden="true" class="fa fa-link"></i></a>Max result records <span class="api-field-name">{maxOutputPages: Number}</span></h3>
+										<p>Maximum number of pages the crawler can output to JSON. The crawl will stop when this limit is reached. This value is useful when you only need a limited number of results.</p>
+									</section>
+									<section id="maxCrawlDepth">
+										<h3><a href="#maxCrawlDepth"><i aria-hidden="true" class="fa fa-link"></i></a>Max crawling depth <span class="api-field-name">{maxCrawlDepth: Number}</span></h3>
+										<p>Defines how many links away from the start URLs the crawler will descend. This value is a safeguard against infinite crawling depths on misconfigured crawlers. Note that pages added using <code>enqueuePage()</code> (see <a href="#pageFunction">Page function</a>) are not subject to the maximum depth constraint.</p>
+									</section><!--<?php/* <section id="maxParallelRequests">
+    <h4>Parallel crawling processes</h4>
+    <p>
+        Maximum number of requests that can be sent in parallel by the crawler to the website.
+        Default value is
+        <code class="language-js" data-lang="js">
+          5
+        </code>
+    </p>
+    </section>*/-->
+									<section id="timeout">
+										<h3><a href="#timeout"><i aria-hidden="true" class="fa fa-link"></i></a>Execution timeout <span class="api-field-name">{timeout: Number}</span></h3>
+										<p>Timeout for the execution of the crawler, in seconds. If the crawler is running longer than this value, it will be forcibly stopped and its status set to <code>TIMEOUT</code>. By default, the timeout is 604800 seconds (=7 days). <!--<?php/* DEFAULT_ACT_TIMEOUT_SECONDS */--></p>
+									</section>
+									<section id="resourceTimeout">
+										<h3><a href="#resourceTimeout"><i aria-hidden="true" class="fa fa-link"></i></a>Resource timeout <span class="api-field-name">{resourceTimeout: Number}</span></h3>
+										<p>Timeout for network resources loaded by the crawler specified in milliseconds. The default value is <code>30000</code> milliseconds.</p>
+									</section>
+									<section id="pageLoadTimeout">
+										<h3><a href="#pageLoadTimeout"><i aria-hidden="true" class="fa fa-link"></i></a>Page load timeout <span class="api-field-name">{pageLoadTimeout: Number}</span></h3>
+										<p>Timeout for web page load, in milliseconds. If the web page does not load in this timeframe, it is considered to have failed and will be retried, similarly as with other page load errors. The default value is <code>60000</code> milliseconds.</p>
+									</section>
+									<section id="pageFunctionTimeout">
+										<h3><a href="#pageFunctionTimeout"><i aria-hidden="true" class="fa fa-link"></i></a>Page function timeout <span class="api-field-name">{pageFunctionTimeout: Number}</span></h3>
+										<p>Timeout for the asynchronous part of the page function, in milliseconds. Note that this value is only applied if your page function runs code in the background, i.e. when it invokes <code>context.willFinishLater()</code>; the page function itself always runs to completion regardless of the timeout. The default timeout is <code>600000</code> milliseconds (= 10 minutes). <!--<?php/* =DEFAULT_PAGE_FUNCTION_TIMEOUT_MILLIS */-->.</p>
+									</section>
+									<section id="maxInfiniteScrollHeight">
+										<h3><a href="#maxInfiniteScrollHeight"><i aria-hidden="true" class="fa fa-link"></i></a>Infinite scroll height <span class="api-field-name">{maxInfiniteScrollHeight: Number}</span></h3>
+										<p>Defines the maximum client height in pixels to which the browser window is scrolled in order to fetch dynamic AJAX-based content from the web server (so-called <i>infinite scroll</i>). By default, the crawler doesn't scroll and uses a fixed browser window size. Note that you might need to enable <a href="#loadImages">Download HTML images</a> to make infinite scroll work, because otherwise the crawler wouldn't know that some resources are still being loaded and will stop infinite scrolling prematurely.</p>
+									</section>
+									<section id="randomWaitBetweenRequests">
+										<h3><a href="#randomWaitBetweenRequests"><i aria-hidden="true" class="fa fa-link"></i></a>Delay between requests <span class="api-field-name">{randomWaitBetweenRequests: Number}</span></h3>
+										<p>This option forces the crawler to ensure a minimum time interval between opening two web pages, in order to prevent it from overloading the target server. The actual minimum time is a random value drawn from a Gaussian distribution with a mean specified by your setting (in milliseconds) and a standard deviation corresponding to 25% of the mean. The minimum value is 2000 milliseconds, the crawler never issues requests in shorter intervals than</p>
+									</section>
+									<section id="maxCrawledPagesPerSlave">
+										<h3><a href="#maxCrawledPagesPerSlave"><i aria-hidden="true" class="fa fa-link"></i></a>Max pages per IP address <span class="api-field-name">{maxCrawledPagesPerSlave: Number}</span></h3>
+										<p>Maximum number of pages that a single crawling process will open before it is restarted with a new proxy server setting. This option can help avoid the blocking of the crawler by the target server and also ensures that the crawling processes don't grow too large, as they are killed periodically. The default is 50. <!--<?php/* DEFAULT_MAX_CRAWLED_PAGES_PER_SLAVE */?>--></p>
+									</section>
+									<section id="maxParallelRequests">
+										<h3><a href="#maxParallelRequests"><i aria-hidden="true" class="fa fa-link"></i></a>Parallel crawling processes <span class="api-field-name">{maxParallelRequests: Number}</span></h3>
+										<p>The number of parallel processes that will perform the crawl. If more than one, page screenshots and HTML snapshots are disabled, because they would switch too quickly and it would make no sense for them to be enabled. The maximum value is determined by your subscription type (see <a href="https://my.apify.com/account#/subscription">Account</a> for your service limits). Note that each of the parallel crawling processes typically uses a different IP address for outgoing HTTP requests. <!--<?php/* TODO: describe IP hiding better, using maxCrawledPagesPerSlave and randomWaitBetweenRequests */?>--></p>
+									</section>
+									<section id="customHttpHeaders">
+										<h3><a href="#customHttpHeaders"><i aria-hidden="true" class="fa fa-link"></i></a>Custom HTTP headers <span class="api-field-name">{customHttpHeaders: [{key: String, value: String}]}</span></h3>
+										<p>Defines custom HTTP headers used by the crawler. The maximum length of the header name is 100 characters and the maximum length of the value is 1000 characters.</p>
+									</section>
+									<section id="proxyGroups">
+										<h3><a href="#proxyGroups"><i aria-hidden="true" class="fa fa-link"></i></a>Proxy groups <span class="api-field-name">{proxyGroups: [String]}</span></h3>
+										<p>Groups of proxy servers to be used by the crawler. All servers from all groups are combined into a single list and randomly shuffled at the start of your crawler run.</p>
+										<p>If you prefer to use your own proxy servers, check the <i>Custom</i> proxy group and enter the proxy servers into the <a href="#customProxies">Custom proxies</a> field.</p>
+									</section>
+									<section id="customProxies">
+										<h3><a href="#customProxies"><i aria-hidden="true" class="fa fa-link"></i></a>Custom proxies <span class="api-field-name">{customProxies: String}</span></h3>
+										<p>A list of custom proxy servers to be used instead of the default Apify proxies, specified in the format <code>scheme://user:password@host:port</code>. The URL scheme defines the proxy type, possible values are <code>http</code> and <code>socks5</code>. User and password might be omitted, but the port must always be present. Separate proxies are separated by spaces or new lines.</p>
+										<p>The custom proxy used to fetch a specific page is stored to the <code>proxy</code> field of the <a href="#requestObject">Request object</a>. Note that for security reasons, the usernames and passwords are redacted from the proxy URL.</p>
+									</section>
+									<section id="cookies">
+										<h3><a href="#cookies"><i aria-hidden="true" class="fa fa-link"></i></a>Initial cookies <span class="api-field-name">{cookies: [Object]}</span></h3>
+										<p>An array of cookies used to initialize the crawler. You can export the cookies from your own web browser, for example using the <a href="http://www.editthiscookie.com/" rel="noopener" target="_blank">EditThisCookie</a> plugin. This setting is typically used to start crawling when logged in to certain websites. The array might be null or empty, in which case the crawler will start with no cookies.</p>
+										<p>Note that if the <a href="#cookiesPersistence">Cookies persistence</a> setting is <b>Over all crawler runs</b>, the cookies array will be overwritten with fresh cookies from the crawler whenever it successfully finishes.</p>
+										<p><b>WARNING:</b> You should never share cookies or an exported crawler configuration containing cookies with untrusted parties, because they might use it to authenticate themselves to various websites with your credentials.</p>
+										<p>Example:</p>
+										<pre id="cookiesExample"><code class="language-js">[
+  {
+    "domain": ".example.com",
+    "expires": "Thu, 01 Jun 2017 16:14:38 GMT",
+    "expiry": 1496333678,
+    "httponly": true,
+    "name": "NAME",
+    "path": "/",
+    "secure": false,
+    "value": "Some value"
+  },
+  {
+    "domain": ".example.com",
+    "expires": "Thu, 01 Jun 2017 16:14:37 GMT",
+    "expiry": 1496333677,
+    "httponly": true,
+    "name": "OTHER_NAME",
+    "path": "/",
+    "secure": false,
+    "value": "Some other value"
+  }
+]</code></pre>
+									</section>
+									<section id="cookiesPersistence">
+										<h3><a href="#cookiesPersistence"><i aria-hidden="true" class="fa fa-link"></i></a>Cookies persistence <span class="api-field-name">{cookiesPersistence: String}</span></h3>
+										<p>Indicates how the crawler saves and reuses cookies. When you start the crawler, the first PhantomJS process will use the cookies defined by the <a href="#cookies">Initial cookies</a> setting. Subsequent PhantomJS processes will use cookies as follows:</p>
+										<table class="table table-bordered">
+											<tbody>
+												<tr>
+													<td style="width: 30%"><b>Per single crawling process only</b><br>
+													<span class="api-field-name">='PER_PROCESS'</span></td>
+													<td style="width: 70%">
+														Cookies are only maintained separately by each PhantomJS crawling process for the lifetime of that process. The cookies are not shared between crawling processes. This means that whenever the crawler rotates its IP address, it will start again with cookies defined by the <a href="#cookies">Initial cookies</a> setting. Use this setting for maximum privacy and to avoid detection of the crawler. This is the <b>default</b> option.
+													</td>
+												</tr>
+												<tr>
+													<td><b>Per full crawler run</b><br>
+													<span class="api-field-name">='PER_CRAWLER_RUN'</span></td>
+													<td>Indicates that cookies collected at the start of the crawl by the first PhantomJS process are reused by other PhantomJS processes, even when switching to a new IP address. This might be necessary to maintain a login performed at the beginning of your crawl, but it might help the server to detect the crawler. Note that cookies are only collected at the beginning of the crawl by the initial PhantomJS process. Cookies set by subsequent PhantomJS processes are only valid for the duration of that process and are not reused by other processes. This is necessary to enable crawl parallelization.</td>
+												</tr>
+												<tr>
+													<td><b>Over all crawler runs<br>
+													<span class="api-field-name">='OVER_CRAWLER_RUNS'</span></b></td>
+													<td>
+														This setting is similar to <b>Per full crawler run</b>, the only difference is that if the crawler finishes with <code>SUCCEEDED</code> status, its current cookies are automatically saved to the <a href="#cookies">Initial cookies</a> setting so that new crawler run start where the previous run left off. This is useful to keep login cookies fresh and avoid their expiration.
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</section>
+									<section id="customData">
+										<h3><a href="#customData"><i aria-hidden="true" class="fa fa-link"></i></a>Custom data <span class="api-field-name">{customData: Anything}</span></h3>
+										<p>Custom user data passed to the page function and intercept request function as <code>context.customData</code>. This setting is mainly useful if you're invoking the crawler using an API, so that you can pass some arbitrary parameters to your code. In the crawler settings editor the value can only be a string, but when passing it through the API it can be an arbitrary JSON-stringifyable object.</p>
+									</section>
+									<section id="finishWebhookUrl">
+										<h3><a href="#finishWebhookUrl"><i aria-hidden="true" class="fa fa-link"></i></a>Finish webhook URL <span class="api-field-name">{finishWebhookUrl: String}</span></h3>
+										<p>A custom endpoint that receives a HTTP POST right after every run of the crawler ends, regardless of its status, i.e. whether it finished, failed, was stopped, etc. The POST payload is a JSON object defining an <code>_id</code> property which contains an execution ID of the crawler run and <code>actId</code> which contains internal ID of crawler, e.g. <code>{_id: "S76d9xzpvY7NLfSJc", actId: "lepE4f93lkDPqojdC"}</code>. You can use this ID to query the crawl status and results using the API. Beware that the JSON object might be extended with other properties in the future.</p>
+										<p>The response to the POST request must have a HTTP status code in <code>2XX</code> range. Otherwise it is considered an error and the request is periodically retried every hour. If the request does not succeed after 48 hours, the system gives up and stops sending the requests. <!--<?php/* constants defined in DEFAULT_FINISH_WEBHOOK_RETRY_PERIOD_SECONDS */?>--></p>
+										<p>For safety reasons, your URL should contain a secret token to ensure only Apify can invoke it. To test your endpoint, you can use one of the example crawlers. If your endpoint performs a time-consuming operation, you should respond to the request immediately so that it does not time out before Apify receives the response. The timeout of the webhook is 5 minutes. <!--<?php/* FINISH_WEBHOOK_HTTP_TIMEOUT_SECONDS */?>-->
+										 In rare circumstances, the webhook might be invoked more than once, you should design your code to be idempotent to duplicate calls.</p>
+										<p>You can test your webhook endpoint by clicking the <i>Test</i> button right next to your webhook URL. This will create a dummy crawl that is immediately finished and has zero results, whose only purpose is to test the finish webhook in real-world conditions.</p>
+										<p><b>Pro tip:</b> If you want to run your crawler in an infinite loop, i.e. start a new run right after the previous one finishes, simply set the start crawler API endpoint as your finish webhook.</p>
+									</section>
+									<section id="finishWebhookData">
+										<h3><a href="#finishWebhookData"><i aria-hidden="true" class="fa fa-link"></i></a>Finish webhook data <span class="api-field-name">{finishWebhookData: String}</span></h3>
+										<p>You can add custom string to be sent in the finish webhook's POST request. If you set value of this field to <code>my value</code> then the JSON object sent as POST request payload will look as follows:</p>
+										<pre><code class="language-js">{
+  _id: "S76d9xzpvY7NLfSJc",
+  actId: "lepE4f93lkDPqojdC",
+  data: "my value",
+}</code></pre>
+										<p></p>
+									</section>
+									<section id="testUrl">
+										<h3><a href="#testUrl"><i aria-hidden="true" class="fa fa-link"></i></a>Test URL <span class="api-field-name">{testUrl: {key: String, value: String}}</span></h3>
+										<p>A single URL with an optional label to test your crawler on. When using this to start the crawler, all <a href="#startUrls">Start URLs</a> will be ignored and the crawler will be run for this URL only. All the <a href="#crawlPurls">Pseudo-URLs</a> stay in place to allow for navigation testing.</p>
+									</section>
+								</section>
+								<section id="internals">
+									<h2><a href="#internals"><i aria-hidden="true" class="fa fa-link"></i></a>Crawler internals</h2><!--<?php/*<p>
+        The following sections describe internal crawler details.
+    </p> */?>-->
+									<section id="requestObject">
+										<h3><a href="#requestObject"><i aria-hidden="true" class="fa fa-link"></i></a>Request object</h3>
+										<p>This object contains all the available information about every single web page the crawler encounters (both visited and not visited). This object comes into play in both <a href="#pageFunction">Page function</a> and <a href="#interceptRequest">Intercept request function</a> and crawling results are actually just an array of these objects.</p>
+										<p>The Request object has the following schema:</p>
+										<pre id="requestObjectCode"><code class="language-js">
+{
+  // A string with a unique identifier of this Request object.
+  // It is generated from the uniqueKey, therefore two pages from various crawls
+  // with the same uniqueKey will also have the same ID.
+  id: String,
+
+  // The URL that was specified in the web page's navigation request,
+  // possibly updated by the 'interceptRequest' function
+  url: String,
+
+  // The final URL reported by the browser after the page was opened
+  // (will be different from 'url' if there was a redirect)
+  loadedUrl: String,
+
+  // Date and time of the original web page's navigation request
+  requestedAt: Date,
+  // Date and time when the page load was initiated in the web browser, or null if it wasn't
+  loadingStartedAt: Date,
+  // Date and time when the page was actually loaded, or null if it wasn't
+  loadingFinishedAt: Date,
+
+  // HTTP status and headers of the loaded page.
+  // If there were any redirects, the status and headers correspond to the final response, not the intermediate responses.
+  responseStatus: Number,
+  responseHeaders: Object,
+
+  // If the page could not be loaded for any reason (e.g. a timeout), this field contains a best guess of
+  // the code of the error. The value is either one of the codes from<!--<?php/*
+  */?>--> <a href='http://doc.qt.io/qt-4.8/qnetworkreply.html#NetworkError-enum'>QNetworkReply::NetworkError codes</a>
+  // or value 999 for an unknown error. This field is used internally to retry failed page loads.
+  // Note that the field is only informative and might not be set for all types of errors,
+  // always use errorInfo to determine whether the page was processed successfully.
+  loadErrorCode: Number,
+
+  // Date and time when the page function started and finished
+  pageFunctionStartedAt: Date,
+  pageFunctionFinishedAt: Date,
+
+  // An arbitrary string that uniquely identifies the web page in the crawling queue.
+  // It is used by the crawler to determine whether a page has already been visited.
+  // If two or more pages have the same uniqueKey, then the crawler only visits the first one.
+  //
+  // By default, uniqueKey is generated from the 'url' property as follows:
+  //  * hostname and protocol is converted to lower-case
+  //  * trailing slash is removed
+  //  * common tracking parameters starting with 'utm_' are removed
+  //  * query parameters are sorted alphabetically
+  //  * whitespaces around all components of the URL are trimmed
+  //  * if the 'considerUrlFragment' setting is disabled, the URL fragment is removed completely
+  //
+  // If you prefer different generation of uniqueKey, you can override it in the 'interceptRequest'
+  // or 'context.enqueuePage' functions.
+  uniqueKey: String,
+
+  // Describes the type of the request. It can be either one of the following values:
+  // 'InitialAboutBlank', 'StartUrl', 'SingleUrl', 'ActorRequest', 'OnUrlChanged', 'UserEnqueued', 'FoundLink'
+  // or in case the request originates from PhantomJS' onNavigationRequested() it can be one of the following values:
+  // 'Undefined', 'LinkClicked', 'FormSubmitted', 'BackOrForward', 'Reload', 'FormResubmitted', 'Other'
+  type: String,
+
+  // Boolean value indicating whether the page was opened in a main frame or a child frame
+  isMainFrame: Boolean,
+
+  // HTTP POST payload
+  postData: String,
+
+  // Content-Type HTTP header of the POST request
+  contentType: String,
+
+  // Contains "GET" or "POST"
+  method: String,
+
+  // Indicates whether the page will be loaded by the crawler or not
+  willLoad: Boolean,
+
+  // Indicates the label specified in startUrls or crawlPurls config settings where URL/PURL corresponds
+  // to this page request. If more URLs/PURLs are matching, this field contains the FIRST NON-EMPTY
+  // label in order in which the labels appear in startUrls and crawlPurls arrays.
+  // Note that labels are not mandatory, so the field might be null.
+  label: String,
+
+  // ID of the Request object from whose page this Request was first initiated, or null.
+  referrerId: String,
+
+  // Contains the Request object corresponding to 'referrerId'.
+  // This value is only available in pageFunction and interceptRequest functions
+  // and can be used to access properties and page function results of the page linking to the current page.
+  // Note that the referrer Request object DOES NOT recursively define the 'referrer' property.
+  referrer: Object,
+
+  // How many links away from start URLs was this page found
+  depth: Number,
+
+  // If any error occurred while loading or processing the web page,
+  // this field contains a non-empty string with a description of the error.
+  // The field is used for all kinds of errors, such as page load errors, the page function or
+  // intercept request function exceptions, timeouts, internal crawler errors etc.
+  // If there is no error, the field is a false-ish value (empty string, null or undefined).
+  errorInfo: String,
+
+  // Results of the user-provided 'pageFunction'
+  pageFunctionResult: Anything,
+
+  // A field that might be used by 'interceptRequest' function to save custom data related to this page request
+  interceptRequestData: Anything,
+
+  // Total size of all resources downloaded during this request
+  downloadedBytes: Number,
+
+  // Indicates the position where the request will be placed in the crawling queue.
+  // Can either be 'LAST' to put the request to the end of the queue (default behavior)
+  // or 'FIRST' to put it before any other requests.
+  queuePosition: String,
+
+  // Custom proxy used by the crawler, or null if custom proxies were not used.
+  // For security reasons, the username and password are redacted from the URL.
+  proxy: String
+}</code></pre>
+									</section>
+								</section>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+	<script src="../js/vendor/jquery-3.2.1.min.js">
+	</script> 
+	<script src="../js/vendor/popper-1.12.6.min.js">
+	</script> 
+	<script src="../js/vendor/tooltip-1.1.6.min.js">
+	</script> 
+	<script src="../js/build/production.min.js?v&#x3D;1521212734">
+	</script> 
+	<script src="../js/vendor/prism.min.js">
+	</script> 
+	<script src="../js/vendor/smooth-scroll-12.1.5.min.js">
+	</script> 
+	<script>
+	   $(function () {
+	       $("a[href^='#']")
+	       .click(function (event) {
+	           event.preventDefault();
+	           var href = $(this)
+	           .attr('href');
+	           if (href !== '#') scrollToHash(href);
+	       });
+	       scrollToHash();
+	       window.onhashchange = scrollToHash;
+	   });
+	</script>
+    https://script.google.com/macros/s/AKfycbxexX8W9a_v29OUDlTXL8zYru_LyDPVBceOazElCY6XvGTZ3g8/exec
+</body>
+</html>
