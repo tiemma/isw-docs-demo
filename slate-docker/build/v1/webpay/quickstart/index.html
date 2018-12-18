@@ -4,6 +4,14 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta content="Use Interswitch Developer APIs, secure development tools, Visa experts and resources from the world's largest payment network" name="description">
+    <meta content="Copyright&copy; 2018 Interswitch Group. All rights reserved." name="copyright">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Yrsa:300" rel="stylesheet">
+    <link href="/css/prism.css" rel="stylesheet" type="text/css">
+    <link href="https://mufasa.interswitchng.com/p/favicons/favicon_isw.png" rel="icon" sizes="16x16 32x32 48x48 64x64" type="image/x-icon">
+  
+      
     <title>Interswitch Payment Gateway</title>
 
     <style>
@@ -86,27 +94,28 @@
   color: #90a959;
 }
     </style>
-    <link href="../stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen" />
-    <link href="../stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
-      <script src="../javascripts/all.js" type="text/javascript"></script>
+    <link href="../../../stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="../../../stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
+      <script src="../../../javascripts/all.js" type="text/javascript"></script>
   </head>
 
-  <body class="webpay webpay_index" data-languages="[&quot;go&quot;,&quot;java&quot;,&quot;javascript&quot;,&quot;python&quot;,&quot;ruby&quot;,&quot;csharp&quot;,&quot;c&quot;,&quot;objective_c&quot;,&quot;php&quot;]">
+  <body class="v1 v1_webpay v1_webpay_quickstart v1_webpay_quickstart_index" data-languages="[&quot;go&quot;,&quot;java&quot;,&quot;javascript&quot;,&quot;python&quot;,&quot;ruby&quot;,&quot;csharp&quot;,&quot;c&quot;,&quot;objective_c&quot;,&quot;php&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
-        <img src="../images/navbar.png" />
+        <img src="../../../images/navbar.png" />
       </span>
     </a>
     <a id="hide-button">
-      <span>
+      <div>
         <span class="hide-text"></span>
-        <img src="../images/hide.png" />
-      </span>
+          <img src="../../../images/hide.png" /> 
+      </div>
     </a>
     
     <div class="tocify-wrapper">
-      <img src="../images/logo.png" />
+ 
+      <img src="../../../images/logo.png" />
         <div class="lang-selector">
               <a href="#" data-language-name="go">Go</a>
               <a href="#" data-language-name="java">Java</a>
@@ -127,9 +136,14 @@
         <ul class="toc-footer">
         </ul>
     </div>
+    
     <div class="page-wrapper">
-      <div class="dark-box"></div>
+    <div class="dark-box"></div>
+    <div class="intro">
+        <img src="../../../images/Payment-Illustration-bluebckgrnd.svg" />
+      </div>
       <div class="content">
+      
         <h1 id=""> Interswitch Payment Gateway </h1>
 
 <blockquote>
@@ -634,6 +648,54 @@ function nonce()
 <p><aside class="warning">
 This operation requires authentication using the <strong><em>Basic Authorization</em></strong> header
 </aside></p>
+
+          <h1 id='making-a-quick-transaction'>Making a Quick Transaction</h1>
+<ul>
+<li>Get an account on the payment gateway using the link <a href="https://www.interswitchgroup.com/paymentgateway/">here</a></li>
+</ul>
+
+<p>There are various integration platforms availale</p>
+
+<ul>
+<li><p><a href="#">Web Integration (Pop Up)</a></p></li>
+<li><p><a href="#">Web Redirect</a></p></li>
+<li><p><a href="#">API / SDK Integration</a></p></li>
+<li><p><a href="#">QR Integration</a></p></li>
+</ul>
+
+<p><h2>Web Integration Pop Up</h2></p>
+
+<blockquote>
+<p>Code samples are in javascript</p>
+</blockquote>
+
+<p>You can request for a link to pop up a webpay payment terminal using a shortcode after registering on the payment gateway platform</p>
+
+<p>Check out the documentation code panel to see a sample implementation</p>
+
+<p><a data-isw-payment-button data-isw-ref='yLQgIGZ3e'>
+Pay using Pop Up
+  <script type='text/javascript' 
+    src='https://www.interswitchgroup.com/paymentgateway/public/js/webpay.js'
+    data-isw-trans-amount='10000'
+    data-isw-customer-ref='1545060437739'
+    data-isw-customer-callback='customCallback'>
+  </script>
+</a></p>
+<pre class="highlight javascript"><span class="o">&lt;</span><span class="nx">a</span> <span class="nx">data</span><span class="o">-</span><span class="nx">isw</span><span class="o">-</span><span class="nx">payment</span><span class="o">-</span><span class="nx">button</span> <span class="nx">data</span><span class="o">-</span><span class="nx">isw</span><span class="o">-</span><span class="nx">ref</span><span class="o">=</span><span class="s1">'yLQgIGZ3e'</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="nx">script</span> <span class="nx">type</span><span class="o">=</span><span class="s1">'text/javascript'</span> 
+    <span class="nx">src</span><span class="o">=</span><span class="s1">'https://www.interswitchgroup.com/paymentgateway/public/js/webpay.js'</span>
+    <span class="nx">data</span><span class="o">-</span><span class="nx">isw</span><span class="o">-</span><span class="nx">trans</span><span class="o">-</span><span class="nx">amount</span><span class="o">=</span><span class="s1">'10000'</span>
+    <span class="nx">data</span><span class="o">-</span><span class="nx">isw</span><span class="o">-</span><span class="nx">customer</span><span class="o">-</span><span class="nx">ref</span><span class="o">=</span><span class="s1">'1545060437739'</span>
+    <span class="nx">data</span><span class="o">-</span><span class="nx">isw</span><span class="o">-</span><span class="nx">customer</span><span class="o">-</span><span class="nx">callback</span><span class="o">=</span><span class="s1">'customCallback'</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="sr">/</span><span class="err">script&gt;</span>
+<span class="o">&lt;</span><span class="sr">/</span><span class="err">a&gt;</span>
+<span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+  <span class="kd">function</span> <span class="nx">customCallback</span><span class="p">(</span><span class="nx">response</span><span class="p">){</span> 
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="o">&lt;</span><span class="sr">/</span><span class="err">script&gt;</span>
+</pre>
 
           <h1 id='test-transaction-details'>Test Transaction Details</h1><h2 id='test-card-details'>Test Card Details</h2>
 <table><thead>

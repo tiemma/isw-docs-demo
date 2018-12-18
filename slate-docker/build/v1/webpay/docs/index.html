@@ -4,6 +4,14 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta content="Use Interswitch Developer APIs, secure development tools, Visa experts and resources from the world's largest payment network" name="description">
+    <meta content="Copyright&copy; 2018 Interswitch Group. All rights reserved." name="copyright">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Yrsa:300" rel="stylesheet">
+    <link href="/css/prism.css" rel="stylesheet" type="text/css">
+    <link href="https://mufasa.interswitchng.com/p/favicons/favicon_isw.png" rel="icon" sizes="16x16 32x32 48x48 64x64" type="image/x-icon">
+  
+      
     <title>Interswitch Payment Gateway</title>
 
     <style>
@@ -86,27 +94,28 @@
   color: #90a959;
 }
     </style>
-    <link href="../../stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen" />
-    <link href="../../stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
-      <script src="../../javascripts/all.js" type="text/javascript"></script>
+    <link href="../../../stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="../../../stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
+      <script src="../../../javascripts/all.js" type="text/javascript"></script>
   </head>
 
-  <body class="webpay webpay_docs webpay_docs_index" data-languages="[&quot;go&quot;,&quot;java&quot;,&quot;javascript&quot;,&quot;python&quot;,&quot;ruby&quot;,&quot;csharp&quot;,&quot;c&quot;,&quot;objective_c&quot;,&quot;php&quot;]">
+  <body class="v1 v1_webpay v1_webpay_docs v1_webpay_docs_index" data-languages="[&quot;go&quot;,&quot;java&quot;,&quot;javascript&quot;,&quot;python&quot;,&quot;ruby&quot;,&quot;csharp&quot;,&quot;c&quot;,&quot;objective_c&quot;,&quot;php&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
-        <img src="../../images/navbar.png" />
+        <img src="../../../images/navbar.png" />
       </span>
     </a>
     <a id="hide-button">
-      <span>
+      <div>
         <span class="hide-text"></span>
-        <img src="../../images/hide.png" />
-      </span>
+          <img src="../../../images/hide.png" /> 
+      </div>
     </a>
     
     <div class="tocify-wrapper">
-      <img src="../../images/logo.png" />
+ 
+      <img src="../../../images/logo.png" />
         <div class="lang-selector">
               <a href="#" data-language-name="go">Go</a>
               <a href="#" data-language-name="java">Java</a>
@@ -127,9 +136,14 @@
         <ul class="toc-footer">
         </ul>
     </div>
+    
     <div class="page-wrapper">
-      <div class="dark-box"></div>
+    <div class="dark-box"></div>
+    <div class="intro">
+        <img src="../../../images/Payment-Illustration-bluebckgrnd.svg" />
+      </div>
       <div class="content">
+      
         <h1 id=""> Interswitch Payment Gateway </h1>
 
 <blockquote>
@@ -4821,6 +4835,89 @@ This operation requires the following details to be configured properly.
 <p></ol>
 </aside></p>
 
+          <h1 id='test-transaction-details'>Test Transaction Details</h1><h2 id='test-card-details'>Test Card Details</h2>
+<table><thead>
+<tr>
+<th>Description</th>
+<th>PAN</th>
+<th>Expiry Date</th>
+<th>PIN</th>
+<th>CVC</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Successful Transaction Verve Test Card (No OTP)</td>
+<td>5061030000000000084</td>
+<td>Sept 2019</td>
+<td>1234</td>
+<td>123</td>
+</tr>
+<tr>
+<td></td>
+<td>6280511000000095</td>
+<td>Dec 2026</td>
+<td>0000</td>
+<td>123</td>
+</tr>
+<tr>
+<td>Insufficient Funds Verve Test Card</td>
+<td>5061030000000000027</td>
+<td>Sept 2019</td>
+<td>1234</td>
+<td>123</td>
+</tr>
+<tr>
+<td>VISA Test Card (iPIN)</td>
+<td>4000000000000002</td>
+<td>Apr 2020</td>
+<td><No PIN></td>
+<td>123</td>
+</tr>
+<tr>
+<td>Incorrect PIN (Masked as “Transaction Error”) Verve Test Card</td>
+<td>5061030000000000035</td>
+<td>Sept 2019</td>
+<td>0000</td>
+<td>123</td>
+</tr>
+<tr>
+<td>AutoEnrollment Test Card (Response Code ‘M0’ returned)</td>
+<td>5061040000000000231</td>
+<td>Jan 2019</td>
+<td>1234</td>
+<td>123</td>
+</tr>
+<tr>
+<td>Successful Transaction Verve Test Card (OTP)</td>
+<td>Kindly request for a test card to be configured for you, so as to receive OTP via email.</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id='test-merchant-details'>Test Merchant Details</h2>
+<table><thead>
+<tr>
+<th>Client ID</th>
+<th>Secret Key</th>
+<th>Merchant Code</th>
+<th>Requestor ID</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>IKIA9614B82064D632E9B6418DF358A6A4AEA84D7218</td>
+<td>XCTiBtLy1G9chAnyg0z3BcaFK4cVpwDg/GTw2EmjTZ8=</td>
+<td>MX187</td>
+<td>00117614992</td>
+</tr>
+<tr>
+<td>IKIACA67D931869E40BE07EE418A0B07A4A6D9EEF588</td>
+<td>y0FISAGAS+OSIASec5Cts/khsWVXaWCoxZcLF2d8o/A=</td>
+<td>MX1209</td>
+<td>None</td>
+</tr>
+</tbody></table>
+
           <h1 id='http-codes'>HTTP Codes</h1>
 <p><aside class="notice">This contains docs on our HTTP error codes and their descriptions</aside></p>
 
@@ -5028,89 +5125,6 @@ This operation requires the following details to be configured properly.
 <td>31</td>
 <td>E41</td>
 <td>Bad request from client. Kindly check your message.</td>
-</tr>
-</tbody></table>
-
-          <h1 id='test-transaction-details'>Test Transaction Details</h1><h2 id='test-card-details'>Test Card Details</h2>
-<table><thead>
-<tr>
-<th>Description</th>
-<th>PAN</th>
-<th>Expiry Date</th>
-<th>PIN</th>
-<th>CVC</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Successful Transaction Verve Test Card (No OTP)</td>
-<td>5061030000000000084</td>
-<td>Sept 2019</td>
-<td>1234</td>
-<td>123</td>
-</tr>
-<tr>
-<td></td>
-<td>6280511000000095</td>
-<td>Dec 2026</td>
-<td>0000</td>
-<td>123</td>
-</tr>
-<tr>
-<td>Insufficient Funds Verve Test Card</td>
-<td>5061030000000000027</td>
-<td>Sept 2019</td>
-<td>1234</td>
-<td>123</td>
-</tr>
-<tr>
-<td>VISA Test Card (iPIN)</td>
-<td>4000000000000002</td>
-<td>Apr 2020</td>
-<td><No PIN></td>
-<td>123</td>
-</tr>
-<tr>
-<td>Incorrect PIN (Masked as “Transaction Error”) Verve Test Card</td>
-<td>5061030000000000035</td>
-<td>Sept 2019</td>
-<td>0000</td>
-<td>123</td>
-</tr>
-<tr>
-<td>AutoEnrollment Test Card (Response Code ‘M0’ returned)</td>
-<td>5061040000000000231</td>
-<td>Jan 2019</td>
-<td>1234</td>
-<td>123</td>
-</tr>
-<tr>
-<td>Successful Transaction Verve Test Card (OTP)</td>
-<td>Kindly request for a test card to be configured for you, so as to receive OTP via email.</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id='test-merchant-details'>Test Merchant Details</h2>
-<table><thead>
-<tr>
-<th>Client ID</th>
-<th>Secret Key</th>
-<th>Merchant Code</th>
-<th>Requestor ID</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>IKIA9614B82064D632E9B6418DF358A6A4AEA84D7218</td>
-<td>XCTiBtLy1G9chAnyg0z3BcaFK4cVpwDg/GTw2EmjTZ8=</td>
-<td>MX187</td>
-<td>00117614992</td>
-</tr>
-<tr>
-<td>IKIACA67D931869E40BE07EE418A0B07A4A6D9EEF588</td>
-<td>y0FISAGAS+OSIASec5Cts/khsWVXaWCoxZcLF2d8o/A=</td>
-<td>MX1209</td>
-<td>None</td>
 </tr>
 </tbody></table>
 
