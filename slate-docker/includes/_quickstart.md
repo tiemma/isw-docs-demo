@@ -50,3 +50,6 @@ Pay using Pop Up
   }
 </script>
 ```
+
+## Web Redirect
+
